@@ -211,7 +211,7 @@
 			//$criteria->add(new TFilter('codigo', '=', $codigo));
 			$sql->setCriteria($criteria);	
 
-			if ( $conn = TTransaction::get() ) 
+			if ( $conn = TTransaction2::get() ) 
 			{
 				$result = $conn->exec($sql->getInstruction());
 
