@@ -1,248 +1,276 @@
 <?php
+    /**
+     * TRecord.class.php
+     * _DESCRIÃ‡ÃƒO_
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
+     * @version 1.0     
+     * @access  public
+     */
+    abstract class TRecord
+    {
+        /*
+         *    Variaveis
+         */
 
-	abstract class TRecord
-	{
-	
-		protected $data;
-		
-		public function  __construct($codigo = NULL)
-		{
-			if ($codigo)
-			{
-				$object = $this->load($codigo);
-				
-				if ($object)
-				{
-					$this->fromArray($object->toArray());
-				}
-			}
-		}
-		
-		public function __clone()
-		{
-			unset($this->codigo);
-		}
-		
-		public function __set($prop, $value)
-		{
-			if (method_exists($this, 'set_'.$prop))
-			{
-				call_user_func(array($this, 'set_'.$prop), $value);
-			}
-			else
-			{
-				if($value == NULL)
-				{
-					//unset($this->data[$prop]);
-					$this->data[$prop] = '';
-				}
-				else
-				{
-					$this->data[$prop] = $value;
-				}
-			}
-		}
-		
-		public function __get($prop)
-		{
-			if (method_exists($this, 'get_'.$prop))
-			{
-				return call_user_func(array($this, 'get_'.$prop));
-			}
-			else
-			{
-				if(isset($this->data[$prop]))
-				{
-					return $this->data[$prop];
-				}
-			}	
-		}
-		
-		private function getEntity()
-		{
-			$class = get_class($this);
-			return constant("{$class}::TABLENAME");
-		}
-		
-		public function fromArray($data)
-		{
-			$this->data = $data;
-		}
-		
-		public function toArray()
-		{
-			return $this->data;
-		}
-		
-		public function store()
-		{
-			if (empty($this->data['codigo']) or (!$this->load($this->codigo))) 
-			{
-				/*if (empty($this->data['codigo'])) 
-				{
-					$this->codigo = $this->getLast() +1;
-				}*/
-				
-				// cria instruÃ§Ã£o SQL
-				$sql = new TSqlInsert;
-				$sql->addEntity($this->getEntity());
-				// percorre dados do objeto
-				foreach ( $this->data as $key => $value )
-				{
-					// passa os dados do objeto para o SQL
-					$sql->setRowData($key, $this->$key);
-				}
-			}
-			else
-			{
-				// cria instruï¿½ï¿½o UPDATE
-				$sql = new TSqlUpdate;
-				$sql->addEntity($this->getEntity());
-				
-				$criteria = new TCriteria;
-				$criteria->add(new TFilter('codigo', ' = ', $this->codigo));
-				$sql->setCriteria($criteria);
-				// percorre dados do objeto
-				foreach ( $this->data as $key => $value )
-				{
-					if ($key !== 'codigo') {
-						// passa os dados do objeto para o SQL
-						$sql->setRowData($key, $this->$key);
-					}
-				}				
-			}
-				
-			if ( $conn = TTransaction::get() ) 
-			{
-				$result = $conn->exec($sql->getInstruction());
-				return $result;
-			}
-			else
-			{
-				throw new Exception('Não há transação ativa');
-			}
-		}
-		
-		public function load($codigo)
-		{
-			// cria instrução SQL
-			$sql = new TSqlSelect;
-			$sql->addEntity($this->getEntity());
-			$sql->addColumn('*');
-			
-			$criteria = new TCriteria;
-			$criteria->add(new TFilter('codigo', '=', $codigo));
-			$sql->setCriteria($criteria);
-			
-			if ( $conn = TTransaction::get() ) 
-			{
-				$result = $conn->query($sql->getInstruction());
-				if ( $result )
-				{
-					$object = $result->fetchObject(get_class($this));
-				}
-				return $object;
-			}
-			else
-			{
-				throw new Exception('Não há transação ativa');
-			}
-		}
-		
-		public function loadCriteria($criteria)
-		{
-			// cria instrução SQL
-			$sql = new TSqlSelect;
-			$sql->addEntity($this->getEntity());
-			$sql->addColumn('*');
-			
-			//$criteria = new TCriteria;
-			//$criteria->add(new TFilter('codigo', '=', $codigo));
-			$sql->setCriteria($criteria);
-			
-			if ( $conn = TTransaction::get() ) 
-			{
-				$result = $conn->query($sql->getInstruction());
-				if ( $result )
-				{
-					$object = $result->fetchObject(get_class($this));
-				}
-				return $object;
-			}
-			else
-			{
-				throw new Exception('Não há transação ativa');
-			}
-		}
-		
-		public function delete($codigo = NULL)
-		{
-		
-			$codigo = $codigo ? $codigo : $this->codigo;
-			
-			// cria instruÃ§Ã£o SQL
-			$sql = new TSqlDelete;
-			$sql->addEntity($this->getEntity());
-			
-			$criteria = new TCriteria;
-			$criteria->add(new TFilter('codigo', '=', $codigo));
-			$sql->setCriteria($criteria);	
+        /**
+         * $data
+         * Dados
+         * 
+         * @access protected
+         */
+        protected $data;
 
-			if ( $conn = TTransaction::get() ) 
-			{
-				$result = $conn->exec($sql->getInstruction());
 
-				return $result;
-			}
-			else
-			{
-				throw new Exception('Não há transação ativa');
-			}			
-		}
-		
-		public function deleteCriteria($criteria)
-		{
-		
-			$codigo = $codigo ? $codigo : $this->codigo;
-			
-			// cria instruÃ§Ã£o SQL
-			$sql = new TSqlDelete;
-			$sql->addEntity($this->getEntity());
-			
-			//$criteria = new TCriteria;
-			//$criteria->add(new TFilter('codigo', '=', $codigo));
-			$sql->setCriteria($criteria);	
+        /*
+         * MÃ©todos
+         */
+        
 
-			if ( $conn = TTransaction::get() ) 
-			{
-				$result = $conn->exec($sql->getInstruction());
+        /**
+         * MÃ©todo Construtor
+         *
+         * @access private
+         * @return void
+         */
+        public function  __construct($codigo = NULL)
+        {
+            if ($codigo)
+            {
+                $object = $this->load($codigo);
+                
+                if ($object)
+                {
+                    $this->fromArray($object->toArray());
+                }
+            }
+        }
 
-				return $result;
-			}
-			else
-			{
-				throw new Exception('Não há transação ativa');
-			}			
-		}
-		
-		public function getLast()
-		{
-			if ( $conn = TTransaction::get() ) 
-			{
-				// cria instruÃ§Ã£o SQL
-				$sql = new TSqlSelect;
-				$sql->addColumn('max(codigo) as codigo');
-				$sql->addEntity($this->getEntity());			
-			
-				$result = $conn->query($sql->getInstruction());
-				$row = $result->fetch();
-				
-				return $row[0];
-			}
-			else
-			{
-				throw new Exception('Não há transação ativa');
-			}			
-		}
-	}
+        public function __clone()
+        {
+            unset($this->codigo);
+        }
+
+        public function __set($prop, $value)
+        {
+            if (method_exists($this, 'set_'.$prop))
+            {
+                call_user_func(array($this, 'set_'.$prop), $value);
+            }
+            else
+            {
+                if($value == NULL)
+                {
+                    //unset($this->data[$prop]);
+                    $this->data[$prop] = '';
+                }
+                else
+                {
+                    $this->data[$prop] = $value;
+                }
+            }
+        }
+        
+        public function __get($prop)
+        {
+            if (method_exists($this, 'get_'.$prop))
+            {
+                return call_user_func(array($this, 'get_'.$prop));
+            }
+            else
+            {
+                if(isset($this->data[$prop]))
+                {
+                    return $this->data[$prop];
+                }
+            }   
+        }
+        
+        private function getEntity()
+        {
+            $class = get_class($this);
+            return constant("{$class}::TABLENAME");
+        }
+        
+        public function fromArray($data)
+        {
+            $this->data = $data;
+        }
+        
+        public function toArray()
+        {
+            return $this->data;
+        }
+        
+        public function store()
+        {
+            if (empty($this->data['codigo']) or (!$this->load($this->codigo))) 
+            {
+                /*if (empty($this->data['codigo'])) 
+                {
+                    $this->codigo = $this->getLast() +1;
+                }*/
+                
+                // cria instruÃ§Ã£o SQL
+                $sql = new TSqlInsert;
+                $sql->addEntity($this->getEntity());
+                // percorre dados do objeto
+                foreach ( $this->data as $key => $value )
+                {
+                    // passa os dados do objeto para o SQL
+                    $sql->setRowData($key, $this->$key);
+                }
+            }
+            else
+            {
+                // cria instruÃ§Ã£o UPDATE
+                $sql = new TSqlUpdate;
+                $sql->addEntity($this->getEntity());
+                
+                $criteria = new TCriteria;
+                $criteria->add(new TFilter('codigo', ' = ', $this->codigo));
+                $sql->setCriteria($criteria);
+                // percorre dados do objeto
+                foreach ( $this->data as $key => $value )
+                {
+                    if ($key !== 'codigo') {
+                        // passa os dados do objeto para o SQL
+                        $sql->setRowData($key, $this->$key);
+                    }
+                }               
+            }
+                
+            if ( $conn = TTransaction::get() ) 
+            {
+                $result = $conn->exec($sql->getInstruction());
+                return $result;
+            }
+            else
+            {
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+            }
+        }
+        
+        public function load($codigo)
+        {
+            // cria instruÃ§Ã£o SQL
+            $sql = new TSqlSelect;
+            $sql->addEntity($this->getEntity());
+            $sql->addColumn('*');
+            
+            $criteria = new TCriteria;
+            $criteria->add(new TFilter('codigo', '=', $codigo));
+            $sql->setCriteria($criteria);
+            
+            if ( $conn = TTransaction::get() ) 
+            {
+                $result = $conn->query($sql->getInstruction());
+                if ( $result )
+                {
+                    $object = $result->fetchObject(get_class($this));
+                }
+                return $object;
+            }
+            else
+            {
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+            }
+        }
+        
+        public function loadCriteria($criteria)
+        {
+            // cria instruÃ§Ã£o SQL
+            $sql = new TSqlSelect;
+            $sql->addEntity($this->getEntity());
+            $sql->addColumn('*');
+            
+            //$criteria = new TCriteria;
+            //$criteria->add(new TFilter('codigo', '=', $codigo));
+            $sql->setCriteria($criteria);
+            
+            if ( $conn = TTransaction::get() ) 
+            {
+                $result = $conn->query($sql->getInstruction());
+                if ( $result )
+                {
+                    $object = $result->fetchObject(get_class($this));
+                }
+                return $object;
+            }
+            else
+            {
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+            }
+        }
+        
+        public function delete($codigo = NULL)
+        {
+        
+            $codigo = $codigo ? $codigo : $this->codigo;
+            
+            // cria instruÃ§Ã£o SQL
+            $sql = new TSqlDelete;
+            $sql->addEntity($this->getEntity());
+            
+            $criteria = new TCriteria;
+            $criteria->add(new TFilter('codigo', '=', $codigo));
+            $sql->setCriteria($criteria);   
+
+            if ( $conn = TTransaction::get() ) 
+            {
+                $result = $conn->exec($sql->getInstruction());
+
+                return $result;
+            }
+            else
+            {
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+            }           
+        }
+        
+        public function deleteCriteria($criteria)
+        {
+        
+            $codigo = $codigo ? $codigo : $this->codigo;
+            
+            // cria instruÃ§Ã£o SQL
+            $sql = new TSqlDelete;
+            $sql->addEntity($this->getEntity());
+            
+            //$criteria = new TCriteria;
+            //$criteria->add(new TFilter('codigo', '=', $codigo));
+            $sql->setCriteria($criteria);   
+
+            if ( $conn = TTransaction::get() ) 
+            {
+                $result = $conn->exec($sql->getInstruction());
+
+                return $result;
+            }
+            else
+            {
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+            }           
+        }
+        
+        public function getLast()
+        {
+            if ( $conn = TTransaction::get() ) 
+            {
+                // cria instruÃ§Ã£o SQL
+                $sql = new TSqlSelect;
+                $sql->addColumn('max(codigo) as codigo');
+                $sql->addEntity($this->getEntity());            
+            
+                $result = $conn->query($sql->getInstruction());
+                $row = $result->fetch();
+                
+                return $row[0];
+            }
+            else
+            {
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+            }           
+        }
+    }
 ?>

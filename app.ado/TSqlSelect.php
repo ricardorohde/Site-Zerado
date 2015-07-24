@@ -1,17 +1,30 @@
 <?php
-
-    /*
-     *  Classe TSqlSelect
-     *  Esta classe provê meios para manipulação de uma instrução de SELECT no banco de dados
+    /**
+     * TSqlSelect.php
+     * Esta classe provê meios para manipulação de uma instrução de SELECT no banco de dados
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.0     
+     * @access  public
      */
     final class TSqlSelect extends TSqlInstruction
     {
-        private $columns;   //array de colunas a serem retornadas
-        
         /*
-         *  Método addColumn
-         *  Adiciona uma coluna a ser retornada pelo SELECT
-         *  @param $column = Coluna da Tabela
+         *    Variaveis
+         */
+        private $columns; //array de colunas a serem retornadas
+
+        /*
+         * Métodos
+         */
+        
+        /**
+         * Método addColumn
+         * Adiciona uma coluna a ser retornada pelo SELECT
+         * 
+         * @access public
+         * @param $column = Coluna da Tabela
+         * @return void
          */
         public function addColumn($column)
         {
@@ -19,25 +32,28 @@
             $this->columns[] = $column;
         }
         
-        /*
-         *  Método getInstruction()
-         *  Retorna a instrução de SELECT em forma de string
+        /**
+         * Método getInstruction()
+         * Retorna a instrução de SELECT em forma de string
+         * 
+         * @access public
+         * @return Instrução SQL SELECT
          */
         public function getInstruction()
         {
             //Monta a instrução de SELECT
             $this->sql =    'SELECT ';
             //Monta uma string com os nomes das colunas
-			if(count($this->columns) == 1)
-				$this->sql .=   $this->columns[0];
-			else
-				$this->sql .=   implode(',', $this->columns);
-			
+            if(count($this->columns) == 1)
+                $this->sql .=   $this->columns[0];
+            else
+                $this->sql .=   implode(',', $this->columns);
+            
             //Adiciona cláusula FROM o nome da tabela
-			if(count($this->entity) == 1)
-				$this->sql .=  ' FROM ' . $this->entity[0];
-			else
-				$this->sql .=  ' FROM ' . implode(',', $this->entity);
+            if(count($this->entity) == 1)
+                $this->sql .=  ' FROM ' . $this->entity[0];
+            else
+                $this->sql .=  ' FROM ' . implode(',', $this->entity);
             
             //Obtem cláusula WHERE do objeto criteria
             if($this->criteria)
@@ -49,12 +65,12 @@
                 }
                 
                 //Obtém as propriedades do critério
-				$group  = $this->criteria->getProperty('group');
+                $group  = $this->criteria->getProperty('group');
                 $order  = $this->criteria->getProperty('order');
                 $limit  = $this->criteria->getProperty('limit');
                 $offset = $this->criteria->getProperty('offset');
                 
-				if($group)
+                if($group)
                 {
                     $this->sql .= ' GROUP BY ' . $group;
                 }
@@ -78,5 +94,4 @@
             return $this->sql;
         }
     }
-    
 ?>

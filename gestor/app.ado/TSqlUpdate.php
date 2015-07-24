@@ -1,18 +1,31 @@
 <?php
-
-    /*
-     *  Classe TSqlUpdate
-     *  Esta classe provê meios para manipulação de uma instrução UPDATE do banco de dados
+    /**
+     * TSqlUpdate.php
+     * Esta classe provê meios para manipulação de uma instrução UPDATE do banco de dados
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.0     
+     * @access  public
      */
-    final class TSqlUpdate extends TSqlInstruction
+    class TSqlUpdate
     {
-        private $columnValues;
-        
         /*
-         *  Método setRowData()
-         *  Atribui valores à determinadas colunas no banco de dados que serão modificados
-         *  @param $column  = Coluna da tabela
-         *  @param $value   = Valor a ser armazenado
+         *    Variaveis
+         */
+        private $columnValues;
+
+        /*
+         * Métodos
+         */
+        
+        /**
+         * Método setRowData()
+         * Atribui valores à determinadas colunas no banco de dados que serão modificados
+         * 
+         * @access public
+         * @param $column  = Coluna da tabela
+         * @param $value   = Valor a ser armazenado
+         * @return void
          */
         public function setRowData($column, $value)
         {
@@ -45,9 +58,12 @@
             }
         }
         
-        /*
-         *  Método getInstruction()
-         *  Retorna a instrução de UPDATE em forma de string
+        /**
+         * Método getInstruction()
+         * Retorna a instrução de UPDATE em forma de string
+         * 
+         * @access public
+         * @return Instrução SQL UPDATE
          */
         public function getInstruction()
         {
@@ -74,5 +90,4 @@
             return $this->sql;
         }
     }
-    
 ?>

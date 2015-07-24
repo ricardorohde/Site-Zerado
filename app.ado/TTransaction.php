@@ -1,31 +1,35 @@
 <?php
-
-    /*
-     *  Classe TTransaction
-     *  Esta classe prove os métodos necessarios para manipular transaçãoes
-     *  Atomicidade
-     *  Consistencia
-     *  Isolamento
-     *  Durabilidade
+    /**
+     * Classe TTransaction
+     * Esta classe prove os métodos necessarios para manipular transaçãoes
+     * Atomicidade
+     * Consistencia
+     * Isolamento
+     * Durabilidade
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.0     
+     * @access  public
      */
     final class TTransaction
     {
+        /*
+         *    Variaveis
+         */
         private static $conn;   //Conexão Ativa
         private static $logger; //Objeto de LOG
-        
+
         /*
-         *  Método __construct
-         *  Está declarado como private para impedir que se crie instancias de TTransaction
+         * Métodos
          */
-        private function __construct()
-        {
-            
-        }
         
-        /*
-         *  Método open()
-         *  Abre uma transação e uma conexão ao Banco de Dados
-         *  @param $database = nome do banco de dados
+        /**
+         * Método open()
+         * Abre uma transação e uma conexão ao Banco de Dados
+         * 
+         * @access public
+         * @param  $database = nome do banco de dados
+         * @return void
          */
         public static function open($database)
         {
@@ -40,9 +44,12 @@
             }
         }
         
-        /*
-         *  Método get()
-         *  retorna a conexão ativa da transação
+        /**
+         * Método get()
+         * retorna a conexão ativa da transação
+         * 
+         * @access public
+         * @return Conexão Ativa
          */
         public static function get()
         {
@@ -50,9 +57,12 @@
             return self::$conn;
         }
         
-        /*
-         *  Metodo rollback()
-         *  Desfaz todas operações realizadas na transação
+        /**
+         * Metodo rollback()
+         * Desfaz todas operações realizadas na transação
+         * 
+         * @access public
+         * @return void
          */
         public static function rollback()
         {
@@ -64,9 +74,12 @@
             }
         }
         
-        /*
-         *  Método close()
-         *  Aplica todas as operações realizadas e fecha a transação
+        /**
+         * Método close()
+         * Aplica todas as operações realizadas e fecha a transação
+         * 
+         * @access public
+         * @return void
          */
         public static function close()
         {
@@ -78,20 +91,28 @@
             }
         }
         
-        /*
-         *  Método setLogger()
-         *  Armazena uma mensagem no arquivo de LOG
-         *  Baseada a estratégia ($logger) atual
+        /**
+         * Método setLogger()
+         * Armazena uma mensagem no arquivo de LOG
+         * Baseada a estratégia ($logger) atual
+         * 
+         * @access public
+         * @param  $logger = Log a ser salvo
+         * @return void
          */
         public static function setLogger(TLogger $logger)
         {
             self::$logger = $logger;
         }
         
-        /*
-         *  Método log()
-         *  Armazena uma mensagem no arquivo de LOG
-         *  Baseada na estratégia ($logger) atual
+        /**
+         * Método log()
+         * Armazena uma mensagem no arquivo de LOG
+         * Baseada na estratégia ($logger) atual
+         * 
+         * @access public
+         * @param $message = Mensagem a ser salva no Log
+         * @return void
          */
         public static function log($message)
         {
@@ -102,5 +123,4 @@
             }
         }
     }
-    
 ?>

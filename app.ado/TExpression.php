@@ -1,17 +1,31 @@
 <?php
-
-    /*
-     *  Classe TExpression
-     *  Classe abstrata para gerenciar expressões
+    /**
+     * TExpression.php
+     * Classe abstrata para gerenciar expressões
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.0     
+     * @access  public
      */
     abstract class TExpression
     {
-        //Operadores Lógicos
+        /*
+         *    Contantes
+         */
         const AND_OPERATOR  = 'AND ';
         const OR_OPERATOR   = 'OR ';
+
+
+        /*
+         * Métodos
+         */
         
-        //Marca método dump como obrigatório
-        abstract public function dump();
+        /**
+         * Método dump
+         * Marca método dump como obrigatório
+         *
+         * @abstract
+         */
+         abstract public function dump();
     }
-    
 ?>

@@ -1,17 +1,38 @@
 <?php
-
-    /*
-     *  Classe TLogger
-     *  Esta classe provê uma interface abstrata para a definição de algoritmos de LOG
+    /**
+     * TLogger.php
+     * Esta classe provê uma interface abstrata para a definição de algoritmos de LOG
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.0     
+     * @access  public
      */
     abstract class TLogger
     {
-        protected $filename; //Local do arquivo de LOG
-        
         /*
-         *  Método __contruct()
-         *  Instancia um novo logger
-         *  @param $filename = local do arquivo de LOG
+         *    Variaveis
+         */
+
+        /**
+         * $filename
+         * Local do arquivo de LOG
+         * 
+         * @access protected
+         */
+        protected $filename; 
+
+
+        /*
+         * Métodos
+         */
+        
+        /**
+         * Método Construtor
+         * Instancia um novo logger
+         * 
+         * @access private
+         * @param $filename = local do arquivo de LOG
+         * @return void
          */
         public function __construct($filename)
         {
@@ -21,8 +42,12 @@
             file_put_contents($filename, '');
         }
         
-        //Define o método write como obrigatório
+        /**
+         * Método write
+         * Define o método write como obrigatório
+         * 
+         * @abstract
+         */
         abstract function write($message);
     }
-    
 ?>

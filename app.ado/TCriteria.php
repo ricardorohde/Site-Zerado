@@ -1,47 +1,88 @@
 <?php
-
-    /*
-     *  Classe Tcriteria
-     *  Essa classe provê uma interface utilizada para definir critérios
-     */ 
+    /**
+     * TCriteria.php
+     * Essa classe provê uma interface utilizada para definir critérios
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.0     
+     * @access  public
+     */
     class TCriteria extends TExpression
     {
-        private $expressions;   //Armazea a lista de expressões
-        private $operators;     //Armazena a lista de operadores
-        private $properties;    //Propriedades do critério
-        
         /*
-         *  Método __contrusct()
+         * Variaveis
          */
-        function __construct()
+
+        /**
+          * $expressions
+          * Armazea a lista de expressões
+          * 
+          * @access private
+          */ 
+        private $operators;
+
+        /**
+          * $expressions
+          * Armazena a lista de operadores
+          * 
+          * @access private
+          */ 
+        private $operators;
+
+        /**
+          * $properties
+          * Propriedades do critério
+          * 
+          * @access private
+          */ 
+        private $properties;
+
+
+
+        /*
+         * Métodos
+         */
+       
+        /**
+         * Método Construtor
+         *
+         * @access private
+         * @return void
+         */
+        private function __construct()
         {
-            $this->expressions  = array();
-            $this->operators    = array();
+            $this->expressions    = array();
+            $this->operators        = array();
         }
-        
-        /*
-         *  Método add()
-         *  Adiciona uma expressão ao critério
-         *  @param $expression  = expressão (objeto TExpression)
-         *  @param $operator    = operador lógico de comparação 
+
+        /**
+         * Método add
+         * Adiciona uma expressão ao critério
+         *  
+         * @access  public
+         * @param   $expression  = expressão (objeto TExpression)
+         * @param   $operator    = operador lógico de comparação
+         * @return  void
          */
-        public function add(TExpression $expression, $operator = self::AND_OPERATOR)
+         public function add(TExpression $expression, $operator = self::AND_OPERATOR)
         {
             //Na primeira vez, não precisamos do operador lógico para concatenar
             if(empty($this->expressions))
             {
                 $operator = NULL;
             }
-            
-            
+
             //Agrega o resultado da expressão à lista de expressões
             $this->expressions[]    = $expression;
             $this->operators[]      = $operator;
         }
-        
-        /*
-         *  Método dump()
-         *  Retorna a expressão final
+
+        /**
+         * Método dump
+         * Retorna a expressão final
+         * 
+         * @access public
+         * @return Expressão final
          */
         public function dump()
         {
@@ -65,12 +106,15 @@
                 }
             }
         }
-        
-        /*
+
+        /**
          *  Método setProperty()
          *  Define o valor a da uma propriedade
-         *  @param $property    = propriedade
-         *  @param $value       = valor
+         *
+         * @access  public
+         * @param   $property   = propriedade
+         * @param   $value      = valor
+         * @return  void
          */
         public function setProperty($property, $value)
         {
@@ -84,10 +128,13 @@
             }
         }
         
-        /*
+        /**
          *  Método getProperty()
          *  Retorna o valor de uma propriedade
-         *  @param $property = propriedade
+         * 
+         * @access  public
+         * @param   $property = propriedade
+         * @return  void
          */
         public function getProperty($property)
         {

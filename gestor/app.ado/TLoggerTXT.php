@@ -1,15 +1,26 @@
 <?php
-
-    /*
-     *  classe TLoggerTXT
-     *  implementa o algoritmo de LOG em HTML
+    /**
+     * TLoggerTXT.php
+     * Implementa o algoritmo de LOG em HTML
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.0     
+     * @access  public
      */
-    class TLoggerTXT extends TLogger
+    class TLoggerTXT
     {
         /*
-         *  Método write
-         *  Escreve uma mensagem no arquivo de LOG
-         *  @param $message = mensagem a ser escrita
+         * Métodos
+         */
+        
+
+        /**
+         * Método write
+         * Escreve uma mensagem no arquivo de LOG
+         * 
+         * @access public
+         * @param  $message = mensagem a ser escrita
+         * @return void
          */
         public function write($message)
         {
@@ -23,5 +34,5 @@
             fwrite($handler, $text);
             fclose($handler);
         }
-    }    
+    }
 ?>

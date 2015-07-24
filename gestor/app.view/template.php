@@ -42,24 +42,15 @@ class template
 		<!DOCTYPE HTML>
 		<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
 			<head>
-				<title>		Kanban 		</title>
-			
-				<!--Meta Tags-->
-				<meta name="description" content=	"">
-				<meta name="keywords" content=	"">
-				<meta charset='UTF-8' />
-				
-				<!--FavIcon-->
-				<link rel="shortcut icon" type="image/x-icon" href="app.view/img/favicon.ico"/>
-				
-				<!--Acentos-->
-				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<?php include_once 'meta.php'; ?>
 				
 				<!--Fontes-->
 				
 				<!--CSS-->
 				
 				<!--JQuery-->
+				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
+				<script type="text/javascript" src="/app.view/js/skel.js"></script>				
 				
 				<!--JavaScript-->
 			</head>

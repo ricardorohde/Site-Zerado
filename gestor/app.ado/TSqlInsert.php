@@ -1,18 +1,25 @@
 <?php
-
-    /*
-     *  Classe TSqlInsert
-     *  Esta classe provê meios para aipulação de uma instrução de INSERT no banco de dados
+    /**
+     * TSqlInsert.php
+     * Esta classe provê meios para aipulação de uma instrução de INSERT no banco de dados
+     *
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.0     
+     * @access  public
      */
     final class TSqlInsert extends TSqlInstruction
     {
-        private $columnValues;
-        
         /*
-         *  Método setRowData()
-         *  Atribui valores à determinadas colunas no banco de dados que serão inseridas
-         *  @param $column  = Coluna da tabela
-         *  @param @value   = Valor a ser armazenado
+         * Métodos
+         */
+        
+        /**
+         * Método setRowData()
+         * Atribui valores à determinadas colunas no banco de dados que serão inseridas
+         * 
+         * @access public
+         * @param  $column  = Coluna da tabela
+         * @param  @value   = Valor a ser armazenado
          */
         public function setRowData($column, $value)
         {
@@ -45,9 +52,12 @@
             }
         }
         
-        /*
-         *  Método setCriteria()
-         *  Não existe no contexto desta classe, logo, irá lançar um erro se for executado
+        /**
+         * Método setCriteria()
+         * Não existe no contexto desta classe, logo, irá lançar um erro se for executado
+         * 
+         * @access public
+         * @param $criteria = Critério de Seleção
          */
         public function setCriteria(TCriteria $criteria)
         {
@@ -55,9 +65,12 @@
             throw new Exception("Cannot call setCriteria from " . __CLASS__);
         }
         
-        /*
-         *  Método getInstruction()
-         *  Retorna a instrução de INSERT em forma de string
+        /**
+         * Método getInstruction()
+         * Retorna a instrução de INSERT em forma de string
+         * 
+         * @access public
+         * @return Instrução SQL INSERT
          */
         public function getInstruction()
         {
@@ -72,5 +85,4 @@
             return $this->sql;
         }
     }
-    
 ?>
