@@ -1,33 +1,74 @@
-/*
- *	Arquivo  busca.class.php
- *	Classe para envio de Emails
- *	
- *	Sistema:	#SISTEMA#
- *	Autor:      Rogério Eduardo Pereira
- *	Data:       27/02/2015
- */
 <?php
     require_once ('class.phpmailer.php');
     
-    /*
-     *  Classe que controla o envio de e-mails da pagina Contato
-     */
+    /**
+      * enviaEmail.php
+      * Classe que controla o envio de e-mails da pagina Contato
+      *
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @version 1.0
+      * @access  public
+      */
     class enviaEmail
     {
+        /**
+          * @access private
+          * @var    string  Nome de quem solicitou contato
+          */ 
         private $nome;
+        /**
+          * @access private
+          * @var    string  Email que será resposta
+          */ 
         private $de;
+        /**
+          * @access private
+          * @var    string  Assunto do E-mail
+          */ 
         private $assunto;
+        /**
+          * @access private
+          * @var    string  Mensagem do Formulario
+          */ 
         private $mensagem;
+        /**
+          * @access private
+          * @var    string  Corpo do email
+          */ 
         private $corpoMensagem;
+        /**
+          * @access private
+          * @var    string  Email Destinatário
+          */ 
         private $para;
+        /**
+          * @access private
+          * @var    string  Email que será resposta
+          */ 
+        private $de;
+        /**
+          * @access private
+          * @var    string  Classe de envio de email
+          */ 
         private $mail;
+        /**
+          * @access private
+          * @var    string  Telefone de Contato
+          */ 
         private $telefone;
+        /**
+          * @access private
+          * @var    string  Cidade de Contato
+          */ 
         private $cidade;
         //private $headers;
         
-        /*
-         *  Método construtor
-         *  Inicializa as variaveis, constroi o email, configura servidor e envia
+        /**
+         * Método construtor
+         * Inicializa as variaveis, constroi o email, configura servidor e envia
+         * 
+         * @access public
+         * @return void
          */
         public function __construct()
         {
@@ -38,9 +79,12 @@
             enviaEmail::send2();
         }
         
-        /*
-         *  Método getValores
-         *  Obtem os valores do formulario
+        /**
+         * Método getValores
+         * Obtem os valores do formulario
+         * 
+         * @access private
+         * @return void
          */
         private function getValores()
         {
@@ -50,12 +94,15 @@
             $this->mensagem = $_POST['txtMensagem'];
             $this->telefone = $_POST['txtTelefone'];
             $this->cidade   = $_POST['txtCidade'];
-            $this->para     = 'contato@madeinjapanpocos.com.br';  //Email que vai receber o email de contato
+            $this->para     = 'email@email.com';  //Email que vai receber o email de contato
         }
         
-        /*
-         *  Método constroiEmail
-         *  Monta o email no formato para ser enviado
+        /**
+         * Método constroiEmail
+         * Monta o email no formato para ser enviado
+         * 
+         * @access private
+         * @return void
          */
         private function constroiEmail()
         {
@@ -79,21 +126,24 @@
                                     ";
         }
         
-        /*
-         *  Método configuraEmail
-         *  Configura parametros da classe PHPMailer
+        /**
+         * Método configuraEmail
+         * Configura parametros da classe PHPMailer
+         * 
+         * @access private
+         * @return void
          */
         private function configuraEmail()
         {
-            // verifica se existe arquivo de configuraÃ§Ã£o para este banco de dados
+            // verifica se existe arquivo de configuração de email
             if (file_exists("../app.config/mail.ini"))
             {
-                // lÃª o INI e retorna um array
+                // lê o INI e retorna um array
                 $configMail = parse_ini_file("../app.config/mail.ini");
             }
             else
             {
-                // se nÃ£o existir, lanÃ§a um erro
+                // se não existir, lançaa um erro
                 throw new Exception("Arquivo mail.ini nÃ£o encontrado");
             }
             
@@ -124,9 +174,12 @@
             //$mail->AddAttachment("");                                                                             //Anexo
         }
         
-        /*
-         *  Método send
-         *  Envia o email
+        /**
+         * Método send
+         * Envia o email
+         * 
+         * @access private
+         * @return void
          */
         private function send()
         {
@@ -159,9 +212,12 @@
 
         }
 		
-		/*
-         *  Método send2
-         *  Envia o email pela função mail
+		/**
+         * Método send2
+         * Envia o email pela função mail
+         * 
+         * @access private
+         * @return void
          */
         private function send2()
         {

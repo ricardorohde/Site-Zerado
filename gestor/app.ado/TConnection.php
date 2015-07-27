@@ -15,11 +15,12 @@
         
         /**
          * Método Construtor
+         * Não existem instancias de TConnection, por isso está marcado como private
          *
          * @access private
          * @return void
          */
-        private function __construct()
+        public function __construct()
         {
 
         }
@@ -28,9 +29,10 @@
          * Método open
          * Recebe o nome do banco de dados e instancia o objeto PDO correspondente
          * 
-         * @access public
-         * @param $name nome do arquivo de configurações
-         * @return $conn Conexão com o banco de dados
+         * @access  public
+         * @param   $name       Nome do arquivo de configurações
+         * @throws  Exception   Arquivo não encontrado
+         * @return  $conn       Conexão com o banco de dados
          */
         public static function open($name)
         {
@@ -43,7 +45,7 @@
             elseif(file_exists("../app.config/{$name}.ini"))
             {
                 //Le o arquivo INI e retorna um array
-                $db = parse_ini_file("app.config/{$name}.ini");
+                $db = parse_ini_file("../app.config/{$name}.ini");
             }
             else
             {

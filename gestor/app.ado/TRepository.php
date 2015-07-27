@@ -1,7 +1,7 @@
 <?php
     /**
      * TRepository.php
-     * _DESCRIÇÃO_
+     * Esta classe provê os métodos necessários para manipular coleções de objetos
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
      * @version 1.0     
@@ -14,13 +14,13 @@
          */
         
         /**
-         * Método addColumn
-         * Adiciona uma coluna a ser retornada pelo SELECT
-         * 
-         * @access public
-         * @param $column = Coluna da Tabela
-         * @return void
-         */
+          * Método addColumn
+          * Adiciona uma coluna a ser retornada pelo SELECT
+          * 
+          * @access  public
+          * @param   $column     Coluna da Tabela
+          * @return  void
+          */
         public function addColumn($column)
         {
             //Adiciona coluna no array
@@ -28,26 +28,27 @@
         }
         
         /**
-         * Método setEntity()
-         * Define o nome da entidade (tabela) manipulada pela instrução SQL
-         * 
-         * @access public
-         * @param $entity = tabela
-         * @return void
-         */
+          * Método addEntity()
+          * Define o nome da entidade (tabela) manipulada pela instrução SQL
+          * 
+          * @access  public
+          * @param   $entity     Tabela
+          * @return  void
+          */
         final public function addEntity($entity)
         {
             $this->entity[] = $entity;
         }
         
         /**
-         * Método load
-         * Realiza a busca no banco de dados
-         * 
-         * @access public
-         * @param  $criteria = Critério de Seleção
-         * @return Resultados da Busca
-         */
+          * Método load
+          * Recupera um conjunto de objetos (collection) da base de dados através de um critério de seleção
+          * 
+          * @access public
+          * @param  $criteria   Critério de Seleção
+          * @throws Exception   Não há transação ativa
+          * @return Resultados da Busca
+          */
         function load(TCriteria $criteria)
         {
             $sql = new TSqlSelect;
@@ -65,7 +66,7 @@
             else
                 foreach ($this->entity as $entidade)
                     $sql->addEntity($entidade);
-            
+
             //Criteria
             $sql->setCriteria($criteria);
             if ($conn = TTransaction::get()) 
@@ -80,7 +81,6 @@
                         $results[] = $row;
                     }
                 }
-                
                 return $results;
             }
             else 
@@ -90,14 +90,14 @@
         }
         
         /**
-         * Método delete()
-         * Exclui um conjunto de objetos (collection) da base de dados
-         * através de um critério de seleção
-         * 
-         * @access public
-         * @param  $crteria = objeto do tipo TCriteria
-         * @return void
-         */
+          * Método delete()
+          * Exclui um conjunto de objetos (collection) da base de dados através de um critério de seleção
+          * 
+          * @access public
+          * @param  $criteria   Objeto do tipo TCriteria
+          * @throws Exception   Não há transação ativa
+          * @return void
+          */
         function delete(TCriteria $criteria)
         {
             $sql = new TSqlDelete;
@@ -117,13 +117,14 @@
         }
         
         /**
-         * Método count()
-         * Conta o número de ocorrencias
-         * 
-         * @access public
-         * @param  $criteria = Criteria de Selecção
-         * @return Número de Ocorrencias
-         */
+          * Método count()
+          * Conta o número de ocorrencias que satisfazem o critério de seleção
+          * 
+          * @access public
+          * @param  $criteria    Criteria de Selecção
+          * @throws Exception   Não há transação ativa
+          * @return Número de Ocorrencias
+          */
         function count(TCriteria $criteria)
         {
         

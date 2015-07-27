@@ -12,7 +12,13 @@
         /*
          *    Contantes
          */
+        /**
+         * @const string AND_OPERATOR   Valor 'AND '
+         */
         const AND_OPERATOR  = 'AND ';
+        /**
+         * @const string OR_OPERATOR    Valor 'OR '
+         */
         const OR_OPERATOR   = 'OR ';
 
 

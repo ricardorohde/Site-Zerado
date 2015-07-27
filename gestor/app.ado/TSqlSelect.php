@@ -12,7 +12,11 @@
         /*
          *    Variaveis
          */
-        private $columns; //array de colunas a serem retornadas
+        /**
+          * @access private
+          * @var    array  Array de colunas a serem retornadas
+          */
+        private $columns;
 
         /*
          * Métodos
@@ -22,9 +26,9 @@
          * Método addColumn
          * Adiciona uma coluna a ser retornada pelo SELECT
          * 
-         * @access public
-         * @param $column = Coluna da Tabela
-         * @return void
+         * @access  public
+         * @param   $column = Coluna da Tabela
+         * @return  void
          */
         public function addColumn($column)
         {

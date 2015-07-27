@@ -10,6 +10,16 @@
     final class TSqlInsert extends TSqlInstruction
     {
         /*
+         *    Variaveis
+         */
+        /**
+          * @access protected
+          * @var    string  Valores das Colunas
+          */ 
+        protected $columnValues;
+
+
+        /*
          * Métodos
          */
         
@@ -17,9 +27,9 @@
          * Método setRowData()
          * Atribui valores à determinadas colunas no banco de dados que serão inseridas
          * 
-         * @access public
-         * @param  $column  = Coluna da tabela
-         * @param  @value   = Valor a ser armazenado
+         * @access  public
+         * @param   $column  = Coluna da tabela
+         * @param   @value   = Valor a ser armazenado
          */
         public function setRowData($column, $value)
         {
@@ -56,13 +66,15 @@
          * Método setCriteria()
          * Não existe no contexto desta classe, logo, irá lançar um erro se for executado
          * 
-         * @access public
-         * @param $criteria = Critério de Seleção
+         * @access  public
+         * @param   $criteria = Critério de Seleção
+         * @throws  Exception   Como não existe o método setCriteria para Insert lança erro
          */
         public function setCriteria(TCriteria $criteria)
         {
             //Lança o erro
-            throw new Exception("Cannot call setCriteria from " . __CLASS__);
+            throw new Exception("Não foi possivel chamar o método setCriteria de " . __CLASS__ . 
+                                ".<br />Não existe no contexto desta classe.");
         }
         
         /**

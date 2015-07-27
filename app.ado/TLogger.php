@@ -12,13 +12,10 @@
         /*
          *    Variaveis
          */
-
         /**
-         * $filename
-         * Local do arquivo de LOG
-         * 
-         * @access protected
-         */
+          * @access protected
+          * @var    string  Local do arquivo de LOG
+          */
         protected $filename; 
 
 

@@ -12,6 +12,10 @@
         /*
          *    Variaveis
          */
+        /**
+          * @access protected
+          * @var    string  Valores das Colunas
+          */ 
         private $columnValues;
 
         /*
@@ -22,10 +26,10 @@
          * Método setRowData()
          * Atribui valores à determinadas colunas no banco de dados que serão modificados
          * 
-         * @access public
-         * @param $column  = Coluna da tabela
-         * @param $value   = Valor a ser armazenado
-         * @return void
+         * @access  public
+         * @param   $column  = Coluna da tabela
+         * @param   $value   = Valor a ser armazenado
+         * @return  void
          */
         public function setRowData($column, $value)
         {

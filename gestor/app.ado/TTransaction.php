@@ -16,8 +16,16 @@
         /*
          *    Variaveis
          */
-        private static $conn;   //Conexão Ativa
-        private static $logger; //Objeto de LOG
+        /**
+          * @access private
+          * @var    TConnection  Conexão Ativa
+          */
+        private static $conn;
+        /**
+          * @access private
+          * @var    TLogger  Objeto de LOG
+          */
+        private static $logger;
 
         /*
          * Métodos

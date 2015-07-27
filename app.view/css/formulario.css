@@ -1,0 +1,41 @@
+::-webkit-input-placeholder 
+{
+   color: #777777;
+}
+:-moz-placeholder 
+{
+   color: #777777;  
+}
+::-moz-placeholder
+{
+   color: #777777;  
+}
+:-ms-input-placeholder 
+{
+   color: #777777;  
+}
+
+input
+{
+    -webkit-border-radius:  8px;
+    -moz-border-radius:     8px;
+    border-radius:          8px;
+
+    padding:                3px;
+    padding-left:           8px;
+    padding-right:          8px;
+
+    margin-top:             4px;
+
+    outline:                none;
+
+    font-family:            'Open Sans Condensed', sans-serif;
+    font-size:              1em;
+    border:                 solid 1px #cbcbcb;
+    
+}
+
+input:hover
+{
+    border: solid 1px #999999;
+}

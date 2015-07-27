@@ -14,26 +14,20 @@
          */
 
         /**
-          * $expressions
-          * Armazea a lista de expressões
-          * 
           * @access private
+          * @var    string  Armazena a lista de exporessões
+          */ 
+        private $expressions;
+
+        /**
+          * @access private
+          * @var    string  Armazena a lista de operadores
           */ 
         private $operators;
 
         /**
-          * $expressions
-          * Armazena a lista de operadores
-          * 
           * @access private
-          */ 
-        private $operators;
-
-        /**
-          * $properties
-          * Propriedades do critério
-          * 
-          * @access private
+          * @var    string  Propriedades do critério
           */ 
         private $properties;
 
@@ -49,7 +43,7 @@
          * @access private
          * @return void
          */
-        private function __construct()
+        public function __construct()
         {
             $this->expressions    = array();
             $this->operators        = array();

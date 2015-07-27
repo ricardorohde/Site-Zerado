@@ -1,55 +1,72 @@
 <?php
-/*
- *	Arquivo  template.php
- *	Template
- *	
- *	Sistema:	#SISTEMA#
- *	Autor:      Rogério Eduardo Pereira
- *	Data:	27/02/2015
- */
-class template
-{
-	/*
-		Variaveis
-	*/
 
-
-	/*
-		MÃ©todo construtor
-	*/
-	public function __construct()
+	/**
+      * template.php
+      * Classe template
+      *
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @version 1.0
+      * @access  public
+      */
+	class template
 	{
+		/*
+		 *	Variaveis
+		 */
 
+
+		/**
+		 * Método construtor
+		 * Verifica se esta logado
+		 * 
+		 * @access public
+		 * @return void
+		 */
+		public function __construct()
+		{
+			new session();
+	        
+			if(!isset($_SESSION['usuario']))
+			{
+				echo "
+					<script>
+						top.location='../?class=login';
+					</script>
+				";
+			}
+		}
+
+
+		/**
+		 * Método show
+		 * Exibe as informações da página
+		 * 
+		 * @access public
+		 * @return void
+		 */
+		public function show()
+		{
+		?>
+			<!DOCTYPE HTML>
+			<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
+				<head>
+					<?php include_once 'meta.php'; ?>
+					
+					<!--Fontes-->
+					
+					<!--CSS-->
+					<?php include_once 'css.php'; ?>	
+					
+					<!--JQuery-->
+					<?php include_once 'jsLib.php'; ?>				
+					
+					<!--JavaScript-->
+				</head>
+				<body>
+					#CONTENT#
+				</body>
+			</html>
+		<?php
+		}
 	}
-
-
-	/*
-		MÃ©todo show
-		Exibe as informaÃ§Ãµes da pÃ¡gina
-	*/
-	public function show()
-	{
-	?>
-		<!DOCTYPE HTML>
-		<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
-			<head>
-				<?php include_once 'meta.php'; ?>
-				
-				<!--Fontes-->
-				
-				<!--CSS-->
-				
-				<!--JQuery-->
-				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
-				<script type="text/javascript" src="/app.view/js/skel.js"></script>
-				
-				<!--JavaScript-->
-			</head>
-			<body>
-				
-			</body>
-		</html>
-	<?php
-	}
-}
 ?>

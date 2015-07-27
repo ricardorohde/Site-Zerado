@@ -11,29 +11,22 @@
   {
     /*
      *    Variaveis
-     */
-    
+     */    
     /**
-      * $variable
-      * Variável
-      * 
       * @access private
+      * @var    string  Variável do banco de dados
       */
     private $variable;
     /**
-      * $operator
-      * Operador
-      * 
       * @access private
+      * @var    string  Operador da operação
       */
     private $operator;
     /**
-      * $value
-      * Valor
-      * 
       * @access private
+      * @var    string  Valor da variável
       */
-    private $value;     //Valor
+    private $value;
 
 
     /*
@@ -45,11 +38,11 @@
      * Método __contruct()
      * Instancia um novo Filtro
      *
-     * @access private
-     * @param $variable    = variável;
-     * @param $operator    = operador (<,>)
-     * @param $value       = valor a ser comparado
-     * @return void
+     * @access  private
+     * @param   $variable    = variável;
+     * @param   $operator    = operador (<,>)
+     * @param   $value       = valor a ser comparado
+     * @return  void
      */
     public function __construct($variable, $operator, $value)
     {
@@ -100,20 +93,8 @@
       //Caso seja uma string
       else if(is_string($value))
       {
-        /*
-         * Verifica se tem ponto na string
-         * Se tiver esta comparando duas tabelas
-         */
-        if(strpos($value, '.') == FALSE)
-        {
-          //Adiciona aspas
-          $result = "'$value'";
-        }
-        else
-        {
           //Adiciona string normal
-          $result = $value;
-        }
+          $result = "'$value'";
       }
       
       //Caso seja um valor nulo

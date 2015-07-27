@@ -1,47 +1,53 @@
 <?php
 
-/*
- *	Arquivo  home.php
- *	Página Home
- *	
- *	Sistema:	#SISTEMA#
- *	Autor:      Rogério Eduardo Pereira
- *	Data:       27/02/2015
- */
-class template
-{
-	/*
-		Variaveis
-	*/
-
-
-	/*
-		MÃ©todo construtor
-	*/
-	public function __construct()
+	/**
+      * home.php
+      * Classe Home
+      *
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @version 1.0
+      * @access  public
+      */
+	class Home
 	{
-		new session();
-        
-		if(!isset($_SESSION['usuario']))
+		/*
+		 * Variáveis
+		 */
+
+
+		/**
+		 * Método construtor
+		 * Verifica se esta logado
+		 * 
+		 * @access public
+		 * @return void
+		 */
+		public function __construct()
 		{
-			echo "
-				<script>
-					top.location='../?class=login';
-				</script>
-			";
+			new session();
+	        
+			if(!isset($_SESSION['usuario']))
+			{
+				echo "
+					<script>
+						top.location='../?class=login';
+					</script>
+				";
+			}
+		}
+
+
+		/**
+		 * Método show
+		 * Exibe as informações da página
+		 * 
+		 * @access public
+		 */
+		public function show()
+		{
+			?>
+				HOME
+			<?php
 		}
 	}
-
-
-	/*
-		MÃ©todo show
-		Exibe as informaÃ§Ãµes da pÃ¡gina
-	*/
-	public function show()
-	{
-	?>
-		
-	<?php
-	}
-}
 ?>

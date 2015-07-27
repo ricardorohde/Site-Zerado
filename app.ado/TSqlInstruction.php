@@ -13,9 +13,21 @@
         /*
          *    Variaveis
          */
-        protected $sql;         //Armazena a instrução SQL
-        protected $criteria;    //Armazena o objeto critério
-        protected $entity;      //Nome do Banco de Dados
+        /**
+          * @access protected
+          * @var    string  Armazena a instrução SQL
+          */ 
+        protected $sql;
+        /**
+          * @access protected
+          * @var    string  Armazena o objeto critério
+          */ 
+        protected $criteria;
+        /**
+          * @access protected
+          * @var    string  Nome do Banco de Dados
+          */ 
+        protected $entity;
 
         /*
          * Métodos

@@ -1,7 +1,7 @@
 <?php
     /**
      * TLoggerTXT.php
-     * Implementa o algoritmo de LOG em HTML
+     * Implementa o algoritmo de LOG em TXT
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
      * @version 1.0     
