@@ -17,25 +17,30 @@
 
 input
 {
-    -webkit-border-radius:  8px;
-    -moz-border-radius:     8px;
-    border-radius:          8px;
+  width: 100%;
+  -webkit-border-radius:  8px;
+  -moz-border-radius:     8px;
+  border-radius:          8px;
 
-    padding:                3px;
-    padding-left:           8px;
-    padding-right:          8px;
+  padding:                3px;
+  padding-left:           8px;
+  padding-right:          8px;
 
-    margin-top:             4px;
+  margin-top:             4px;
 
-    outline:                none;
+  outline:                none;
 
-    font-family:            'Open Sans Condensed', sans-serif;
-    font-size:              1em;
-    border:                 solid 1px #cbcbcb;
-    
+  font-family:            'Open Sans Condensed', sans-serif;
+  font-size:              1em;
+  border:                 solid 1px #cbcbcb;    
 }
 
 input:hover
 {
     border: solid 1px #999999;
+}
+
+input[type="submit"], input[type="button"]
+{
+  width: 80px;
 }

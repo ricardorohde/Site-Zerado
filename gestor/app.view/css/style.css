@@ -1,4 +1,108 @@
 body
 {
-    font-family: 'Open Sans Condensed', sans-serif;
+    position:       absolute;;
+    width:          100%;
+    height:         100%;
+    font-family:    'Open Sans Condensed', sans-serif;
+}
+
+.clear
+{ 
+    clear: both; 
+}
+
+a
+{
+    color:              white;
+    text-decoration:    none;
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition:    all 0.5s ease;
+    -ms-transition:     all 0.5s ease;
+    -o-transition:      all 0.5s ease;
+    transition:         all 0.5s ease;
+}
+
+span.title
+{
+    font-size: 1.3em;
+}
+
+span.center
+{
+    text-align: center;
+    display:    block;
+}
+
+div.center
+{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display:    block;
+}
+
+div.menu
+{
+    position:           fixed;
+    float:              left;
+    top:                0px;
+    height:             100%;
+
+    background-color:   #444444;
+    color:              white;
+}
+
+nav#menuLateral ul
+{
+    margin:  0px;
+    padding: 0px;
+    display: block;
+}
+
+nav#menuLateral ul li
+{
+    list-style:         none;
+    padding-top:        4px;
+    padding-bottom:     4px;
+    padding-left:       10px;
+
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition:    all 0.3s ease-in;
+    -ms-transition:     all 0.3s ease-in;
+    -o-transition:      all 0.3s ease-in;
+    transition:         all 0.3s ease-in;
+}
+
+nav#menuLateral ul li:hover
+{
+    background-color: white;
+}
+
+nav#menuLateral ul li:hover, nav#menuLateral ul li:hover a
+{
+    color: #444444;
+}
+
+div.copyright
+{
+    position:       fixed;
+    bottom:         0px;
+    margin-left:    auto;
+    margin-right:   auto;
+    font-size:      .9em;
+}
+
+div.copyright div
+{
+    position: relative;
+    width: 187px;
+    text-align: center;
+}
+
+div.content
+{
+    top:        0px;
+    float:      right;
 }
