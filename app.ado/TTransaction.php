@@ -8,7 +8,7 @@
      * Durabilidade
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
-     * @version 1.0     
+     * @version 1.0
      * @access  public
      */
     final class TTransaction

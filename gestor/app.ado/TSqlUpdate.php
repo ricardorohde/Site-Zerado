@@ -7,7 +7,7 @@
      * @version 1.0     
      * @access  public
      */
-    class TSqlUpdate
+    class TSqlUpdate extends TSqlInstruction
     {
         /*
          *    Variaveis

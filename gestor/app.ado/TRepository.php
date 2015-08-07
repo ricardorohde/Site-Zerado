@@ -2,12 +2,14 @@
     /**
      * TRepository.php
      * Esta classe provê os métodos necessários para manipular coleções de objetos
+     *    1.1 Inicio e conclusão de transação direto nas operações
+     *    1.2 Adicionado Paramatro excluido = 0 nas buscas
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
-     * @version 1.0     
+     * @version 1.2
      * @access  public
      */
-    final class TRepository
+    class TRepository
     {
         /*
          * Métodos
@@ -49,7 +51,7 @@
           * @throws Exception   Não há transação ativa
           * @return Resultados da Busca
           */
-        function load(TCriteria $criteria)
+        function load(TCriteria $criteria = NULL)
         {
             $sql = new TSqlSelect;
             
@@ -68,7 +70,14 @@
                     $sql->addEntity($entidade);
 
             //Criteria
+            if(!isset($criteria))
+                $criteria = new TCriteria;
+            $criteria->addFilter('excluido', '=', 0);
             $sql->setCriteria($criteria);
+
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
+
             if ($conn = TTransaction::get()) 
             {   
                 $result = $conn->query($sql->getInstruction());
@@ -81,6 +90,9 @@
                         $results[] = $row;
                     }
                 }
+
+                TTransaction::close();
+
                 return $results;
             }
             else 
@@ -104,9 +116,14 @@
             $sql->addEntity($this->entity[0]);
             $sql->setCriteria($criteria);
             
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
+
             if ($conn = TTransaction::get()) 
             {               
                 $result = $conn->exec($sql->getInstruction());
+
+                TTransaction::close();
                 
                 return $result;
             }
@@ -127,12 +144,14 @@
           */
         function count(TCriteria $criteria)
         {
-        
             $sql = new TSqlSelect;
             $sql->addColumn(' count(*) ');
             $sql->addEntity($this->entity[0]);
             $sql->setCriteria($criteria);
             
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
+
             if ($conn = TTransaction::get()) 
             {
                 $result = $conn->query($sql->getInstruction());
@@ -141,6 +160,8 @@
                 {
                     $row = $result->fetch();
                 }
+
+                TTransaction::close();
                 
                 return $row[0];
             }

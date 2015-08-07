@@ -4,7 +4,7 @@
       * logoff.php
       * Classe logoff
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -15,17 +15,12 @@
 		 */
 
 		/*
-		 * Método construtor
+		 * MÃ©todo construtor
 		 */
 		public function __construct()
 		{
-			session_destroy();
-			echo
-				"
-					<script>
-						top.location='/login';
-					</script>
-				";
+			$session = new TSession(0);
+            $session->freeSession();
 		}
 	}
 ?>

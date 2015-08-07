@@ -4,7 +4,7 @@
       * template.php
       * Classe template
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -16,7 +16,7 @@
 
 
 		/**
-		 * Método construtor
+		 * MÃ©todo construtor
 		 * Verifica se esta logado
 		 * 
 		 * @access public
@@ -24,22 +24,13 @@
 		 */
 		public function __construct()
 		{
-			new session();
-	        
-			if(!isset($_SESSION['usuario']))
-			{
-				echo "
-					<script>
-						top.location='../?class=login';
-					</script>
-				";
-			}
+			new TSession(0);
 		}
 
 
 		/**
-		 * Método show
-		 * Exibe as informações da página
+		 * MÃ©todo show
+		 * Exibe as informaÃ§Ãµes da pÃ¡gina
 		 * 
 		 * @access public
 		 * @return void
@@ -55,15 +46,26 @@
 					<!--Fontes-->
 					
 					<!--CSS-->
-					<?php include_once 'css.php'; ?>	
+					<?php include_once 'css/css.php'; ?>	
 					
 					<!--JQuery-->
-					<?php include_once 'jsLib.php'; ?>				
+					<?php include_once 'js/jsLib.php'; ?>
 					
 					<!--JavaScript-->
+					<?php include_once 'js/jsInit.php'; ?>
 				</head>
 				<body>
-					#CONTENT#
+					<div class='row'>
+						<!--MENU-->
+						<?php include_once 'menu.php'; ?>
+
+						<div class='clear'></div>
+
+						<!--CONTEUDO-->
+						<div class='10u content'>
+							#CONTENT#
+						</div>
+					</div>
 				</body>
 			</html>
 		<?php

@@ -1,6 +1,6 @@
 body
 {
-    position:       absolute;;
+    position:       absolute;
     width:          100%;
     height:         100%;
     font-family:    'Open Sans Condensed', sans-serif;
@@ -21,6 +21,11 @@ a
     -ms-transition:     all 0.5s ease;
     -o-transition:      all 0.5s ease;
     transition:         all 0.5s ease;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+    margin-bottom: 0px;
 }
 
 span.title
@@ -96,13 +101,34 @@ div.copyright
 
 div.copyright div
 {
-    position: relative;
-    width: 187px;
+    position:   relative;
+    width:      187px;
     text-align: center;
 }
 
 div.content
 {
-    top:        0px;
-    float:      right;
+    top:    0px;
+    float:  right;
+    padding-right: 30px;
+}
+
+th
+{
+    background-color: #cbcbcb;
+    border: 1px solid #777777;
+    padding: 5px;
+}
+
+tr td
+{
+    border: 1px solid #777777;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+img.listImage
+{
+    height: 80px;
 }

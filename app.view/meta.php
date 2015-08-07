@@ -1,26 +1,32 @@
-<title>#TITULO#</title>
-<link rel="icon"                    href="#FAVICON#" type="image/x-icon" />
-<link rel="shortcut icon"           href="#FAVICON#" type="image/x-icon" />
+<?php
+    $controladorConfiguracoes   = new controladorConfiguracoes();
+    $configuracoes              = $controladorConfiguracoes->getConfiguracoes();
+?>
+<title>Painel Administrativo - <?php echo $configuracoes->titulo; ?></title>
 
-<meta name="description"            content="#DESCRICAO#" />
-<meta name="keywords"               content="#PALAVRAS CHAVE#"/>
+<link rel="icon"                    href="../app.view/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon"           href="../app.view/img/favicon.ico" type="image/x-icon" />
+
+<meta name="description"            content="<?php echo $configuracoes->descricao; ?>" />
+<meta name="keywords"               content="<?php echo $configuracoes->keywords; ?>"/>
+<meta name="title"                  content="Painel Administrativo - <?php echo $configuracoes->titulo; ?>"/> 
+<meta name="url"                    content="<?php echo $configuracoes->dominio; ?>"/> 
+<meta http-equiv="VW96.OBJECT TYPE"	content="<?php echo $configuracoes->keyword; ?>"/> 
+<meta property="og:title"           content="<?php echo $configuracoes->descricao.' - '.$configuracoes->empresa; ?>" />
+<meta property="og:description"     content="<?php echo $configuracoes->descricao.' - '.$configuracoes->conteudo.' - '.$configuracoes->empresa; ?>" />
+<meta property="og:image"           content="<?php echo $configuracoes->logotipo; ?>" />
+<meta property="og:url"             content="<?php echo $configuracoes->dominio; ?>" />
+<meta property="og:type"            content="<?php echo $configuracoes->conteudo; ?>" />
+<meta property="og:site_name"       content="<?php echo $configuracoes->empresa; ?>" />
+<meta itemprop="name"               content="<?php echo $configuracoes->empresa; ?>" />
+<meta itemprop="description"        content="<?php echo $configuracoes->descricao; ?>" />
+<meta itemprop="image"              content="<?php echo $configuracoes->logotipo; ?>"/>
+
+
+<meta charset='UTF-8' />
 <meta name="author"                 content="Rogério Pereira"/> 
-<meta name="CopyRight"              content="Rogério Pereira"/> 
+<meta name="copyright"              content="Rogério Pereira"/> 
 <meta name="generator"              content="Rogério Pereira"/> 
-<meta name="title"                  content="#EMPRESA# - #DESCRICAO#"/> 
-<meta name="url"                    content="#SITE INCLUINDO HTTP://WWW#"/> 
-<meta http-equiv="VW96.OBJECT TYPE"	content="#PALAVRAS CHAVE#"/> 
-
-<meta property="og:title"           content="#DESCRICAO# - #EMPRESA#" />
-<meta property="og:description"     content="#DESCRICAO# - #CONTEUDO# - #EMPRESA#" />
-<meta property="og:image"           content="#LINK PARA LOGOTIPO#" />
-<meta property="og:url"             content="#SITE INCLUINDO HTTP://WWW#" />
-<meta property="og:type"            content="#CONTEUDO#" />
-<meta property="og:site_name"       content="#EMPRESA#" />
-<meta itemprop="name"               content="#EMPRESA#" />
-<meta itemprop="description"        content="#DESCRICAO#" />
-<meta itemprop="image"              content="#LINK PARA LOGOTIPO#" />
-
 <meta http-equiv="Content-Type"     content="text/html; charset=utf-8" />
 <meta http-equiv="Expires"          content="none"/>
 <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1" />

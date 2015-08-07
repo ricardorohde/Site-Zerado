@@ -46,7 +46,7 @@
           */
         public function __set($propriedade, $valor)
         {
-          $this->$propriedade = $valor;
+            $this->$propriedade = $valor;
         }
 
         /**

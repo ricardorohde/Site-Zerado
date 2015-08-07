@@ -2,9 +2,10 @@
     /**
      * TCriteria.php
      * Essa classe provê uma interface utilizada para definir critérios
+     *      1.1 Adicionado método addFilter($variable, $operator, $value)
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
-     * @version 1.0     
+     * @version 1.1     
      * @access  public
      */
     class TCriteria extends TExpression
@@ -53,12 +54,12 @@
          * Método add
          * Adiciona uma expressão ao critério
          *  
-         * @access  public
+         * @access  private
          * @param   $expression  = expressão (objeto TExpression)
          * @param   $operator    = operador lógico de comparação
          * @return  void
          */
-         public function add(TExpression $expression, $operator = self::AND_OPERATOR)
+        private function add(TExpression $expression, $operator = self::AND_OPERATOR)
         {
             //Na primeira vez, não precisamos do operador lógico para concatenar
             if(empty($this->expressions))
@@ -69,6 +70,23 @@
             //Agrega o resultado da expressão à lista de expressões
             $this->expressions[]    = $expression;
             $this->operators[]      = $operator;
+        }
+
+        /**
+         * Método addFilter
+         * Adiciona uma nova expressão do critério
+         * 
+         * @since   1.1
+         * @param   $variable    = variável;
+         * @param   $operator    = operador (<,>)
+         * @param   $value       = valor a ser comparado
+         * @return  void
+         */
+        public function addFilter($variable, $operator, $value)
+        {
+            $filter = new TFilter($variable, $operator, $value);
+
+            $this->add($filter);
         }
 
         /**

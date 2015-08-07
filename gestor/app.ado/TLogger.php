@@ -4,7 +4,7 @@
      * Esta classe provê uma interface abstrata para a definição de algoritmos de LOG
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
-     * @version 1.0     
+     * @version 1.0
      * @access  public
      */
     abstract class TLogger

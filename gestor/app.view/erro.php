@@ -3,7 +3,7 @@
       * erro.php
       * Classe de erros
       *
-      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -12,27 +12,53 @@
 		/*
 		 * Variaveis
 		 */
-		
-		
+		private $codigo;
+
 		/*
-		 * Getters e Setters
+		 * M√©todos
 		 */
-		
-		
 		/**
-		 * MÈtodo Contrutor
+		 * M√©todo Contrutor
 		 * 
          * @access public
          * @return void
 		 */
 		public function __construct()
 		{
-			
+			if(isset($_GET['codigo']))
+				$this->codigo = $_GET['codigo'];
 		}
+
+		/**
+          * M√©todo __set
+          * Seta o valor da variavel
+          * 
+          * @access public
+          * @param  string  $propriedade    Propriedade a ser definida o valor
+          * @param  mixed   $valor          Valor da Propriedade
+          * @return void
+          */
+        public function __set($propriedade, $valor)
+        {
+            $this->$propriedade = $valor;
+        }
+
+        /**
+          * M√©todo __get
+          * Seta o valor da variavel
+          * 
+          * @access public
+          * @param  string $propriedade    Propriedade a ser retornada
+          * @return mixed                   Valor da Propriedade
+          */
+        public function __get($propriedade)
+        {
+            return $this->$propriedade;
+        }
 		
 		/**
-		 * MÈtodo show
-		 * Exibe as informaÁıes na tela
+		 * M√©todo show
+		 * Exibe as informa√ß√µes na tela
 		 * 
          * @access public
          * @return void
@@ -41,26 +67,26 @@
 		{
 			//echo '<h1>Erro</h1><hr>';
 			//Erro 400 - Bad Request
-			if($_GET['codigo'] == 400)
+			if($this->codigo == 400)
 				echo 
 					"
-						<h1>SolicitaÁ„o ImprÛpria</h1>
+						<h1>Solicita√ß√£o Impr√≥pria</h1>
 						<p>
-							O servidor n„o pode compreender a solicitaÁ„o e process·-la.<br>
-							Contate o <a href='mailto:suporte@rogeriopereira.info'>Suporte TÈcnico</a>
+							O servidor n√£o pode compreender a solicita√ß√£o e process√°-la.<br>
+							Contate o <a href='mailto:suporte@rogeriopereira.info'>Suporte T√©cnico</a>
 						</p>
 					";
 			//Erro 401 - Unauthorized
-			if($_GET['codigo'] == 401)
+			if($this->codigo == 401)
 				echo 
 					'
-						<h1>N„o autorizado</h1>
+						<h1>N√£o autorizado</h1>
 						<p>
-							Por favor faÁa o login primeiro
+							Por favor fa√ßa o login primeiro
 						</p>
 					';
 			//Erro 403 - Forbidden 
-			if($_GET['codigo'] == 403)
+			if($this->codigo == 403)
 				echo 
 					'
 						<h1>Acesso Negado</h1>
@@ -69,22 +95,22 @@
 						</p>
 					';
 			//Erro 404 - Not Found
-			if($_GET['codigo'] == 404)
+			if($this->codigo == 404)
 				echo 
 					'
-						<h1>N„o encontrado</h1>
+						<h1>N√£o encontrado</h1>
 						<p>
-							O conteudo solicitado n„o foi encontrado em nossos servidores.
+							O conteudo solicitado n√£o foi encontrado em nossos servidores.
 						</p>
 					';
 			//Erro 500 - Internal Server Error
-			if($_GET['codigo'] == 500)
+			if($this->codigo == 500)
 				echo 
 					"
 						<h1>Erro interno no Servidor</h1>
 						<p>
-							O servidor encontrou uma condiÁ„o inesperada<br>
-							Contate o <a href='mailto:suporte@rogeriopereira.info'>Suporte TÈcnico</a>
+							O servidor encontrou uma condi√ß√£o inesperada<br>
+							Contate o <a href='mailto:suporte@rogeriopereira.info'>Suporte T√©cnico</a>
 						</p>
 					";
 		}

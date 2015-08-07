@@ -4,7 +4,7 @@
       * Classe de Controle controladorUsuario
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
-      * @version _VERSAO_
+      * @version 1.0
       * @access  public
       */
     class controladorUsuario
@@ -70,12 +70,9 @@
         {
             $this->collectionUsuario = NULL;
             
-            //RECUPERA CONEXAO BANCO DE DADOS
-            TTransaction::open('my_bd_site');
-
             //TABELA exposition_gallery
             $criteria = new TCriteria;
-            //$criteria->add(new TFilter('situacao', '=', $situacao));
+            //$criteria->addFilter('situacao', '=', $situacao);
             $criteria->setProperty('order', 'nome');
             
             $this->repository = new TRepository();
@@ -98,12 +95,8 @@
         public function getUsuario($codigo)
         {
             $this->usuario = NULL;
-            $result;
-            
-            //RECUPERA CONEXAO BANCO DE DADOS
-            TTransaction::open('my_bd_site');
 
-            $this->usuario = new tbUsuario($codigo);
+            $this->usuario = (new tbUsuario())->load($codigo);
 
             return $this->usuario;
         }
@@ -119,13 +112,10 @@
         public function getUserByEmail($email)
         {
             $this->collectionUsuario = NULL;
-            
-            //RECUPERA CONEXAO BANCO DE DADOS
-            TTransaction::open('my_bd_site');
 
             //TABELA exposition_gallery
             $criteria   = new TCriteria;
-            $criteria->add(new TFilter('email', '=', $email));
+            $criteria->addFilter('email', '=', $email);
             //$criteria->setProperty('order', 'nome');
             
             $this->repository = new TRepository();
@@ -134,8 +124,6 @@
             $this->repository->addEntity('usuarios');
             
             $this->collectionUsuario = $this->repository->load($criteria);
-            
-            TTransaction::close();
 
             return $this->collectionUsuario[0];
         }
@@ -151,12 +139,7 @@
         {
             try
             {
-                //RECUPERA CONEXAO BANCO DE DADOS
-                TTransaction::open('my_bd_site');
-
                 $result = $this->usuario->store();
-
-                TTransaction::close();
 
                 if ($this->usuario->codigo = $_SESSION['usuario']->codigo)
                     $_SESSION['usuario'] = $this->usuario;

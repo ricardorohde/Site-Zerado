@@ -67,57 +67,57 @@
      */
     private function transform($value)
     {
-      //Caso seja um array
-      if(is_array($value))
-      {
-        //Percorre os valores
-        foreach($value as $x)
+        //Caso seja um array
+        if(is_array($value))
         {
-          //Se for inteiro
-          if(is_integer($x))
-          {
-              $foo[] = $x;
-          }
-          //Se for string
-          else if (is_string($x))
-          {
-              //Se for string, adiciona aspas
-              $foo[] = "'$x'";
-          }
+            //Percorre os valores
+            foreach($value as $x)
+            {
+                //Se for inteiro
+                if(is_integer($x))
+                {
+                  $foo[] = $x;
+                }
+                //Se for string
+                else if (is_string($x))
+                {
+                  //Se for string, adiciona aspas
+                  $foo[] = "'$x'";
+                }
+            }
+
+            //Converte o array em string separada por ","
+            $result = '(' . implode(',' , $foo) . ')';
         }
-        
-        //Converte o array em string separada por ","
-        $result = '(' . implode(',' , $foo) . ')';
-      }
       
-      //Caso seja uma string
-      else if(is_string($value))
-      {
-          //Adiciona string normal
-          $result = "'$value'";
-      }
-      
-      //Caso seja um valor nulo
-      else if(is_null($value))
-      {
-        //Armazena NULL
-        $result = 'NULL';
-      }
-      
-      //Caso seja booleano
-      else if(is_bool($value))
-      {
-        //Armazena TRUE ou FALSE
-        $result = $value ? 'TRUE' : 'FALSE';
-      }
-      
-      //Nenhum caso acima
-      else
-      {
-        $result = $value;
-      }
-      
-      return $result;
+        //Caso seja uma string
+        else if(is_string($value))
+        {
+            //Adiciona string normal
+            $result = "'$value'";
+        }
+
+        //Caso seja um valor nulo
+        else if(is_null($value))
+        {
+            //Armazena NULL
+            $result = 'NULL';
+        }
+
+        //Caso seja booleano
+        else if(is_bool($value))
+        {
+            //Armazena TRUE ou FALSE
+            $result = $value ? 'TRUE' : 'FALSE';
+        }
+
+        //Nenhum caso acima
+        else
+        {
+            $result = $value;
+        }
+
+        return $result;
     }
 
     /**
@@ -129,8 +129,8 @@
      */
     public function dump()
     {
-      //Concatena a expressão
-      return "{$this->variable} {$this->operator} {$this->value}";
+        //Concatena a expressão
+        return "{$this->variable} {$this->operator} {$this->value}";
     }
   }
 ?>

@@ -25,27 +25,37 @@
           * @access private
           * @var    int     Código do Usuário
           */
-        private $codigo;
+        protected $codigo;
         /**
           * @access private
           * @var    string  Nome do usuário
           */
-        private $nome;
+        protected $nome;
         /**
           * @access private
           * @var    string  E-mail do usuario
           */
-        private $email;
+        protected $email;
         /**
           * @access private
           * @var    string  Senha do usuário (hash 128 caracteres)
           */
-        private $senha;
+        protected $senha;
+        /**
+          * @access private
+          * @var    boolean  Administrador
+          */
+        protected $administrador;
         /**
           * @access private
           * @var    boolean  Ativo/Inativo
           */
-        private $ativo;
+        protected $ativo;
+        /**
+          * @access protected
+          * @var    boolean         Excluido
+          */
+        protected $excluido;
 
 
         /*
@@ -62,23 +72,17 @@
           */
         public function __set($propriedade, $valor)
         {
-            if($propriedade != 'senha')
-                $this->$propriedade = $valor;
+            if($propriedade == 'senha')
+            {
+              $this->$propriedade = hash('sha512', $valor);
+            }
             else
-                $this->$propriedade = hash('sha512', $valor);
-        }
-
-        /**
-          * Método __get
-          * Seta o valor da variavel
-          * 
-          * @access public
-          * @param  string $propriedade     Propriedade a ser retornada
-          * @return mixed                   Valor da Propriedade
-          */
-        public function __get($propriedade)
-        {
-            return $this->$propriedade;
+            {
+              if($valor == NULL)
+                  $this->$propriedade = '';
+              else
+                  $this->$propriedade = $valor;
+            }
         }
     }
 ?>

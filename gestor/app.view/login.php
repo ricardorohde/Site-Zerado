@@ -3,7 +3,7 @@
 	  * login.php
 	  * Classe login
 	  *
-	  * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+	  * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
 	  * @version 1.0
 	  * @access  public
 	  */
@@ -14,16 +14,16 @@
 		 */
 
 		/*
-		 * Método construtor
+		 * MÃ©todo construtor
 		 */
 		public function __construct()
 		{
-			new session();
+			new TSession(1);
 		}
 
 		/*
-		 * Método show
-		 * Exibe as informações na tela
+		 * MÃ©todo show
+		 * Exibe as informaÃ§Ãµes na tela
 		 */
 		public function show()
 		{
@@ -31,19 +31,19 @@
 				<!DOCTYPE html>
 				<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
 					<head>
-						<?php include_once 'meta.php'; ?>
+						<?php include_once 'app.view/meta.php'; ?>
 						
 						<!--CSS-->
-						<?php include_once 'css.php'; ?>
+						<?php include_once 'app.view/css/css.php'; ?>
 							
 						<!--JQuery-->
-						<?php include_once 'jsLib.php'; ?>
+						<?php include_once 'app.view/js/jsLib.php'; ?>
 						
 						<!--JavaScript-->
-						<script type="text/javascript" src="app.view/js/login.js"></script>
+						<?php include_once 'app.view/js/jsInit.php'; ?>
 					</head>
-					<body>
-						<div class='contentLogin'>
+					<body style="text-align: center;">
+						<div class='contentLogin 2u' style='margin-left: auto; margin-right: auto;'>
 							<form 
 								class="loginForm"
 								name="login"
@@ -74,6 +74,9 @@
 								/>
 							</form>
 						</div>
+						
+						<!--JS-->
+                		<?php include_once('js/jsLogin.php'); ?>
 					</body>
 				</html>
 			<?php

@@ -4,7 +4,7 @@
      * Esta classe provê meios para aipulação de uma instrução de INSERT no banco de dados
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
-     * @version 1.0     
+     * @version 1.0
      * @access  public
      */
     final class TSqlInsert extends TSqlInstruction

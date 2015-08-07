@@ -1,10 +1,13 @@
 <?php
     /**
      * TRecord.class.php
-     * _DESCRIÇÃO_
+     * Esta classe provê os métodos necessários para persistir e recuperar objetos da base de dados (Active Record) 
+     *    1.1 Obtenção das variaveis da classe de modelo
+     *        Inicio e conclusão de transação direto nas operações
+     *    1.2 Adicionado Paramatro excluido = 0 nas buscas
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
-     * @version 1.0     
+     * @version 1.2
      * @access  public
      */
     abstract class TRecord
@@ -12,11 +15,6 @@
         /*
          *    Variaveis
          */
-        /**
-          * @access protected
-          * @var    string  Dados
-          */
-        protected $data;
 
 
         /*
@@ -29,8 +27,8 @@
           * Instancia um Active Record. Se passado o codigo ja carrega o objeto
           *
           * @access  public
-          * @param   $codigo Códico do Objeto
-          * @return  void
+          * @param   $codigo  Códico do Objeto
+          * @return  object   Objeto buscado
           */
         public function  __construct($codigo = NULL)
         {
@@ -38,10 +36,7 @@
             {
                 $object = $this->load($codigo);
                 
-                if ($object)
-                {
-                    $this->fromArray($object->toArray());
-                }
+                return $object;
             }
         }
 
@@ -60,54 +55,34 @@
 
         /**
           * Método __set
-          * Executado sempre que uma propriedade for atribuida
+          * Seta o valor da variavel
           * 
+          * @since 1.1
           * @access public
-          * @param  $prop   = Propriedade a ser definida
-          * @param  $value  = Valor da propriedade
+          * @param  string  $propriedade    Propriedade a ser definida o valor
+          * @param  mixed   $valor          Valor da Propriedade
           * @return void
           */
-        public function __set($prop, $value)
+        public function __set($propriedade, $valor)
         {
-            if (method_exists($this, 'set_'.$prop))
-            {
-                call_user_func(array($this, 'set_'.$prop), $value);
-            }
+            if($valor == NULL)
+                $this->$propriedade = '';
             else
-            {
-                if($value == NULL)
-                {
-                    //unset($this->data[$prop]);
-                    $this->data[$prop] = '';
-                }
-                else
-                {
-                    $this->data[$prop] = $value;
-                }
-            }
+                $this->$propriedade = $valor;
         }
-        
+
         /**
           * Método __get
-          * Executado sempre que uma propriedade for requirida
+          * Seta o valor da variavel
           * 
+          * @since 1.1
           * @access public
-          * @param  $prop   = Propriedade a ser requirida
-          * @return valor da propriedade
+          * @param  string $propriedade    Propriedade a ser retornada
+          * @return mixed                   Valor da Propriedade
           */
-        public function __get($prop)
+        public function __get($propriedade)
         {
-            if (method_exists($this, 'get_'.$prop))
-            {
-                return call_user_func(array($this, 'get_'.$prop));
-            }
-            else
-            {
-                if(isset($this->data[$prop]))
-                {
-                    return $this->data[$prop];
-                }
-            }   
+            return $this->$propriedade;
         }
         
         /**
@@ -120,32 +95,32 @@
         private function getEntity()
         {
             $class = get_class($this);
+
             return constant("{$class}::TABLENAME");
         }
-        
+
         /**
-          * Método fromArray
-          * Preenche os dados de um objeto com um array
-          * 
-          * @access public
-          * @param  $data = Dado a ser preenchido
-          * @return void
-          */
-        public function fromArray($data)
+         * Método getVars
+         * Retorna array de variaveis
+         * 
+         * @since   1.1
+         * @access  private
+         * @return  array   Array com o nome das propriedades
+         */
+        private function getVars()
         {
-            $this->data = $data;
-        }
-        
-        /**
-          * Método toArray
-          * Retorna os dados do objeto como array
-          * 
-          * @access public
-          * @return array Dados do objeto como array
-          */
-        public function toArray()
-        {
-            return $this->data;
+            $reflection = new ReflectionClass($this);
+            $vars       = $reflection->getProperties(ReflectionProperty::IS_PROTECTED);
+            $prop       = array();
+          
+            foreach ($vars as $value) 
+            {
+                $nome         = $value->getName();
+
+                $prop[$nome]  = $this->$nome;
+            }
+
+            return $prop;
         }
         
         /**
@@ -158,18 +133,13 @@
           */
         public function store()
         {
-            if (empty($this->data['codigo']) or (!$this->load($this->codigo))) 
-            {
-                /*if (empty($this->data['codigo'])) 
-                {
-                    $this->codigo = $this->getLast() +1;
-                }*/
-                
+            if (empty($this->codigo) or (!$this->load($this->codigo))) 
+            {                
                 // cria instrução SQL
                 $sql = new TSqlInsert;
                 $sql->addEntity($this->getEntity());
                 // percorre dados do objeto
-                foreach ( $this->data as $key => $value )
+                foreach ( $this->getVars() as $key => $value )
                 {
                     // passa os dados do objeto para o SQL
                     $sql->setRowData($key, $this->$key);
@@ -180,12 +150,12 @@
                 // cria instrução UPDATE
                 $sql = new TSqlUpdate;
                 $sql->addEntity($this->getEntity());
-                
+
                 $criteria = new TCriteria;
-                $criteria->add(new TFilter('codigo', ' = ', $this->codigo));
+                $criteria->addFilter('codigo', ' = ', $this->codigo);
                 $sql->setCriteria($criteria);
                 // percorre dados do objeto
-                foreach ( $this->data as $key => $value )
+                foreach ( $this->getVars() as $key => $value )
                 {
                     if ($key !== 'codigo') {
                         // passa os dados do objeto para o SQL
@@ -193,10 +163,18 @@
                     }
                 }               
             }
-                
+
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
+
+            //echo $sql->getInstruction();
+            
             if ( $conn = TTransaction::get() ) 
             {
                 $result = $conn->exec($sql->getInstruction());
+
+                TTransaction::close();
+
                 return $result;
             }
             else
@@ -216,23 +194,32 @@
           */
         public function load($codigo)
         {
+
             // cria instrução SQL
             $sql = new TSqlSelect;
             $sql->addEntity($this->getEntity());
             $sql->addColumn('*');
             
             $criteria = new TCriteria;
-            $criteria->add(new TFilter('codigo', '=', $codigo));
+            $criteria->addFilter('codigo', '=', $codigo);
+            $criteria->addFilter('excluido', '=', 0);
             $sql->setCriteria($criteria);
-            
+
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
+
             if ( $conn = TTransaction::get() ) 
             {
                 $result = $conn->query($sql->getInstruction());
+
                 if ( $result )
                 {
                     $object = $result->fetchObject(get_class($this));
                 }
-                return $object;
+
+                TTransaction::close();
+
+                return $object;            
             }
             else
             {
@@ -257,9 +244,13 @@
             $sql->addColumn('*');
             
             //$criteria = new TCriteria;
-            //$criteria->add(new TFilter('codigo', '=', $codigo));
+            //$criteria->addFilter('codigo', '=', $codigo);            
+            $criteria->addFilter('excluido', '=', 0);
             $sql->setCriteria($criteria);
             
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
+
             if ( $conn = TTransaction::get() ) 
             {
                 $result = $conn->query($sql->getInstruction());
@@ -267,6 +258,9 @@
                 {
                     $object = $result->fetchObject(get_class($this));
                 }
+
+                TTransaction::close();
+
                 return $object;
             }
             else
@@ -286,7 +280,6 @@
           */
         public function delete($codigo = NULL)
         {
-        
             $codigo = $codigo ? $codigo : $this->codigo;
             
             // cria instrução SQL
@@ -294,12 +287,17 @@
             $sql->addEntity($this->getEntity());
             
             $criteria = new TCriteria;
-            $criteria->add(new TFilter('codigo', '=', $codigo));
+            $criteria->addFilter('codigo', '=', $codigo);
             $sql->setCriteria($criteria);   
+
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
 
             if ( $conn = TTransaction::get() ) 
             {
                 $result = $conn->exec($sql->getInstruction());
+
+                TTransaction::close();
 
                 return $result;
             }
@@ -328,12 +326,17 @@
             $sql->addEntity($this->getEntity());
             
             //$criteria = new TCriteria;
-            //$criteria->add(new TFilter('codigo', '=', $codigo));
+            //$criteria->add('codigo', '=', $codigo);
             $sql->setCriteria($criteria);   
+
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
 
             if ( $conn = TTransaction::get() ) 
             {
                 $result = $conn->exec($sql->getInstruction());
+
+                TTransaction::close();
 
                 return $result;
             }
@@ -353,6 +356,9 @@
           */
         public function getLast()
         {
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
+
             if ( $conn = TTransaction::get() ) 
             {
                 // cria instrução SQL
@@ -362,6 +368,8 @@
             
                 $result = $conn->query($sql->getInstruction());
                 $row = $result->fetch();
+
+                TTransaction::close();
                 
                 return $row[0];
             }
