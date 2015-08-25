@@ -31,10 +31,10 @@
 			},
 			success: function(data) 
 			{
+				top.location='/';
+				
 				if(data.length > 1)
 					alert(data);
-				
-				top.location='/';
 			}
 		});
 	}

@@ -61,6 +61,16 @@
           * @var    string     Logotipo do Site
           */
         protected $logotipo;
+        /**
+          * @access protected
+          * @var    string     Email cadastrado no PagSeguro
+          */
+        protected $emailPagSeguro;
+        /**
+          * @access protected
+          * @var    string     Token Gerado pelo PagSeguro
+          */
+        protected $tokenPagSeguro;
 
 
         /*

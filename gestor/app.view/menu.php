@@ -13,6 +13,12 @@
                 </a>
             </li>
             <li>
+                <a href='/configuracoesPagSeguro' title='Configurações PagSeguro' alt='Configurações PagSeguro'>
+                    <i class="fa fa-cog"></i>
+                    Configurações PagSeguro
+                </a>
+            </li>
+            <li>
                 <a href='/localizacao' title='Localização' alt='Localização'>
                     <i class="fa fa-list"></i>
                     Localização
@@ -36,6 +42,25 @@
                     Videos
                 </a>
             </li>
+            <li>
+                <a href='/vendas' title='Vendas' alt='Vendas'>
+                    <i class="fa fa-shopping-cart"></i>
+                    Vendas
+                </a>
+            </li>
+            <li>
+                <a href='/pedidos' title='Pedidos' alt='Pedidos'>
+                    &nbsp;<i class="fa fa-spoon"></i>
+                    Pedidos
+                </a>
+            </li>
+            <li>
+                <a href='/produtos' title='Produtos' alt='Produtos'>
+                    <i class="fa fa-star"></i>
+                    Produtos
+                </a>
+            </li>
+
             <li>
                 <a href='/usuarios' title='Usuários' alt='Usuários'>
                     <i class="fa fa-user-plus"></i>

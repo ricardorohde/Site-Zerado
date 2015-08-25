@@ -185,6 +185,48 @@
         echo $controlador->video->store();
     }
 
+    //Salva Configuracao PagSeguro
+    if($request == 'salvaConfiguracaoPagSeguro')
+    {
+        $controlador                                = new controladorConfiguracoes();
+        $controlador->configuracao                  = new tbConfiguracoes();
+
+        $controlador->configuracao->codigo          = 1;
+        $controlador->configuracao->emailPagSeguro  = $_POST['email'];
+        $controlador->configuracao->tokenPagSeguro  = $_POST['token'];
+        
+        echo $controlador->configuracao->store();
+    }
+
+    //Salva Produtos
+    if($request == 'salvaProdutos')
+    {
+        $controlador                            = new controladorProdutos();
+        $controlador->produto                   = new tbProdutos();
+
+        $controlador->produto->codigo           = $_POST['codigo'];
+        $controlador->produto->nome             = $_POST['nome'];
+        $controlador->produto->valor            = $_POST['valor'];
+        $controlador->produto->peso             = $_POST['peso'];
+        $controlador->produto->descricao        = $_POST['descricao'];
+        $controlador->produto->ativo            = $_POST['ativo'];
+        
+        echo $controlador->produto->store();
+    }
+
+    //Salva Venda
+    if($request == 'salvaVenda')
+    {
+        $controlador                        = new controladorVendas();
+        $controlador->produto               = new tbVendas();
+
+        $controlador->venda->codigo         = $_POST['codigo'];
+        $controlador->venda->status         = $_POST['nome'];
+        $controlador->venda->codigoRastreio = $_POST['valor'];
+        
+        echo $controlador->venda->store();
+    }
+
     //Altera Senha
     if($request == 'alteraSenha')
     {
@@ -258,6 +300,15 @@
 
             $listagem->addColumn('titulo');
             $listagem->addColumn('imagem');
+            $listagem->addColumn('ativo');
+        }
+        else if($tabela == 'produtos')
+        {
+            $listagem->setTituloPagina('Produtos');
+
+            $listagem->addColumn('nome');
+            $listagem->addColumn('valor');
+            $listagem->addColumn('peso');
             $listagem->addColumn('ativo');
         }
         else

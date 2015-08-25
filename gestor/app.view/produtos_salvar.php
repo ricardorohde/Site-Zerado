@@ -1,20 +1,19 @@
 <?php
     /**
-      * paginas_salva.php
-      * Classe paginas_salva
+      * produtos_salvar.php
+      * Classe produtos_salvar
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class paginas_salvar
+    class produtos_salvar
     {
         /*
          * Variaveis
-         */
+         */        
         private $codigo;
-        private $pagina;
-        private $localizacoes;
+        private $produto;
 
 
         /*
@@ -31,15 +30,13 @@
             if(isset($_GET['cod']))
             {
                 $this->codigo = $_GET['cod'];
-                $this->pagina = (new tbPaginas())->load($this->codigo);            
+                $this->produto = (new tbProdutos())->load($this->codigo);            
             }
             else
             {
                 $this->codigo = NULL;
-                $this->pagina = new tbPaginas;
+                $this->produto = new tbProdutos;
             }
-
-            $this->localizacoes = (new controladorLocalizacao())->getLocalizacoes();
         }
 
         /**
@@ -80,78 +77,61 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Páginas' title='Páginas' >Páginas</h1>
+                    <h1 alt='Páginas' title='Páginas' >Produtos</h1>
                 </span>
 
-                <form id="paginasForm" name='paginasForm' action="" method="post">
+                <form id="produtosForm" name='produtosForm' action="" method="post">
                     <input type='hidden' name='codigo' id='codigo' value='<?php echo $this->codigo; ?>'>
 
-                    <div class='row'>    
-
-                        <div class='4u'>
-                            Imagem
-                            <input type='hidden' name='logotipo' id='logotipo' value='<?php echo $this->pagina->imagem; ?>'>
-                            <a class="fancybox fancybox.iframe" href="/app.view/uploader.php"> title='Uploader' alt='Uploader'>
-                                <div id='imagemUploader'>
-                                    <?php 
-                                        if (($this->pagina->imagem != NULL) || ($this->pagina->imagem != ''))
-                                            echo "<img src='{$this->pagina->imagem}'>";
-                                        else
-                                            echo "<img src='/app.view/img/no-image.jpg'>";
-                                    ?>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class='8u'>
-                            <label for='titulo'>
-                                Título
+                    <div class='row'> 
+                        <div class='6u'>
+                            <label for='nome'>
+                                Nome
                             </label>
                             <input 
                                 type='text' 
-                                id='titulo' 
-                                name='titulo'  
+                                id='nome' 
+                                name='nome'  
                                 maxlength='100'
-                                placeholder='Título'
-                                value="<?php echo $this->pagina->titulo; ?>"
+                                placeholder='Nome'
+                                value="<?php echo $this->produto->nome; ?>"
                                 required
                             >
                         </div>
 
-                        <div class='8u'>
-                            <label for='descricao'>
-                                Descrição
+                        <div class='6u'>
+                            <label for='valor'>
+                                Valor
                             </label>
                             <input 
-                                type='text' 
-                                id='descricao' 
-                                name='descricao' 
-                                maxlength='255'
-                                placeholder='Descrição'
-                                value="<?php echo $this->pagina->descricao; ?>"
-                            >
+                                type='number'
+                                name='valor'
+                                id='valor'
+                                min='0' 
+                                step='0.01'
+                                placeholder='Valor: 0.00'
+                                value="<?php echo $this->produto->valor; ?>" 
+                                required
+                            />
                         </div>
 
-                        <div class='4u'>
-                            <label for='localizacao'>
-                                Localizacao
+                        <div class='6u'>
+                            <label for='peso'>
+                                Peso (g)
                             </label>
-                            <select name='localizacao' id='localizacao'>
-                                <option value='' style='display:none;' selected disabled></option>
-                                <?php
-                                    foreach ($this->localizacoes as $localizacao) 
-                                    {
-                                        $selected = '';
-                                        if($this->pagina->localizacao == $localizacao->codigo)
-                                            $selected = 'selected';
-
-                                        echo "<option value='{$localizacao->codigo}' {$selected}>{$localizacao->nome}</option>";
-                                    }
-                                ?>
-                            </select>
+                            <input 
+                                type='number'
+                                name='peso'
+                                id='peso'
+                                min='0' 
+                                step='1'
+                                placeholder='Peso (g)'
+                                value="<?php echo $this->produto->peso; ?>" 
+                                required
+                            />
                         </div>
 
-                        <div class='4u'>
+                        <div class='6u'>
                             <label for='ativo'>
                                 Ativo
                             </label>
@@ -159,7 +139,7 @@
                                 <?php
                                     if($this->codigo != NULL)
                                     {
-                                        if($this->pagina->ativo == 1)
+                                        if($this->produto->ativo == 1)
                                             echo 
                                                 "
                                                     <option value='1' selected>Sim</option>
@@ -186,15 +166,15 @@
 
                         <div class='12u'>
                             <br/>
-                            <label for='texto'>Texto</label>
+                            <label for='descricao'>Descrição</label>
                             <br/>
-                            <textarea name="texto" id='texto' class='tinymce'><?php echo $this->pagina->texto; ?></textarea>
+                            <textarea name="descricao" id='descricao' class='tinymce'><?php echo $this->produto->descricao; ?></textarea>
                             <br/>
                             <input type='submit' id='salvar' value='Salvar'>
                         </div>
 
                         <!--JS-->
-                        <?php include_once('js/jsPaginas.php'); ?>
+                        <?php include_once('js/jsProdutos.php'); ?>
                     </div>
                 </form>
             <?php

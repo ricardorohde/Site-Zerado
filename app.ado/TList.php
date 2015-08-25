@@ -2,9 +2,10 @@
     /**
       * TList.php
       * Lista todos os elementos e exibe em formato de tabela
+      *    1.1 Listagem de Pedido
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
-      * @version 1.0
+      * @version 1.1
       * @access  public
       */
     class TList extends TRepository
@@ -18,6 +19,7 @@
          */
         private $criteria;
         private $tituloPagina;
+        private $isPedido;
 
 
         /*
@@ -32,6 +34,15 @@
             return $this->tituloPagina;
         }
 
+        public function setIsPedido($isPedido)
+        {
+            $this->isPedido = $isPedido;
+        }
+        public function getIsPedido()
+        {
+            return $this->isPedido;
+        }
+
         /**
          * Método Construtor
          *
@@ -40,6 +51,7 @@
          */
         public function __construct()
         {
+            $this->isPedido = false;
             $this->criteria = new TCriteria;
             $this->addColumn('codigo');
         }
@@ -54,7 +66,7 @@
         public function show()
         {
             $conteudo = "";
-            $conteudo = "
+            $conteudo .= "
                             <div id='listagem'>
                                 <span class='center'>
                                     <h1 
@@ -64,7 +76,11 @@
                                         {$this->tituloPagina}
                                     </h1>
                                 </span>
+                            ";
 
+            if($this->isPedido == false)
+                $conteudo .= 
+                            "                
                                 <input 
                                     type='button' 
                                     name='Incluir' 
@@ -72,9 +88,12 @@
                                     value='Incluir' 
                                     onclick=\"top.location='/{$this->entity[0]}/salvar';\"
                                 >
-                                <br/><br/>
-                                <hr>
-                                <br/>
+                            ";
+
+            $conteudo .= "      
+                            <br/><br/>
+                            <hr>
+                            <br/>
                         ";
 
             $collection = $this->load($this->criteria);
@@ -96,31 +115,49 @@
                      
                 foreach ($collection as $object) 
                 {
-                    $conteudo .= 
-                                "
-                                  <tr>
-                                    <td>
-                                        <!--Apagar-->
-                                        <a 
-                                            href='#' 
-                                            title='Apagar' 
-                                            alt='Apagar' 
-                                            onclick=\"apagar('{$this->entity[0]}',{$object->codigo});\"
-                                        >
-                                            <img src='/app.view/img/delete.png' alt='Apagar' title='Apagar'>
-                                        </a>
+                    if($this->isPedido == false)
+                        $conteudo .= 
+                                    "
+                                      <tr>
+                                        <td>
+                                            <!--Apagar-->
+                                            <a 
+                                                href='#' 
+                                                title='Apagar' 
+                                                alt='Apagar' 
+                                                onclick=\"apagar('{$this->entity[0]}',{$object->codigo});\"
+                                            >
+                                                <img src='/app.view/img/delete.png' alt='Apagar' title='Apagar'>
+                                            </a>
 
-                                        <!--Editar-->
-                                        <a 
-                                            href='#' 
-                                            title='Editar' 
-                                            alt='Editar' 
-                                            onclick=\"top.location='{$this->entity[0]}/salvar/{$object->codigo}';\"
-                                        >
-                                            <img src='/app.view/img/edit.png' alt='Editar' title='Editar'>
-                                        </a>
-                                  </td>
-                                ";
+                                            <!--Editar-->
+                                            <a 
+                                                href='#' 
+                                                title='Editar' 
+                                                alt='Editar' 
+                                                onclick=\"top.location='{$this->entity[0]}/salvar/{$object->codigo}';\"
+                                            >
+                                                <img src='/app.view/img/edit.png' alt='Editar' title='Editar'>
+                                            </a>
+                                      </td>
+                                    ";
+                    else
+                        $conteudo .= 
+                                    "
+                                      <tr>
+                                        <td>
+                                            <!--Editar-->
+                                            <a 
+                                                href='#' 
+                                                title='Editar' 
+                                                alt='Editar' 
+                                                onclick=\"top.location='{$this->entity[0]}/checar/{$object->codigo}';\"
+                                            >
+                                                <img src='/app.view/img/view.png' alt='Visualizar' title='Visualizar'>
+                                            </a>
+                                      </td>
+                                    ";
+
                     foreach ($this->columns as $coluna) 
                     {
                         if($coluna == 'imagem')
