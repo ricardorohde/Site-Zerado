@@ -1,4 +1,4 @@
-<?php header("Content-Type:text/html; charset=ISO-8859-1",true) ?>
+<?php header('Content-type: text/html; charset=UTF-8'); ?>
 
 <?php 
 /*
@@ -30,7 +30,7 @@ class TApplication
     static public function run()
     {
         //Suprimir Warnings
-        error_reporting(E_WARNING);
+        //error_reporting(E_WARNING);
         
         //$template = file_get_contents('app.view/template.class.php');
         $template = new template;
@@ -54,6 +54,15 @@ class TApplication
                 $content = ob_get_contents();
                 ob_end_clean();
             }
+            else
+            {
+                $pagina = new erro();
+                $pagina->codigo = 404;
+                ob_start();
+                $pagina->show();
+                $content = ob_get_contents();
+                ob_end_clean();
+            }
         }
         /*
          * Caso nao tenha parametros na URL, carreaga padrao
@@ -70,10 +79,7 @@ class TApplication
          *  Susbstitui a string #CONTENT# do template para a pagina principal
          */
         $site = str_replace('#CONTENT#', $content, $template);
-	echo $site;
-	echo "<script>
-			refreshScroller();
-		</script>";
+        echo $site;
     }
 }
 //new ContaVisitas();

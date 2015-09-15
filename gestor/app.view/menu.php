@@ -1,6 +1,6 @@
 <div class='2u menu'>
     <span class='center title'>
-        Bem vindo <br/>
+        Bem vindo<br/>
         <?php echo $_SESSION['usuario']->nome; ?>
     </span><br />
 

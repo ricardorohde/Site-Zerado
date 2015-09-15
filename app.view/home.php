@@ -4,19 +4,19 @@
       * home.php
       * Classe Home
       *
-      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
 	class Home
 	{
 		/*
-		 * Vari·veis
+		 * Vari√°veis
 		 */
 
 
 		/**
-		 * MÈtodo construtor
+		 * M√©todo construtor
 		 * Verifica se esta logado
 		 * 
 		 * @access public
@@ -24,22 +24,13 @@
 		 */
 		public function __construct()
 		{
-			new session();
-	        
-			if(!isset($_SESSION['usuario']))
-			{
-				echo "
-					<script>
-						top.location='../?class=login';
-					</script>
-				";
-			}
+			
 		}
 
 
 		/**
-		 * MÈtodo show
-		 * Exibe as informaÁıes da p·gina
+		 * M√©todo show
+		 * Exibe as informa√ß√µes da p√°gina
 		 * 
 		 * @access public
 		 */
