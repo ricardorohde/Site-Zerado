@@ -87,7 +87,21 @@
          * @param   string  $keywords
          * @return  boolean Status da operação
          */
-        public function salva($logotipo, $titulo, $empresa, $conteudo, $dominio, $descricao, $keywords)
+        public function salva(
+                                $logotipo, 
+                                $titulo, 
+                                $empresa, 
+                                $conteudo, 
+                                $dominio, 
+                                $descricao, 
+                                $keywords, 
+                                $endereco, 
+                                $numero, 
+                                $bairro, 
+                                $cep,
+                                $cidade,
+                                $estado
+                              )
         {
             $this->configuracao             = new tbConfiguracoes();
 
@@ -99,6 +113,12 @@
             $this->configuracao->dominio    = $dominio;
             $this->configuracao->descricao  = $descricao;
             $this->configuracao->keywords   = $keywords;
+            $this->configuracao->endereco   = $endereco;
+            $this->configuracao->numero     = $numero;
+            $this->configuracao->bairro     = $bairro;
+            $this->configuracao->cep        = $cep;
+            $this->configuracao->cidade     = $cidade;
+            $this->configuracao->estado     = $estado;
 
             $status = $this->configuracao->store();
 

@@ -71,6 +71,37 @@
           * @var    string     Token Gerado pelo PagSeguro
           */
         protected $tokenPagSeguro;
+        /**
+          * @access protected
+          * @var    string     Endereço da Empresa
+          */
+        protected $endereco;
+        /**
+          * @access protected
+          * @var    int         Número do Endereço da Empresa
+          */
+        protected $numero;
+        /**
+          * @access protected
+          * @var    string     Bairro da Empresa
+          */
+        protected $bairro;
+        /**
+          * @access protected
+          * @var    string     CEP da Empresa
+          */
+        protected $cep;
+        /**
+          * @access protected
+          * @var    string     Cidade da Empresa
+          */
+        protected $cidade;
+        /**
+          * @access protected
+          * @var    string     Estado da Empresa
+          */
+        protected $estado;
+
 
 
         /*

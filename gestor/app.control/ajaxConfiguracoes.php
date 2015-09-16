@@ -39,7 +39,13 @@
                                 $_POST['conteudo'], 
                                 $_POST['dominio'], 
                                 $_POST['descricao'],
-                                $_POST['keywords']
+                                $_POST['keywords'],
+                                $_POST['endereco'],
+                                $_POST['numero'],
+                                $_POST['bairro'],
+                                $_POST['cep'],
+                                $_POST['cidade'],
+                                $_POST['estado']
                             ))
     {
         if(!empty($_FILES))

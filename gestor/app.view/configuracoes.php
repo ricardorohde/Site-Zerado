@@ -91,7 +91,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class='3u'>
+                        <div class='4u'>
                             <label for='titulo'>
                                 Título
                             </label>
@@ -104,7 +104,7 @@
                                 value="<?php echo $this->configuracoes->titulo; ?>"
                             >
                         </div>
-                        <div class='3u'>
+                        <div class='4u'>
                             <label for='empresa'>
                                 Empresa
                             </label>
@@ -117,7 +117,7 @@
                                 value="<?php echo $this->configuracoes->empresa; ?>"
                             >
                         </div>
-                        <div class='3u'>
+                        <div class='4u'>
                             <label for='conteudo'>
                                 Conteúdo
                             </label>
@@ -130,7 +130,7 @@
                                 value="<?php echo $this->configuracoes->conteudo; ?>"
                             >
                         </div>
-                        <div class='3u'>
+                        <div class='4u'>
                             <label for='dominio'>
                                 Domínio
                             </label>
@@ -143,7 +143,7 @@
                                 value="<?php echo $this->configuracoes->dominio; ?>"
                             >
                         </div>
-                        <div class='3u'>
+                        <div class='4u'>
                             <label for='descricao'>
                                 Descrição
                             </label>
@@ -156,7 +156,7 @@
                                 value="<?php echo $this->configuracoes->descricao; ?>"
                             >
                         </div>
-                        <div class='3u'>
+                        <div class='4u'>
                             <label for='keywords'>
                                 Palavras-Chave
                             </label>
@@ -169,7 +169,107 @@
                                 value="<?php echo $this->configuracoes->keywords; ?>"
                             >
                         </div>
-                        <div class='6u'>
+                        <div class='4u'>
+                            <label for='endereco'>
+                                Endereço
+                            </label>
+                            <input 
+                                type='text' 
+                                id='endereco' 
+                                name='endereco' 
+                                maxlength='100'
+                                placeholder='Endereço' 
+                                value="<?php echo $this->configuracoes->endereco; ?>"
+                            >
+                        </div>
+                        <div class='4u'>
+                            <label for='numero'>
+                                Número
+                            </label>
+                            <input 
+                                type='number' 
+                                id='numero' 
+                                name='numero' 
+                                placeholder='Número' 
+                                min="1"
+                                value="<?php echo $this->configuracoes->numero; ?>"
+                            >
+                        </div>
+                        <div class='4u'>
+                            <label for='bairro'>
+                                Bairro
+                            </label>
+                            <input 
+                                type='text' 
+                                id='bairro' 
+                                name='bairro' 
+                                maxlength='50'
+                                placeholder='Bairro' 
+                                value="<?php echo $this->configuracoes->bairro; ?>"
+                            >
+                        </div>
+                        <div class='4u'>
+                            <label for='cep'>
+                                CEP
+                            </label>
+                            <input 
+                                type='text' 
+                                id='cep' 
+                                name='cep' 
+                                maxlength='9'
+                                placeholder='CEP' 
+                                value="<?php echo $this->configuracoes->cep; ?>"
+                            >
+                        </div>
+                        <div class='4u'>
+                            <label for='cidade'>
+                                Cidade
+                            </label>
+                            <input 
+                                type='text' 
+                                id='cidade' 
+                                name='cidade' 
+                                maxlength='50'
+                                placeholder='Cidade' 
+                                value="<?php echo $this->configuracoes->cidade; ?>"
+                            >
+                        </div>
+                        <div class='4u'>
+                            <label for='estado'>
+                                Estado
+                            </label>
+                            <select name='estado' id='estado'>
+                                <option value='' <?= ($this->configuracoes->estado == '' ? 'selected' : '') ?>></option>
+                                <option value='AC' <?= ($this->configuracoes->estado == 'AC' ? 'selected' : '') ?>>Acre</option>
+                                <option value='AL' <?= ($this->configuracoes->estado == 'AL' ? 'selected' : '') ?>>Alagoas</option>
+                                <option value='AP' <?= ($this->configuracoes->estado == 'AP' ? 'selected' : '') ?>>Amapá</option>
+                                <option value='AM' <?= ($this->configuracoes->estado == 'AM' ? 'selected' : '') ?>>Amazonas</option>
+                                <option value='BA' <?= ($this->configuracoes->estado == 'BA' ? 'selected' : '') ?>>Bahia</option>
+                                <option value='CE' <?= ($this->configuracoes->estado == 'CE' ? 'selected' : '') ?>>Ceará</option>
+                                <option value='DF' <?= ($this->configuracoes->estado == 'DF' ? 'selected' : '') ?>>Distrito Federal</option>
+                                <option value='ES' <?= ($this->configuracoes->estado == 'ES' ? 'selected' : '') ?>>Espírito Santo</option>
+                                <option value='GO' <?= ($this->configuracoes->estado == 'GO' ? 'selected' : '') ?>>Goiás</option>
+                                <option value='MA' <?= ($this->configuracoes->estado == 'MA' ? 'selected' : '') ?>>Maranhão</option>
+                                <option value='MT' <?= ($this->configuracoes->estado == 'MT' ? 'selected' : '') ?>>Mato Grosso</option>
+                                <option value='MS' <?= ($this->configuracoes->estado == 'MS' ? 'selected' : '') ?>>Mato Grosso do Sul</option>
+                                <option value='MG' <?= ($this->configuracoes->estado == 'MG' ? 'selected' : '') ?>>Minas Gerais</option>
+                                <option value='PA' <?= ($this->configuracoes->estado == 'PA' ? 'selected' : '') ?>>Pará</option>
+                                <option value='PB' <?= ($this->configuracoes->estado == 'PB' ? 'selected' : '') ?>>Paraíba</option>
+                                <option value='PR' <?= ($this->configuracoes->estado == 'PR' ? 'selected' : '') ?>>Paraná</option>
+                                <option value='PE' <?= ($this->configuracoes->estado == 'PE' ? 'selected' : '') ?>>Pernambuco</option>
+                                <option value='PI' <?= ($this->configuracoes->estado == 'PI' ? 'selected' : '') ?>>Piauí</option>
+                                <option value='RJ' <?= ($this->configuracoes->estado == 'RJ' ? 'selected' : '') ?>>Rio de Janeiro</option>
+                                <option value='RN' <?= ($this->configuracoes->estado == 'RN' ? 'selected' : '') ?>>Rio Grande do Norte</option>
+                                <option value='RS' <?= ($this->configuracoes->estado == 'RS' ? 'selected' : '') ?>>Rio Grande do Sul</option>
+                                <option value='RO' <?= ($this->configuracoes->estado == 'RO' ? 'selected' : '') ?>>Rondônia</option>
+                                <option value='RR' <?= ($this->configuracoes->estado == 'RR' ? 'selected' : '') ?>>Roraima</option>
+                                <option value='SC' <?= ($this->configuracoes->estado == 'SC' ? 'selected' : '') ?>>Santa Catarina</option>
+                                <option value='SP' <?= ($this->configuracoes->estado == 'SP' ? 'selected' : '') ?>>São Paulo</option>
+                                <option value='SE' <?= ($this->configuracoes->estado == 'SE' ? 'selected' : '') ?>>Sergipe</option>
+                                <option value='TO' <?= ($this->configuracoes->estado == 'TO' ? 'selected' : '') ?>>Tocantins</option>
+                            </select>
+                        </div>
+                        <div class='12u'>
                             <label for='favicon'>
                                 Favicon
                             </label>
