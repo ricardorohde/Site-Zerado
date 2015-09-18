@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbLocalizacao.php
-      * Classe de modelo tbLocalizacao
+      * tbCategoriaImoveis.php
+      * Classe de modelo tbCategoriaImoveis
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class tbLocalizacao extends TRecord
+    class tbCategoriaImoveis extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'localizacao';
+        const TABLENAME = 'categoriaImoveis';
 
 
         /*
@@ -28,9 +28,9 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    string      Nome
+          * @var    string      Categoria do Imóvel (Casa, Apartamento, Terreno)
           */
-        protected $nome;
+        protected $categoria;
         /**
           * @access protected
           * @var    boolean     Ativo/Inativo

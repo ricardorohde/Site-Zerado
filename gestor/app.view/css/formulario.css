@@ -43,6 +43,11 @@ input:hover, select:hover, textarea:hover
     border: solid 1px #999999;
 }
 
+input[type="checkbox"], input[type="radio"]
+{
+    float: left;
+}
+
 input[type="submit"], input[type="button"]
 {
     width: 80px;

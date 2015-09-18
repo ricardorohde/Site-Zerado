@@ -227,6 +227,34 @@
         echo $controlador->venda->store();
     }
 
+    //Salva Situação dos imóveis
+    if($request == 'salvaSituacaoImoveisForm')
+    {
+        $controlador                        = new controladorSituacaoImoveis();
+
+        $controlador->situacao              = new tbSituacaoImoveis();
+
+        $controlador->situacao->codigo      = $_POST['codigo'];
+        $controlador->situacao->situacao    = $_POST['situacao'];
+        $controlador->situacao->ativo       = $_POST['ativo'];
+        
+        echo $controlador->situacao->store();
+    }
+
+    //Salva Categoria dos imóveis
+    if($request == 'salvaCategoriaImoveisForm')
+    {
+        $controlador                        = new controladorCategoriaImoveis();
+
+        $controlador->categoria             = new tbCategoriaImoveis();
+
+        $controlador->categoria->codigo     = $_POST['codigo'];
+        $controlador->categoria->categoria  = $_POST['categoria'];
+        $controlador->categoria->ativo      = $_POST['ativo'];
+        
+        echo $controlador->categoria->store();
+    }
+
     //Altera Senha
     if($request == 'alteraSenha')
     {
@@ -289,7 +317,7 @@
         }
         else if($tabela == 'localizacao')
         {
-            $listagem->setTituloPagina('Localização');
+            $listagem->setTituloPagina('Categoria Páginas');
 
             $listagem->addColumn('nome');
             $listagem->addColumn('ativo');
@@ -309,6 +337,20 @@
             $listagem->addColumn('nome');
             $listagem->addColumn('valor');
             $listagem->addColumn('peso');
+            $listagem->addColumn('ativo');
+        }
+        else if($tabela == 'situacaoImoveis')
+        {
+            $listagem->setTituloPagina('Situação Imóveis');
+
+            $listagem->addColumn('situacao');
+            $listagem->addColumn('ativo');
+        }
+        else if($tabela == 'categoriaImoveis')
+        {
+            $listagem->setTituloPagina('Categoria Imóveis');
+
+            $listagem->addColumn('categoria');
             $listagem->addColumn('ativo');
         }
         else

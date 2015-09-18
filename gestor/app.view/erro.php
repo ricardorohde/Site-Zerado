@@ -12,7 +12,7 @@
 		/*
 		 * Variaveis
 		 */
-		private $codigo/
+		private $codigo;
 
 		/*
 		 * Métodos

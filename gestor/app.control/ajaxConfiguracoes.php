@@ -45,7 +45,8 @@
                                 $_POST['bairro'],
                                 $_POST['cep'],
                                 $_POST['cidade'],
-                                $_POST['estado']
+                                $_POST['estado'],
+                                $_POST['telefone']
                             ))
     {
         if(!empty($_FILES))

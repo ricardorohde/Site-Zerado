@@ -31,6 +31,7 @@
 
             $this->collection->setTituloPagina('Banner');
 
+            $this->collection->addColumn('codigo');
             $this->collection->addColumn('titulo');
             $this->collection->addColumn('descricao');
             $this->collection->addColumn('imagem');

@@ -47,7 +47,7 @@
         public function __construct()
         {
             $this->expressions    = array();
-            $this->operators        = array();
+            $this->operators      = array();
         }
 
         /**

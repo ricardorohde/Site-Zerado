@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbLocalizacao.php
-      * Classe de modelo tbLocalizacao
+      * tbSituacaoImoveis.php
+      * Classe de modelo tbSituacaoImoveis
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class tbLocalizacao extends TRecord
+    class tbSituacaoImoveis extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'localizacao';
+        const TABLENAME = 'situacaoImoveis';
 
 
         /*
@@ -28,9 +28,9 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    string      Nome
+          * @var    string      Situação do Imóvel (Aluguel, Venda, Arrendamento)
           */
-        protected $nome;
+        protected $situacao;
         /**
           * @access protected
           * @var    boolean     Ativo/Inativo

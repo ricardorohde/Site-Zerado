@@ -101,6 +101,11 @@
           * @var    string     Estado da Empresa
           */
         protected $estado;
+        /**
+          * @access protected
+          * @var    string     Telefone da Empresa
+          */
+        protected $telefone;
 
 
 

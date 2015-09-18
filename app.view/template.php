@@ -44,10 +44,10 @@
                     <?php include_once 'meta.php'; ?>
                     
                     <!--CSS-->
-                    <?php include_once 'css.php'; ?>    
+                    <?php include_once 'css/css.php'; ?>    
                     
                     <!--JQuery-->
-                    <?php include_once 'jsLib.php'; ?>              
+                    <?php include_once 'js/jsLib.php'; ?>              
                     
                     <!--JavaScript-->
                 </head>

@@ -1,13 +1,13 @@
 <?php
     /**
-      * paginas.php
-      * Classe paginas
+      * imoveis.php
+      * Classe imoveis
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class paginas
+    class imoveis
     {
         /*
          * Variaveis
@@ -29,16 +29,28 @@
         {
             $this->collection = new TList();
 
-            $this->collection->setTituloPagina('Páginas');
+            $this->collection->setTituloPagina('Imóveis');
 
-            $this->collection->addColumn('codigo');
-            $this->collection->addColumn('titulo');
-            $this->collection->addColumn('descricao');
-            $this->collection->addColumn('ativo');
+            $this->collection->addColumn('i.codigo');
+            $this->collection->addColumn('c.categoria');
+            $this->collection->addColumn('i.endereco');
+            $this->collection->addColumn('i.numero');
+            $this->collection->addColumn('i.bairro');
+            $this->collection->addColumn('i.cidade');
+            $this->collection->addColumn('i.preco');
+            $this->collection->addColumn('s.situacao');
+            $this->collection->addColumn('i.ativo');
 
-            $this->collection->addEntity('paginas');
+            $this->collection->addEntity('imoveis i');
+            $this->collection->addEntity('categoriaImoveis c');
+            $this->collection->addEntity('situacaoImoveis s');
 
-            $this->listagem = $this->collection->show();            
+            $criteria = new TCriteria();
+            $criteria->addFilter('c.codigo', '=', 'i.categoria');
+            $criteria->addFilter('s.codigo', '=', 'i.situacao');
+            $this->collection->setCriteria($criteria);
+
+            $this->listagem = $this->collection->show();
         }
 
         /**
@@ -60,7 +72,7 @@
           * Seta o valor da variavel
           * 
           * @access public
-          * @param  string $propriedade     Propriedade a ser retornada
+          * @param  string $propriedade    Propriedade a ser retornada
           * @return mixed                   Valor da Propriedade
           */
         public function __get($propriedade)

@@ -100,7 +100,8 @@
                                 $bairro, 
                                 $cep,
                                 $cidade,
-                                $estado
+                                $estado,
+                                $telefone
                               )
         {
             $this->configuracao             = new tbConfiguracoes();
@@ -119,6 +120,7 @@
             $this->configuracao->cep        = $cep;
             $this->configuracao->cidade     = $cidade;
             $this->configuracao->estado     = $estado;
+            $this->configuracao->telefone   = $telefone;
 
             $status = $this->configuracao->store();
 

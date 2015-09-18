@@ -31,6 +31,7 @@
 
             $this->collection->setTituloPagina('Videos');
 
+            $this->collection->addColumn('codigo');
             $this->collection->addColumn('titulo');
             $this->collection->addColumn('imagem');
             $this->collection->addColumn('ativo');

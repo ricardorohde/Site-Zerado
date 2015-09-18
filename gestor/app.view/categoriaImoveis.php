@@ -1,13 +1,13 @@
 <?php
     /**
-      * paginas.php
-      * Classe paginas
+      * categoriaImoveis
+      * Classe categoriaImoveis
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class paginas
+    class categoriaImoveis
     {
         /*
          * Variaveis
@@ -29,16 +29,15 @@
         {
             $this->collection = new TList();
 
-            $this->collection->setTituloPagina('Páginas');
+            $this->collection->setTituloPagina('Categoria Imóveis');
 
             $this->collection->addColumn('codigo');
-            $this->collection->addColumn('titulo');
-            $this->collection->addColumn('descricao');
+            $this->collection->addColumn('categoria');
             $this->collection->addColumn('ativo');
 
-            $this->collection->addEntity('paginas');
+            $this->collection->addEntity('categoriaImoveis');
 
-            $this->listagem = $this->collection->show();            
+            $this->listagem = $this->collection->show();
         }
 
         /**
@@ -60,7 +59,7 @@
           * Seta o valor da variavel
           * 
           * @access public
-          * @param  string $propriedade     Propriedade a ser retornada
+          * @param  string $propriedade    Propriedade a ser retornada
           * @return mixed                   Valor da Propriedade
           */
         public function __get($propriedade)

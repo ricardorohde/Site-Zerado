@@ -214,6 +214,7 @@
                             </label>
                             <input 
                                 type='text' 
+                                class='cep'
                                 id='cep' 
                                 name='cep' 
                                 maxlength='9'
@@ -284,6 +285,7 @@
                     </div>
                 </form>
             <?php
+            include_once('js/jsMascaras.php');
         }
     }
 ?>

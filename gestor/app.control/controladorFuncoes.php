@@ -1,44 +1,31 @@
 <?php
     /**
-      * paginas.php
-      * Classe paginas
+      * controladorFuncoes.php
+      * Classe de Controle controladorFuncoes
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
-      * @version 1.0
+      * @version _VERSAO_
       * @access  public
       */
-    class paginas
+    class controladorFuncoes
     {
         /*
-         * Variaveis
+         *    Variaveis
          */
-        private $collection;
-        private $listagem;
-
+        private $funcoes;
 
         /*
          * Métodos
          */
         /**
-          * Método Construtor
-          *
-          * @access private
-          * @return void
-          */
+         * Método Construtor
+         *
+         * @access private
+         * @return void
+         */
         public function __construct()
         {
-            $this->collection = new TList();
-
-            $this->collection->setTituloPagina('Páginas');
-
-            $this->collection->addColumn('codigo');
-            $this->collection->addColumn('titulo');
-            $this->collection->addColumn('descricao');
-            $this->collection->addColumn('ativo');
-
-            $this->collection->addEntity('paginas');
-
-            $this->listagem = $this->collection->show();            
+            $this->funcoes = NULL;
         }
 
         /**
@@ -60,7 +47,7 @@
           * Seta o valor da variavel
           * 
           * @access public
-          * @param  string $propriedade     Propriedade a ser retornada
+          * @param  string $propriedade    Propriedade a ser retornada
           * @return mixed                   Valor da Propriedade
           */
         public function __get($propriedade)
@@ -68,16 +55,20 @@
             return $this->$propriedade;
         }
 
-        /**
-          * Método show
-          * Exibe as informações na tela
-          *
-          * @access public
-          * @return void
-          */
-        public function show()
+         /**
+         * Método getFuncoes
+         * Retorna as funcoes do banco de dados
+         * 
+         * @access public
+         * @return tbFuncoes    Funções do site
+         */
+        public function getFuncoes()
         {
-            echo $this->listagem;
+            $this->funcoes = NULL;
+
+            $this->funcoes = (new tbFuncoes())->load(1);
+
+            return $this->funcoes;
         }
     }
 ?>

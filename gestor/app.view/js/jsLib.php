@@ -7,3 +7,5 @@
 <script type="text/javascript" src="/app.view/js/jquery.fancybox.pack.js"></script>
 <!--TINY MCE-->
 <script type="text/javascript" src="/app.view/js/tinymce/tinymce.min.js"></script>
+<!--MASKED INPUT-->
+<script type="text/javascript" src="/app.view/js/jquery.maskedinput.js"></script>

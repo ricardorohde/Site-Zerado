@@ -72,7 +72,20 @@
             //Criteria
             if(!isset($criteria))
                 $criteria = new TCriteria;
-            $criteria->addFilter('excluido', '=', 0);
+
+            if(count($this->entity) > 1)
+            {
+                foreach ($this->entity as $entity) 
+                {
+                    $entity = explode(' ', $entity);
+                    $criteria->addFilter($entity[1].'.excluido', '=', 0);
+                }
+            }
+            else
+            {
+                $criteria->addFilter('excluido', '=', 0);
+            }
+
             $sql->setCriteria($criteria);
 
             //RECUPERA CONEXAO BANCO DE DADOS

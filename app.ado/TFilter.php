@@ -93,8 +93,16 @@
         //Caso seja uma string
         else if(is_string($value))
         {
-            //Adiciona string normal
-            $result = "'$value'";
+            if(strpos($value, '.') === false)
+            {
+                //Adiciona string normal
+                $result = "'$value'";
+            }
+            else
+            {
+                //Adiciona sem as aspas
+                $result = $value;
+            }
         }
 
         //Caso seja um valor nulo

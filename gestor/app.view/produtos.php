@@ -31,6 +31,7 @@
 
             $this->collection->setTituloPagina('Produtos');
 
+            $this->collection->addColumn('codigo');
             $this->collection->addColumn('nome');
             $this->collection->addColumn('valor');
             $this->collection->addColumn('peso');

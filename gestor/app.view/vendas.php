@@ -32,6 +32,7 @@
             $this->collection->setTituloPagina('Vendas');
             $this->collection->setIsPedido(true);
 
+            $this->collection->addColumn('codigo');
             $this->collection->addColumn('cliente');
             $this->collection->addColumn('dataHora');
             $this->collection->addColumn('valor');

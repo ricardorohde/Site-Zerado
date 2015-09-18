@@ -25,6 +25,11 @@
         /*
          * Métodos
          */
+        public function setCriteria($criteria)
+        {
+            $this->criteria = $criteria;
+        }
+
         public function setTituloPagina($tituloPagina)
         {
             $this->tituloPagina = $tituloPagina;
@@ -53,7 +58,7 @@
         {
             $this->isPedido = false;
             $this->criteria = new TCriteria;
-            $this->addColumn('codigo');
+            //$this->addColumn('codigo');
         }
 
         /**
@@ -65,6 +70,14 @@
          */
         public function show()
         {
+            $tabela = $this->entity[0];
+
+            if(strpos($tabela, ' ') != false)
+            {
+                $tabela = explode(' ', $tabela);
+                $tabela = $tabela[0];
+            }
+
             $conteudo = "";
             $conteudo .= "
                             <div id='listagem'>
@@ -86,7 +99,7 @@
                                     name='Incluir' 
                                     id='Incluir' 
                                     value='Incluir' 
-                                    onclick=\"top.location='/{$this->entity[0]}/salvar';\"
+                                    onclick=\"top.location='/{$tabela}/salvar';\"
                                 >
                             ";
 
@@ -109,6 +122,12 @@
 
                 foreach ($this->columns as $coluna) 
                 {
+                    if(strpos($coluna, '.') == 1)
+                    {
+                        $coluna = explode('.', $coluna);
+                        $coluna = $coluna[1];
+                    }
+
                     $col = ucfirst($coluna);
                     $conteudo .= "<th>{$col}</th>";
                 }
@@ -125,7 +144,7 @@
                                                 href='#' 
                                                 title='Apagar' 
                                                 alt='Apagar' 
-                                                onclick=\"apagar('{$this->entity[0]}',{$object->codigo});\"
+                                                onclick=\"apagar('{$tabela}',{$object->codigo});\"
                                             >
                                                 <img src='/app.view/img/delete.png' alt='Apagar' title='Apagar'>
                                             </a>
@@ -135,7 +154,7 @@
                                                 href='#' 
                                                 title='Editar' 
                                                 alt='Editar' 
-                                                onclick=\"top.location='{$this->entity[0]}/salvar/{$object->codigo}';\"
+                                                onclick=\"top.location='{$tabela}/salvar/{$object->codigo}';\"
                                             >
                                                 <img src='/app.view/img/edit.png' alt='Editar' title='Editar'>
                                             </a>
@@ -151,7 +170,7 @@
                                                 href='#' 
                                                 title='Editar' 
                                                 alt='Editar' 
-                                                onclick=\"top.location='{$this->entity[0]}/checar/{$object->codigo}';\"
+                                                onclick=\"top.location='{$tabela}/checar/{$object->codigo}';\"
                                             >
                                                 <img src='/app.view/img/view.png' alt='Visualizar' title='Visualizar'>
                                             </a>
@@ -160,6 +179,12 @@
 
                     foreach ($this->columns as $coluna) 
                     {
+                        if(strpos($coluna, '.') == 1)
+                        {
+                            $coluna = explode('.', $coluna);
+                            $coluna = $coluna[1];
+                        }
+
                         if($coluna == 'imagem')
                         {
                           $conteudo .= "<td><img src='{$object->$coluna}' title='Imagem' alt='Imagem' class='listImage'></td>";

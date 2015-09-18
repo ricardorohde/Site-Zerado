@@ -29,8 +29,9 @@
         {
             $this->collection = new TList();
 
-            $this->collection->setTituloPagina('Localização');
+            $this->collection->setTituloPagina('Categoria Páginas');
 
+            $this->collection->addColumn('codigo');
             $this->collection->addColumn('nome');
             $this->collection->addColumn('ativo');
 
