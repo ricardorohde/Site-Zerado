@@ -4,19 +4,19 @@
       * home.php
       * Classe Home
       *
-      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
 	class Home
 	{
 		/*
-		 * Vari√°veis
+		 * Vari·veis
 		 */
 
 
 		/**
-		 * M√©todo construtor
+		 * MÈtodo construtor
 		 * Verifica se esta logado
 		 * 
 		 * @access public
@@ -29,8 +29,8 @@
 
 
 		/**
-		 * M√©todo show
-		 * Exibe as informa√ß√µes da p√°gina
+		 * MÈtodo show
+		 * Exibe as informaÁıes da p·gina
 		 * 
 		 * @access public
 		 */

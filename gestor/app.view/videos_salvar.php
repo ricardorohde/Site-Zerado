@@ -3,7 +3,7 @@
       * videos_salvar.php
       * Classe videos_salvar
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-          * Método Construtor
+          * MÃ©todo Construtor
           *
           * @access private
           * @return void
@@ -40,7 +40,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -54,7 +54,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -67,8 +67,8 @@
         }
 
         /**
-          * Método show
-          * Exibe as informações na tela
+          * MÃ©todo show
+          * Exibe as informaÃ§Ãµes na tela
           *
           * @access public
           * @return void
@@ -100,14 +100,14 @@
 
                         <div class='8u'>
                             <label for='titulo'>
-                                Título
+                                TÃ­tulo
                             </label>
                             <input 
                                 type='text' 
                                 id='titulo' 
                                 name='titulo'  
                                 maxlength='100'
-                                placeholder='Título'
+                                placeholder='TÃ­tulo'
                                 value="<?php echo $this->video->titulo; ?>"
                                 required
                             >
@@ -115,14 +115,14 @@
 
                         <div class='8u'>
                             <label for='descricao'>
-                                Descrição
+                                DescriÃ§Ã£o
                             </label>
                             <input 
                                 type='text' 
                                 id='descricao' 
                                 name='descricao' 
                                 maxlength='255'
-                                placeholder='Descrição'
+                                placeholder='DescriÃ§Ã£o'
                                 value="<?php echo $this->video->descricao; ?>"
                             >
                         </div>
@@ -153,20 +153,20 @@
                                             echo 
                                                 "
                                                     <option value='1' selected>Sim</option>
-                                                    <option value='0'>Não</option>  
+                                                    <option value='0'>NÃ£o</option>  
                                                 ";
                                         else
                                             echo 
                                                 "
                                                     <option value='1'>Sim</option>
-                                                    <option value='0' selected>Não</option>  
+                                                    <option value='0' selected>NÃ£o</option>  
                                                 ";
                                     }
                                     else
                                         echo 
                                             "
                                                 <option value='1' selected>Sim</option>
-                                                <option value='0'>Não</option>
+                                                <option value='0'>NÃ£o</option>
                                             ";
                                 ?>
                             </select>

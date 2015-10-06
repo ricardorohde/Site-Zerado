@@ -1,9 +1,9 @@
 <?php
     /**
      * TSqlInsert.php
-     * Esta classe provÍ meios para aipulaÁ„o de uma instruÁ„o de INSERT no banco de dados
+     * Esta classe prov√™ meios para aipula√ß√£o de uma instru√ß√£o de INSERT no banco de dados
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÁ„o a Objetos - 2™ EdiÁ„o)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orieta√ß√£o a Objetos - 2¬™ Edi√ß√£o)
      * @version 1.0
      * @access  public
      */
@@ -20,12 +20,12 @@
 
 
         /*
-         * MÈtodos
+         * M√©todos
          */
         
         /**
-         * MÈtodo setRowData()
-         * Atribui valores ‡ determinadas colunas no banco de dados que ser„o inseridas
+         * M√©todo setRowData()
+         * Atribui valores √† determinadas colunas no banco de dados que ser√£o inseridas
          * 
          * @access  public
          * @param   $column  = Coluna da tabela
@@ -33,7 +33,7 @@
          */
         public function setRowData($column, $value)
         {
-            //Verifica se È um dado escalar (string, inteiro, etc...)
+            //Verifica se √© um dado escalar (string, inteiro, etc...)
             if(is_scalar($value))
             {
                 if(is_string($value) and (!empty($value)))
@@ -63,26 +63,26 @@
         }
         
         /**
-         * MÈtodo setCriteria()
-         * N„o existe no contexto desta classe, logo, ir· lanÁar um erro se for executado
+         * M√©todo setCriteria()
+         * N√£o existe no contexto desta classe, logo, ir√° lan√ßar um erro se for executado
          * 
          * @access  public
-         * @param   $criteria = CritÈrio de SeleÁ„o
-         * @throws  Exception   Como n„o existe o mÈtodo setCriteria para Insert lanÁa erro
+         * @param   $criteria = Crit√©rio de Sele√ß√£o
+         * @throws  Exception   Como n√£o existe o m√©todo setCriteria para Insert lan√ßa erro
          */
         public function setCriteria(TCriteria $criteria)
         {
-            //LanÁa o erro
-            throw new Exception("N„o foi possivel chamar o mÈtodo setCriteria de " . __CLASS__ . 
-                                ".<br />N„o existe no contexto desta classe.");
+            //Lan√ßa o erro
+            throw new Exception("N√£o foi possivel chamar o m√©todo setCriteria de " . __CLASS__ . 
+                                ".<br />N√£o existe no contexto desta classe.");
         }
         
         /**
-         * MÈtodo getInstruction()
-         * Retorna a instruÁ„o de INSERT em forma de string
+         * M√©todo getInstruction()
+         * Retorna a instru√ß√£o de INSERT em forma de string
          * 
          * @access public
-         * @return InstruÁ„o SQL INSERT
+         * @return Instru√ß√£o SQL INSERT
          */
         public function getInstruction()
         {

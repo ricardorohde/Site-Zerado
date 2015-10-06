@@ -3,7 +3,7 @@
       * categoriaImoveis_salvar.php
       * Classe categoriaImoveis_salvar
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-          * Método Construtor
+          * MÃ©todo Construtor
           *
           * @access private
           * @return void
@@ -40,7 +40,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -54,7 +54,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -67,8 +67,8 @@
         }
 
         /**
-          * Método show
-          * Exibe as informações na tela
+          * MÃ©todo show
+          * Exibe as informaÃ§Ãµes na tela
           *
           * @access public
           * @return void
@@ -77,7 +77,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Categoria Imóveis' title='Categoria Imóveis' >Categoria Imóveis</h1>
+                    <h1 alt='Categoria ImÃ³veis' title='Categoria ImÃ³veis' >Categoria ImÃ³veis</h1>
                 </span>
 
                 <form id="categoriaImoveisForm" name='categoriaImoveisForm' action="" method="post">
@@ -86,14 +86,14 @@
                     <div class='row'>
                         <div class='4u'>
                             <label for='nome'>
-                                Categoria dos Imóveis
+                                Categoria dos ImÃ³veis
                             </label>
                             <input 
                                 type='text' 
                                 id='categoria' 
                                 name='categoria'  
                                 maxlength='100'
-                                placeholder='Categoria dos Imóveis (Casa, Apartamento, Terreno)'
+                                placeholder='Categoria dos ImÃ³veis (Casa, Apartamento, Terreno)'
                                 value="<?= $this->categoria->categoria ?>"
                                 required
                             >
@@ -109,14 +109,14 @@
                                     {
                                         ?>
                                             <option value='1' <?= $this->categoria->ativo == 1 ? 'selected' : '' ?>>Sim</option>
-                                            <option value='0' <?= $this->categoria->ativo == 0 ? 'selected' : '' ?>>Não</option>
+                                            <option value='0' <?= $this->categoria->ativo == 0 ? 'selected' : '' ?>>NÃ£o</option>
                                         <?php
                                     }
                                     else
                                         echo 
                                             "
                                                 <option value='1' selected>Sim</option>
-                                                <option value='0'>Não</option>
+                                                <option value='0'>NÃ£o</option>
                                             ";
                                 ?>
                             </select>

@@ -3,7 +3,7 @@
       * tbGaleria.php
       * Classe de modelo tbGaleria
       *
-      * @author  Rog閞io Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog茅rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,22 +23,22 @@
          */
         /**
           * @access protected
-          * @var    int         C骴igo
+          * @var    int         C贸digo
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    int         C骴igo da Pagina
+          * @var    int         C贸digo da Pagina
           */
         protected $codigoPagina;
         /**
           * @access protected
-          * @var    int         C骴igo do Produto
+          * @var    int         C贸digo do Produto
           */
         protected $codigoProduto;
         /**
           * @access protected
-          * @var    int         C骴igo do Im髒el
+          * @var    int         C贸digo do Im贸vel
           */
         protected $codigoImovel;
         /**
@@ -48,12 +48,12 @@
         protected $imagem;
         /**
           * @access protected
-          * @var    string      T韙ulo
+          * @var    string      T铆tulo
           */
         protected $titulo;
         /**
           * @access protected
-          * @var    string      Descri玢o
+          * @var    string      Descri莽茫o
           */
         protected $descricao;
         /**
@@ -74,7 +74,7 @@
 
 
         /*
-         * M閠odos
+         * M茅todos
          */
         
     }

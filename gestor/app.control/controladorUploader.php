@@ -24,7 +24,7 @@
     * controlador de uploads
     * http://www.sanwebe.com/2012/05/ajax-image-upload-with-progressbar-with-jquery-and-php
     *
-    * @author  Adpatado por Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+    * @author  Adpatado por RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
     * @version 1.0     
     */
     error_reporting(E_WARNING);

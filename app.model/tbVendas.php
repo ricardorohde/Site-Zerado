@@ -3,7 +3,7 @@
       * tbVendas.php
       * Classe de modelo tbVendas
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,7 +23,7 @@
          */
         /**
           * @access protected
-          * @var    int             Código
+          * @var    int             CÃ³digo
           */
         protected $codigo;
         /**
@@ -43,7 +43,7 @@
         protected $status;
         /**
           * @access protected
-          * @var    string          Código de Rastreio dos Correios
+          * @var    string          CÃ³digo de Rastreio dos Correios
           */
         protected $codigoRastreio;
         /**
@@ -58,12 +58,12 @@
         protected $frete;
         /**
           * @access protected
-          * @var    string          Endereço de Entrega
+          * @var    string          EndereÃ§o de Entrega
           */
         protected $enderecoEntrega;
         /**
           * @access protected
-          * @var    int             Número do Endereço de Entrega
+          * @var    int             NÃºmero do EndereÃ§o de Entrega
           */
         protected $numeroEntrega;
         /**
@@ -109,7 +109,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

@@ -3,7 +3,7 @@
       * controladorGaleria
       * Classe de Controle controladorGaleria
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -18,10 +18,10 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-         * Método Construtor
+         * MÃ©todo Construtor
          *
          * @access private
          * @return void
@@ -35,7 +35,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -49,7 +49,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -62,11 +62,11 @@
         }
 
         /**
-         * Método getGaleria
+         * MÃ©todo getGaleria
          * Retorna a galeria de acordo com o codigo
          * 
          * @access  public
-         * @return  TRepository Coleção de Galeria
+         * @return  TRepository ColeÃ§Ã£o de Galeria
          */
         public function getGaleria($classe, $codigo)
         {

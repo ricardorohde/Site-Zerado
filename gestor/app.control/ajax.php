@@ -23,13 +23,13 @@
     * ajax.php
     * Destino de todos os formularios
     *
-    * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+    * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
     * @version 1.0   
     */
     error_reporting(E_WARNING);
     @session_start();
 
-    //Obtem informação do que sera feito através do campo action
+    //Obtem informaÃ§Ã£o do que sera feito atravÃ©s do campo action
     $request = $_POST['request'];
 
     //Login
@@ -230,7 +230,7 @@
             $controladorGaleria->repository->deleteFisico($criteria);
 
             $imagens    = $_POST['imagens'];
-            $imagens    = explode('³', $imagens);
+            $imagens    = explode('Â³', $imagens);
 
             $erros      = 0;
 
@@ -238,7 +238,7 @@
             {
                 foreach ($imagens as $imagem) 
                 {
-                    $imagem = explode('²', $imagem);
+                    $imagem = explode('Â²', $imagem);
 
                     if  (
                             ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
@@ -283,7 +283,7 @@
         echo $controlador->venda->store();
     }
 
-    //Salva Situação dos imóveis
+    //Salva SituaÃ§Ã£o dos imÃ³veis
     if($request == 'salvaSituacaoImoveis')
     {
         $controlador                        = new controladorSituacaoImoveis();
@@ -297,7 +297,7 @@
         echo $controlador->situacao->store();
     }
 
-    //Salva Categoria dos imóveis
+    //Salva Categoria dos imÃ³veis
     if($request == 'salvaCategoriaImoveis')
     {
         $controlador                        = new controladorCategoriaImoveis();
@@ -311,7 +311,7 @@
         echo $controlador->categoria->store();
     }
 
-    //Salva Imóveis
+    //Salva ImÃ³veis
     if($request == 'salvaImoveis')
     {
         $controlador                            = new controladorImoveis();
@@ -350,7 +350,7 @@
             $controladorGaleria->repository->deleteFisico($criteria);
 
             $imagens    = $_POST['imagens'];
-            $imagens    = explode('³', $imagens);
+            $imagens    = explode('Â³', $imagens);
 
             $erros      = 0;
 
@@ -358,7 +358,7 @@
             {
                 foreach ($imagens as $imagem) 
                 {
-                    $imagem = explode('²', $imagem);
+                    $imagem = explode('Â²', $imagem);
 
                     if  (
                             ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
@@ -390,7 +390,7 @@
             echo 'erro 0';
     }
 
-    //Salva Funções
+    //Salva FunÃ§Ãµes
     if($request == 'salvaFuncoes')
     {
         $controlador                        = new controladorFuncoes;
@@ -434,7 +434,7 @@
             }
         }
         else
-            echo 'Senha antiga inválida!';
+            echo 'Senha antiga invÃ¡lida!';
     }
 
     //Apaga item
@@ -451,7 +451,7 @@
 
         if($tabela == 'paginas')
         {
-            $listagem->setTituloPagina('Páginas');
+            $listagem->setTituloPagina('PÃ¡ginas');
 
             $listagem->addColumn('titulo');
             $listagem->addColumn('descricao');
@@ -472,7 +472,7 @@
         }
         else if($tabela == 'usuarios')
         {
-            $listagem->setTituloPagina('Usuários');
+            $listagem->setTituloPagina('UsuÃ¡rios');
 
             $listagem->addColumn('nome');
             $listagem->addColumn('ativo');
@@ -481,7 +481,7 @@
         }
         else if($tabela == 'localizacao')
         {
-            $listagem->setTituloPagina('Categoria Páginas');
+            $listagem->setTituloPagina('Categoria PÃ¡ginas');
 
             $listagem->addColumn('nome');
             $listagem->addColumn('ativo');
@@ -511,7 +511,7 @@
         }
         else if($tabela == 'situacaoImoveis')
         {
-            $listagem->setTituloPagina('Situação Imóveis');
+            $listagem->setTituloPagina('SituaÃ§Ã£o ImÃ³veis');
 
             $listagem->addColumn('situacao');
             $listagem->addColumn('ativo');
@@ -520,7 +520,7 @@
         }
         else if($tabela == 'categoriaImoveis')
         {
-            $listagem->setTituloPagina('Categoria Imóveis');
+            $listagem->setTituloPagina('Categoria ImÃ³veis');
 
             $listagem->addColumn('categoria');
             $listagem->addColumn('ativo');
@@ -529,7 +529,7 @@
         }
         else if($tabela == 'imoveis')
         {
-            $listagem->setTituloPagina('Imóveis');
+            $listagem->setTituloPagina('ImÃ³veis');
 
             $listagem->addColumn('i.codigo');
             $listagem->addColumn('c.categoria');

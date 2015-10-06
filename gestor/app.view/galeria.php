@@ -60,13 +60,13 @@
                                     </div>
 
                                     <div class='4u'>
-                                        <label for'descricao_{$totalImagem}'>Descrição</label>
+                                        <label for'descricao_{$totalImagem}'>DescriÃ§Ã£o</label>
                                         <input
                                             type='text'
                                             name='descricao_{$totalImagem}'
                                             id='descricao_{$totalImagem}'
                                             maxlength='100'
-                                            placeholder='Descrição'
+                                            placeholder='DescriÃ§Ã£o'
                                             value='{$galeria->descricao}'
                                             required
                                         >
@@ -80,7 +80,7 @@
                                             id='posicao_{$totalImagem}'
                                             min='1'
                                             step='1'
-                                            placeholder='Posição'
+                                            placeholder='PosiÃ§Ã£o'
                                             value='{$totalImagem}'
                                             required
                                         >

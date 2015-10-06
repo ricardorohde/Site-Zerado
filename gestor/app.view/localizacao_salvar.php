@@ -3,7 +3,7 @@
       * localizacao_salvar.php
       * Classe localizacao_salvar
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-          * Método Construtor
+          * MÃ©todo Construtor
           *
           * @access private
           * @return void
@@ -40,7 +40,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -54,7 +54,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -67,8 +67,8 @@
         }
 
         /**
-          * Método show
-          * Exibe as informações na tela
+          * MÃ©todo show
+          * Exibe as informaÃ§Ãµes na tela
           *
           * @access public
           * @return void
@@ -77,7 +77,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Localização' title='Localização' >Localização</h1>
+                    <h1 alt='LocalizaÃ§Ã£o' title='LocalizaÃ§Ã£o' >LocalizaÃ§Ã£o</h1>
                 </span>
 
                 <form id="localizacaoForm" name='localizacaoForm' action="" method="post">
@@ -112,20 +112,20 @@
                                             echo 
                                                 "
                                                     <option value='1' selected>Sim</option>
-                                                    <option value='0'>Não</option>  
+                                                    <option value='0'>NÃ£o</option>  
                                                 ";
                                         else
                                             echo 
                                                 "
                                                     <option value='1'>Sim</option>
-                                                    <option value='0' selected>Não</option>  
+                                                    <option value='0' selected>NÃ£o</option>  
                                                 ";
                                     }
                                     else
                                         echo 
                                             "
                                                 <option value='1' selected>Sim</option>
-                                                <option value='0'>Não</option>
+                                                <option value='0'>NÃ£o</option>
                                             ";
                                 ?>
                             </select>

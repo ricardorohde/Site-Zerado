@@ -4,7 +4,7 @@
       * Lista todos os elementos e exibe em formato de tabela
       *    1.1 Listagem de Pedido
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.1
       * @access  public
       */
@@ -15,7 +15,7 @@
          */
         /**
          * @access  private
-         * @var     TCriteria   Critério de Seleção
+         * @var     TCriteria   CritÃ©rio de SeleÃ§Ã£o
          */
         private $criteria;
         private $tituloPagina;
@@ -23,7 +23,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         public function setCriteria($criteria)
         {
@@ -49,7 +49,7 @@
         }
 
         /**
-         * Método Construtor
+         * MÃ©todo Construtor
          *
          * @access private
          * @return void
@@ -62,8 +62,8 @@
         }
 
         /**
-         * Método show()
-         * Exibe as informações na tela
+         * MÃ©todo show()
+         * Exibe as informaÃ§Ãµes na tela
          * 
          * @access  public
          * @return  string
@@ -206,7 +206,7 @@
                 $conteudo .= "</table></div>";
             }
             else
-              $conteudo .= 'Não há nenhum item!';
+              $conteudo .= 'NÃ£o hÃ¡ nenhum item!';
 
             return $conteudo;
         }

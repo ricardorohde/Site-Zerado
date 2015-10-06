@@ -3,7 +3,7 @@
       * tbImoveis.php
       * Classe de modelo tbImoveis
       *
-      * @author  Rog閞io Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog茅rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,74 +23,74 @@
          */
         /**
           * @access protected
-          * @var    int             C骴igo
+          * @var    int             C贸digo
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    string          Endere鏾 do Im髒el
+          * @var    string          Endere莽o do Im贸vel
           */
         protected $endereco;
         /**
           * @access protected
-          * @var    int             N鷐ero do Endere鏾 do Im髒el
+          * @var    int             N煤mero do Endere莽o do Im贸vel
           */
         protected $numero;
         /**
           * @access protected
-          * @var    string          Bairro do Im髒el
+          * @var    string          Bairro do Im贸vel
           */
         protected $bairro;
         /**
           * @access protected
-          * @var    string          CEP do Im髒el
+          * @var    string          CEP do Im贸vel
           */
         protected $cep;
 
         /**
           * @access protected
-          * @var    string          Cidade do Im髒el
+          * @var    string          Cidade do Im贸vel
           */
         protected $cidade;
 
         /**
           * @access protected
-          * @var    string          Estado do Im髒el
+          * @var    string          Estado do Im贸vel
           */
         protected $estado;
 
         /**
           * @access protected
-          * @var    double          Valor do Im髒el
+          * @var    double          Valor do Im贸vel
           */
         protected $preco;
 
         /**
           * @access protected
-          * @var    string          Situa玢o do Im髒el (Alguel, Venda, Arrendamento)
+          * @var    string          Situa莽茫o do Im贸vel (Alguel, Venda, Arrendamento)
           */
         protected $situacao;
 
         /**
           * @access protected
-          * @var    string          Categoria do Im髒el (Casa, Apartamento, Terreno)
+          * @var    string          Categoria do Im贸vel (Casa, Apartamento, Terreno)
           */
         protected $categoria;
 
         /**
           * @access protected
-          * @var    string          Categoria do Alguel do Im髒el (0 - Residencial; 1 - Comercial)
+          * @var    string          Categoria do Alguel do Im贸vel (0 - Residencial; 1 - Comercial)
           */
         protected $categoriaAluguel;
 
         /**
           * @access protected
-          * @var    boolean         Im髒el em destaque
+          * @var    boolean         Im贸vel em destaque
           */
         protected $destaque;
         /**
           * @access protected
-          * @var    string         Descri玢o do im髒el
+          * @var    string         Descri莽茫o do im贸vel
           */
         protected $descricao;
         /**
@@ -106,7 +106,7 @@
 
 
         /*
-         * M閠odos
+         * M茅todos
          */
         
     }

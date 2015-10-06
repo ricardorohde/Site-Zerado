@@ -25,7 +25,7 @@
                         (posicao     != ''  &&  posicao     != null &&  posicao     != 'undefined')
                     )
                 {
-                    imagens = imagens + img + "²" + titulo + "²" + descricao + "²" + posicao + "³";
+                    imagens = imagens + img + "Â²" + titulo + "Â²" + descricao + "Â²" + posicao + "Â³";
                 }
             }
 
@@ -60,7 +60,7 @@
                     }
                     else
                     {
-                        alert('Erro ao salvar o conteúdo!');
+                        alert('Erro ao salvar o conteÃºdo!');
                     }
                 }
             });

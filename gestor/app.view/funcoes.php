@@ -3,7 +3,7 @@
       * funcoes.php
       * Classe funcoes
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -16,10 +16,10 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-          * Método Construtor
+          * MÃ©todo Construtor
           *
           * @access private
           * @return void
@@ -30,7 +30,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -44,7 +44,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -57,8 +57,8 @@
         }
 
         /**
-          * Método show
-          * Exibe as informações na tela
+          * MÃ©todo show
+          * Exibe as informaÃ§Ãµes na tela
           *
           * @access public
           * @return void
@@ -67,7 +67,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Funções' title='Funções' >Funções</h1>
+                    <h1 alt='FunÃ§Ãµes' title='FunÃ§Ãµes' >FunÃ§Ãµes</h1>
                 </span>
 
                 <form id="funcoesForm" name='funcoesForm' action="" method="post">
@@ -130,7 +130,7 @@
                                 value='1'
                                 <?= $this->funcoes->imobiliaria == 1 ? 'checked' : '' ?>
                             >
-                            <label for='imobiliaria'>Imobiliária</label>
+                            <label for='imobiliaria'>ImobiliÃ¡ria</label>
                         </div>
 
                         <div class='12u'>

@@ -3,7 +3,7 @@
       * tbUsuarios.php
       * Classe de modelo tbUsuarios
       *
-      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,12 +23,12 @@
          */
         /**
           * @access private
-          * @var    int     CÛdigo do Usu·rio
+          * @var    int     C√≥digo do Usu√°rio
           */
         protected $codigo;
         /**
           * @access private
-          * @var    string  Nome do usu·rio
+          * @var    string  Nome do usu√°rio
           */
         protected $nome;
         /**
@@ -38,7 +38,7 @@
         protected $email;
         /**
           * @access private
-          * @var    string  Senha do usu·rio (hash 128 caracteres)
+          * @var    string  Senha do usu√°rio (hash 128 caracteres)
           */
         protected $senha;
         /**
@@ -59,10 +59,10 @@
 
 
         /*
-         * MÈtodos
+         * M√©todos
          */
         /**
-          * MÈtodo __set
+          * M√©todo __set
           * Seta o valor da variavel
           * 
           * @access public

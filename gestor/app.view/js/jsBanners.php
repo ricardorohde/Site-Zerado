@@ -16,7 +16,7 @@
                     ativo:          $('#ativo').val(),
                     request:        'salvaBanner'
                 },
-                success: function(data) 
+                success: function(data)
                 {
                     if(data == 1)
                     {
@@ -25,7 +25,7 @@
                     }
                     else
                     {
-                        alert('Erro ao salvar o conteúdo!');
+                        alert('Erro ao salvar o conteÃºdo!');
                     }
                 }
             });

@@ -3,7 +3,7 @@
       * tbSituacaoImoveis.php
       * Classe de modelo tbSituacaoImoveis
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,12 +23,12 @@
          */
         /**
           * @access protected
-          * @var    int         Código
+          * @var    int         CÃ³digo
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    string      Situação do Imóvel (Aluguel, Venda, Arrendamento)
+          * @var    string      SituaÃ§Ã£o do ImÃ³vel (Aluguel, Venda, Arrendamento)
           */
         protected $situacao;
         /**
@@ -44,7 +44,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

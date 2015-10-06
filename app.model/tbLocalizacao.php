@@ -3,7 +3,7 @@
       * tbLocalizacao.php
       * Classe de modelo tbLocalizacao
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,7 +23,7 @@
          */
         /**
           * @access protected
-          * @var    int         Código
+          * @var    int         CÃ³digo
           */
         protected $codigo;
         /**
@@ -44,7 +44,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

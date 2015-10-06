@@ -1,25 +1,25 @@
 <?php
     /**
      * TSqlDelete.php
-     * Esta classse provê meios para manipulação de uma instrução de DELETE no banco de dados
-     *      1.1 Realiza a exclusão lógica do item
+     * Esta classse provÃª meios para manipulaÃ§Ã£o de uma instruÃ§Ã£o de DELETE no banco de dados
+     *      1.1 Realiza a exclusÃ£o lÃ³gica do item
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
      * @version 1.1     
      * @access  public
      */
     final class TSqlDelete extends TSqlInstruction
     {
         /*
-         * Métodos
+         * MÃ©todos
          */
 
         /**
-         * Método getInstruction
-         * Retorna a instrução DELETE em forma de string
+         * MÃ©todo getInstruction
+         * Retorna a instruÃ§Ã£o DELETE em forma de string
          * 
          * @access public
-         * @return Instrução SQL DELETE
+         * @return InstruÃ§Ã£o SQL DELETE
          */
         public function getInstruction()
         {

@@ -1,9 +1,9 @@
 <?php
     /**
      * TLogger.php
-     * Esta classe provê uma interface abstrata para a definição de algoritmos de LOG
+     * Esta classe provÃª uma interface abstrata para a definiÃ§Ã£o de algoritmos de LOG
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
      * @version 1.0
      * @access  public
      */
@@ -20,11 +20,11 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
         /**
-         * Método Construtor
+         * MÃ©todo Construtor
          * Instancia um novo logger
          * 
          * @access private
@@ -40,8 +40,8 @@
         }
         
         /**
-         * Método write
-         * Define o método write como obrigatório
+         * MÃ©todo write
+         * Define o mÃ©todo write como obrigatÃ³rio
          * 
          * @abstract
          */

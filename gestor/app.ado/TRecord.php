@@ -1,13 +1,13 @@
 <?php
     /**
      * TRecord.class.php
-     * Esta classe provÍ os mÈtodos necess·rios para persistir e recuperar objetos da base de dados (Active Record) 
-     *    1.1 ObtenÁ„o das variaveis da classe de modelo
-     *        Inicio e conclus„o de transaÁ„o direto nas operaÁıes
+     * Esta classe prov√™ os m√©todos necess√°rios para persistir e recuperar objetos da base de dados (Active Record) 
+     *    1.1 Obten√ß√£o das variaveis da classe de modelo
+     *        Inicio e conclus√£o de transa√ß√£o direto nas opera√ß√µes
      *    1.2 Adicionado Paramatro excluido = 0 nas buscas
-     *    1.3 Criado mÈtodos de exclus„o fisicos
+     *    1.3 Criado m√©todos de exclus√£o fisicos
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÁ„o a Objetos - 2™ EdiÁ„o)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orieta√ß√£o a Objetos - 2¬™ Edi√ß√£o)
      * @version 1.3
      * @access  public
      */
@@ -19,16 +19,16 @@
 
 
         /*
-         * MÈtodos
+         * M√©todos
          */
         
 
         /**
-          * MÈtodo Construtor
+          * M√©todo Construtor
           * Instancia um Active Record. Se passado o codigo ja carrega o objeto
           *
           * @access  public
-          * @param   $codigo  CÛdico do Objeto
+          * @param   $codigo  C√≥dico do Objeto
           * @return  object   Objeto buscado
           */
         public function  __construct($codigo = NULL)
@@ -42,7 +42,7 @@
         }
 
         /**
-          * MÈtodo __clone
+          * M√©todo __clone
           * Executado quando o objeto for clonado
           * Limpa o Codigo para que seja gerado um novo para o objeto clonado
           * 
@@ -55,7 +55,7 @@
         }
 
         /**
-          * MÈtodo __set
+          * M√©todo __set
           * Seta o valor da variavel
           * 
           * @since 1.1
@@ -73,7 +73,7 @@
         }
 
         /**
-          * MÈtodo __get
+          * M√©todo __get
           * Seta o valor da variavel
           * 
           * @since 1.1
@@ -87,7 +87,7 @@
         }
         
         /**
-          * MÈtodo getEntity
+          * M√©todo getEntity
           * Retorna o nome da entidade (tabela)
           * 
           * @access private
@@ -101,7 +101,7 @@
         }
 
         /**
-         * MÈtodo getVars
+         * M√©todo getVars
          * Retorna array de variaveis
          * 
          * @since   1.1
@@ -125,18 +125,18 @@
         }
         
         /**
-          * MÈtodo store
-          * Armazena o objeto na base de dados e retorn o n˙mero de linhas afetadas pela instruÁ„o SQL (0 ou 1)
+          * M√©todo store
+          * Armazena o objeto na base de dados e retorn o n√∫mero de linhas afetadas pela instru√ß√£o SQL (0 ou 1)
           * 
           * @access public
-          * @throws Exception   N„o h· transaÁ„o ativa
-          * @return int         Numero de linhas afetadas pela instruÁ„o SQL
+          * @throws Exception   N√£o h√° transa√ß√£o ativa
+          * @return int         Numero de linhas afetadas pela instru√ß√£o SQL
           */
         public function store()
         {
             if (empty($this->codigo) or (!$this->load($this->codigo))) 
             {                
-                // cria instruÁ„o SQL
+                // cria instru√ß√£o SQL
                 $sql = new TSqlInsert;
                 $sql->addEntity($this->getEntity());
                 // percorre dados do objeto
@@ -148,7 +148,7 @@
             }
             else
             {
-                // cria instruÁ„o UPDATE
+                // cria instru√ß√£o UPDATE
                 $sql = new TSqlUpdate;
                 $sql->addEntity($this->getEntity());
 
@@ -180,23 +180,23 @@
             }
             else
             {
-                throw new Exception('N„o h· transaÁ„o ativa');
+                throw new Exception('N√£o h√° transa√ß√£o ativa');
             }
         }
         
         /**
-          * MÈtodo load
-          * Recupera (retorna) um objeto da base de dados atravÈs de seu Codigo e instancia ele na memÛria
+          * M√©todo load
+          * Recupera (retorna) um objeto da base de dados atrav√©s de seu Codigo e instancia ele na mem√≥ria
           * 
           * @access public
           * @param  $codigo     Codigo do Objeto
-          * @throws Exception   N„o h· transaÁ„o ativa
+          * @throws Exception   N√£o h√° transa√ß√£o ativa
           * @return object      Objeto da base de dados
           */
         public function load($codigo)
         {
 
-            // cria instruÁ„o SQL
+            // cria instru√ß√£o SQL
             $sql = new TSqlSelect;
             $sql->addEntity($this->getEntity());
             $sql->addColumn('*');
@@ -224,22 +224,22 @@
             }
             else
             {
-                throw new Exception('N„o h· transaÁ„o ativa');
+                throw new Exception('N√£o h√° transa√ß√£o ativa');
             }
         }
         
         /**
-          * MÈtodo loadCriteria
-          * Recupera (retorna) um objeto da base de dados atravÈs de um CritÈrio e instancia ele na memÛria
+          * M√©todo loadCriteria
+          * Recupera (retorna) um objeto da base de dados atrav√©s de um Crit√©rio e instancia ele na mem√≥ria
           * 
           * @access public
-          * @param  $criteria   CritÈrio de seleÁ„o
-          * @throws Exception   N„o h· transaÁ„o ativa
+          * @param  $criteria   Crit√©rio de sele√ß√£o
+          * @throws Exception   N√£o h√° transa√ß√£o ativa
           * @return object      Objeto da base de dados
           */
         public function loadCriteria($criteria)
         {
-            // cria instruÁ„o SQL
+            // cria instru√ß√£o SQL
             $sql = new TSqlSelect;
             $sql->addEntity($this->getEntity());
             $sql->addColumn('*');
@@ -266,24 +266,24 @@
             }
             else
             {
-                throw new Exception('N„o h· transaÁ„o ativa');
+                throw new Exception('N√£o h√° transa√ß√£o ativa');
             }
         }
         
         /**
-          * MÈtodo delete
-          * Exclui um objeto da base de dados atravÈs de um CÛdigo
+          * M√©todo delete
+          * Exclui um objeto da base de dados atrav√©s de um C√≥digo
           * 
           * @access public
-          * @param  $codigo     CÛdigo do objeto
-          * @throws Exception   N„o h· transaÁ„o ativa
-          * @return boolean     Resultado da operaÁ„o de delete
+          * @param  $codigo     C√≥digo do objeto
+          * @throws Exception   N√£o h√° transa√ß√£o ativa
+          * @return boolean     Resultado da opera√ß√£o de delete
           */
         public function delete($codigo = NULL)
         {
             $codigo = $codigo ? $codigo : $this->codigo;
             
-            // cria instruÁ„o SQL
+            // cria instru√ß√£o SQL
             $sql = new TSqlDelete;
             $sql->addEntity($this->getEntity());
             
@@ -304,25 +304,25 @@
             }
             else
             {
-                throw new Exception('N„o h· transaÁ„o ativa');
+                throw new Exception('N√£o h√° transa√ß√£o ativa');
             }           
         }
 
         /**
-          * MÈtodo deleteFisico
-          * Exclui um objeto da base de dados atravÈs de um CÛdigo
+          * M√©todo deleteFisico
+          * Exclui um objeto da base de dados atrav√©s de um C√≥digo
           * 
           * @since  1.3
           * @access public
-          * @param  $codigo     CÛdigo do objeto
-          * @throws Exception   N„o h· transaÁ„o ativa
-          * @return boolean     Resultado da operaÁ„o de delete
+          * @param  $codigo     C√≥digo do objeto
+          * @throws Exception   N√£o h√° transa√ß√£o ativa
+          * @return boolean     Resultado da opera√ß√£o de delete
           */
         public function deleteFisico($codigo = NULL)
         {
             $codigo = $codigo ? $codigo : $this->codigo;
             
-            // cria instruÁ„o SQL
+            // cria instru√ß√£o SQL
             $sql = new TSqlDeleteFisico;
             $sql->addEntity($this->getEntity());
             
@@ -343,25 +343,25 @@
             }
             else
             {
-                throw new Exception('N„o h· transaÁ„o ativa');
+                throw new Exception('N√£o h√° transa√ß√£o ativa');
             }           
         }
         
         /**
-          * MÈtodo deleteCriteria
-          * Exclui um objeto da base de dados atravÈs de um CÛdigo
+          * M√©todo deleteCriteria
+          * Exclui um objeto da base de dados atrav√©s de um C√≥digo
           * 
           * @access public
-          * @param  $criteria   CritÈrio de seleÁ„o
-          * @throws Exception   N„o h· transaÁ„o ativa
-          * @return boolean     Resultado da operaÁ„o de delete
+          * @param  $criteria   Crit√©rio de sele√ß√£o
+          * @throws Exception   N√£o h√° transa√ß√£o ativa
+          * @return boolean     Resultado da opera√ß√£o de delete
           */
         public function deleteCriteria($criteria)
         {
         
             $codigo = $codigo ? $codigo : $this->codigo;
             
-            // cria instruÁ„o SQL
+            // cria instru√ß√£o SQL
             $sql = new TSqlDelete;
             $sql->addEntity($this->getEntity());
             
@@ -382,26 +382,26 @@
             }
             else
             {
-                throw new Exception('N„o h· transaÁ„o ativa');
+                throw new Exception('N√£o h√° transa√ß√£o ativa');
             }           
         }
 
         /**
-          * MÈtodo deleteCriteriaFisico
-          * Exclui um objeto da base de dados atravÈs de um CÛdigo
+          * M√©todo deleteCriteriaFisico
+          * Exclui um objeto da base de dados atrav√©s de um C√≥digo
           * 
           * @since  1.3
           * @access public
-          * @param  $criteria   CritÈrio de seleÁ„o
-          * @throws Exception   N„o h· transaÁ„o ativa
-          * @return boolean     Resultado da operaÁ„o de delete
+          * @param  $criteria   Crit√©rio de sele√ß√£o
+          * @throws Exception   N√£o h√° transa√ß√£o ativa
+          * @return boolean     Resultado da opera√ß√£o de delete
           */
         public function deleteCriteriaFisico($criteria)
         {
         
             $codigo = $codigo ? $codigo : $this->codigo;
             
-            // cria instruÁ„o SQL
+            // cria instru√ß√£o SQL
             $sql = new TSqlDeleteFisico;
             $sql->addEntity($this->getEntity());
             
@@ -422,17 +422,17 @@
             }
             else
             {
-                throw new Exception('N„o h· transaÁ„o ativa');
+                throw new Exception('N√£o h√° transa√ß√£o ativa');
             }           
         }
         
         /**
-          * MÈtodo getLast
-          * Retorna o ˙ltimo cÛdigo
+          * M√©todo getLast
+          * Retorna o √∫ltimo c√≥digo
           * 
           * @access public
-          * @throws Exception   N„o h· transaÁ„o ativa
-          * @return int         ⁄ltimo cÛdigo
+          * @throws Exception   N√£o h√° transa√ß√£o ativa
+          * @return int         √öltimo c√≥digo
           */
         public function getLast()
         {
@@ -441,7 +441,7 @@
 
             if ( $conn = TTransaction::get() ) 
             {
-                // cria instruÁ„o SQL
+                // cria instru√ß√£o SQL
                 $sql = new TSqlSelect;
                 $sql->addColumn('max(codigo) as codigo');
                 $sql->addEntity($this->getEntity());            
@@ -455,7 +455,7 @@
             }
             else
             {
-                throw new Exception('N„o h· transaÁ„o ativa');
+                throw new Exception('N√£o h√° transa√ß√£o ativa');
             }           
         }
     }

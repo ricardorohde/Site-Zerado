@@ -1,13 +1,13 @@
 <?php
     /**
      * Classe TTransaction
-     * Esta classe prove os métodos necessarios para manipular transaçãoes
+     * Esta classe prove os mÃ©todos necessarios para manipular transaÃ§Ã£oes
      * Atomicidade
      * Consistencia
      * Isolamento
      * Durabilidade
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
      * @version 1.0
      * @access  public
      */
@@ -18,7 +18,7 @@
          */
         /**
           * @access private
-          * @var    TConnection  Conexão Ativa
+          * @var    TConnection  ConexÃ£o Ativa
           */
         private static $conn;
         /**
@@ -28,12 +28,12 @@
         private static $logger;
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
         /**
-         * Método open()
-         * Abre uma transação e uma conexão ao Banco de Dados
+         * MÃ©todo open()
+         * Abre uma transaÃ§Ã£o e uma conexÃ£o ao Banco de Dados
          * 
          * @access public
          * @param  $database = nome do banco de dados
@@ -41,11 +41,11 @@
          */
         public static function open($database)
         {
-            //Abre uma conexão e armazena na propriedade estatica $conn
+            //Abre uma conexÃ£o e armazena na propriedade estatica $conn
             if(empty(self::$conn))
             {
                 self::$conn = TConnection::open($database);
-                //Inicia transação
+                //Inicia transaÃ§Ã£o
                 self::$conn->beginTransaction();
                 //Desliga o log do SQL
                 self::$logger = NULL;
@@ -53,21 +53,21 @@
         }
         
         /**
-         * Método get()
-         * retorna a conexão ativa da transação
+         * MÃ©todo get()
+         * retorna a conexÃ£o ativa da transaÃ§Ã£o
          * 
          * @access public
-         * @return Conexão Ativa
+         * @return ConexÃ£o Ativa
          */
         public static function get()
         {
-            //Retorna a conexão ativa
+            //Retorna a conexÃ£o ativa
             return self::$conn;
         }
         
         /**
          * Metodo rollback()
-         * Desfaz todas operações realizadas na transação
+         * Desfaz todas operaÃ§Ãµes realizadas na transaÃ§Ã£o
          * 
          * @access public
          * @return void
@@ -76,15 +76,15 @@
         {
             if(self::$conn)
             {
-                //Desfaz as operações realizadas durante a transação
+                //Desfaz as operaÃ§Ãµes realizadas durante a transaÃ§Ã£o
                 self::$conn->rollBack();
                 self::$conn = NULL;
             }
         }
         
         /**
-         * Método close()
-         * Aplica todas as operações realizadas e fecha a transação
+         * MÃ©todo close()
+         * Aplica todas as operaÃ§Ãµes realizadas e fecha a transaÃ§Ã£o
          * 
          * @access public
          * @return void
@@ -93,16 +93,16 @@
         {
             if(self::$conn)
             {
-                //Aplica as operações realizadas durante a transação
+                //Aplica as operaÃ§Ãµes realizadas durante a transaÃ§Ã£o
                 self::$conn->commit();
                 self::$conn = NULL;
             }
         }
         
         /**
-         * Método setLogger()
+         * MÃ©todo setLogger()
          * Armazena uma mensagem no arquivo de LOG
-         * Baseada a estratégia ($logger) atual
+         * Baseada a estratÃ©gia ($logger) atual
          * 
          * @access public
          * @param  $logger = Log a ser salvo
@@ -114,9 +114,9 @@
         }
         
         /**
-         * Método log()
+         * MÃ©todo log()
          * Armazena uma mensagem no arquivo de LOG
-         * Baseada na estratégia ($logger) atual
+         * Baseada na estratÃ©gia ($logger) atual
          * 
          * @access public
          * @param $message = Mensagem a ser salva no Log

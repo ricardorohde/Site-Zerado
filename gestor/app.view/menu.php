@@ -7,9 +7,9 @@
     <nav id='menuLateral'>
         <ul>
             <li>
-                <a href='/configuracoes' title='Configurações' alt='Configurações'>
+                <a href='/configuracoes' title='ConfiguraÃ§Ãµes' alt='ConfiguraÃ§Ãµes'>
                     <i class="fa fa-cog"></i>&nbsp;
-                    Configurações
+                    ConfiguraÃ§Ãµes
                 </a>
             </li>
             <?php
@@ -17,24 +17,24 @@
                 {
                     ?>
                     <li>
-                        <a href='/configuracoesPagSeguro' title='Configurações PagSeguro' alt='Configurações PagSeguro'>
+                        <a href='/configuracoesPagSeguro' title='ConfiguraÃ§Ãµes PagSeguro' alt='ConfiguraÃ§Ãµes PagSeguro'>
                             <i class="fa fa-cog"></i>&nbsp;
-                            Configurações PagSeguro
+                            ConfiguraÃ§Ãµes PagSeguro
                         </a>
                     </li>
                     <?php
                 }
             ?>
             <li>
-                <a href='/localizacao' title='Categoria Páginas' alt='Categoria Páginas'>
+                <a href='/localizacao' title='Categoria PÃ¡ginas' alt='Categoria PÃ¡ginas'>
                     <i class="fa fa-list"></i>&nbsp;
-                    Categoria Páginas
+                    Categoria PÃ¡ginas
                 </a>
             </li>
             <li>
-                <a href='/paginas' title='Páginas' alt='Páginas'>
+                <a href='/paginas' title='PÃ¡ginas' alt='PÃ¡ginas'>
                     <i class="fa fa-file-text"></i>&nbsp;
-                    Páginas
+                    PÃ¡ginas
                 </a>
             </li>
              <?php
@@ -106,21 +106,21 @@
                 {
                     ?>
                     <li>
-                        <a href='/situacaoImoveis' title='Situação Imóveis' alt='Situação Imóveis'>
+                        <a href='/situacaoImoveis' title='SituaÃ§Ã£o ImÃ³veis' alt='SituaÃ§Ã£o ImÃ³veis'>
                             <i class="fa fa-list"></i>&nbsp;
-                            Situação Imóveis
+                            SituaÃ§Ã£o ImÃ³veis
                         </a>
                     </li>
                     <li>
-                        <a href='/categoriaImoveis' title='Categoria Imóveis' alt='Categoria Imóveis'>
+                        <a href='/categoriaImoveis' title='Categoria ImÃ³veis' alt='Categoria ImÃ³veis'>
                             <i class="fa fa-list"></i>&nbsp;
-                            Categoria Imóveis
+                            Categoria ImÃ³veis
                         </a>
                     </li>
                     <li>
-                        <a href='/imoveis' title='Imóveis' alt='Imóveis'>
+                        <a href='/imoveis' title='ImÃ³veis' alt='ImÃ³veis'>
                             <i class="fa fa-home"></i>&nbsp;
-                            Imóveis
+                            ImÃ³veis
                         </a>
                     </li>
                     <?php
@@ -144,9 +144,9 @@
                 }
             ?>
             <li>
-                <a href='/usuarios' title='Usuários' alt='Usuários'>
+                <a href='/usuarios' title='UsuÃ¡rios' alt='UsuÃ¡rios'>
                     <i class="fa fa-user-plus"></i>&nbsp;
-                    Usuários
+                    UsuÃ¡rios
                 </a>
             </li>
             <li>
@@ -169,7 +169,7 @@
             <span class='center'>
                 &copy; 2015 - 
                 <a href='http://rogeriopereira.info' alt='Desenvolvedor' title='Desenvolvedor' target='_blank'>
-                    Rogério Pereira
+                    RogÃ©rio Pereira
                 </a>
             </span>
         </div>

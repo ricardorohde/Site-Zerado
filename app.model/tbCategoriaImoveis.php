@@ -3,7 +3,7 @@
       * tbCategoriaImoveis.php
       * Classe de modelo tbCategoriaImoveis
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,12 +23,12 @@
          */
         /**
           * @access protected
-          * @var    int         Código
+          * @var    int         CÃ³digo
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    string      Categoria do Imóvel (Casa, Apartamento, Terreno)
+          * @var    string      Categoria do ImÃ³vel (Casa, Apartamento, Terreno)
           */
         protected $categoria;
         /**
@@ -44,7 +44,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

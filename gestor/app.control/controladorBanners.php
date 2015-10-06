@@ -3,7 +3,7 @@
       * controladorBanners.php
       * Classe de Controle controladorBanners
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -16,10 +16,10 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-         * Método Construtor
+         * MÃ©todo Construtor
          *
          * @access private
          * @return void
@@ -30,7 +30,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -44,7 +44,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public

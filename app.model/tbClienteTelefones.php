@@ -3,7 +3,7 @@
       * tbClienteTelefones.php
       * Classe de modelo tbClienteTelefones
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,17 +23,17 @@
          */
         /**
           * @access protected
-          * @var    int             Código
+          * @var    int             CÃ³digo
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    int             Código do Cliente
+          * @var    int             CÃ³digo do Cliente
           */
         protected $codigoCliente;
         /**
           * @access protected
-          * @var    string          Número de Telefone
+          * @var    string          NÃºmero de Telefone
           */
         protected $telefone;
         /**
@@ -54,7 +54,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

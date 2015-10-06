@@ -3,7 +3,7 @@
       * configuracoes.php
       * Classe configuracoes
       *
-      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * MÈtodos
+         * M√©todos
          */
         /**
-          * MÈtodo Construtor
+          * M√©todo Construtor
           *
           * @access private
           * @return void
@@ -34,7 +34,7 @@
         }
 
         /**
-          * MÈtodo __set
+          * M√©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -48,7 +48,7 @@
         }
 
         /**
-          * MÈtodo __get
+          * M√©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -61,8 +61,8 @@
         }
 
         /**
-          * MÈtodo show
-          * Exibe as informaÁıes na tela
+          * M√©todo show
+          * Exibe as informa√ß√µes na tela
           *
           * @access public
           * @return void
@@ -71,7 +71,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='ConfiguraÁıes' title='ConfiguraÁıes'>ConfiguraÁıes</h1>
+                    <h1 alt='Configura√ß√µes' title='Configura√ß√µes'>Configura√ß√µes</h1>
                 </span>
   
 
@@ -93,14 +93,14 @@
                         </div>
                         <div class='4u'>
                             <label for='titulo'>
-                                TÌtulo
+                                T√≠tulo
                             </label>
                             <input 
                                 type='text' 
                                 id='titulo' 
                                 name='titulo'  
                                 maxlength='100'
-                                placeholder='TÌtulo'
+                                placeholder='T√≠tulo'
                                 value="<?php echo $this->configuracoes->titulo; ?>"
                             >
                         </div>
@@ -119,40 +119,40 @@
                         </div>
                         <div class='4u'>
                             <label for='conteudo'>
-                                Conte˙do
+                                Conte√∫do
                             </label>
                             <input 
                                 type='text' 
                                 id='conteudo' 
                                 name='conteudo' 
                                 maxlength='255'
-                                placeholder='Conte˙do' 
+                                placeholder='Conte√∫do' 
                                 value="<?php echo $this->configuracoes->conteudo; ?>"
                             >
                         </div>
                         <div class='4u'>
                             <label for='dominio'>
-                                DomÌnio
+                                Dom√≠nio
                             </label>
                             <input 
                                 type='text' 
                                 id='dominio' 
                                 name='dominio' 
                                 maxlength='100'
-                                placeholder='DomÌnio' 
+                                placeholder='Dom√≠nio' 
                                 value="<?php echo $this->configuracoes->dominio; ?>"
                             >
                         </div>
                         <div class='4u'>
                             <label for='descricao'>
-                                DescriÁ„o
+                                Descri√ß√£o
                             </label>
                             <input 
                                 type='text' 
                                 id='descricao' 
                                 name='descricao' 
                                 maxlength='160'
-                                placeholder='DescriÁ„o'
+                                placeholder='Descri√ß√£o'
                                 value="<?php echo $this->configuracoes->descricao; ?>"
                             >
                         </div>
@@ -171,26 +171,26 @@
                         </div>
                         <div class='4u'>
                             <label for='endereco'>
-                                EndereÁo
+                                Endere√ßo
                             </label>
                             <input 
                                 type='text' 
                                 id='endereco' 
                                 name='endereco' 
                                 maxlength='100'
-                                placeholder='EndereÁo' 
+                                placeholder='Endere√ßo' 
                                 value="<?php echo $this->configuracoes->endereco; ?>"
                             >
                         </div>
                         <div class='4u'>
                             <label for='numero'>
-                                N˙mero
+                                N√∫mero
                             </label>
                             <input 
                                 type='number' 
                                 id='numero' 
                                 name='numero' 
-                                placeholder='N˙mero' 
+                                placeholder='N√∫mero' 
                                 min="1"
                                 value="<?php echo $this->configuracoes->numero; ?>"
                             >
@@ -243,29 +243,29 @@
                                 <option value='' <?= ($this->configuracoes->estado == '' ? 'selected' : '') ?>></option>
                                 <option value='AC' <?= ($this->configuracoes->estado == 'AC' ? 'selected' : '') ?>>Acre</option>
                                 <option value='AL' <?= ($this->configuracoes->estado == 'AL' ? 'selected' : '') ?>>Alagoas</option>
-                                <option value='AP' <?= ($this->configuracoes->estado == 'AP' ? 'selected' : '') ?>>Amap·</option>
+                                <option value='AP' <?= ($this->configuracoes->estado == 'AP' ? 'selected' : '') ?>>Amap√°</option>
                                 <option value='AM' <?= ($this->configuracoes->estado == 'AM' ? 'selected' : '') ?>>Amazonas</option>
                                 <option value='BA' <?= ($this->configuracoes->estado == 'BA' ? 'selected' : '') ?>>Bahia</option>
-                                <option value='CE' <?= ($this->configuracoes->estado == 'CE' ? 'selected' : '') ?>>Cear·</option>
+                                <option value='CE' <?= ($this->configuracoes->estado == 'CE' ? 'selected' : '') ?>>Cear√°</option>
                                 <option value='DF' <?= ($this->configuracoes->estado == 'DF' ? 'selected' : '') ?>>Distrito Federal</option>
-                                <option value='ES' <?= ($this->configuracoes->estado == 'ES' ? 'selected' : '') ?>>EspÌrito Santo</option>
-                                <option value='GO' <?= ($this->configuracoes->estado == 'GO' ? 'selected' : '') ?>>Goi·s</option>
-                                <option value='MA' <?= ($this->configuracoes->estado == 'MA' ? 'selected' : '') ?>>Maranh„o</option>
+                                <option value='ES' <?= ($this->configuracoes->estado == 'ES' ? 'selected' : '') ?>>Esp√≠rito Santo</option>
+                                <option value='GO' <?= ($this->configuracoes->estado == 'GO' ? 'selected' : '') ?>>Goi√°s</option>
+                                <option value='MA' <?= ($this->configuracoes->estado == 'MA' ? 'selected' : '') ?>>Maranh√£o</option>
                                 <option value='MT' <?= ($this->configuracoes->estado == 'MT' ? 'selected' : '') ?>>Mato Grosso</option>
                                 <option value='MS' <?= ($this->configuracoes->estado == 'MS' ? 'selected' : '') ?>>Mato Grosso do Sul</option>
                                 <option value='MG' <?= ($this->configuracoes->estado == 'MG' ? 'selected' : '') ?>>Minas Gerais</option>
-                                <option value='PA' <?= ($this->configuracoes->estado == 'PA' ? 'selected' : '') ?>>Par·</option>
-                                <option value='PB' <?= ($this->configuracoes->estado == 'PB' ? 'selected' : '') ?>>ParaÌba</option>
-                                <option value='PR' <?= ($this->configuracoes->estado == 'PR' ? 'selected' : '') ?>>Paran·</option>
+                                <option value='PA' <?= ($this->configuracoes->estado == 'PA' ? 'selected' : '') ?>>Par√°</option>
+                                <option value='PB' <?= ($this->configuracoes->estado == 'PB' ? 'selected' : '') ?>>Para√≠ba</option>
+                                <option value='PR' <?= ($this->configuracoes->estado == 'PR' ? 'selected' : '') ?>>Paran√°</option>
                                 <option value='PE' <?= ($this->configuracoes->estado == 'PE' ? 'selected' : '') ?>>Pernambuco</option>
-                                <option value='PI' <?= ($this->configuracoes->estado == 'PI' ? 'selected' : '') ?>>PiauÌ</option>
+                                <option value='PI' <?= ($this->configuracoes->estado == 'PI' ? 'selected' : '') ?>>Piau√≠</option>
                                 <option value='RJ' <?= ($this->configuracoes->estado == 'RJ' ? 'selected' : '') ?>>Rio de Janeiro</option>
                                 <option value='RN' <?= ($this->configuracoes->estado == 'RN' ? 'selected' : '') ?>>Rio Grande do Norte</option>
                                 <option value='RS' <?= ($this->configuracoes->estado == 'RS' ? 'selected' : '') ?>>Rio Grande do Sul</option>
-                                <option value='RO' <?= ($this->configuracoes->estado == 'RO' ? 'selected' : '') ?>>RondÙnia</option>
+                                <option value='RO' <?= ($this->configuracoes->estado == 'RO' ? 'selected' : '') ?>>Rond√¥nia</option>
                                 <option value='RR' <?= ($this->configuracoes->estado == 'RR' ? 'selected' : '') ?>>Roraima</option>
                                 <option value='SC' <?= ($this->configuracoes->estado == 'SC' ? 'selected' : '') ?>>Santa Catarina</option>
-                                <option value='SP' <?= ($this->configuracoes->estado == 'SP' ? 'selected' : '') ?>>S„o Paulo</option>
+                                <option value='SP' <?= ($this->configuracoes->estado == 'SP' ? 'selected' : '') ?>>S√£o Paulo</option>
                                 <option value='SE' <?= ($this->configuracoes->estado == 'SE' ? 'selected' : '') ?>>Sergipe</option>
                                 <option value='TO' <?= ($this->configuracoes->estado == 'TO' ? 'selected' : '') ?>>Tocantins</option>
                             </select>

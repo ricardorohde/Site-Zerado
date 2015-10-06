@@ -3,7 +3,7 @@
       * controladorFuncoes.php
       * Classe de Controle controladorFuncoes
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -15,10 +15,10 @@
         private $funcoes;
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-         * Método Construtor
+         * MÃ©todo Construtor
          *
          * @access private
          * @return void
@@ -29,7 +29,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -43,7 +43,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -56,11 +56,11 @@
         }
 
          /**
-         * Método getFuncoes
+         * MÃ©todo getFuncoes
          * Retorna as funcoes do banco de dados
          * 
          * @access public
-         * @return tbFuncoes    Funções do site
+         * @return tbFuncoes    FunÃ§Ãµes do site
          */
         public function getFuncoes()
         {

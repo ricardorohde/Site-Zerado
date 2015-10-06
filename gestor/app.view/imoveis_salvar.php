@@ -3,7 +3,7 @@
       * imoveis_salvar.php
       * Classe imoveis_salvar
       *
-      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -19,10 +19,10 @@
 
 
         /*
-         * MÈtodos
+         * M√©todos
          */
         /**
-          * MÈtodo Construtor
+          * M√©todo Construtor
           *
           * @access private
           * @return void
@@ -45,7 +45,7 @@
         }
 
         /**
-          * MÈtodo __set
+          * M√©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -59,7 +59,7 @@
         }
 
         /**
-          * MÈtodo __get
+          * M√©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -72,8 +72,8 @@
         }
 
         /**
-          * MÈtodo show
-          * Exibe as informaÁıes na tela
+          * M√©todo show
+          * Exibe as informa√ß√µes na tela
           *
           * @access public
           * @return void
@@ -82,7 +82,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='ImÛveis' title='ImÛveis' >ImÛveis</h1>
+                    <h1 alt='Im√≥veis' title='Im√≥veis' >Im√≥veis</h1>
                 </span>
 
                 <div id='retorno'></div>
@@ -104,14 +104,14 @@
                             >
                         </div>
                         <div class='6u'>
-                            <label for='numero'>N˙mero</label>
+                            <label for='numero'>N√∫mero</label>
                             <input 
                                 type='number' 
                                 id='numero' 
                                 name='numero'  
                                 min="1"
                                 step='1'
-                                placeholder='N˙mero'
+                                placeholder='N√∫mero'
                                 value="<?php echo $this->imovel->numero; ?>"
                                 required
                             >
@@ -159,35 +159,35 @@
                                 <option value='' <?= ($this->imovel->estado == '' ? 'selected' : '') ?>></option>
                                 <option value='AC' <?= ($this->imovel->estado == 'AC' ? 'selected' : '') ?>>Acre</option>
                                 <option value='AL' <?= ($this->imovel->estado == 'AL' ? 'selected' : '') ?>>Alagoas</option>
-                                <option value='AP' <?= ($this->imovel->estado == 'AP' ? 'selected' : '') ?>>Amap·</option>
+                                <option value='AP' <?= ($this->imovel->estado == 'AP' ? 'selected' : '') ?>>Amap√°</option>
                                 <option value='AM' <?= ($this->imovel->estado == 'AM' ? 'selected' : '') ?>>Amazonas</option>
                                 <option value='BA' <?= ($this->imovel->estado == 'BA' ? 'selected' : '') ?>>Bahia</option>
-                                <option value='CE' <?= ($this->imovel->estado == 'CE' ? 'selected' : '') ?>>Cear·</option>
+                                <option value='CE' <?= ($this->imovel->estado == 'CE' ? 'selected' : '') ?>>Cear√°</option>
                                 <option value='DF' <?= ($this->imovel->estado == 'DF' ? 'selected' : '') ?>>Distrito Federal</option>
-                                <option value='ES' <?= ($this->imovel->estado == 'ES' ? 'selected' : '') ?>>EspÌrito Santo</option>
-                                <option value='GO' <?= ($this->imovel->estado == 'GO' ? 'selected' : '') ?>>Goi·s</option>
-                                <option value='MA' <?= ($this->imovel->estado == 'MA' ? 'selected' : '') ?>>Maranh„o</option>
+                                <option value='ES' <?= ($this->imovel->estado == 'ES' ? 'selected' : '') ?>>Esp√≠rito Santo</option>
+                                <option value='GO' <?= ($this->imovel->estado == 'GO' ? 'selected' : '') ?>>Goi√°s</option>
+                                <option value='MA' <?= ($this->imovel->estado == 'MA' ? 'selected' : '') ?>>Maranh√£o</option>
                                 <option value='MT' <?= ($this->imovel->estado == 'MT' ? 'selected' : '') ?>>Mato Grosso</option>
                                 <option value='MS' <?= ($this->imovel->estado == 'MS' ? 'selected' : '') ?>>Mato Grosso do Sul</option>
                                 <option value='MG' <?= ($this->imovel->estado == 'MG' ? 'selected' : '') ?>>Minas Gerais</option>
-                                <option value='PA' <?= ($this->imovel->estado == 'PA' ? 'selected' : '') ?>>Par·</option>
-                                <option value='PB' <?= ($this->imovel->estado == 'PB' ? 'selected' : '') ?>>ParaÌba</option>
-                                <option value='PR' <?= ($this->imovel->estado == 'PR' ? 'selected' : '') ?>>Paran·</option>
+                                <option value='PA' <?= ($this->imovel->estado == 'PA' ? 'selected' : '') ?>>Par√°</option>
+                                <option value='PB' <?= ($this->imovel->estado == 'PB' ? 'selected' : '') ?>>Para√≠ba</option>
+                                <option value='PR' <?= ($this->imovel->estado == 'PR' ? 'selected' : '') ?>>Paran√°</option>
                                 <option value='PE' <?= ($this->imovel->estado == 'PE' ? 'selected' : '') ?>>Pernambuco</option>
-                                <option value='PI' <?= ($this->imovel->estado == 'PI' ? 'selected' : '') ?>>PiauÌ</option>
+                                <option value='PI' <?= ($this->imovel->estado == 'PI' ? 'selected' : '') ?>>Piau√≠</option>
                                 <option value='RJ' <?= ($this->imovel->estado == 'RJ' ? 'selected' : '') ?>>Rio de Janeiro</option>
                                 <option value='RN' <?= ($this->imovel->estado == 'RN' ? 'selected' : '') ?>>Rio Grande do Norte</option>
                                 <option value='RS' <?= ($this->imovel->estado == 'RS' ? 'selected' : '') ?>>Rio Grande do Sul</option>
-                                <option value='RO' <?= ($this->imovel->estado == 'RO' ? 'selected' : '') ?>>RondÙnia</option>
+                                <option value='RO' <?= ($this->imovel->estado == 'RO' ? 'selected' : '') ?>>Rond√¥nia</option>
                                 <option value='RR' <?= ($this->imovel->estado == 'RR' ? 'selected' : '') ?>>Roraima</option>
                                 <option value='SC' <?= ($this->imovel->estado == 'SC' ? 'selected' : '') ?>>Santa Catarina</option>
-                                <option value='SP' <?= ($this->imovel->estado == 'SP' ? 'selected' : '') ?>>S„o Paulo</option>
+                                <option value='SP' <?= ($this->imovel->estado == 'SP' ? 'selected' : '') ?>>S√£o Paulo</option>
                                 <option value='SE' <?= ($this->imovel->estado == 'SE' ? 'selected' : '') ?>>Sergipe</option>
                                 <option value='TO' <?= ($this->imovel->estado == 'TO' ? 'selected' : '') ?>>Tocantins</option>
                             </select>
                         </div>
                         <div class='6u'>
-                            <label for='situacao'>SituaÁ„o</label>
+                            <label for='situacao'>Situa√ß√£o</label>
                             <select name='situacao' id='situacao'>
                                 <option value='' <?= ($this->imovel->situacao == '' ? 'selected' : '') ?>></option>
                                 <?php 
@@ -225,7 +225,7 @@
                         </div>
 
                         <div class='6u'>
-                            <label for='categoriaAluguel'>Categoria ImÛvel</label>
+                            <label for='categoriaAluguel'>Categoria Im√≥vel</label>
                             <select name='categoriaAluguel' id='categoriaAluguel'>
                                 <option value='' <?= ($this->imovel->categoriaAluguel == '' ? 'selected' : '') ?>></option>
                                 <option value='1' <?= ($this->imovel->categoriaAluguel == '0' ? 'selected' : '') ?>>Residencial</option>
@@ -248,7 +248,7 @@
                         <div class='6u'>
                             <label for='destaque'>Destaque</label>
                             <select name='destaque' id='destaque'>
-                                <option value='0' <?= ($this->imovel->destaque == '0' ? 'selected' : '') ?>>N„o</option>  
+                                <option value='0' <?= ($this->imovel->destaque == '0' ? 'selected' : '') ?>>N√£o</option>  
                                 <option value='1' <?= ($this->imovel->destaque == '1' ? 'selected' : '') ?>>Sim</option>
                             </select>
                         </div>
@@ -256,7 +256,7 @@
                             <label for='ativo'>Ativo</label>
                             <select name='ativo' id='ativo'>
                                 <option value='1' <?= ($this->imovel->ativo == '1' ? 'selected' : '') ?>>Sim</option>
-                                <option value='0' <?= ($this->imovel->ativo == '0' ? 'selected' : '') ?>>N„o</option>
+                                <option value='0' <?= ($this->imovel->ativo == '0' ? 'selected' : '') ?>>N√£o</option>
                             </select>
                         </div>
 

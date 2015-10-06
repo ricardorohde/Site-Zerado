@@ -3,7 +3,7 @@
       * tbProdutos.php
       * Classe de modelo tbProdutos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,7 +23,7 @@
          */
          /**
           * @access protected
-          * @var    int             Código
+          * @var    int             CÃ³digo
           */
         protected $codigo;
          /**
@@ -33,7 +33,7 @@
         protected $nome;
          /**
           * @access protected
-          * @var    string          Descrição
+          * @var    string          DescriÃ§Ã£o
           */
         protected $descricao;
          /**
@@ -59,7 +59,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

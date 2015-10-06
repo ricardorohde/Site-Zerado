@@ -1,10 +1,10 @@
 <?php
     /**
      * TCriteria.php
-     * Essa classe provÍ uma interface utilizada para definir critÈrios
-     *      1.1 Adicionado mÈtodo addFilter($variable, $operator, $value)
+     * Essa classe prov√™ uma interface utilizada para definir crit√©rios
+     *      1.1 Adicionado m√©todo addFilter($variable, $operator, $value)
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÁ„o a Objetos - 2™ EdiÁ„o)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orieta√ß√£o a Objetos - 2¬™ Edi√ß√£o)
      * @version 1.1     
      * @access  public
      */
@@ -16,7 +16,7 @@
 
         /**
           * @access private
-          * @var    string  Armazena a lista de exporessıes
+          * @var    string  Armazena a lista de exporess√µes
           */ 
         private $expressions;
 
@@ -28,18 +28,18 @@
 
         /**
           * @access private
-          * @var    string  Propriedades do critÈrio
+          * @var    string  Propriedades do crit√©rio
           */ 
         private $properties;
 
 
 
         /*
-         * MÈtodos
+         * M√©todos
          */
        
         /**
-         * MÈtodo Construtor
+         * M√©todo Construtor
          *
          * @access private
          * @return void
@@ -51,33 +51,33 @@
         }
 
         /**
-         * MÈtodo add
-         * Adiciona uma express„o ao critÈrio
+         * M√©todo add
+         * Adiciona uma express√£o ao crit√©rio
          *  
          * @access  private
-         * @param   $expression  = express„o (objeto TExpression)
-         * @param   $operator    = operador lÛgico de comparaÁ„o
+         * @param   $expression  = express√£o (objeto TExpression)
+         * @param   $operator    = operador l√≥gico de compara√ß√£o
          * @return  void
          */
         private function add(TExpression $expression, $operator = self::AND_OPERATOR)
         {
-            //Na primeira vez, n„o precisamos do operador lÛgico para concatenar
+            //Na primeira vez, n√£o precisamos do operador l√≥gico para concatenar
             if(empty($this->expressions))
             {
                 $operator = NULL;
             }
 
-            //Agrega o resultado da express„o ‡ lista de expressıes
+            //Agrega o resultado da express√£o √† lista de express√µes
             $this->expressions[]    = $expression;
             $this->operators[]      = $operator;
         }
 
         /**
-         * MÈtodo addFilter
-         * Adiciona uma nova express„o do critÈrio
+         * M√©todo addFilter
+         * Adiciona uma nova express√£o do crit√©rio
          * 
          * @since   1.1
-         * @param   $variable    = vari·vel;
+         * @param   $variable    = vari√°vel;
          * @param   $operator    = operador (<,>)
          * @param   $value       = valor a ser comparado
          * @return  void
@@ -90,15 +90,15 @@
         }
 
         /**
-         * MÈtodo dump
-         * Retorna a express„o final
+         * M√©todo dump
+         * Retorna a express√£o final
          * 
          * @access public
-         * @return Express„o final
+         * @return Express√£o final
          */
         public function dump()
         {
-            //Concatena a lista de expressıes
+            //Concatena a lista de express√µes
             if(is_array($this->expressions))
             {
                 if(count($this->expressions) > 0)
@@ -109,7 +109,7 @@
                     {
                         $operator = $this->operators[$i];
                         
-                        //Concatena o operador com a respectiva express„o
+                        //Concatena o operador com a respectiva express√£o
                         $result .= $operator . $expression->dump() . ' ';
                     }
                     
@@ -120,7 +120,7 @@
         }
 
         /**
-         *  MÈtodo setProperty()
+         *  M√©todo setProperty()
          *  Define o valor a da uma propriedade
          *
          * @access  public
@@ -141,7 +141,7 @@
         }
         
         /**
-         *  MÈtodo getProperty()
+         *  M√©todo getProperty()
          *  Retorna o valor de uma propriedade
          * 
          * @access  public

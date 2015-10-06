@@ -3,7 +3,7 @@
       * erro.php
       * Classe de erros
       *
-      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -15,10 +15,10 @@
 		private $codigo;
 
 		/*
-		 * MÈtodos
+		 * M√©todos
 		 */
 		/**
-		 * MÈtodo Contrutor
+		 * M√©todo Contrutor
 		 * 
          * @access public
          * @return void
@@ -30,7 +30,7 @@
 		}
 
 		/**
-          * MÈtodo __set
+          * M√©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -44,7 +44,7 @@
         }
 
         /**
-          * MÈtodo __get
+          * M√©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -57,8 +57,8 @@
         }
 		
 		/**
-		 * MÈtodo show
-		 * Exibe as informaÁıes na tela
+		 * M√©todo show
+		 * Exibe as informa√ß√µes na tela
 		 * 
          * @access public
          * @return void
@@ -70,19 +70,19 @@
 			if($this->codigo == 400)
 				echo 
 					"
-						<h1>SolicitaÁ„o ImprÛpria</h1>
+						<h1>Solicita√ß√£o Impr√≥pria</h1>
 						<p>
-							O servidor n„o pode compreender a solicitaÁ„o e process·-la.<br>
-							Contate o <a href='mailto:suporte@rogeriopereira.info'>Suporte TÈcnico</a>
+							O servidor n√£o pode compreender a solicita√ß√£o e process√°-la.<br>
+							Contate o <a href='mailto:suporte@rogeriopereira.info'>Suporte T√©cnico</a>
 						</p>
 					";
 			//Erro 401 - Unauthorized
 			if($this->codigo == 401)
 				echo 
 					'
-						<h1>N„o autorizado</h1>
+						<h1>N√£o autorizado</h1>
 						<p>
-							Por favor faÁa o login primeiro
+							Por favor fa√ßa o login primeiro
 						</p>
 					';
 			//Erro 403 - Forbidden 
@@ -98,9 +98,9 @@
 			if($this->codigo == 404)
 				echo 
 					'
-						<h1>N„o encontrado</h1>
+						<h1>N√£o encontrado</h1>
 						<p>
-							O conteudo solicitado n„o foi encontrado em nossos servidores.
+							O conteudo solicitado n√£o foi encontrado em nossos servidores.
 						</p>
 					';
 			//Erro 500 - Internal Server Error
@@ -109,8 +109,8 @@
 					"
 						<h1>Erro interno no Servidor</h1>
 						<p>
-							O servidor encontrou uma condiÁ„o inesperada<br>
-							Contate o <a href='mailto:suporte@rogeriopereira.info'>Suporte TÈcnico</a>
+							O servidor encontrou uma condi√ß√£o inesperada<br>
+							Contate o <a href='mailto:suporte@rogeriopereira.info'>Suporte T√©cnico</a>
 						</p>
 					";
 		}

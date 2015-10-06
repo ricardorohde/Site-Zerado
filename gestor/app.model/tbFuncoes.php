@@ -3,7 +3,7 @@
       * tbFuncoes.php
       * Classe de modelo tbFuncoes
       *
-      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,7 +23,7 @@
          */
         /**
           * @access protected
-          * @var    int         CÛdigo
+          * @var    int         C√≥digo
           */
         protected $codigo;
         /**
@@ -53,13 +53,13 @@
         protected $delivery;
         /**
           * @access protected
-          * @var    boolean     Imobili·ria
+          * @var    boolean     Imobili√°ria
           */
         protected $imobiliaria;
 
 
         /*
-         * MÈtodos
+         * M√©todos
          */
         
     }

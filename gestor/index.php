@@ -1,4 +1,4 @@
-<?php header('Content-type: text/html; charset=ISO-8859-1');?>
+<?php header('Content-type: text/html; charset=UTF-8');?>
 
 <?php
     /**
@@ -25,7 +25,7 @@
      * TApllication.php
      * Aplicacao Principal
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
      * @version 1.0     
      * @access  public
      */
@@ -45,7 +45,7 @@
 
             new TSession(1); 
 
-            //Não tem Usuario ativo
+            //NÃ£o tem Usuario ativo
             if(!isset($_SESSION['usuario']))
             {
                 $pagina 	= new login;

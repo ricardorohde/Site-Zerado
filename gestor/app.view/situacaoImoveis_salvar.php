@@ -3,7 +3,7 @@
       * situacaoImoveis_salvar.php
       * Classe situacaoImoveis_salvar
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-          * Método Construtor
+          * MÃ©todo Construtor
           *
           * @access private
           * @return void
@@ -40,7 +40,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -54,7 +54,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -67,8 +67,8 @@
         }
 
         /**
-          * Método show
-          * Exibe as informações na tela
+          * MÃ©todo show
+          * Exibe as informaÃ§Ãµes na tela
           *
           * @access public
           * @return void
@@ -77,7 +77,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Situação Imóveis' title='Situação Imóveis' >Situação Imóveis</h1>
+                    <h1 alt='SituaÃ§Ã£o ImÃ³veis' title='SituaÃ§Ã£o ImÃ³veis' >SituaÃ§Ã£o ImÃ³veis</h1>
                 </span>
 
                 <form id="situacaoImoveisForm" name='situacaoImoveisForm' action="" method="post">
@@ -86,14 +86,14 @@
                     <div class='row'>
                         <div class='4u'>
                             <label for='nome'>
-                                Situação dos Imóveis
+                                SituaÃ§Ã£o dos ImÃ³veis
                             </label>
                             <input 
                                 type='text' 
                                 id='situacao' 
                                 name='situacao'  
                                 maxlength='100'
-                                placeholder='Situação dos Imóveis (Aluguel, Venda, Arrendamento)'
+                                placeholder='SituaÃ§Ã£o dos ImÃ³veis (Aluguel, Venda, Arrendamento)'
                                 value="<?= $this->situacao->situacao ?>"
                                 required
                             >
@@ -109,14 +109,14 @@
                                     {
                                         ?>
                                             <option value='1' <?= $this->situacao->ativo == 1 ? 'selected' : '' ?>>Sim</option>
-                                            <option value='0' <?= $this->situacao->ativo == 0 ? 'selected' : '' ?>>Não</option>
+                                            <option value='0' <?= $this->situacao->ativo == 0 ? 'selected' : '' ?>>NÃ£o</option>
                                         <?php
                                     }
                                     else
                                         echo 
                                             "
                                                 <option value='1' selected>Sim</option>
-                                                <option value='0'>Não</option>
+                                                <option value='0'>NÃ£o</option>
                                             ";
                                 ?>
                             </select>

@@ -3,7 +3,7 @@
       * tbVideos.php
       * Classe de modelo tbVideos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,17 +23,17 @@
          */
         /**
           * @access private
-          * @var    int     Código do Video
+          * @var    int     CÃ³digo do Video
           */
         protected $codigo;
         /**
           * @access private
-          * @var    string  Tíulo
+          * @var    string  TÃ­ulo
           */
         protected $titulo;
         /**
           * @access private
-          * @var    string  Descrição
+          * @var    string  DescriÃ§Ã£o
           */
         protected $descricao;
         /**
@@ -59,7 +59,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

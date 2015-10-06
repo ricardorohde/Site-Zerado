@@ -23,13 +23,11 @@
 <meta itemprop="image"              content="<?php echo $configuracoes->logotipo; ?>"/>
 
 
-<!--<meta charset='UTF-8' />-->
-<meta charset='ISO-8859-1' />
-<meta name="author"                 content="Rogério Pereira"/> 
-<meta name="copyright"              content="Rogério Pereira"/> 
-<meta name="generator"              content="Rogério Pereira"/> 
-<!--<meta http-equiv="Content-Type"     content="text/html; charset=utf-8" />-->
-<meta http-equiv="Content-Type"     content="text/html; charset=iso-8859-1" />
+<meta charset='UTF-8' />
+<meta name="author"                 content="RogÃ©rio Pereira"/> 
+<meta name="copyright"              content="RogÃ©rio Pereira"/> 
+<meta name="generator"              content="RogÃ©rio Pereira"/> 
+<meta http-equiv="Content-Type"     content="text/html; charset=utf-8" />
 <meta http-equiv="Expires"          content="none"/>
 <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1" />
 <meta name="GENERATOR"              content="MSHTML 6.00.3790.3959"/>

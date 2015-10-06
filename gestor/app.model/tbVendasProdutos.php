@@ -3,7 +3,7 @@
       * tbVendasProdutos
       * Classe de modelo tbVendasProdutos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,17 +23,17 @@
          */
         /**
           * @access protected
-          * @var    int             Código
+          * @var    int             CÃ³digo
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    tbVendas        Código da Venda
+          * @var    tbVendas        CÃ³digo da Venda
           */
         protected $codigoVenda;
         /**
           * @access protected
-          * @var    tbProdutos      Código do Produto
+          * @var    tbProdutos      CÃ³digo do Produto
           */
         protected $produto;
         /**
@@ -49,7 +49,7 @@
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

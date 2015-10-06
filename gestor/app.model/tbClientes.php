@@ -3,7 +3,7 @@
       * tbClientes.php
       * Classe de modelo tbClientes
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,7 +23,7 @@
          */
         /**
           * @access protected
-          * @var    int             Código
+          * @var    int             CÃ³digo
           */
         protected $codigo;
         /**
@@ -33,7 +33,7 @@
         protected $nome;
         /**
           * @access protected
-          * @var    boolean         0 - Pessoa Jurídica; 1 - Pessoa Física;
+          * @var    boolean         0 - Pessoa JurÃ­dica; 1 - Pessoa FÃ­sica;
           */
         protected $tipoPessoa;
         /**
@@ -63,7 +63,7 @@
         protected $cnpj;
         /**
           * @access protected
-          * @var    string          Inscrição Estadual
+          * @var    string          InscriÃ§Ã£o Estadual
           */
         protected $inscricaoEstadual;
         /**
@@ -78,13 +78,13 @@
         protected $ativo;
         /**
           * @access protected
-          * @var    boolean         Excluído
+          * @var    boolean         ExcluÃ­do
           */
         protected $excluido;
 
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         
     }

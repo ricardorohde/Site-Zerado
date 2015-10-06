@@ -1,23 +1,23 @@
 <?php
     /**
      * TRepository.php
-     * Esta classe provê os métodos necessários para manipular coleções de objetos
-     *    1.1 Inicio e conclusão de transação direto nas operações
+     * Esta classe provÃª os mÃ©todos necessÃ¡rios para manipular coleÃ§Ãµes de objetos
+     *    1.1 Inicio e conclusÃ£o de transaÃ§Ã£o direto nas operaÃ§Ãµes
      *    1.2 Adicionado Paramatro excluido = 0 nas buscas
-     *    1.3 Criado métodos de exclusão fisicos
+     *    1.3 Criado mÃ©todos de exclusÃ£o fisicos
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
      * @version 1.3
      * @access  public
      */
     class TRepository
     {
         /*
-         * Métodos
+         * MÃ©todos
          */
         
         /**
-          * Método addColumn
+          * MÃ©todo addColumn
           * Adiciona uma coluna a ser retornada pelo SELECT
           * 
           * @access  public
@@ -31,8 +31,8 @@
         }
         
         /**
-          * Método addEntity()
-          * Define o nome da entidade (tabela) manipulada pela instrução SQL
+          * MÃ©todo addEntity()
+          * Define o nome da entidade (tabela) manipulada pela instruÃ§Ã£o SQL
           * 
           * @access  public
           * @param   $entity     Tabela
@@ -44,12 +44,12 @@
         }
         
         /**
-          * Método load
-          * Recupera um conjunto de objetos (collection) da base de dados através de um critério de seleção
+          * MÃ©todo load
+          * Recupera um conjunto de objetos (collection) da base de dados atravÃ©s de um critÃ©rio de seleÃ§Ã£o
           * 
           * @access public
-          * @param  $criteria   Critério de Seleção
-          * @throws Exception   Não há transação ativa
+          * @param  $criteria   CritÃ©rio de SeleÃ§Ã£o
+          * @throws Exception   NÃ£o hÃ¡ transaÃ§Ã£o ativa
           * @return Resultados da Busca
           */
         function load(TCriteria $criteria = NULL)
@@ -113,17 +113,17 @@
             }
             else 
             {
-                throw new Exception('Não há transação ativa!');
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa!');
             }
         }
         
         /**
-          * Método delete()
-          * Exclui um conjunto de objetos (collection) da base de dados através de um critério de seleção
+          * MÃ©todo delete()
+          * Exclui um conjunto de objetos (collection) da base de dados atravÃ©s de um critÃ©rio de seleÃ§Ã£o
           * 
           * @access public
           * @param  $criteria   Objeto do tipo TCriteria
-          * @throws Exception   Não há transação ativa
+          * @throws Exception   NÃ£o hÃ¡ transaÃ§Ã£o ativa
           * @return void
           */
         function delete(TCriteria $criteria)
@@ -145,18 +145,18 @@
             }
             else 
             {
-                throw new Exception('Não há transação ativa!');
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa!');
             }   
         }
 
         /**
-          * Método deleteFisico()
-          * Exclui um conjunto de objetos (collection) da base de dados através de um critério de seleção
+          * MÃ©todo deleteFisico()
+          * Exclui um conjunto de objetos (collection) da base de dados atravÃ©s de um critÃ©rio de seleÃ§Ã£o
           * 
           * @since  1.3
           * @access public
           * @param  $criteria   Objeto do tipo TCriteria
-          * @throws Exception   Não há transação ativa
+          * @throws Exception   NÃ£o hÃ¡ transaÃ§Ã£o ativa
           * @return void
           */
         function deleteFisico(TCriteria $criteria)
@@ -178,18 +178,18 @@
             }
             else 
             {
-                throw new Exception('Não há transação ativa!');
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa!');
             }   
         }
         
         /**
-          * Método count()
-          * Conta o número de ocorrencias que satisfazem o critério de seleção
+          * MÃ©todo count()
+          * Conta o nÃºmero de ocorrencias que satisfazem o critÃ©rio de seleÃ§Ã£o
           * 
           * @access public
-          * @param  $criteria    Criteria de Selecção
-          * @throws Exception   Não há transação ativa
-          * @return Número de Ocorrencias
+          * @param  $criteria    Criteria de SelecÃ§Ã£o
+          * @throws Exception   NÃ£o hÃ¡ transaÃ§Ã£o ativa
+          * @return NÃºmero de Ocorrencias
           */
         function count(TCriteria $criteria)
         {
@@ -216,7 +216,7 @@
             }
             else 
             {
-                throw new Exception('Não há transação ativa!');
+                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa!');
             }   
         }
     }

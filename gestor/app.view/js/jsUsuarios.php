@@ -5,7 +5,7 @@
         {
             if($('#senha').val() != $('#confirmacao').val())
             {
-                alert('Senha diferente da confirmação');
+                alert('Senha diferente da confirmaÃ§Ã£o');
 
                 $('#senha').val('');
                 $('#confirmacao').val('');
@@ -37,7 +37,7 @@
                     }
                     else
                     {
-                        alert('Erro ao salvar o conteúdo!');
+                        alert('Erro ao salvar o conteÃºdo!');
                     }
                 }
             });
@@ -47,7 +47,7 @@
         {
             if($('#senhaNova').val() != $('#confirmacao').val())
             {
-                alert('Senha nova diferente da confirmação!');
+                alert('Senha nova diferente da confirmaÃ§Ã£o!');
 
                 $('#senhaNova').val('');
                 $('#confirmacao').val('');

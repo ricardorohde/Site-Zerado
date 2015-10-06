@@ -3,7 +3,7 @@
       * senha.php
       * Classe senha
       *
-      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -15,10 +15,10 @@
 
 
         /*
-         * MÈtodos
+         * M√©todos
          */
         /**
-          * MÈtodo Construtor
+          * M√©todo Construtor
           *
           * @access private
           * @return void
@@ -29,7 +29,7 @@
         }
 
         /**
-          * MÈtodo __set
+          * M√©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -43,7 +43,7 @@
         }
 
         /**
-          * MÈtodo __get
+          * M√©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -56,8 +56,8 @@
         }
 
         /**
-          * MÈtodo show
-          * Exibe as informaÁıes na tela
+          * M√©todo show
+          * Exibe as informa√ß√µes na tela
           *
           * @access public
           * @return void
@@ -66,7 +66,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Usu·rios' title='Usu·rios's>Usu·rios</h1>
+                    <h1 alt='Usu√°rios' title='Usu√°rios's>Usu√°rios</h1>
                 </span>
 
                 <form id="senhaForm" name='usuariosForm' action="" method="post">
@@ -99,13 +99,13 @@
 
                         <div class='4u'>
                             <label for='confirmacao'>
-                                ConfirmaÁ„o de Senha
+                                Confirma√ß√£o de Senha
                             </label>
                             <input 
                                 type='password' 
                                 id='confirmacao' 
                                 name='confirmacao' 
-                                placeholder='ConfirmaÁ„o'
+                                placeholder='Confirma√ß√£o'
                                 required
                             >
                         </div>

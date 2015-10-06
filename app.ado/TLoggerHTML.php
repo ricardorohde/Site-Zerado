@@ -3,7 +3,7 @@
      * TLoggerHTML.php
      * implementa o algoritmo de LOG em HTML
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
      * @version 1.0     
      * @access  public
      */
@@ -11,12 +11,12 @@
     {
         
         /*
-         * Métodos
+         * MÃ©todos
          */
         
 
         /**
-         * Método write
+         * MÃ©todo write
          * Escreve uma mensagem no arquivo de LOG
          * 
          * @access public
