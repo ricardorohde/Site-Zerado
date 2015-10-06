@@ -1,10 +1,11 @@
 <?php
   /**
    * TFilter.php
-   * Esta classe provÃª uma interface para definiÃ§Ãµes de fitros de seleÃ§Ã£o
+   * Esta classe provê uma interface para definições de fitros de seleção
+   *    1.1 Correção de filtro quando tem . (método transform)
    *
-   * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
-   * @version 1.0     
+   * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+   * @version 1.1     
    * @access  public
    */
   class TFilter extends TExpression
@@ -14,32 +15,32 @@
      */    
     /**
       * @access private
-      * @var    string  VariÃ¡vel do banco de dados
+      * @var    string  Variável do banco de dados
       */
     private $variable;
     /**
       * @access private
-      * @var    string  Operador da operaÃ§Ã£o
+      * @var    string  Operador da operação
       */
     private $operator;
     /**
       * @access private
-      * @var    string  Valor da variÃ¡vel
+      * @var    string  Valor da variável
       */
     private $value;
 
 
     /*
-     * MÃ©todos
+     * Métodos
      */
     
 
     /**
-     * MÃ©todo __contruct()
+     * Método __contruct()
      * Instancia um novo Filtro
      *
      * @access  private
-     * @param   $variable    = variÃ¡vel;
+     * @param   $variable    = variável;
      * @param   $operator    = operador (<,>)
      * @param   $value       = valor a ser comparado
      * @return  void
@@ -51,13 +52,13 @@
         $this->operator = $operator;
         
         //Trasnforma o valor de acordo com certas regras
-        //Antes de atribuir Ã  proprieade $this->value
+        //Antes de atribuir à proprieade $this->value
         $this->value    = $this->transform($value);
     }
 
     /**
-     * MÃ©todo transform()
-     * Recebe um valor a faz as modificaÃ§Ãµes necessÃ¡rias
+     * Método transform()
+     * Recebe um valor a faz as modificações necessárias
      * para ele se interceptado pelo banco de dados
      * podendo ser um integer/string/boolean ou array
      * 
@@ -93,16 +94,29 @@
         //Caso seja uma string
         else if(is_string($value))
         {
-            if(strpos($value, '.') === false)
+            /*
+             * HACK PARA REPOSITORY COM MAIS DE UMA TABELA E CONDIÇÕES DO TIPO T1.COD = T2.COD
+             * NA LINHA 107 ESTÁ SOMANDO O NUMERO DE PONTO PARA PERMITIR CONSULTAS COM EMAIL E SITES EMAIL = 'EMAIL@EMAIL.COM.BR'
+             */
+            if(strpos($value, '.') == false)
             {
                 //Adiciona string normal
                 $result = "'$value'";
             }
             else
             {
-                //Adiciona sem as aspas
-                $result = $value;
+                if(strpos($value, '.') > 1)
+                {
+                    //Adiciona string normal
+                    $result = "'$value'";
+                }
+                else
+                {
+                    //Adiciona sem as aspas
+                    $result = $value;
+                }
             }
+            //$result = "'$value'";
         }
 
         //Caso seja um valor nulo
@@ -129,15 +143,15 @@
     }
 
     /**
-     * MÃ©todo dump()
-     * Retorna o filtro em forma de expressÃ£o
+     * Método dump()
+     * Retorna o filtro em forma de expressão
      * 
      * @access  public
-     * @return  ExpressÃ£o em formato SQL
+     * @return  Expressão em formato SQL
      */
     public function dump()
     {
-        //Concatena a expressÃ£o
+        //Concatena a expressão
         return "{$this->variable} {$this->operator} {$this->value}";
     }
   }

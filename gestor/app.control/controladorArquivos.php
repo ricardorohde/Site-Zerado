@@ -3,7 +3,7 @@
       * controladorArquivos.php
       * Classe de Controle controladorArquivos
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -15,10 +15,10 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-         * MÃ©todo Construtor
+         * Método Construtor
          *
          * @access private
          * @return void
@@ -29,7 +29,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -43,7 +43,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -56,13 +56,13 @@
         }
 
         /**
-         * MÃ©todo upload()
+         * Método upload()
          * Faz o upload do arquivo
          * 
          * @access  public
          * @param   string  $origem   Origem do Arquivo (Arquivo Temporario)
          * @param   string  $destino  Destino do Arquivo (nome)
-         * @return  boolean           Status da operaÃ§Ã£o
+         * @return  boolean           Status da operação
          */
         public function upload($origem, $destino)
         {
@@ -73,12 +73,12 @@
         }
 
         /**
-         * MÃ©todo apagaArquivo
+         * Método apagaArquivo
          * Apaga o arquivo enviado por parametro
          * 
          * @access  public
          * @param   string      $arquivo    Nome do arquivo a ser apagado
-         * @return  boolean                 Status da remoÃ§Ã£o do arquivo
+         * @return  boolean                 Status da remoção do arquivo
          */
         public function apagaArquivo($arquivo)
         {

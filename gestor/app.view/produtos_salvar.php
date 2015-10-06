@@ -3,7 +3,7 @@
       * produtos_salvar.php
       * Classe produtos_salvar
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-          * MÃ©todo Construtor
+          * Método Construtor
           *
           * @access private
           * @return void
@@ -30,7 +30,7 @@
             if(isset($_GET['cod']))
             {
                 $this->codigo = $_GET['cod'];
-                $this->produto = (new tbProdutos())->load($this->codigo);            
+                $this->produto = (new tbProdutos())->load($this->codigo);         
             }
             else
             {
@@ -40,7 +40,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -54,7 +54,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -67,8 +67,8 @@
         }
 
         /**
-          * MÃ©todo show
-          * Exibe as informaÃ§Ãµes na tela
+          * Método show
+          * Exibe as informações na tela
           *
           * @access public
           * @return void
@@ -77,7 +77,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='PÃ¡ginas' title='PÃ¡ginas' >Produtos</h1>
+                    <h1 alt='Produtos' title='Produtos' >Produtos</h1>
                 </span>
 
                 <form id="produtosForm" name='produtosForm' action="" method="post">
@@ -104,13 +104,12 @@
                                 Valor
                             </label>
                             <input 
-                                type='number'
+                                type='text'
                                 name='valor'
                                 id='valor'
-                                min='0' 
-                                step='0.01'
-                                placeholder='Valor: 0.00'
-                                value="<?php echo $this->produto->valor; ?>" 
+                                class='dinheiro'
+                                placeholder='Valor:'
+                                value="<?php echo number_format($this->produto->valor, 2); ?>" 
                                 required
                             />
                         </div>
@@ -143,20 +142,20 @@
                                             echo 
                                                 "
                                                     <option value='1' selected>Sim</option>
-                                                    <option value='0'>NÃ£o</option>  
+                                                    <option value='0'>Não</option>  
                                                 ";
                                         else
                                             echo 
                                                 "
                                                     <option value='1'>Sim</option>
-                                                    <option value='0' selected>NÃ£o</option>  
+                                                    <option value='0' selected>Não</option>  
                                                 ";
                                     }
                                     else
                                         echo 
                                             "
                                                 <option value='1' selected>Sim</option>
-                                                <option value='0'>NÃ£o</option>
+                                                <option value='0'>Não</option>
                                             ";
                                 ?>
                             </select>
@@ -165,16 +164,23 @@
                         <div class='clear'></div>
 
                         <div class='12u'>
-                            <br/>
-                            <label for='descricao'>DescriÃ§Ã£o</label>
+                            <label for='descricao'>Descrição</label>
                             <br/>
                             <textarea name="descricao" id='descricao' class='tinymce'><?php echo $this->produto->descricao; ?></textarea>
+                        </div>
+
+                        <?php include_once('galeria.php'); ?>
+
+                        <div class='12u'>
                             <br/>
                             <input type='submit' id='salvar' value='Salvar'>
                         </div>
 
                         <!--JS-->
-                        <?php include_once('js/jsProdutos.php'); ?>
+                        <?php 
+                            include_once('js/jsProdutos.php'); 
+                            include_once('js/jsMascaras.php');
+                        ?>
                     </div>
                 </form>
             <?php

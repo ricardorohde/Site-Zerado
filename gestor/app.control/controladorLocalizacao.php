@@ -3,7 +3,7 @@
       * controladorLocalizacao
       * Classe de Controle controladorLocalizacao
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -18,10 +18,10 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-         * MÃ©todo Construtor
+         * Método Construtor
          *
          * @access private
          * @return void
@@ -35,7 +35,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -49,7 +49,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -62,11 +62,11 @@
         }
 
         /**
-         * MÃ©todo getLocalizacoes
-         * Retorna as localizaÃ§Ãµes
+         * Método getLocalizacoes
+         * Retorna as localizações
          * 
          * @access  public
-         * @return  TRepository ColeÃ§Ã£o de LocalizaÃ§Ãµes
+         * @return  TRepository Coleção de Localizações
          */
         public function getLocalizacoes()
         {

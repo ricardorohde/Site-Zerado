@@ -3,7 +3,7 @@
       * banners_salvar.php
       * Classe banners_salvar
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -18,10 +18,10 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-          * MÃ©todo Construtor
+          * Método Construtor
           *
           * @access private
           * @return void
@@ -41,7 +41,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -55,7 +55,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -68,8 +68,8 @@
         }
 
         /**
-          * MÃ©todo show
-          * Exibe as informaÃ§Ãµes na tela
+          * Método show
+          * Exibe as informações na tela
           *
           * @access public
           * @return void
@@ -103,14 +103,14 @@
 
                         <div class='4u'>
                             <label for='titulo'>
-                                TÃ­tulo
+                                Título
                             </label>
                             <input 
                                 type='text' 
                                 id='titulo' 
                                 name='titulo'  
                                 maxlength='100'
-                                placeholder='TÃ­tulo'
+                                placeholder='Título'
                                 value="<?php echo $this->banner->titulo; ?>"
                                 required
                             >
@@ -118,14 +118,14 @@
 
                         <div class='4u'>
                             <label for='descricao'>
-                                DescriÃ§Ã£o
+                                Descrição
                             </label>
                             <input 
                                 type='text' 
                                 id='descricao' 
                                 name='descricao' 
                                 maxlength='255'
-                                placeholder='DescriÃ§Ã£o'
+                                placeholder='Descrição'
                                 value="<?php echo $this->banner->descricao; ?>"
                             >
                         </div>
@@ -143,20 +143,20 @@
                                             echo 
                                                 "
                                                     <option value='1' selected>Sim</option>
-                                                    <option value='0'>NÃ£o</option>  
+                                                    <option value='0'>Não</option>  
                                                 ";
                                         else
                                             echo 
                                                 "
                                                     <option value='1'>Sim</option>
-                                                    <option value='0' selected>NÃ£o</option>  
+                                                    <option value='0' selected>Não</option>  
                                                 ";
                                     }
                                     else
                                         echo 
                                             "
                                                 <option value='1' selected>Sim</option>
-                                                <option value='0'>NÃ£o</option>
+                                                <option value='0'>Não</option>
                                             ";
                                 ?>
                             </select>

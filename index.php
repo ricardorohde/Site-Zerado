@@ -1,4 +1,7 @@
-<?php header('Content-type: text/html; charset=UTF-8'); ?>
+<?php 
+    //header('Content-type: text/html; charset=UTF-8'); 
+    header('Content-type: text/html; charset=ISO-8859-1');
+?>
 
 <?php 
 /*
@@ -21,7 +24,7 @@ function __autoload($classe)
  *  Classe TApllication
  *  Aplicacao Principal
  */
-class TApplication
+class TApplicatioN
 {
     /*
      *  Funcao run
@@ -46,6 +49,7 @@ class TApplication
         if ($_GET)
         {
             $class = $_GET['class'];
+
             if (class_exists($class))
             {
                 $pagina = new $class;

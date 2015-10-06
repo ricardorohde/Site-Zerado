@@ -18,6 +18,19 @@
         parent.$.fancybox.close();
     }
 
+    function selecionaImagens()
+    {
+        var imagens = '';
+
+        $(".checkImagensSelecionadas:checked").each(function(){
+            imagens = imagens + $(this).val() + "?";
+        });
+
+        $('#imagensSelecionadas').val(imagens);
+
+        parent.$.fancybox.close();
+    }
+
     function excluirImagem(imagem)
     {
         $.ajax

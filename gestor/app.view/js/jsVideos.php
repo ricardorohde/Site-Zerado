@@ -31,7 +31,7 @@
                             success: function(data2) 
                             {
                                 if(data2 == 0)
-                                    alert('O link n√£o √© um video do youtube v√°lido!');
+                                    alert('O link n„o È um video do youtube v·lido!');
                                 else if(data2 == 1)
                                 {
                                     $.ajax
@@ -82,7 +82,7 @@
                     }
                     else
                     {
-                        alert('Erro ao salvar o conte√∫do!');
+                        alert('Erro ao salvar o conte˙do!');
                     }
                 }
             });

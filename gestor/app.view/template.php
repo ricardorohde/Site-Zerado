@@ -4,7 +4,7 @@
       * template.php
       * Classe template
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -16,7 +16,7 @@
 
 
 		/**
-		 * MÃ©todo construtor
+		 * Método construtor
 		 * Verifica se esta logado
 		 * 
 		 * @access public
@@ -29,8 +29,8 @@
 
 
 		/**
-		 * MÃ©todo show
-		 * Exibe as informaÃ§Ãµes da pÃ¡gina
+		 * Método show
+		 * Exibe as informações da página
 		 * 
 		 * @access public
 		 * @return void

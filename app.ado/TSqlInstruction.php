@@ -1,10 +1,10 @@
 <?php
     /**
      * TSqlInstruction.php
-     * Esta classe prov√™ os m√©todos em comum entre todas instru√ß√µes
+     * Esta classe provÍ os mÈtodos em comum entre todas instruÁıes
      * SQL (SELECT, INSERT, DELETE, UPDATE)
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com Orieta√ß√£o a Objetos - 2¬™ Edi√ß√£o)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÁ„o a Objetos - 2™ EdiÁ„o)
      * @version 1.0     
      * @access  public
      */
@@ -15,12 +15,12 @@
          */
         /**
           * @access protected
-          * @var    string  Armazena a instru√ß√£o SQL
+          * @var    string  Armazena a instruÁ„o SQL
           */ 
         protected $sql;
         /**
           * @access protected
-          * @var    string  Armazena o objeto crit√©rio
+          * @var    string  Armazena o objeto critÈrio
           */ 
         protected $criteria;
         /**
@@ -30,12 +30,12 @@
         protected $entity;
 
         /*
-         * M√©todos
+         * MÈtodos
          */
         
         /**
-         * M√©todo setEntity()
-         * Define o nome da entidade (tabela) manipulada pela instru√ß√£o SQL
+         * MÈtodo setEntity()
+         * Define o nome da entidade (tabela) manipulada pela instruÁ„o SQL
          * 
          * @access public
          * @param  $entity = tabela
@@ -47,11 +47,11 @@
         }
         
         /**
-         * M√©todo getEntity()
+         * MÈtodo getEntity()
          * Retorna o nome da entidade (tabela)
          * 
          * @access public
-         * @return Entidade que est√° sendo acessada
+         * @return Entidade que est· sendo acessada
          */
         final public function getEntity()
         {
@@ -59,9 +59,9 @@
         }
         
         /**
-         * M√©todo setCriteria
-         * Define um crit√©rio de sele√ß√£o dos dados atrav√©s da composi√ß√£o de um objeto
-         * do tipo TCriteria, que oferece uma interface para defini√ß√£o de crit√©rios
+         * MÈtodo setCriteria
+         * Define um critÈrio de seleÁ„o dos dados atravÈs da composiÁ„o de um objeto
+         * do tipo TCriteria, que oferece uma interface para definiÁ„o de critÈrios
          * 
          * @access public
          * @param  $criteria = objeto do tipo TCriteria
@@ -73,9 +73,9 @@
         }
         
         /**
-         * M√©todo getInstruction
-         * Declarando-o como <abstract> obrigamos sua declara√ß√£o nas classes filhas,
-         * uma vez declarado que seu comportamento ser√° distinto em cada uma delas,
+         * MÈtodo getInstruction
+         * Declarando-o como <abstract> obrigamos sua declaraÁ„o nas classes filhas,
+         * uma vez declarado que seu comportamento ser· distinto em cada uma delas,
          * configurando polimorfismo
          * 
          * @abstract

@@ -3,7 +3,7 @@
       * tbConfiguracoes.php
       * Classe de modelo tbConfiguracoes
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -23,7 +23,7 @@
          */
         /**
           * @access protected
-          * @var    int     CÃ³digo
+          * @var    int     Código
           */
         protected $codigo;
         /**
@@ -38,17 +38,17 @@
         protected $empresa;
         /**
           * @access protected
-          * @var    string     ConteÃºdo do Site
+          * @var    string     Conteúdo do Site
           */
         protected $conteudo;
         /**
           * @access protected
-          * @var    string     DomÃ­nio do site
+          * @var    string     Domínio do site
           */
         protected $dominio;
         /**
           * @access protected
-          * @var    string     DescriÃ§Ã£o do site
+          * @var    string     Descrição do site
           */
         protected $descricao;
         /**
@@ -73,12 +73,12 @@
         protected $tokenPagSeguro;
         /**
           * @access protected
-          * @var    string     EndereÃ§o da Empresa
+          * @var    string     Endereço da Empresa
           */
         protected $endereco;
         /**
           * @access protected
-          * @var    int         NÃºmero do EndereÃ§o da Empresa
+          * @var    int         Número do Endereço da Empresa
           */
         protected $numero;
         /**
@@ -110,7 +110,7 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
     }
 ?>

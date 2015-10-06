@@ -3,7 +3,7 @@
 	  * login.php
 	  * Classe login
 	  *
-	  * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+	  * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
 	  * @version 1.0
 	  * @access  public
 	  */
@@ -14,7 +14,7 @@
 		 */
 
 		/*
-		 * MÃ©todo construtor
+		 * Método construtor
 		 */
 		public function __construct()
 		{
@@ -22,8 +22,8 @@
 		}
 
 		/*
-		 * MÃ©todo show
-		 * Exibe as informaÃ§Ãµes na tela
+		 * Método show
+		 * Exibe as informações na tela
 		 */
 		public function show()
 		{

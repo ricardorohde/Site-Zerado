@@ -5,7 +5,7 @@
         {
             if($('#senha').val() != $('#confirmacao').val())
             {
-                alert('Senha diferente da confirmaÃ§Ã£o');
+                alert('Senha diferente da confirmação');
 
                 $('#senha').val('');
                 $('#confirmacao').val('');
@@ -28,7 +28,7 @@
                     ativo:          $('#ativo').val(),
                     request:        'salvaUsuario'
                 },
-                success:            function(data) 
+                success:            function(data)
                 {
                     if(data == 1)
                     {
@@ -37,7 +37,7 @@
                     }
                     else
                     {
-                        alert('Erro ao salvar o conteÃºdo!');
+                        alert('Erro ao salvar o conteúdo!');
                     }
                 }
             });
@@ -47,7 +47,7 @@
         {
             if($('#senhaNova').val() != $('#confirmacao').val())
             {
-                alert('Senha nova diferente da confirmaÃ§Ã£o!');
+                alert('Senha nova diferente da confirmação!');
 
                 $('#senhaNova').val('');
                 $('#confirmacao').val('');

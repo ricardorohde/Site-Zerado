@@ -1,9 +1,9 @@
 <?php
     /**
      * TSqlUpdate.php
-     * Esta classe provÃª meios para manipulaÃ§Ã£o de uma instruÃ§Ã£o UPDATE do banco de dados
+     * Esta classe provê meios para manipulação de uma instrução UPDATE do banco de dados
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
      * @version 1.0     
      * @access  public
      */
@@ -19,12 +19,12 @@
         private $columnValues;
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         
         /**
-         * MÃ©todo setRowData()
-         * Atribui valores Ã  determinadas colunas no banco de dados que serÃ£o modificados
+         * Método setRowData()
+         * Atribui valores à determinadas colunas no banco de dados que serão modificados
          * 
          * @access  public
          * @param   $column  = Coluna da tabela
@@ -33,7 +33,7 @@
          */
         public function setRowData($column, $value)
         {
-            //Verifica se Ã© um dado escalar (string, inteiro, etc...)
+            //Verifica se é um dado escalar (string, inteiro, etc...)
             if(is_scalar($value))
             {
                 if(is_string($value) and (!empty($value)))
@@ -63,11 +63,11 @@
         }
         
         /**
-         * MÃ©todo getInstruction()
-         * Retorna a instruÃ§Ã£o de UPDATE em forma de string
+         * Método getInstruction()
+         * Retorna a instrução de UPDATE em forma de string
          * 
          * @access public
-         * @return InstruÃ§Ã£o SQL UPDATE
+         * @return Instrução SQL UPDATE
          */
         public function getInstruction()
         {

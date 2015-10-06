@@ -6,7 +6,7 @@
       * Realiza upload de imagens
       * http://www.sanwebe.com/2012/05/ajax-image-upload-with-progressbar-with-jquery-and-php
       *
-      * @author  Adpatado por RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Adpatado por Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -16,13 +16,14 @@
          * Variaveis
          */
         private $files;
+        private $category;
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-          * MÃ©todo Construtor
+          * Método Construtor
           *
           * @access private
           * @return void
@@ -31,12 +32,15 @@
         {
             new TSession(0);
 
+            if(isset($_GET['category']))
+                $this->category = $_GET['category'];
+
             $this->files = scandir('../../app.view/img/');
             $this->show();
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -50,7 +54,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -63,8 +67,8 @@
         }
 
         /**
-          * MÃ©todo show
-          * Exibe as informaÃ§Ãµes na tela
+          * Método show
+          * Exibe as informações na tela
           *
           * @access public
           * @return void
@@ -116,7 +120,7 @@
                                         <div id='listaArquivosUpload'>
 
                                         </div>
-                                        <input type="submit" id="btnSubmit" class="btnSubmit" value="Submit">
+                                        <input type="submit" id="btnSubmit" class="btnSubmit" value="Enviar">
                                     </div>
                                     <div id="progress-div">
                                         <div id="progress-bar"></div>
@@ -130,19 +134,43 @@
                             <h1 alt='Imagens' title='Imagens'>Imagens</h1>
                         </span>
 
-                        <input type='hidden' name='imagemSelecionada' id='imagemSelecionada' value=''>
+                        <input type='hidden' name='imagemSelecionada'   id='imagemSelecionada'      value=''>
+                        <input type='hidden' name='imagensSelecionadas' id='imagensSelecionadas'    value=''>
 
                         <div class='row uploaderContent'>
                             <?php
+                                if($this->category == 'gallery')
+                                    echo 
+                                        "
+                                            <div class='12u'>
+                                                <span class='center'>
+                                                    <input 
+                                                        type='button' 
+                                                        id='botaoUsar' 
+                                                        value='Usar as Imagens'
+                                                        style='width: 150px;'
+                                                        onclick='selecionaImagens();'
+                                                    >
+                                                </span>
+                                                <br/>
+                                            </div>
+                                        ";
+
                                 foreach ($this->files as $file) 
                                 {
                                     if(!is_dir('../../app.view/img/'.$file))
+                                    {
                                         echo 
                                             "
                                                 <div class='2u uploaderBox'>
                                                     <div class='uploaderImg'>
                                                         <img src='{$_SESSION['dominio']}app.view/img/{$file}'>
                                                     </div>
+                                                    <div class='center'>
+                                            ";
+                                        if($this->category != 'gallery')
+                                            echo 
+                                                "
                                                     <input 
                                                         type='button' 
                                                         name='selecionar' 
@@ -150,18 +178,51 @@
                                                         class='uploaderSelecionar' 
                                                         value='Selecionar' 
                                                         onclick=\"selecionaImagem('{$_SESSION['dominio']}app.view/img/{$file}');\"
-                                                    ><br/>
-                                                    <input 
-                                                        type='button' 
-                                                        name='excluir' 
-                                                        id='excluir' 
-                                                        class='uploaderExcluir' 
-                                                        value='Excluir' 
-                                                        onclick=\"excluirImagem('{$_SESSION['dominio']}app.view/img/{$file}');\"
                                                     >
+                                                ";
+                                        else
+                                            echo 
+                                                "
+                                                    <input 
+                                                        type='checkbox' 
+                                                        name='imagens[]'
+                                                        class='checkImagensSelecionadas'
+                                                        value='{$_SESSION['dominio']}app.view/img/{$file}' 
+                                                    />
+                                                ";
+                                        echo 
+                                            "
+                                                        <input 
+                                                            type='button' 
+                                                            name='excluir' 
+                                                            id='excluir' 
+                                                            class='uploaderExcluir' 
+                                                            value='Excluir' 
+                                                            onclick=\"excluirImagem('{$_SESSION['dominio']}app.view/img/{$file}');\"
+                                                        >
+                                                    </div>
                                                 </div>
                                             ";
+                                    }
                                 }
+
+                                if($this->category == 'gallery')
+                                    echo 
+                                        "
+                                            <div class='clear'></div>
+                                            <div class='12u'>
+                                                <span class='center'>
+                                                    <input 
+                                                        type='button' 
+                                                        id='botaoUsar' 
+                                                        value='Usar as Imagens'
+                                                        style='width: 150px;'
+                                                        onclick='selecionaImagens();'
+                                                    >
+                                                </span>
+                                                <br/>
+                                            </div>
+                                        ";
                             ?>
                         </div>
 

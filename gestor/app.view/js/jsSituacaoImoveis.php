@@ -12,7 +12,7 @@
                     codigo:     $('#codigo').val(),
                     situacao:   $('#situacao').val(),
                     ativo:      $('#ativo').val(),
-                    request:    'salvaSituacaoImoveisForm'
+                    request:    'salvaSituacaoImoveis'
                 },
                 success: function(data) 
                 {
@@ -23,7 +23,7 @@
                     }
                     else
                     {
-                        alert('Erro ao salvar o conteÃºdo!');
+                        alert('Erro ao salvar o conteúdo!');
                     }
                 }
             });

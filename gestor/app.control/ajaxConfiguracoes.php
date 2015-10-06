@@ -23,42 +23,45 @@
 
   /**
    * controladorConfiguracoes.php
-   * controlador ConfiguraÃ§Ãµes
+   * controlador Configurações
    *
-   * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+   * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
    * @version 1.0     
    */
     error_reporting(E_WARNING);
 
-    $controlador = new controladorConfiguracoes();
-    if($controlador->salva
-                            (
-                                $_POST['logotipo'], 
-                                $_POST['titulo'], 
-                                $_POST['empresa'], 
-                                $_POST['conteudo'], 
-                                $_POST['dominio'], 
-                                $_POST['descricao'],
-                                $_POST['keywords'],
-                                $_POST['endereco'],
-                                $_POST['numero'],
-                                $_POST['bairro'],
-                                $_POST['cep'],
-                                $_POST['cidade'],
-                                $_POST['estado'],
-                                $_POST['telefone']
-                            ))
+    $controlador                            = new controladorConfiguracoes();
+
+    $controlador->configuracao              = new tbConfiguracoes();
+
+    $controlador->configuracao->codigo      = 1;
+    $controlador->configuracao->logotipo    = $_POST['logotipo'];
+    $controlador->configuracao->titulo      = $_POST['titulo'];
+    $controlador->configuracao->empresa     = $_POST['empresa'];
+    $controlador->configuracao->conteudo    = $_POST['conteudo'];
+    $controlador->configuracao->dominio     = $_POST['dominio'];
+    $controlador->configuracao->descricao   = $_POST['descricao'];
+    $controlador->configuracao->keywords    = $_POST['keywords'];
+    $controlador->configuracao->endereco    = $_POST['endereco'];
+    $controlador->configuracao->numero      = $_POST['numero'];
+    $controlador->configuracao->bairro      = $_POST['bairro'];
+    $controlador->configuracao->cep         = $_POST['cep'];
+    $controlador->configuracao->cidade      = $_POST['cidade'];
+    $controlador->configuracao->estado      = $_POST['estado'];
+    $controlador->configuracao->telefone    = $_POST['telefone'];
+
+    if($controlador->configuracao->store())
     {
         if(!empty($_FILES))
         {
             if((new controladorArquivos())->upload($_FILES['favicon']['tmp_name'],'../../app.view/img/favicon.ico'))
-                echo "<script>alert('ConfiguraÃ§Ãµes salvas com sucesso');//top.location='/home';</script>";
+                echo "<script>alert('Configurações salvas com sucesso');top.location='/home';</script>";
             else
                 echo "<script>alert('Erro ao fazer o upload do favicon!');</script>";
         }
         else
-            echo "<script>alert('ConfiguraÃ§Ãµes salvas com sucesso');top.location='/home';</script>";
+            echo "<script>alert('Configurações salvas com sucesso');top.location='/home';</script>";
     }
     else
-        echo "<script>alert('Erro ao salvar as configuraÃ§Ãµes!');</script>";
+        echo "<script>alert('Erro ao salvar as configurações!');</script>";
 ?>

@@ -59,6 +59,12 @@ div.menu
     color:              white;
 }
 
+nav#menuLateral
+{
+    max-height: 83.5%;
+    overflow: auto;
+}
+
 nav#menuLateral ul
 {
     margin:  0px;
@@ -131,4 +137,17 @@ tr td
 img.listImage
 {
     height: 80px;
+}
+
+.boxImagensGaleria
+{
+    margin-bottom: 20px;
+}
+
+.imagemGaleria img
+{
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
 }

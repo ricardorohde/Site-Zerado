@@ -3,7 +3,7 @@
       * controladorUsuario.php
       * Classe de Controle controladorUsuario
       *
-      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
         private $collectionUsuario;
 
         /*
-         * M√©todos
+         * MÈtodos
          */
         /**
-         * M√©todo Construtor
+         * MÈtodo Construtor
          *
          * @access private
          * @return void
@@ -33,7 +33,7 @@
         }
 
         /**
-          * M√©todo __set
+          * MÈtodo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -47,7 +47,7 @@
         }
 
         /**
-          * M√©todo __get
+          * MÈtodo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -60,11 +60,11 @@
         }
 
         /**
-          * M√©todo getUsuarios
+          * MÈtodo getUsuarios
           * Obtem todos os usuarios
           * 
           * @access public
-          * @return array Cole√ß√£o de Usu√°rio
+          * @return array ColeÁ„o de Usu·rio
           */
         public function getUsuarios()
         {
@@ -86,8 +86,8 @@
         }
 
         /**
-          * M√©todo getUsuario
-          * Obtem o usuario pelo c√≥digo
+          * MÈtodo getUsuario
+          * Obtem o usuario pelo cÛdigo
           * 
           * @access public
           * @return tbUsuario Usuario
@@ -102,7 +102,7 @@
         }
 
         /**
-          * M√©todo getUserByEmail
+          * MÈtodo getUserByEmail
           * Obtem o usuario de acordo com o E-mail
           * 
           * @access public
@@ -129,8 +129,8 @@
         }
 
         /**
-          * M√©todo salvarUsuario
-          * Insere/Atualiza a situa√ß√£o
+          * MÈtodo salvarUsuario
+          * Insere/Atualiza a situaÁ„o
           * 
           * @access public
           * @return boolean

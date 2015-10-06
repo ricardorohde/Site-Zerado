@@ -1,9 +1,9 @@
 <?php
     /**
       * TSession.php
-      * Gerencia uma sessÃ£o com o usuÃ¡rio
+      * Gerencia uma sessão com o usuário
       *
-      * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
+      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
       * @version 1.0
       * @access  public
       */
@@ -14,11 +14,11 @@
          */
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-         * MÃ©todo Construtor
-         * Inicia uma sessÃ£o
+         * Método Construtor
+         * Inicia uma sessão
          *
          * @access private
          * @param  login    Janela de login
@@ -42,7 +42,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -56,7 +56,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -69,8 +69,8 @@
         }
 
         /**
-         * MÃ©todo freeSession
-         * Destroi os dados de uma sessÃ£o
+         * Método freeSession
+         * Destroi os dados de uma sessão
          */
         public static function freeSession()
         {

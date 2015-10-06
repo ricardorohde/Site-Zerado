@@ -3,7 +3,7 @@
       * paginas.php
       * Classe paginas
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-          * MÃ©todo Construtor
+          * Método Construtor
           *
           * @access private
           * @return void
@@ -29,7 +29,7 @@
         {
             $this->collection = new TList();
 
-            $this->collection->setTituloPagina('PÃ¡ginas');
+            $this->collection->setTituloPagina('Páginas');
 
             $this->collection->addColumn('codigo');
             $this->collection->addColumn('titulo');
@@ -42,7 +42,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -56,7 +56,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -69,8 +69,8 @@
         }
 
         /**
-          * MÃ©todo show
-          * Exibe as informaÃ§Ãµes na tela
+          * Método show
+          * Exibe as informações na tela
           *
           * @access public
           * @return void

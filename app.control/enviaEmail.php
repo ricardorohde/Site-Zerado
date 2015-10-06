@@ -88,13 +88,12 @@
          */
         private function getValores()
         {
-            $this->nome     = $_POST['txtNome'];
-            $this->de       = $_POST['txtEmail'];
-            $this->assunto  = $_POST['txtAssunto'];
-            $this->mensagem = $_POST['txtMensagem'];
-            $this->telefone = $_POST['txtTelefone'];
-            $this->cidade   = $_POST['txtCidade'];
-            $this->para     = 'email@email.com';  //Email que vai receber o email de contato
+            $this->nome     = $_POST['nome'];
+            $this->de       = $_POST['email'];
+            $this->assunto  = $_POST['assunto'];
+            $this->mensagem = $_POST['mensagem'];
+            $this->telefone = $_POST['telefone'];
+            $this->cidade   = $_POST['cidade'];
         }
         
         /**
@@ -144,7 +143,7 @@
             else
             {
                 // se não existir, lançaa um erro
-                throw new Exception("Arquivo mail.ini nÃ£o encontrado");
+                throw new Exception("Arquivo mail.ini não encontrado");
             }
             
             $this->mail = new PHPMailer;
@@ -162,11 +161,12 @@
             //Remetente
             $this->mail->FromName     = $this->nome;                                                                //E-mail remetente
             //Destinatario
+            $this->para               = $this->mail->From;
             $this->mail->AddAddress($this->para);                                                                   //E-mail destinatario
             $this->mail->AddReplyTo($this->de);
             //Define mensagem HTML
             $this->mail->IsHTML(true);                                                                              //Formato do texto em HTML
-            $this->mail->CharSet      = 'iso-8859-1';                                                               //Caracteres do E-mail
+            $this->mail->CharSet      = 'utf-8';                                                                    //Caracteres do E-mail
             //Assunto                                                      
             $this->mail->Subject      = $this->assunto;                                                             //Assunto
             $this->mail->Body         = $this->corpoMensagem;                                                       //Mensagem
@@ -226,13 +226,15 @@
                 echo "
                         <script type='text/javascript'> 
                             alert('Mensagem enviada com sucesso!');
+                            history.back(1);
                         </script>
                     ";
             }
             else
                 echo "
                         <script type='text/javascript'> 
-                            alert(  'Mensagem não enviada');
+                            alert('Mensagem não enviada');
+                            history.back(1);
                         </script>
                     ";
         }

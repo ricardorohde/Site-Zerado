@@ -3,7 +3,7 @@
       * usuarios_salvar.php
       * Classe usuarios_salvar
       *
-      * @author  Rog√©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÈrio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -18,10 +18,10 @@
 
 
         /*
-         * M√©todos
+         * MÈtodos
          */
         /**
-          * M√©todo Construtor
+          * MÈtodo Construtor
           *
           * @access private
           * @return void
@@ -31,7 +31,7 @@
             if(isset($_GET['cod']))
             {
                 $this->codigo   = $_GET['cod'];
-                $this->usuario  = (new tbUsuarios())->load($this->codigo);            
+                $this->usuario  = (new tbUsuarios())->load($this->codigo);      
             }
             else
             {
@@ -41,7 +41,7 @@
         }
 
         /**
-          * M√©todo __set
+          * MÈtodo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -55,7 +55,7 @@
         }
 
         /**
-          * M√©todo __get
+          * MÈtodo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -68,8 +68,8 @@
         }
 
         /**
-          * M√©todo show
-          * Exibe as informa√ß√µes na tela
+          * MÈtodo show
+          * Exibe as informaÁıes na tela
           *
           * @access public
           * @return void
@@ -78,7 +78,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Usu√°rios' title='Usu√°rios's>Usu√°rios</h1>
+                    <h1 alt='Usu·rios' title='Usu·rios's>Usu·rios</h1>
                 </span>
 
                 <form id="usuariosForm" name='usuariosForm' action="" method="post">
@@ -135,13 +135,13 @@
 
                                     <div class='3u'>
                                         <label for='confirmacao'>
-                                            Confirma√ß√£o de Senha
+                                            ConfirmaÁ„o de Senha
                                         </label>
                                         <input 
                                             type='password' 
                                             id='confirmacao' 
                                             name='confirmacao' 
-                                            placeholder='Confirma√ß√£o'
+                                            placeholder='ConfirmaÁ„o'
                                             required
                                         >
                                     </div>
@@ -163,20 +163,20 @@
                                                         echo 
                                                             "
                                                                 <option value='1' selected>Sim</option>
-                                                                <option value='0'>N√£o</option>  
+                                                                <option value='0'>N„o</option>  
                                                             ";
                                                     else
                                                         echo 
                                                             "
                                                                 <option value='1'>Sim</option>
-                                                                <option value='0' selected>N√£o</option>  
+                                                                <option value='0' selected>N„o</option>  
                                                             ";
                                                 }
                                                 else
                                                     echo 
                                                         "
                                                             <option value='1'>Sim</option>
-                                                            <option value='0' selected>N√£o</option>
+                                                            <option value='0' selected>N„o</option>
                                                         ";
                                             ?>
                                         </select>
@@ -194,20 +194,20 @@
                                                         echo 
                                                             "
                                                                 <option value='1' selected>Sim</option>
-                                                                <option value='0'>N√£o</option>  
+                                                                <option value='0'>N„o</option>  
                                                             ";
                                                     else
                                                         echo 
                                                             "
                                                                 <option value='1'>Sim</option>
-                                                                <option value='0' selected>N√£o</option>  
+                                                                <option value='0' selected>N„o</option>  
                                                             ";
                                                 }
                                                 else
                                                     echo 
                                                         "
                                                             <option value='1' selected>Sim</option>
-                                                            <option value='0'>N√£o</option>
+                                                            <option value='0'>N„o</option>
                                                         ";
                                             ?>
                                         </select>

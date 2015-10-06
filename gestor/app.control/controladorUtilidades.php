@@ -2,16 +2,16 @@
     /**
       * controladorUtilidades.php
       * Classe de Controle de utilidades
-      *     1.1 ValidaÃ§Ã£o Links Youtube
+      *     1.1 Validação Links Youtube
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.1
       * @access  public
       */
     class controladorUtilidades
     {
         /**
-         * MÃ©todo corrigeNomeArquivo
+         * Método corrigeNomeArquivo
          * Corrige o nome de arquivos
          * 
          * @access  public
@@ -41,7 +41,7 @@
         }
 
         /**
-         * MÃ©todo existeArquivo
+         * Método existeArquivo
          * Adiciona '_2' no final do nome do arquivo
          * 
          * @access  public
@@ -58,7 +58,7 @@
         }
 
         /**
-         * MÃ©todo isValidYoutubeURL($url)
+         * Método isValidYoutubeURL($url)
          * Verifica Validade do Link do Youtube
          * http://stackoverflow.com/questions/10426204/validate-youtube-url-and-it-should-be-exists
          * 06/08/2015 10:34
@@ -95,7 +95,7 @@
         }
 
         /**
-         * MÃ©todo getYoutubeId($url)
+         * Método getYoutubeId($url)
          * http://stackoverflow.com/questions/6556559/youtube-api-extract-video-id
          * 06/08/2015 12:37
          *
@@ -114,7 +114,7 @@
         }
 
         /**
-         * MÃ©todo unshorten_url($url)
+         * Método unshorten_url($url)
          * Desencurta a URL
          * 
          * @since 1.1

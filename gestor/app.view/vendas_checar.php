@@ -3,7 +3,7 @@
       * vendas_checar.php
       * Classe vendas_checar
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-          * MÃ©todo Construtor
+          * Método Construtor
           *
           * @access private
           * @return void
@@ -32,7 +32,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -46,7 +46,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -59,8 +59,8 @@
         }
 
         /**
-          * MÃ©todo show
-          * Exibe as informaÃ§Ãµes na tela
+          * Método show
+          * Exibe as informações na tela
           *
           * @access public
           * @return void
@@ -84,7 +84,7 @@
                 
                 <hr>
                 <strong>Cliente:</strong> <?php echo $this->venda->cliente->nome; ?><br/>
-                <strong>EndereÃ§o:</strong> 
+                <strong>Endereço:</strong> 
                     <?php echo $this->venda->enderecoEntrega; ?> - <?php echo $this->venda->cliente->numeroEntrega; ?><br/>
                 <strong>Bairro:</strong> <?php echo $this->venda->cliente->bairroEntrega; ?><br/>
                 <strong>Cidade:</strong> 
@@ -110,14 +110,14 @@
 
                         <div class='6u' id='divCodigoRastreio'>
                             <label for='codigoRastreio'>
-                                CÃ³digo de Rastreio
+                                Código de Rastreio
                             </label>
                             <input
                                 type='text' 
                                 id='codigoRastreio' 
                                 name='codigoRastreio' 
                                 maxlength='20'
-                                placeholder='CÃ³digo de Rastreio'
+                                placeholder='Código de Rastreio'
                                 value="<?php echo $this->venda->codigoRastreio; ?>"
                             />
                         </div>

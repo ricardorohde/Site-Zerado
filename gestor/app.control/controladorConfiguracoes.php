@@ -3,7 +3,7 @@
       * controladorConfiguracoes.php
       * Classe de Controle controladorConfiguracoes
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -16,10 +16,10 @@
         private $favicon;
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-         * MÃ©todo Construtor
+         * Método Construtor
          *
          * @access private
          * @return void
@@ -31,7 +31,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -45,7 +45,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -58,11 +58,11 @@
         }
 
         /**
-         * MÃ©todo getConfiguracoes
-         * Retorna as configuraÃ§Ãµes do banco de dados
+         * Método getConfiguracoes
+         * Retorna as configurações do banco de dados
          * 
          * @access public
-         * @return tbConfiguracoes   ConfiguraÃ§Ãµes do site
+         * @return tbConfiguracoes   Configurações do site
          */
         public function getConfiguracoes()
         {
@@ -74,8 +74,8 @@
         }
 
         /**
-         * MÃ©todo salva()
-         * Salva as configuraÃ§Ãµes
+         * Método salva()
+         * Salva as configurações
          * 
          * @access  public
          * @param   string  $logotipo
@@ -85,7 +85,7 @@
          * @param   string  $dominio
          * @param   string  $descricao
          * @param   string  $keywords
-         * @return  boolean Status da operaÃ§Ã£o
+         * @return  boolean Status da operação
          */
         public function salva(
                                 $logotipo, 

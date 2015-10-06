@@ -3,7 +3,7 @@
       * localizacao_salvar.php
       * Classe localizacao_salvar
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -17,10 +17,10 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-          * MÃ©todo Construtor
+          * Método Construtor
           *
           * @access private
           * @return void
@@ -30,7 +30,7 @@
             if(isset($_GET['cod']))
             {
                 $this->codigo = $_GET['cod'];
-                $this->localizacao = (new tbLocalizacao())->load($this->codigo);            
+                $this->localizacao = (new tbLocalizacao())->load($this->codigo);        
             }
             else
             {
@@ -40,7 +40,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -54,7 +54,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -67,8 +67,8 @@
         }
 
         /**
-          * MÃ©todo show
-          * Exibe as informaÃ§Ãµes na tela
+          * Método show
+          * Exibe as informações na tela
           *
           * @access public
           * @return void
@@ -77,7 +77,7 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='LocalizaÃ§Ã£o' title='LocalizaÃ§Ã£o' >LocalizaÃ§Ã£o</h1>
+                    <h1 alt='Localização' title='Localização' >Localização</h1>
                 </span>
 
                 <form id="localizacaoForm" name='localizacaoForm' action="" method="post">
@@ -112,20 +112,20 @@
                                             echo 
                                                 "
                                                     <option value='1' selected>Sim</option>
-                                                    <option value='0'>NÃ£o</option>  
+                                                    <option value='0'>Não</option>  
                                                 ";
                                         else
                                             echo 
                                                 "
                                                     <option value='1'>Sim</option>
-                                                    <option value='0' selected>NÃ£o</option>  
+                                                    <option value='0' selected>Não</option>  
                                                 ";
                                     }
                                     else
                                         echo 
                                             "
                                                 <option value='1' selected>Sim</option>
-                                                <option value='0'>NÃ£o</option>
+                                                <option value='0'>Não</option>
                                             ";
                                 ?>
                             </select>

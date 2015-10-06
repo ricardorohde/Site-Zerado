@@ -3,7 +3,7 @@
       * tbConfiguracoes.php
       * Classe de modelo tbConfiguracoes
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -22,75 +22,95 @@
          *  Colunas
          */
         /**
-          * @access private
-          * @var    int     CÃ³digo
+          * @access protected
+          * @var    int     Código
           */
-        private $codigo;
+        protected $codigo;
         /**
-          * @access private
+          * @access protected
           * @var    string     Titulo do Site
           */
-        private $titulo;
+        protected $titulo;
         /**
-          * @access private
+          * @access protected
           * @var    string     Empresa Dona do Site
           */
-        private $empresa;
+        protected $empresa;
         /**
-          * @access private
-          * @var    string     ConteÃºdo do Site
+          * @access protected
+          * @var    string     Conteúdo do Site
           */
-        private $conteudo;
+        protected $conteudo;
         /**
-          * @access private
-          * @var    string     DomÃ­nio do site
+          * @access protected
+          * @var    string     Domínio do site
           */
-        private $dominio;
+        protected $dominio;
         /**
-          * @access private
-          * @var    string     DescriÃ§Ã£o do site
+          * @access protected
+          * @var    string     Descrição do site
           */
-        private $descricao;
+        protected $descricao;
         /**
-          * @access private
+          * @access protected
           * @var    string     Palavras-Chave do Site
           */
-        private $keywords;
+        protected $keywords;
         /**
-          * @access private
+          * @access protected
           * @var    string     Logotipo do Site
           */
-        private $logotipo;
+        protected $logotipo;
+        /**
+          * @access protected
+          * @var    string     Email cadastrado no PagSeguro
+          */
+        protected $emailPagSeguro;
+        /**
+          * @access protected
+          * @var    string     Token Gerado pelo PagSeguro
+          */
+        protected $tokenPagSeguro;
+        /**
+          * @access protected
+          * @var    string     Endereço da Empresa
+          */
+        protected $endereco;
+        /**
+          * @access protected
+          * @var    int         Número do Endereço da Empresa
+          */
+        protected $numero;
+        /**
+          * @access protected
+          * @var    string     Bairro da Empresa
+          */
+        protected $bairro;
+        /**
+          * @access protected
+          * @var    string     CEP da Empresa
+          */
+        protected $cep;
+        /**
+          * @access protected
+          * @var    string     Cidade da Empresa
+          */
+        protected $cidade;
+        /**
+          * @access protected
+          * @var    string     Estado da Empresa
+          */
+        protected $estado;
+        /**
+          * @access protected
+          * @var    string     Telefone da Empresa
+          */
+        protected $telefone;
+
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
-        /**
-          * MÃ©todo __set
-          * Seta o valor da variavel
-          * 
-          * @access public
-          * @param  string  $propriedade    Propriedade a ser definida o valor
-          * @param  mixed   $valor          Valor da Propriedade
-          * @return void
-          */
-        public function __set($propriedade, $valor)
-        {
-            $this->$propriedade = $valor;
-        }
-
-        /**
-          * MÃ©todo __get
-          * Seta o valor da variavel
-          * 
-          * @access public
-          * @param  string $propriedade    Propriedade a ser retornada
-          * @return mixed                   Valor da Propriedade
-          */
-        public function __get($propriedade)
-        {
-            return $this->$propriedade;
-        }
     }
 ?>

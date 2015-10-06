@@ -23,13 +23,13 @@
     * ajax.php
     * Destino de todos os formularios
     *
-    * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+    * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
     * @version 1.0   
     */
     error_reporting(E_WARNING);
     @session_start();
 
-    //Obtem informaÃ§Ã£o do que sera feito atravÃ©s do campo action
+    //Obtem informação do que sera feito através do campo action
     $request = $_POST['request'];
 
     //Login
@@ -40,6 +40,7 @@
 
         if($retorno == true)
         {
+            $_SESSION['funcoes']        = (new tbFuncoes())->load(1);
             return true;
         }
         else
@@ -211,7 +212,62 @@
         $controlador->produto->descricao        = $_POST['descricao'];
         $controlador->produto->ativo            = $_POST['ativo'];
         
-        echo $controlador->produto->store();
+        $result = $controlador->produto->store();
+
+        if($result == 1)
+        {
+            if($_POST['codigo'] == '')
+                $codigo = $controlador->produto->getLast();
+            else
+                $codigo = $_POST['codigo'];
+
+            $controladorGaleria = new controladorGaleria();
+            $controladorGaleria->repository->addEntity('galeria');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter('codigoProduto', '=', $codigo);
+
+            $controladorGaleria->repository->deleteFisico($criteria);
+
+            $imagens    = $_POST['imagens'];
+            $imagens    = explode('³', $imagens);
+
+            $erros      = 0;
+
+            if(count($imagens) > 1)
+            {
+                foreach ($imagens as $imagem) 
+                {
+                    $imagem = explode('²', $imagem);
+
+                    if  (
+                            ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
+                            ($imagem[1] != '' &&    $imagem[1] != NULL    &&    $imagem[1] != 'undefined') &&
+                            ($imagem[2] != '' &&    $imagem[2] != NULL    &&    $imagem[2] != 'undefined') &&
+                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
+                        )
+                    {
+                        $controladorGaleria->galeria                    = new tbGaleria();
+
+                        $controladorGaleria->galeria->codigoProduto     = $codigo;
+                        $controladorGaleria->galeria->imagem            = $imagem[0];
+                        $controladorGaleria->galeria->titulo            = $imagem[1];
+                        $controladorGaleria->galeria->descricao         = $imagem[2];
+                        $controladorGaleria->galeria->ordem             = $imagem[3];
+
+                        if($controladorGaleria->galeria->store() == 0)
+                            $erros++;
+                    }
+                }
+            }
+
+            if($erros == 0)
+                echo 1;
+            else
+                echo 'erro '.$erros;
+        }
+        else
+            echo 'erro 0';
     }
 
     //Salva Venda
@@ -227,8 +283,8 @@
         echo $controlador->venda->store();
     }
 
-    //Salva SituaÃ§Ã£o dos imÃ³veis
-    if($request == 'salvaSituacaoImoveisForm')
+    //Salva Situação dos imóveis
+    if($request == 'salvaSituacaoImoveis')
     {
         $controlador                        = new controladorSituacaoImoveis();
 
@@ -241,8 +297,8 @@
         echo $controlador->situacao->store();
     }
 
-    //Salva Categoria dos imÃ³veis
-    if($request == 'salvaCategoriaImoveisForm')
+    //Salva Categoria dos imóveis
+    if($request == 'salvaCategoriaImoveis')
     {
         $controlador                        = new controladorCategoriaImoveis();
 
@@ -253,6 +309,108 @@
         $controlador->categoria->ativo      = $_POST['ativo'];
         
         echo $controlador->categoria->store();
+    }
+
+    //Salva Imóveis
+    if($request == 'salvaImoveis')
+    {
+        $controlador                            = new controladorImoveis();
+
+        $controlador->imovel                    = new tbImoveis();
+
+        $controlador->imovel->codigo            = $_POST['codigo'];
+        $controlador->imovel->endereco          = $_POST['endereco'];
+        $controlador->imovel->numero            = $_POST['numero'];
+        $controlador->imovel->bairro            = $_POST['bairro'];
+        $controlador->imovel->cep               = $_POST['cep'];
+        $controlador->imovel->cidade            = $_POST['cidade'];
+        $controlador->imovel->estado            = $_POST['estado'];
+        $controlador->imovel->situacao          = $_POST['situacao'];
+        $controlador->imovel->categoria         = $_POST['categoria'];
+        $controlador->imovel->categoriaAluguel  = $_POST['categoriaAluguel'];
+        $controlador->imovel->preco             = $_POST['preco'];
+        $controlador->imovel->destaque          = $_POST['destaque'];
+        $controlador->imovel->ativo             = $_POST['ativo'];
+        
+        $result = $controlador->imovel->store();
+
+        if($result == 1)
+        {
+            if($_POST['codigo'] == '')
+                $codigo = $controlador->imovel->getLast();
+            else
+                $codigo = $_POST['codigo'];
+
+            $controladorGaleria = new controladorGaleria();
+            $controladorGaleria->repository->addEntity('galeria');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter('codigoImovel', '=', $codigo);
+
+            $controladorGaleria->repository->deleteFisico($criteria);
+
+            $imagens    = $_POST['imagens'];
+            $imagens    = explode('³', $imagens);
+
+            $erros      = 0;
+
+            if(count($imagens) > 1)
+            {
+                foreach ($imagens as $imagem) 
+                {
+                    $imagem = explode('²', $imagem);
+
+                    if  (
+                            ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
+                            ($imagem[1] != '' &&    $imagem[1] != NULL    &&    $imagem[1] != 'undefined') &&
+                            ($imagem[2] != '' &&    $imagem[2] != NULL    &&    $imagem[2] != 'undefined') &&
+                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
+                        )
+                    {
+                        $controladorGaleria->galeria                    = new tbGaleria();
+
+                        $controladorGaleria->galeria->codigoImovel      = $codigo;
+                        $controladorGaleria->galeria->imagem            = $imagem[0];
+                        $controladorGaleria->galeria->titulo            = $imagem[1];
+                        $controladorGaleria->galeria->descricao         = $imagem[2];
+                        $controladorGaleria->galeria->ordem             = $imagem[3];
+
+                        if($controladorGaleria->galeria->store() == 0)
+                            $erros++;
+                    }
+                }
+            }
+
+            if($erros == 0)
+                echo 1;
+            else
+                echo 'erro '.$erros;
+        }
+        else
+            echo 'erro 0';
+    }
+
+    //Salva Funções
+    if($request == 'salvaFuncoes')
+    {
+        $controlador                        = new controladorFuncoes;
+
+        $controlador->funcoes               = new tbFuncoes();
+
+        $controlador->funcoes->codigo       = 1;
+        $controlador->funcoes->banner       = $_POST['banner']      == 'true' ? 1 : 0;
+        $controlador->funcoes->video        = $_POST['video']       == 'true' ? 1 : 0;
+        $controlador->funcoes->galeria      = $_POST['galeria']     == 'true' ? 1 : 0;
+        $controlador->funcoes->ecommerce    = $_POST['ecommerce']   == 'true' ? 1 : 0;
+        $controlador->funcoes->delivery     = $_POST['delivery']    == 'true' ? 1 : 0;
+        $controlador->funcoes->imobiliaria  = $_POST['imobiliaria'] == 'true' ? 1 : 0;
+        
+        $retorno                            = $controlador->funcoes->store();
+
+        if($retorno == 1)
+            $_SESSION['funcoes'] = $controlador->funcoes;
+
+        echo $retorno;
     }
 
     //Altera Senha
@@ -276,14 +434,14 @@
             }
         }
         else
-            echo 'Senha antiga invÃ¡lida!';
+            echo 'Senha antiga inválida!';
     }
 
     //Apaga item
     if($request == 'apagar')
     {
         $tabela         = $_POST['tabela'];
-        $tabelaClass    = 'tb'. ucfirst($tabela);
+        $tabelaClass    = 'tb'.ucfirst($tabela);
         $codigo         = $_POST['codigo'];
 
         $object = new $tabelaClass;
@@ -293,11 +451,13 @@
 
         if($tabela == 'paginas')
         {
-            $listagem->setTituloPagina('PÃ¡ginas');
+            $listagem->setTituloPagina('Páginas');
 
             $listagem->addColumn('titulo');
             $listagem->addColumn('descricao');
             $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
         }
         else if($tabela == 'banners')
         {
@@ -307,20 +467,26 @@
             $listagem->addColumn('descricao');
             $listagem->addColumn('imagem');
             $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
         }
         else if($tabela == 'usuarios')
         {
-            $listagem->setTituloPagina('UsuÃ¡rios');
+            $listagem->setTituloPagina('Usuários');
 
             $listagem->addColumn('nome');
             $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
         }
         else if($tabela == 'localizacao')
         {
-            $listagem->setTituloPagina('Categoria PÃ¡ginas');
+            $listagem->setTituloPagina('Categoria Páginas');
 
             $listagem->addColumn('nome');
             $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
         }
         else if($tabela == 'videos')
         {
@@ -329,6 +495,8 @@
             $listagem->addColumn('titulo');
             $listagem->addColumn('imagem');
             $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
         }
         else if($tabela == 'produtos')
         {
@@ -338,25 +506,52 @@
             $listagem->addColumn('valor');
             $listagem->addColumn('peso');
             $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
         }
         else if($tabela == 'situacaoImoveis')
         {
-            $listagem->setTituloPagina('SituaÃ§Ã£o ImÃ³veis');
+            $listagem->setTituloPagina('Situação Imóveis');
 
             $listagem->addColumn('situacao');
             $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
         }
         else if($tabela == 'categoriaImoveis')
         {
-            $listagem->setTituloPagina('Categoria ImÃ³veis');
+            $listagem->setTituloPagina('Categoria Imóveis');
 
             $listagem->addColumn('categoria');
             $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+        }
+        else if($tabela == 'imoveis')
+        {
+            $listagem->setTituloPagina('Imóveis');
+
+            $listagem->addColumn('i.codigo');
+            $listagem->addColumn('c.categoria');
+            $listagem->addColumn('i.endereco');
+            $listagem->addColumn('i.numero');
+            $listagem->addColumn('i.bairro');
+            $listagem->addColumn('i.cidade');
+            $listagem->addColumn('i.preco');
+            $listagem->addColumn('s.situacao');
+            $listagem->addColumn('i.ativo');
+
+            $listagem->addEntity('imoveis i');
+            $listagem->addEntity('categoriaImoveis c');
+            $listagem->addEntity('situacaoImoveis s');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter('c.codigo', '=', 'i.categoria');
+            $criteria->addFilter('s.codigo', '=', 'i.situacao');
+            $listagem->setCriteria($criteria);
         }
         else
             $listagem->setTituloPagina(ucfirst($tabela));
-
-        $listagem->addEntity($tabela);
 
         echo $listagem->show();
     }

@@ -3,7 +3,7 @@
       * controladorLogin.php
       * Classe de Controle Login
       *
-      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -19,10 +19,10 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         /**
-         * MÃ©todo Construtor
+         * Método Construtor
          *
          * @access private
          * @return void
@@ -36,7 +36,7 @@
         }
 
         /**
-          * MÃ©todo __set
+          * Método __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -50,7 +50,7 @@
         }
 
         /**
-          * MÃ©todo __get
+          * Método __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -63,7 +63,7 @@
         }
 
         /**
-          * MÃ©todo login
+          * Método login
           * Realiza o login
           * 
           * @access public
@@ -76,7 +76,7 @@
             if($this->compara())
             {
                 $_SESSION['usuario'] = $this->userDB;
-                
+
                 return true;
             }
             else
@@ -84,7 +84,7 @@
         }
         
         /**
-          * MÃ©todo compara
+          * Método compara
           * Compara usuario e senha
           * 
           * @access public

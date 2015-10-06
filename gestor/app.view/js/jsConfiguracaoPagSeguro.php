@@ -22,7 +22,7 @@
                     }
                     else
                     {
-                        alert('Erro ao salvar o conteÃºdo!');
+                        alert('Erro ao salvar o conteúdo!');
                     }
                 }
             });

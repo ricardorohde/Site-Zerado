@@ -1,9 +1,9 @@
 <?php
     /**
      * TSqlSelect.php
-     * Esta classe provÃª meios para manipulaÃ§Ã£o de uma instruÃ§Ã£o de SELECT no banco de dados
+     * Esta classe provê meios para manipulação de uma instrução de SELECT no banco de dados
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
      * @version 1.0     
      * @access  public
      */
@@ -19,11 +19,11 @@
         private $columns;
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         
         /**
-         * MÃ©todo addColumn
+         * Método addColumn
          * Adiciona uma coluna a ser retornada pelo SELECT
          * 
          * @access  public
@@ -37,15 +37,15 @@
         }
         
         /**
-         * MÃ©todo getInstruction()
-         * Retorna a instruÃ§Ã£o de SELECT em forma de string
+         * Método getInstruction()
+         * Retorna a instrução de SELECT em forma de string
          * 
          * @access public
-         * @return InstruÃ§Ã£o SQL SELECT
+         * @return Instrução SQL SELECT
          */
         public function getInstruction()
         {
-            //Monta a instruÃ§Ã£o de SELECT
+            //Monta a instrução de SELECT
             $this->sql =    'SELECT ';
             //Monta uma string com os nomes das colunas
             if(count($this->columns) == 1)
@@ -53,13 +53,13 @@
             else
                 $this->sql .=   implode(',', $this->columns);
             
-            //Adiciona clÃ¡usula FROM o nome da tabela
+            //Adiciona cláusula FROM o nome da tabela
             if(count($this->entity) == 1)
                 $this->sql .=  ' FROM ' . $this->entity[0];
             else
                 $this->sql .=  ' FROM ' . implode(',', $this->entity);
             
-            //Obtem clÃ¡usula WHERE do objeto criteria
+            //Obtem cláusula WHERE do objeto criteria
             if($this->criteria)
             {
                 $expression = $this->criteria->dump();
@@ -68,7 +68,7 @@
                     $this->sql .= ' WHERE ' .$expression;
                 }
                 
-                //ObtÃ©m as propriedades do critÃ©rio
+                //Obtém as propriedades do critério
                 $group  = $this->criteria->getProperty('group');
                 $order  = $this->criteria->getProperty('order');
                 $limit  = $this->criteria->getProperty('limit');
@@ -78,17 +78,17 @@
                 {
                     $this->sql .= ' GROUP BY ' . $group;
                 }
-                //ObtÃ©m a ordenaÃ§Ã£o do SELECT
+                //Obtém a ordenação do SELECT
                 if($order)
                 {
                     $this->sql .= ' ORDER BY ' . $order;
                 }
-                //ObtÃ©m o limite
+                //Obtém o limite
                 if($limit)
                 {
                     $this->sql .= ' LIMIT ' . $limit;
                 }
-                //ObtÃ©m o offset
+                //Obtém o offset
                 if($offset)
                 {
                     $this->sql .= ' OFFSET ' . $offset;

@@ -1,22 +1,23 @@
 <?php
     /**
      * TRepository.php
-     * Esta classe provÃª os mÃ©todos necessÃ¡rios para manipular coleÃ§Ãµes de objetos
-     *    1.1 Inicio e conclusÃ£o de transaÃ§Ã£o direto nas operaÃ§Ãµes
+     * Esta classe provê os métodos necessários para manipular coleções de objetos
+     *    1.1 Inicio e conclusão de transação direto nas operações
      *    1.2 Adicionado Paramatro excluido = 0 nas buscas
+     *    1.3 Criado métodos de exclusão fisicos
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
-     * @version 1.2
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
+     * @version 1.3
      * @access  public
      */
     class TRepository
     {
         /*
-         * MÃ©todos
+         * Métodos
          */
         
         /**
-          * MÃ©todo addColumn
+          * Método addColumn
           * Adiciona uma coluna a ser retornada pelo SELECT
           * 
           * @access  public
@@ -30,8 +31,8 @@
         }
         
         /**
-          * MÃ©todo addEntity()
-          * Define o nome da entidade (tabela) manipulada pela instruÃ§Ã£o SQL
+          * Método addEntity()
+          * Define o nome da entidade (tabela) manipulada pela instrução SQL
           * 
           * @access  public
           * @param   $entity     Tabela
@@ -43,12 +44,12 @@
         }
         
         /**
-          * MÃ©todo load
-          * Recupera um conjunto de objetos (collection) da base de dados atravÃ©s de um critÃ©rio de seleÃ§Ã£o
+          * Método load
+          * Recupera um conjunto de objetos (collection) da base de dados através de um critério de seleção
           * 
           * @access public
-          * @param  $criteria   CritÃ©rio de SeleÃ§Ã£o
-          * @throws Exception   NÃ£o hÃ¡ transaÃ§Ã£o ativa
+          * @param  $criteria   Critério de Seleção
+          * @throws Exception   Não há transação ativa
           * @return Resultados da Busca
           */
         function load(TCriteria $criteria = NULL)
@@ -88,6 +89,8 @@
 
             $sql->setCriteria($criteria);
 
+            echo $sql->getInstruction();
+
             //RECUPERA CONEXAO BANCO DE DADOS
             TTransaction::open('my_bd_site');
 
@@ -110,17 +113,17 @@
             }
             else 
             {
-                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa!');
+                throw new Exception('Não há transação ativa!');
             }
         }
         
         /**
-          * MÃ©todo delete()
-          * Exclui um conjunto de objetos (collection) da base de dados atravÃ©s de um critÃ©rio de seleÃ§Ã£o
+          * Método delete()
+          * Exclui um conjunto de objetos (collection) da base de dados através de um critério de seleção
           * 
           * @access public
           * @param  $criteria   Objeto do tipo TCriteria
-          * @throws Exception   NÃ£o hÃ¡ transaÃ§Ã£o ativa
+          * @throws Exception   Não há transação ativa
           * @return void
           */
         function delete(TCriteria $criteria)
@@ -142,18 +145,51 @@
             }
             else 
             {
-                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa!');
+                throw new Exception('Não há transação ativa!');
+            }   
+        }
+
+        /**
+          * Método deleteFisico()
+          * Exclui um conjunto de objetos (collection) da base de dados através de um critério de seleção
+          * 
+          * @since  1.3
+          * @access public
+          * @param  $criteria   Objeto do tipo TCriteria
+          * @throws Exception   Não há transação ativa
+          * @return void
+          */
+        function deleteFisico(TCriteria $criteria)
+        {
+            $sql = new TSqlDeleteFisico;
+            $sql->addEntity($this->entity[0]);
+            $sql->setCriteria($criteria);
+            
+            //RECUPERA CONEXAO BANCO DE DADOS
+            TTransaction::open('my_bd_site');
+
+            if ($conn = TTransaction::get()) 
+            {               
+                $result = $conn->exec($sql->getInstruction());
+
+                TTransaction::close();
+                
+                return $result;
+            }
+            else 
+            {
+                throw new Exception('Não há transação ativa!');
             }   
         }
         
         /**
-          * MÃ©todo count()
-          * Conta o nÃºmero de ocorrencias que satisfazem o critÃ©rio de seleÃ§Ã£o
+          * Método count()
+          * Conta o número de ocorrencias que satisfazem o critério de seleção
           * 
           * @access public
-          * @param  $criteria    Criteria de SelecÃ§Ã£o
-          * @throws Exception   NÃ£o hÃ¡ transaÃ§Ã£o ativa
-          * @return NÃºmero de Ocorrencias
+          * @param  $criteria    Criteria de Selecção
+          * @throws Exception   Não há transação ativa
+          * @return Número de Ocorrencias
           */
         function count(TCriteria $criteria)
         {
@@ -180,7 +216,7 @@
             }
             else 
             {
-                throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa!');
+                throw new Exception('Não há transação ativa!');
             }   
         }
     }

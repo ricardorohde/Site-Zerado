@@ -1,9 +1,9 @@
 <?php
     /**
      * TExpression.php
-     * Classe abstrata para gerenciar expressÃµes
+     * Classe abstrata para gerenciar expressões
      *
-     * @author  Pablo D'allOgglio (Livro PHP Programando com OrietaÃ§Ã£o a Objetos - 2Âª EdiÃ§Ã£o)
+     * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
      * @version 1.0     
      * @access  public
      */
@@ -23,12 +23,12 @@
 
 
         /*
-         * MÃ©todos
+         * Métodos
          */
         
         /**
-         * MÃ©todo dump
-         * Marca mÃ©todo dump como obrigatÃ³rio
+         * Método dump
+         * Marca método dump como obrigatório
          *
          * @abstract
          */

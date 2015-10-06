@@ -1,7 +1,3 @@
-<?php
-    $funcoes = (new controladorFuncoes)->getFuncoes();
-?>
-
 <div class='2u menu'>
     <span class='center title'>
         Bem vindo<br/>
@@ -11,44 +7,38 @@
     <nav id='menuLateral'>
         <ul>
             <li>
-                <a href='/funcoes' title='FunÃ§Ãµes' alt='FunÃ§Ãµes'>
+                <a href='/configuracoes' title='Configurações' alt='Configurações'>
                     <i class="fa fa-cog"></i>&nbsp;
-                    FunÃ§Ãµes
-                </a>
-            </li>
-            <li>
-                <a href='/configuracoes' title='ConfiguraÃ§Ãµes' alt='ConfiguraÃ§Ãµes'>
-                    <i class="fa fa-cog"></i>&nbsp;
-                    ConfiguraÃ§Ãµes
+                    Configurações
                 </a>
             </li>
             <?php
-                if($funcoes->ecommerce == 1)
+                if($_SESSION['funcoes']->ecommerce == 1)
                 {
                     ?>
                     <li>
-                        <a href='/configuracoesPagSeguro' title='ConfiguraÃ§Ãµes PagSeguro' alt='ConfiguraÃ§Ãµes PagSeguro'>
+                        <a href='/configuracoesPagSeguro' title='Configurações PagSeguro' alt='Configurações PagSeguro'>
                             <i class="fa fa-cog"></i>&nbsp;
-                            ConfiguraÃ§Ãµes PagSeguro
+                            Configurações PagSeguro
                         </a>
                     </li>
                     <?php
                 }
             ?>
             <li>
-                <a href='/localizacao' title='Categoria PÃ¡ginas' alt='Categoria PÃ¡ginas'>
+                <a href='/localizacao' title='Categoria Páginas' alt='Categoria Páginas'>
                     <i class="fa fa-list"></i>&nbsp;
-                    Categoria PÃ¡ginas
+                    Categoria Páginas
                 </a>
             </li>
             <li>
-                <a href='/paginas' title='PÃ¡ginas' alt='PÃ¡ginas'>
+                <a href='/paginas' title='Páginas' alt='Páginas'>
                     <i class="fa fa-file-text"></i>&nbsp;
-                    PÃ¡ginas
+                    Páginas
                 </a>
             </li>
              <?php
-                if($funcoes->banner == 1)
+                if($_SESSION['funcoes']->banner == 1)
                 {
                     ?>
                         <li>
@@ -61,12 +51,12 @@
                 }
             ?>
             <?php
-                if($funcoes->video == 1)
+                if($_SESSION['funcoes']->video == 1)
                 {
                     ?>
                         <li>
                             <a href='/videos' title='Videos' alt='Videos'>
-                                <i class="fa fa-video-camera"></i>&nbsp;
+                                <i class="fa fa-youtube-play"></i>&nbsp;                                
                                 Videos
                             </a>
                         </li>
@@ -74,7 +64,7 @@
                 }
             ?>
             <?php
-                if($funcoes->ecommerce == 1)
+                if($_SESSION['funcoes']->ecommerce == 1)
                 {
                     ?>
                     <li>
@@ -93,7 +83,7 @@
                 }
             ?>
             <?php
-                if($funcoes->delivery == 1)
+                if($_SESSION['funcoes']->delivery == 1)
                 {
                     ?>
                     <li>
@@ -112,34 +102,51 @@
                 }
             ?>
             <?php
-                if($funcoes->imobiliaria == 1)
+                if($_SESSION['funcoes']->imobiliaria == 1)
                 {
                     ?>
                     <li>
-                        <a href='/situacaoImoveis' title='SituaÃ§Ã£o ImÃ³veis' alt='SituaÃ§Ã£o ImÃ³veis'>
+                        <a href='/situacaoImoveis' title='Situação Imóveis' alt='Situação Imóveis'>
                             <i class="fa fa-list"></i>&nbsp;
-                            SituaÃ§Ã£o ImÃ³veis
+                            Situação Imóveis
                         </a>
                     </li>
                     <li>
-                        <a href='/categoriaImoveis' title='Categoria ImÃ³veis' alt='Categoria ImÃ³veis'>
+                        <a href='/categoriaImoveis' title='Categoria Imóveis' alt='Categoria Imóveis'>
                             <i class="fa fa-list"></i>&nbsp;
-                            Categoria ImÃ³veis
+                            Categoria Imóveis
                         </a>
                     </li>
                     <li>
-                        <a href='/imoveis' title='ImÃ³veis' alt='ImÃ³veis'>
+                        <a href='/imoveis' title='Imóveis' alt='Imóveis'>
                             <i class="fa fa-home"></i>&nbsp;
-                            ImÃ³veis
+                            Imóveis
+                        </a>
+                    </li>
+                    <?php
+                }
+            ?>
+            <?php
+                if  (
+                        ($_SESSION['funcoes']->galeria      == 1)   ||
+                        ($_SESSION['funcoes']->ecommerce    == 1)   ||
+                        ($_SESSION['funcoes']->imobiliaria  == 1)
+                    )
+                {
+                    ?>
+                        <li>
+                        <a href='/galeria' title='Galeria' alt='Galeria'>
+                            <i class="fa fa-picture-o"></i>&nbsp;
+                            Galeria de Imagens
                         </a>
                     </li>
                     <?php
                 }
             ?>
             <li>
-                <a href='/usuarios' title='UsuÃ¡rios' alt='UsuÃ¡rios'>
+                <a href='/usuarios' title='Usuários' alt='Usuários'>
                     <i class="fa fa-user-plus"></i>&nbsp;
-                    UsuÃ¡rios
+                    Usuários
                 </a>
             </li>
             <li>
@@ -155,16 +162,16 @@
                 </a>
             </li>
         </ul>
-
-        <div class='copyright'>
-            <div>
-                <span class='center'>
-                    &copy; 2015 - 
-                    <a href='http://rogeriopereira.info' alt='Desenvolvedor' title='Desenvolvedor' target='_blank'>
-                        RogÃ©rio Pereira
-                    </a>
-                </span>
-            </div>
-        </div>
     </nav>
+
+    <div class='copyright'>
+        <div>
+            <span class='center'>
+                &copy; 2015 - 
+                <a href='http://rogeriopereira.info' alt='Desenvolvedor' title='Desenvolvedor' target='_blank'>
+                    Rogério Pereira
+                </a>
+            </span>
+        </div>
+    </div>
 </div>
