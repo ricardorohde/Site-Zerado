@@ -89,7 +89,7 @@
 
             $sql->setCriteria($criteria);
 
-            echo $sql->getInstruction();
+            //echo $sql->getInstruction();
 
             //RECUPERA CONEXAO BANCO DE DADOS
             TTransaction::open('my_bd_site');
