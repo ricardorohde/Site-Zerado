@@ -164,7 +164,7 @@
                                             "
                                                 <div class='2u uploaderBox'>
                                                     <div class='uploaderImg'>
-                                                        <img src='{$_SESSION['dominio']}app.view/img/{$file}'>
+                                                        <img src='{$_SESSION['dominio']}/app.view/img/{$file}'>
                                                     </div>
                                                     <div class='center'>
                                             ";
@@ -177,7 +177,7 @@
                                                         id='selecionar' 
                                                         class='uploaderSelecionar' 
                                                         value='Selecionar' 
-                                                        onclick=\"selecionaImagem('{$_SESSION['dominio']}app.view/img/{$file}');\"
+                                                        onclick=\"selecionaImagem('{$_SESSION['dominio']}/app.view/img/{$file}');\"
                                                     >
                                                 ";
                                         else
@@ -187,7 +187,7 @@
                                                         type='checkbox' 
                                                         name='imagens[]'
                                                         class='checkImagensSelecionadas'
-                                                        value='{$_SESSION['dominio']}app.view/img/{$file}' 
+                                                        value='{$_SESSION['dominio']}/app.view/img/{$file}' 
                                                     />
                                                 ";
                                         echo 
@@ -198,7 +198,7 @@
                                                             id='excluir' 
                                                             class='uploaderExcluir' 
                                                             value='Excluir' 
-                                                            onclick=\"excluirImagem('{$_SESSION['dominio']}app.view/img/{$file}');\"
+                                                            onclick=\"excluirImagem('{$_SESSION['dominio']}/app.view/img/{$file}');\"
                                                         >
                                                     </div>
                                                 </div>

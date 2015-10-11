@@ -1,6 +1,7 @@
 <?php
     $controladorConfiguracoes   = new controladorConfiguracoes();
     $configuracoes              = $controladorConfiguracoes->getConfiguracoes();
+    $_SESSION['dominio']        = $configuracoes->dominio;
 ?>
 <title><?php echo $configuracoes->titulo; ?></title>
 
