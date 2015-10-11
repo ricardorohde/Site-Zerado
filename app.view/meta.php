@@ -1,26 +1,26 @@
 <?php
     $controladorConfiguracoes   = new controladorConfiguracoes();
-    $configuracoes              = $controladorConfiguracoes->getConfiguracoes();
+     $_SESSION['configuracoes'] = $controladorConfiguracoes->getConfiguracoes();
 ?>
-<title><?php echo $configuracoes->titulo; ?></title>
+<title><?php echo  $_SESSION['configuracoes']->titulo; ?></title>
 
 <link rel="icon"                    href="../app.view/img/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon"           href="../app.view/img/favicon.ico" type="image/x-icon" />
 
-<meta name="description"            content="<?php echo $configuracoes->descricao; ?>" />
-<meta name="keywords"               content="<?php echo $configuracoes->keywords; ?>"/>
-<meta name="title"                  content="<?php echo $configuracoes->titulo; ?>"/> 
-<meta name="url"                    content="<?php echo $configuracoes->dominio; ?>"/> 
-<meta http-equiv="VW96.OBJECT TYPE"	content="<?php echo $configuracoes->keyword; ?>"/> 
-<meta property="og:title"           content="<?php echo $configuracoes->descricao.' - '.$configuracoes->empresa; ?>" />
-<meta property="og:description"     content="<?php echo $configuracoes->descricao.' - '.$configuracoes->conteudo.' - '.$configuracoes->empresa; ?>" />
-<meta property="og:image"           content="<?php echo $configuracoes->logotipo; ?>" />
-<meta property="og:url"             content="<?php echo $configuracoes->dominio; ?>" />
-<meta property="og:type"            content="<?php echo $configuracoes->conteudo; ?>" />
-<meta property="og:site_name"       content="<?php echo $configuracoes->empresa; ?>" />
-<meta itemprop="name"               content="<?php echo $configuracoes->empresa; ?>" />
-<meta itemprop="description"        content="<?php echo $configuracoes->descricao; ?>" />
-<meta itemprop="image"              content="<?php echo $configuracoes->logotipo; ?>"/>
+<meta name="description"            content="<?php echo  $_SESSION['configuracoes']->descricao; ?>" />
+<meta name="keywords"               content="<?php echo  $_SESSION['configuracoes']->keywords; ?>"/>
+<meta name="title"                  content="<?php echo  $_SESSION['configuracoes']->titulo; ?>"/> 
+<meta name="url"                    content="<?php echo  $_SESSION['configuracoes']->dominio; ?>"/> 
+<meta http-equiv="VW96.OBJECT TYPE"	content="<?php echo  $_SESSION['configuracoes']->keyword; ?>"/> 
+<meta property="og:title"           content="<?php echo  $_SESSION['configuracoes']->descricao.' - '. $_SESSION['configuracoes']->empresa; ?>" />
+<meta property="og:description"     content="<?php echo  $_SESSION['configuracoes']->descricao.' - '. $_SESSION['configuracoes']->conteudo.' - '. $_SESSION['configuracoes']->empresa; ?>" />
+<meta property="og:image"           content="<?php echo  $_SESSION['configuracoes']->logotipo; ?>" />
+<meta property="og:url"             content="<?php echo  $_SESSION['configuracoes']->dominio; ?>" />
+<meta property="og:type"            content="<?php echo  $_SESSION['configuracoes']->conteudo; ?>" />
+<meta property="og:site_name"       content="<?php echo  $_SESSION['configuracoes']->empresa; ?>" />
+<meta itemprop="name"               content="<?php echo  $_SESSION['configuracoes']->empresa; ?>" />
+<meta itemprop="description"        content="<?php echo  $_SESSION['configuracoes']->descricao; ?>" />
+<meta itemprop="image"              content="<?php echo  $_SESSION['configuracoes']->logotipo; ?>"/>
 
 
 <meta charset='UTF-8' />
