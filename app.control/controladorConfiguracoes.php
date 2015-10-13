@@ -3,8 +3,8 @@
       * controladorConfiguracoes.php
       * Classe de Controle controladorConfiguracoes
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
-      * @version _VERSAO_
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @version 1.0
       * @access  public
       */
     class controladorConfiguracoes
@@ -15,10 +15,10 @@
         private $configuracao;
 
         /*
-         * Métodos
+         * MÃ©todos
          */
         /**
-         * Método Construtor
+         * MÃ©todo Construtor
          *
          * @access private
          * @return void
@@ -29,7 +29,7 @@
         }
 
         /**
-          * Método __set
+          * MÃ©todo __set
           * Seta o valor da variavel
           * 
           * @access public
@@ -43,7 +43,7 @@
         }
 
         /**
-          * Método __get
+          * MÃ©todo __get
           * Seta o valor da variavel
           * 
           * @access public
@@ -56,11 +56,11 @@
         }
 
         /**
-         * Método getConfiguracoes
-         * Retorna as configurações do banco de dados
+         * MÃ©todo getConfiguracoes
+         * Retorna as configura?es do banco de dados
          * 
          * @access public
-         * @return tbConfiguracoes   Configurações do site
+         * @return tbConfiguracoes   Configura?es do site
          */
         public function getConfiguracoes()
         {

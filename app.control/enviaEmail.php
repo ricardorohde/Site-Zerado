@@ -5,7 +5,7 @@
       * enviaEmail.php
       * Classe que controla o envio de e-mails da pagina Contato
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  RogÃ©rio Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
@@ -18,7 +18,7 @@
         private $nome;
         /**
           * @access private
-          * @var    string  Email que será resposta
+          * @var    string  Email que ser?resposta
           */ 
         private $de;
         /**
@@ -38,12 +38,12 @@
         private $corpoMensagem;
         /**
           * @access private
-          * @var    string  Email Destinatário
+          * @var    string  Email Destinat?io
           */ 
         private $para;
         /**
           * @access private
-          * @var    string  Email que será resposta
+          * @var    string  Email que ser?resposta
           */ 
         private $de;
         /**
@@ -64,7 +64,7 @@
         //private $headers;
         
         /**
-         * Método construtor
+         * MÃ©todo construtor
          * Inicializa as variaveis, constroi o email, configura servidor e envia
          * 
          * @access public
@@ -80,7 +80,7 @@
         }
         
         /**
-         * Método getValores
+         * MÃ©todo getValores
          * Obtem os valores do formulario
          * 
          * @access private
@@ -97,7 +97,7 @@
         }
         
         /**
-         * Método constroiEmail
+         * MÃ©todo constroiEmail
          * Monta o email no formato para ser enviado
          * 
          * @access private
@@ -112,7 +112,7 @@
             $this->headers .= "Content-type: text/plain; charset=iso-8859-1\n"; // ou UTF-8, como queira
             $this->headers .= "From: $this->Nome <$this->de>\n";                // remetente
             $this->headers .= "Return-Path: $this->de\n";                       // return-path
-            $this->headers .= "Reply-To: $this->de\n";                          // Endereço (devidamente validado) que o seu usuário informou no contato*/
+            $this->headers .= "Reply-To: $this->de\n";                          // Endere? (devidamente validado) que o seu usu?io informou no contato*/
             
             $this->corpoMensagem =  "
                                         <b>Nome:</b> {$this->nome}<br>\n
@@ -126,7 +126,7 @@
         }
         
         /**
-         * Método configuraEmail
+         * MÃ©todo configuraEmail
          * Configura parametros da classe PHPMailer
          * 
          * @access private
@@ -134,29 +134,29 @@
          */
         private function configuraEmail()
         {
-            // verifica se existe arquivo de configuração de email
+            // verifica se existe arquivo de configura?o de email
             if (file_exists("../app.config/mail.ini"))
             {
-                // lê o INI e retorna um array
+                // l?o INI e retorna um array
                 $configMail = parse_ini_file("../app.config/mail.ini");
             }
             else
             {
-                // se não existir, lançaa um erro
-                throw new Exception("Arquivo mail.ini não encontrado");
+                // se n? existir, lan?a um erro
+                throw new Exception("Arquivo mail.ini n? encontrado");
             }
             
             $this->mail = new PHPMailer;
-            //Configurações SMTP
-            // lê as informações contidas no arquivo
+            //Configura?es SMTP
+            // l?as informa?es contidas no arquivo
             $this->mail->isSmtp();
             $this->mail->Host         = isset($configMail['host'])          ? $configMail['host']       : NULL;     //Host
             $this->mail->SMTP_PORT    = isset($configMail['smtpPort'])      ? $configMail['smtpPort']   : NULL;     //Porta
-            $this->mail->SMTPAuth     = isset($configMail['smtpAuth'])      ? $configMail['smtpAuth']   : NULL;     //Liga a autenticação de segurança
+            $this->mail->SMTPAuth     = isset($configMail['smtpAuth'])      ? $configMail['smtpAuth']   : NULL;     //Liga a autentica?o de seguran?
             $this->mail->SMTPSecure   = isset($configMail['smtpSecure'])    ? $configMail['smtpSecure'] : NULL;     //Tipo de criptografia de autenticacao
             $this->mail->Username     = isset($configMail['username'])      ? $configMail['username']   : NULL;     //Usuario SMTP
             $this->mail->Password     = isset($configMail['password'])      ? $configMail['password']   : NULL;     //Senha SMTP
-            $this->mail->SMTPDebug    = isset($configMail['smtpDebug'])     ? $configMail['smtpDebug']  : NULL;     //Ativa Debugação do codigo
+            $this->mail->SMTPDebug    = isset($configMail['smtpDebug'])     ? $configMail['smtpDebug']  : NULL;     //Ativa Debuga?o do codigo
             $this->mail->From         = isset($configMail['username'])      ? $configMail['username']   : NULL;     //Usuario SMTP
             //Remetente
             $this->mail->FromName     = $this->nome;                                                                //E-mail remetente
@@ -175,7 +175,7 @@
         }
         
         /**
-         * Método send
+         * MÃ©todo send
          * Envia o email
          * 
          * @access private
@@ -186,7 +186,7 @@
             //Envia
             $enviado = $this->mail->Send();
             
-            // Limpa os destinatários e os anexos
+            // Limpa os destinat?ios e os anexos
             $this->mail->ClearAllRecipients();
             $this->mail->ClearAttachments();
             
@@ -213,8 +213,8 @@
         }
 		
 		/**
-         * Método send2
-         * Envia o email pela função mail
+         * MÃ©todo send2
+         * Envia o email pela fun?o mail
          * 
          * @access private
          * @return void
@@ -233,7 +233,7 @@
             else
                 echo "
                         <script type='text/javascript'> 
-                            alert('Mensagem não enviada');
+                            alert('Mensagem n? enviada');
                             history.back(1);
                         </script>
                     ";

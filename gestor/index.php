@@ -2,7 +2,7 @@
 
 <?php
     /**
-      * Funcao Autoload
+      * Função Autoload
       * Carrega a classe quando for instanciada
       * 
       * @global
