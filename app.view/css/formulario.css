@@ -36,6 +36,7 @@ input, select, textarea
     border:                 solid 1px #cbcbcb;
 
     background-color:       #ffffff;
+    color:                  black;
 }
 
 input:hover, select:hover, textarea:hover
@@ -46,6 +47,7 @@ input:hover, select:hover, textarea:hover
 input[type="submit"], input[type="button"]
 {
     width: 80px;
+    color: black;
 }
 
 #tinymce
