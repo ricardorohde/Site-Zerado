@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 08, 2015 at 12:25 AM
+-- Generation Time: Oct 14, 2015 at 10:59 AM
 -- Server version: 5.6.19-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.13
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `softer`
+-- Database: `painel`
 --
 
 -- --------------------------------------------------------
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `categoriaImoveis` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -124,7 +124,6 @@ CREATE TABLE IF NOT EXISTS `configuracoes` (
   `descricao` varchar(160) DEFAULT NULL,
   `keywords` varchar(255) DEFAULT NULL,
   `logotipo` varchar(100) DEFAULT NULL,
-  `excluido` tinyint(1) NOT NULL DEFAULT '0',
   `emailPagSeguro` varchar(100) DEFAULT NULL,
   `tokenPagSeguro` varchar(32) DEFAULT NULL,
   `endereco` varchar(100) DEFAULT NULL,
@@ -134,6 +133,8 @@ CREATE TABLE IF NOT EXISTS `configuracoes` (
   `cidade` varchar(50) DEFAULT NULL,
   `estado` varchar(2) DEFAULT NULL,
   `telefone` varchar(17) DEFAULT NULL,
+  `facebookPage` varchar(100) DEFAULT NULL,
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
@@ -176,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `galeria` (
   KEY `codigoPagina` (`codigoPagina`,`codigoProduto`,`codigoImovel`),
   KEY `codigoProduto` (`codigoProduto`),
   KEY `codigoImovel` (`codigoImovel`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -203,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `imoveis` (
   PRIMARY KEY (`codigo`),
   KEY `situacao` (`situacao`),
   KEY `categoria` (`categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -217,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `localizacao` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -230,13 +231,13 @@ CREATE TABLE IF NOT EXISTS `paginas` (
   `titulo` varchar(100) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `localizacao` bigint(20) unsigned DEFAULT NULL,
-  `texto` longtext NOT NULL,
+  `texto` longtext,
   `imagem` varchar(100) DEFAULT NULL,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`),
   KEY `localizacao` (`localizacao`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -267,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `situacaoImoveis` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

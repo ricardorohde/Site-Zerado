@@ -17,15 +17,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `softer`
---
-
---
 -- Dumping data for table `configuracoes`
 --
 
-INSERT INTO `configuracoes` (`codigo`, `titulo`, `empresa`, `conteudo`, `dominio`, `descricao`, `keywords`, `logotipo`, `excluido`, `emailPagSeguro`, `tokenPagSeguro`, `endereco`, `numero`, `bairro`, `cep`, `cidade`, `estado`, `telefone`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `configuracoes` (`codigo`, `titulo`, `empresa`, `conteudo`, `dominio`, `descricao`, `keywords`, `logotipo`, `emailPagSeguro`, `tokenPagSeguro`, `endereco`, `numero`, `bairro`, `cep`, `cidade`, `estado`, `telefone`,`facebookPage`,`excluido`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Dumping data for table `funcoes`
