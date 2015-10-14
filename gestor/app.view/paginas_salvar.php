@@ -190,6 +190,8 @@
                             <br/>
                             <textarea name="texto" id='texto' class='tinymce'><?php echo $this->pagina->texto; ?></textarea>
                             <br/>
+                            <?php include_once('galeria.php'); ?>
+                            <br/>
                             <input type='submit' id='salvar' value='Salvar'>
                         </div>
 

@@ -105,7 +105,62 @@
         $controlador->pagina->texto         = $_POST['texto'];
         $controlador->pagina->ativo         = $_POST['ativo'];
 
-        echo $controlador->pagina->store();
+        $result                             = $controlador->pagina->store();
+
+        if($result == 1)
+        {
+            if($_POST['codigo'] == '')
+                $codigo = $controlador->pagina->getLast();
+            else
+                $codigo = $_POST['codigo'];
+
+            $controladorGaleria = new controladorGaleria();
+            $controladorGaleria->repository->addEntity('galeria');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter('codigoPagina', '=', $codigo);
+
+            $controladorGaleria->repository->deleteFisico($criteria);
+
+            $imagens    = $_POST['imagens'];
+            $imagens    = explode('³', $imagens);
+
+            $erros      = 0;
+
+            if(count($imagens) > 1)
+            {
+                foreach ($imagens as $imagem) 
+                {
+                    $imagem = explode('²', $imagem);
+
+                    if  (
+                            ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
+                            ($imagem[1] != '' &&    $imagem[1] != NULL    &&    $imagem[1] != 'undefined') &&
+                            ($imagem[2] != '' &&    $imagem[2] != NULL    &&    $imagem[2] != 'undefined') &&
+                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
+                        )
+                    {
+                        $controladorGaleria->galeria                    = new tbGaleria();
+
+                        $controladorGaleria->galeria->codigoPagina      = $codigo;
+                        $controladorGaleria->galeria->imagem            = $imagem[0];
+                        $controladorGaleria->galeria->titulo            = $imagem[1];
+                        $controladorGaleria->galeria->descricao         = $imagem[2];
+                        $controladorGaleria->galeria->ordem             = $imagem[3];
+
+                        if($controladorGaleria->galeria->store() == 0)
+                            $erros++;
+                    }
+                }
+            }
+
+            if($erros == 0)
+                echo 1;
+            else
+                echo 'erro '.$erros;
+        }
+        else
+            echo 'erro 0';
     }
 
     //Salva Banner
