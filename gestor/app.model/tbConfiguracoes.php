@@ -107,6 +107,18 @@
           */
         protected $telefone;
 
+        /**
+          * @access protected
+          * @var    string     Página do Facebook
+          */
+        protected $facebookPage;
+
+        /**
+          * @access protected
+          * @var    boolean     Excluido
+          */
+        protected $excluido;
+
 
 
         /*

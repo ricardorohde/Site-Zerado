@@ -79,15 +79,16 @@
                     <div class='row'>
                         <div class='4u'>
                             Logotipo
-                            <input type='hidden' name='logotipo' id='logotipo' value='<?php echo $this->configuracoes->logotipo; ?>'>
+                            <?php
+                                if($this->configuracoes->logotipo != NULL || $this->configuracoes->logotipo != '')
+                                    $logotipo = $this->configuracoes->logotipo;
+                                else
+                                    $logotipo = '/app.view/img/no-image.jpg';
+                            ?>
+                            <input type='hidden' name='logotipo' id='logotipo' value='<?php echo $logotipo; ?>'>
                             <a class="fancybox fancybox.iframe" href="/app.view/uploader.php"> title='Uploader' alt='Uploader'>
                                 <div id='imagemUploader'>
-                                    <?php
-                                        if($this->configuracoes->logotipo != NULL || $this->configuracoes->logotipo != '')
-                                            echo "<img src='{$this->configuracoes->logotipo}'>";
-                                        else
-                                            echo "<img src='/app.view/img/no-image.jpg'>";
-                                    ?>
+                                    <?php echo "<img src='{$logotipo}'>"; ?>
                                 </div>
                             </a>
                         </div>
@@ -167,6 +168,33 @@
                                 maxlength='255'
                                 placeholder='Palavra-Chave, Palavra-Chave' 
                                 value="<?php echo $this->configuracoes->keywords; ?>"
+                            >
+                        </div>
+                        <div class='4u'>
+                            <label for='facebookPage'>
+                                Página Facebook
+                            </label>
+                            <input 
+                                type='text' 
+                                id='facebookPage' 
+                                name='facebookPage' 
+                                maxlength='100'
+                                placeholder='Página Facebook' 
+                                value="<?php echo $this->configuracoes->facebookPage; ?>"
+                            >
+                        </div>
+                        <div class='4u'>
+                            <label for='telefone'>
+                                Telefone
+                            </label>
+                            <input 
+                                type='text' 
+                                id='telefone' 
+                                name='telefone' 
+                                class='telefone'
+                                maxlength='15'
+                                placeholder='Telefones' 
+                                value="<?php echo $this->configuracoes->telefone; ?>"
                             >
                         </div>
                         <div class='4u'>
@@ -269,20 +297,6 @@
                                 <option value='SE' <?= ($this->configuracoes->estado == 'SE' ? 'selected' : '') ?>>Sergipe</option>
                                 <option value='TO' <?= ($this->configuracoes->estado == 'TO' ? 'selected' : '') ?>>Tocantins</option>
                             </select>
-                        </div>
-                        <div class='4u'>
-                            <label for='telefone'>
-                                Telefone
-                            </label>
-                            <input 
-                                type='text' 
-                                id='telefone' 
-                                name='telefone' 
-                                class='telefone'
-                                maxlength='15'
-                                placeholder='Telefones' 
-                                value="<?php echo $this->configuracoes->telefone; ?>"
-                            >
                         </div>
                         <div class='12u'>
                             <label for='favicon'>

@@ -30,25 +30,26 @@
    */
     error_reporting(E_WARNING);
 
-    $controlador                            = new controladorConfiguracoes();
+    $controlador                                = new controladorConfiguracoes();
 
-    $controlador->configuracao              = new tbConfiguracoes();
+    $controlador->configuracao                  = new tbConfiguracoes();
 
-    $controlador->configuracao->codigo      = 1;
-    $controlador->configuracao->logotipo    = $_POST['logotipo'];
-    $controlador->configuracao->titulo      = $_POST['titulo'];
-    $controlador->configuracao->empresa     = $_POST['empresa'];
-    $controlador->configuracao->conteudo    = $_POST['conteudo'];
-    $controlador->configuracao->dominio     = $_POST['dominio'];
-    $controlador->configuracao->descricao   = $_POST['descricao'];
-    $controlador->configuracao->keywords    = $_POST['keywords'];
-    $controlador->configuracao->endereco    = $_POST['endereco'];
-    $controlador->configuracao->numero      = $_POST['numero'];
-    $controlador->configuracao->bairro      = $_POST['bairro'];
-    $controlador->configuracao->cep         = $_POST['cep'];
-    $controlador->configuracao->cidade      = $_POST['cidade'];
-    $controlador->configuracao->estado      = $_POST['estado'];
-    $controlador->configuracao->telefone    = $_POST['telefone'];
+    $controlador->configuracao->codigo          = 1;
+    $controlador->configuracao->logotipo        = $_POST['logotipo'];
+    $controlador->configuracao->titulo          = $_POST['titulo'];
+    $controlador->configuracao->empresa         = $_POST['empresa'];
+    $controlador->configuracao->conteudo        = $_POST['conteudo'];
+    $controlador->configuracao->dominio         = $_POST['dominio'];
+    $controlador->configuracao->descricao       = $_POST['descricao'];
+    $controlador->configuracao->keywords        = $_POST['keywords'];
+    $controlador->configuracao->endereco        = $_POST['endereco'];
+    $controlador->configuracao->numero          = $_POST['numero'];
+    $controlador->configuracao->bairro          = $_POST['bairro'];
+    $controlador->configuracao->cep             = $_POST['cep'];
+    $controlador->configuracao->cidade          = $_POST['cidade'];
+    $controlador->configuracao->estado          = $_POST['estado'];
+    $controlador->configuracao->telefone        = $_POST['telefone'];
+    $controlador->configuracao->facebookPage    = $_POST['facebookPage'];
 
     if($controlador->configuracao->store())
     {
