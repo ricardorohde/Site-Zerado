@@ -1,6 +1,6 @@
 <?php
     $controladorConfiguracoes   = new controladorConfiguracoes();
-     $_SESSION['configuracoes'] = $controladorConfiguracoes->getConfiguracoes();
+    $_SESSION['configuracoes'] = $controladorConfiguracoes->getConfiguracoes();
 ?>
 <title><?php echo  $_SESSION['configuracoes']->titulo; ?></title>
 

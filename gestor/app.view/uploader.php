@@ -1,4 +1,24 @@
 <?php
+    /**
+    * Funcao Autoload
+    * Carrega a classe quando for instanciada
+    * 
+    * @param  $classe     Classe a ser carregada
+    * @return void
+    */
+    //Autoload
+    function __autoload($classe)
+    {
+        $pastas = array('../app.widgets', '../app.ado', '../app.config', '../app.model', '../app.control','../app.view');
+        foreach ($pastas as $pasta)
+        {
+            if (file_exists("{$pasta}/{$classe}.php"))
+            {
+                include_once "{$pasta}/{$classe}.php";
+            }
+        }
+    }
+
     include_once('../app.control/TSession.php');
 
     /**
@@ -79,17 +99,18 @@
                 <!DOCTYPE html>
                 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
                     <head>
-                        <!--CSS-->
-                        <!--Fontes-->
-                        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
-                        <!--Icones-->
-                        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+                        <?php include_once 'meta.php'; ?>
 
                         <!--CSS-->
                         <link rel="stylesheet" href="css/style.css">
                         <link rel="stylesheet" href="css/formulario.css">
                         <link rel="stylesheet" href="css/uploader.css">
+
+                        <!--Fontes-->
+                        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+                        <!--Icones-->
+                        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
                         
                         <!--JavaScript-->
                         <script type="text/javascript" src="js/jquery.js"></script>
@@ -164,7 +185,7 @@
                                             "
                                                 <div class='2u uploaderBox'>
                                                     <div class='uploaderImg'>
-                                                        <img src='{$_SESSION['dominio']}/app.view/img/{$file}'>
+                                                        <img src='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}'>
                                                     </div>
                                                     <div class='center'>
                                             ";
@@ -177,7 +198,7 @@
                                                         id='selecionar' 
                                                         class='uploaderSelecionar' 
                                                         value='Selecionar' 
-                                                        onclick=\"selecionaImagem('{$_SESSION['dominio']}/app.view/img/{$file}');\"
+                                                        onclick=\"selecionaImagem('{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}');\"
                                                     >
                                                 ";
                                         else
@@ -187,7 +208,7 @@
                                                         type='checkbox' 
                                                         name='imagens[]'
                                                         class='checkImagensSelecionadas'
-                                                        value='{$_SESSION['dominio']}/app.view/img/{$file}' 
+                                                        value='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}' 
                                                     />
                                                 ";
                                         echo 
@@ -198,7 +219,7 @@
                                                             id='excluir' 
                                                             class='uploaderExcluir' 
                                                             value='Excluir' 
-                                                            onclick=\"excluirImagem('{$_SESSION['dominio']}/app.view/img/{$file}');\"
+                                                            onclick=\"excluirImagem('{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}');\"
                                                         >
                                                     </div>
                                                 </div>
