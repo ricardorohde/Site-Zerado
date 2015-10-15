@@ -37,6 +37,7 @@ input, select, textarea
 
     background-color:       #ffffff;
     color:                  black;
+    font-weight:            normal;
 }
 
 input:hover, select:hover, textarea:hover
@@ -54,10 +55,11 @@ input[type="submit"], input[type="button"]
 {
     position: relative;
 
-    font-family:            'Open Sans Condensed', sans-serif;
     font-size:              1em;
 
     background-color:       #ffffff;
+    color:                  black;
+    font-weight:            normal;
 }
 
 div#imagemUploader img
