@@ -65,7 +65,6 @@
                                             type='text'
                                             name='descricao_{$totalImagem}'
                                             id='descricao_{$totalImagem}'
-                                            maxlength='100'
                                             placeholder='Descrição'
                                             value='{$galeria->descricao}'
                                             required

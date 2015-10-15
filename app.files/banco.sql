@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 14, 2015 at 10:59 AM
+-- Generation Time: Oct 15, 2015 at 02:34 PM
 -- Server version: 5.6.19-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.13
 
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `galeria` (
   `codigoImovel` bigint(20) unsigned DEFAULT NULL,
   `imagem` varchar(100) NOT NULL,
   `titulo` varchar(50) NOT NULL,
-  `descricao` varchar(100) NOT NULL,
+  `descricao` longtext NOT NULL,
   `ordem` int(10) unsigned NOT NULL,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
