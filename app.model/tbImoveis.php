@@ -90,6 +90,16 @@
         protected $destaque;
         /**
           * @access protected
+          * @var    double         Metragem do Terreno
+          */
+        protected $metragemTerreno;
+        /**
+          * @access protected
+          * @var    double         Metragem do Imóvel
+          */
+        protected $metragemConstrucao;
+        /**
+          * @access protected
           * @var    string         Descrição do imóvel
           */
         protected $descricao;

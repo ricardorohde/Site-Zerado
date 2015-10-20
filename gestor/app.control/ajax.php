@@ -373,19 +373,22 @@
 
         $controlador->imovel                    = new tbImoveis();
 
-        $controlador->imovel->codigo            = $_POST['codigo'];
-        $controlador->imovel->endereco          = $_POST['endereco'];
-        $controlador->imovel->numero            = $_POST['numero'];
-        $controlador->imovel->bairro            = $_POST['bairro'];
-        $controlador->imovel->cep               = $_POST['cep'];
-        $controlador->imovel->cidade            = $_POST['cidade'];
-        $controlador->imovel->estado            = $_POST['estado'];
-        $controlador->imovel->situacao          = $_POST['situacao'];
-        $controlador->imovel->categoria         = $_POST['categoria'];
-        $controlador->imovel->categoriaAluguel  = $_POST['categoriaAluguel'];
-        $controlador->imovel->preco             = $_POST['preco'];
-        $controlador->imovel->destaque          = $_POST['destaque'];
-        $controlador->imovel->ativo             = $_POST['ativo'];
+        $controlador->imovel->codigo                = $_POST['codigo'];
+        $controlador->imovel->endereco              = $_POST['endereco'];
+        $controlador->imovel->numero                = $_POST['numero'];
+        $controlador->imovel->bairro                = $_POST['bairro'];
+        $controlador->imovel->cep                   = $_POST['cep'];
+        $controlador->imovel->cidade                = $_POST['cidade'];
+        $controlador->imovel->estado                = $_POST['estado'];
+        $controlador->imovel->situacao              = $_POST['situacao'];
+        $controlador->imovel->categoria             = $_POST['categoria'];
+        $controlador->imovel->categoriaAluguel      = $_POST['categoriaAluguel'];
+        $controlador->imovel->preco                 = $_POST['preco'];
+        $controlador->imovel->metragemTerreno       = $_POST['metragemTerreno'];
+        $controlador->imovel->metragemConstrucao    = $_POST['metragemConstrucao'];
+        $controlador->imovel->destaque              = $_POST['destaque'];
+        $controlador->imovel->descricao             = $_POST['descricao'];
+        $controlador->imovel->ativo                 = $_POST['ativo'];
         
         $result = $controlador->imovel->store();
 

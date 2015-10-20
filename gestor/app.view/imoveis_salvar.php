@@ -100,7 +100,6 @@
                                 maxlength='100'
                                 placeholder='Endereco'
                                 value="<?php echo $this->imovel->endereco; ?>"
-                                required
                             >
                         </div>
                         <div class='6u'>
@@ -113,7 +112,6 @@
                                 step='1'
                                 placeholder='Número'
                                 value="<?php echo $this->imovel->numero; ?>"
-                                required
                             >
                         </div>
                         <div class='6u'>
@@ -138,7 +136,6 @@
                                 maxlength='10'
                                 placeholder='CEP'
                                 value="<?php echo $this->imovel->cep; ?>"
-                                required
                             >
                         </div>
                         <div class='6u'>
@@ -246,6 +243,30 @@
                         </div>
                         <div class='clear'></div>
                         <div class='6u'>
+                            <label for='metragemTerreno'>Metragem Terreno</label>
+                            <input 
+                                type='number' 
+                                id='metragemTerreno' 
+                                name='metragemTerreno'
+                                placeholder='Metragem Terreno'
+                                step='0.1'
+                                min='0'
+                                value='<?= $this->imovel->metragemTerreno ?>'
+                            >
+                        </div>
+                        <div class='6u'>
+                            <label for='metragemConstrucao'>Metragem Construção</label>
+                            <input 
+                                type='number' 
+                                id='metragemConstrucao' 
+                                name='metragemConstrucao'
+                                placeholder='Metragem Construção'
+                                step='0.1'
+                                min='0'
+                                value='<?= $this->imovel->metragemConstrucao ?>'
+                            >
+                        </div>
+                        <div class='6u'>
                             <label for='destaque'>Destaque</label>
                             <select name='destaque' id='destaque'>
                                 <option value='0' <?= ($this->imovel->destaque == '0' ? 'selected' : '') ?>>Não</option>  
@@ -258,6 +279,12 @@
                                 <option value='1' <?= ($this->imovel->ativo == '1' ? 'selected' : '') ?>>Sim</option>
                                 <option value='0' <?= ($this->imovel->ativo == '0' ? 'selected' : '') ?>>Não</option>
                             </select>
+                        </div>
+
+                        <div class='12u'>
+                            <label for='descricao'>Descrição</label>
+                            <br/>
+                            <textarea name="descricao" id='descricao' class='tinymce'><?php echo $this->imovel->descricao; ?></textarea>
                         </div>
 
                         <?php include_once('galeria.php'); ?>

@@ -11,6 +11,8 @@
             var quantidadeImagens   = $('#quantidadeImagens').val();
             var imagens             = '';
 
+            var descricao           = tinyMCE.get('descricao').getContent();
+
             for(i=1; i<=quantidadeImagens; i++)
             {
                 var img         = $('#imagemCaminho_'+i).val();
@@ -47,7 +49,10 @@
                     categoriaAluguel:   $('#categoriaAluguel').val(),
                     preco:              preco,                    
                     destaque:           $('#destaque').val(),
+                    metragemTerreno:    $('#metragemTerreno').val(),
+                    metragemConstrucao: $('#metragemConstrucao').val(),
                     ativo:              $('#ativo').val(),
+                    descricao:          descricao,
                     imagens:            imagens,
                     request:            'salvaImoveis'
                 },
