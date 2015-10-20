@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 15, 2015 at 02:34 PM
+-- Generation Time: Oct 20, 2015 at 05:19 PM
 -- Server version: 5.6.19-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.13
 
@@ -187,10 +187,10 @@ CREATE TABLE IF NOT EXISTS `galeria` (
 
 CREATE TABLE IF NOT EXISTS `imoveis` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `endereco` varchar(100) NOT NULL,
-  `numero` int(10) unsigned NOT NULL,
+  `endereco` varchar(100) DEFAULT NULL,
+  `numero` int(10) unsigned DEFAULT NULL,
   `bairro` varchar(50) NOT NULL,
-  `cep` varchar(10) NOT NULL,
+  `cep` varchar(10) DEFAULT NULL,
   `cidade` varchar(50) NOT NULL,
   `estado` varchar(2) NOT NULL,
   `preco` double unsigned NOT NULL,
@@ -198,6 +198,8 @@ CREATE TABLE IF NOT EXISTS `imoveis` (
   `categoria` bigint(20) unsigned DEFAULT NULL COMMENT 'Casa, apartamento, Terreno',
   `categoriaAluguel` tinyint(1) DEFAULT NULL COMMENT '0 - Residencial; 1 - Comercial',
   `destaque` tinyint(1) NOT NULL,
+  `metragemTerreno` double unsigned DEFAULT NULL,
+  `metragemConstrucao` double DEFAULT NULL,
   `descricao` longtext,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
