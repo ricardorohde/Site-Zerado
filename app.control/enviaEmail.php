@@ -18,11 +18,6 @@
         private $nome;
         /**
           * @access private
-          * @var    string  Email que ser?resposta
-          */ 
-        private $de;
-        /**
-          * @access private
           * @var    string  Assunto do E-mail
           */ 
         private $assunto;
@@ -38,12 +33,12 @@
         private $corpoMensagem;
         /**
           * @access private
-          * @var    string  Email Destinat?io
+          * @var    string  Email Destinatário
           */ 
         private $para;
         /**
           * @access private
-          * @var    string  Email que ser?resposta
+          * @var    string  Email que será resposta
           */ 
         private $de;
         /**
@@ -72,11 +67,11 @@
          */
         public function __construct()
         {
-            enviaEmail::getValores();
-            enviaEmail::constroiEmail();
-            enviaEmail::configuraEmail();
+            $this->getValores();
+            $this->constroiEmail();
+            $this->configuraEmail();
             //enviaEmail::send();
-            enviaEmail::send2();
+            $this->send2();
         }
         
         /**
@@ -108,21 +103,20 @@
             /*
              *  Headers
              */
-            /*$this->headers = "MIME-Version: 1.1\n";
-            $this->headers .= "Content-type: text/plain; charset=iso-8859-1\n"; // ou UTF-8, como queira
-            $this->headers .= "From: $this->Nome <$this->de>\n";                // remetente
-            $this->headers .= "Return-Path: $this->de\n";                       // return-path
-            $this->headers .= "Reply-To: $this->de\n";                          // Endere? (devidamente validado) que o seu usu?io informou no contato*/
+            $this->headers = "MIME-Version: 1.1\n";
+            $this->headers .= "Content-type: text/html; charset=UTF-8\n";   // ou ISO-8859-1, como queira
+            $this->headers .= "From: {$this->Nome} <{$this->de}>\n";        // remetente
+            $this->headers .= "Return-Path: {$this->de}\n";                 // return-path
+            $this->headers .= "Reply-To: {$this->de}\n";                    // Endereço (devidamente validado) que o seu usuário informou no contato
             
-            $this->corpoMensagem =  "
-                                        <b>Nome:</b> {$this->nome}<br>\n
-                                        <b>Email:</b> {$this->de}<br>\n
-                                        <b>Telefone:</b> {$this->telefone}<br>\n
-                                        <b>Cidade:</b> {$this->cidade}<br>\n
-                                        <b>Assunto:</b> {$this->assunto}<br>\n
-                                        <b>Mensgem:</b><br>\n
-                                        {$this->mensagem};
-                                    ";
+            $this->corpoMensagem = '';
+            $this->corpoMensagem .= "<strong>Nome:</strong> {$this->nome}<br/>\n";
+            $this->corpoMensagem .= "<strong>Email:</strong> {$this->de}<br/>\n";
+            $this->corpoMensagem .= "<strong>Telefone:</strong> {$this->telefone}<br/>\n";
+            $this->corpoMensagem .= "<strong>Cidade:</strong> {$this->cidade}<br/>\n";
+            $this->corpoMensagem .= "<strong>Assunto:</strong> {$this->assunto}<br/>\n";
+            $this->corpoMensagem .= "<strong>Mensgem:</strong><br/>\n";
+            $this->corpoMensagem .= "{$this->mensagem}";
         }
         
         /**
@@ -134,29 +128,30 @@
          */
         private function configuraEmail()
         {
-            // verifica se existe arquivo de configura?o de email
+            // verifica se existe arquivo de configuração de email
             if (file_exists("../app.config/mail.ini"))
             {
-                // l?o INI e retorna um array
+                // lê o INI e retorna um array
                 $configMail = parse_ini_file("../app.config/mail.ini");
             }
             else
             {
-                // se n? existir, lan?a um erro
-                throw new Exception("Arquivo mail.ini n? encontrado");
+                // se não existir, lançaa um erro
+                throw new Exception("Arquivo mail.ini não encontrado");
+                echo "Arquivo mail.ini não encontrado";
             }
             
             $this->mail = new PHPMailer;
-            //Configura?es SMTP
-            // l?as informa?es contidas no arquivo
+            //Configurações SMTP
+            // lê as informações contidas no arquivo
             $this->mail->isSmtp();
             $this->mail->Host         = isset($configMail['host'])          ? $configMail['host']       : NULL;     //Host
             $this->mail->SMTP_PORT    = isset($configMail['smtpPort'])      ? $configMail['smtpPort']   : NULL;     //Porta
-            $this->mail->SMTPAuth     = isset($configMail['smtpAuth'])      ? $configMail['smtpAuth']   : NULL;     //Liga a autentica?o de seguran?
+            $this->mail->SMTPAuth     = isset($configMail['smtpAuth'])      ? $configMail['smtpAuth']   : NULL;     //Liga a autenticação de segurança
             $this->mail->SMTPSecure   = isset($configMail['smtpSecure'])    ? $configMail['smtpSecure'] : NULL;     //Tipo de criptografia de autenticacao
             $this->mail->Username     = isset($configMail['username'])      ? $configMail['username']   : NULL;     //Usuario SMTP
             $this->mail->Password     = isset($configMail['password'])      ? $configMail['password']   : NULL;     //Senha SMTP
-            $this->mail->SMTPDebug    = isset($configMail['smtpDebug'])     ? $configMail['smtpDebug']  : NULL;     //Ativa Debuga?o do codigo
+            $this->mail->SMTPDebug    = isset($configMail['smtpDebug'])     ? $configMail['smtpDebug']  : NULL;     //Ativa Debugação do codigo
             $this->mail->From         = isset($configMail['username'])      ? $configMail['username']   : NULL;     //Usuario SMTP
             //Remetente
             $this->mail->FromName     = $this->nome;                                                                //E-mail remetente
@@ -186,7 +181,7 @@
             //Envia
             $enviado = $this->mail->Send();
             
-            // Limpa os destinat?ios e os anexos
+            // Limpa os destinatários e os anexos
             $this->mail->ClearAllRecipients();
             $this->mail->ClearAttachments();
             
@@ -214,14 +209,14 @@
 		
 		/**
          * Método send2
-         * Envia o email pela fun?o mail
+         * Envia o email pela função mail
          * 
          * @access private
          * @return void
          */
         private function send2()
         {
-            if(mail($this->para, $this->assunto, $this->corpoMensagem, $this->headers, '-r'.$this->para))
+            if(mail($this->para, $this->assunto, $this->corpoMensagem, $this->headers, '-r'.$this->de))
             {
                 echo "
                         <script type='text/javascript'> 
@@ -233,12 +228,12 @@
             else
                 echo "
                         <script type='text/javascript'> 
-                            alert('Mensagem n? enviada');
+                            alert('Mensagem não enviada');
                             history.back(1);
                         </script>
                     ";
         }
     }
-    
-    new enviaEmail;
+
+    new enviaEmail();
 ?>
