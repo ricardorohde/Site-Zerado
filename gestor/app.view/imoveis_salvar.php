@@ -295,7 +295,7 @@
                         <div class='12u'>
                             <label for='descricao'>Descrição</label>
                             <br/>
-                            <textarea name="descricao" id='descricaoImovel' class='tinymce'><?php echo $this->imovel->descricao; ?></textarea>
+                            <textarea name="descricao" id='descricao' class='tinymce'><?php echo $this->imovel->descricao; ?></textarea>
                         </div>
 
                         <?php include_once('galeria.php'); ?>

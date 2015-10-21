@@ -66,7 +66,6 @@
                     }
                     else
                     {
-                        alert(data);
                         alert('Erro ao salvar o conteúdo!');
                     }
                 }

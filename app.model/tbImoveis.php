@@ -38,6 +38,11 @@
         protected $numero;
         /**
           * @access protected
+          * @var    string          Complemento do Endereço
+          */
+        protected $complemento;
+        /**
+          * @access protected
           * @var    string          Bairro do Imóvel
           */
         protected $bairro;
