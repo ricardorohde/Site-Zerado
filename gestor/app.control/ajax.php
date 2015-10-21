@@ -376,6 +376,7 @@
         $controlador->imovel->codigo                = $_POST['codigo'];
         $controlador->imovel->endereco              = $_POST['endereco'];
         $controlador->imovel->numero                = $_POST['numero'];
+        $controlador->imovel->complemento           = $_POST['complemento'];
         $controlador->imovel->bairro                = $_POST['bairro'];
         $controlador->imovel->cep                   = $_POST['cep'];
         $controlador->imovel->cidade                = $_POST['cidade'];

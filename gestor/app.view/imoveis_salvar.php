@@ -102,7 +102,7 @@
                                 value="<?php echo $this->imovel->endereco; ?>"
                             >
                         </div>
-                        <div class='6u'>
+                        <div class='3u'>
                             <label for='numero'>Número</label>
                             <input 
                                 type='number' 
@@ -112,6 +112,17 @@
                                 step='1'
                                 placeholder='Número'
                                 value="<?php echo $this->imovel->numero; ?>"
+                            >
+                        </div>
+                        <div class='3u'>
+                            <label for='complemento'>Complemento</label>
+                            <input 
+                                type='text' 
+                                id='complemento' 
+                                name='complemento'  
+                                maxlength='50'
+                                placeholder='Complemento'
+                                value="<?php echo $this->imovel->complemento; ?>"
                             >
                         </div>
                         <div class='6u'>
@@ -284,7 +295,7 @@
                         <div class='12u'>
                             <label for='descricao'>Descrição</label>
                             <br/>
-                            <textarea name="descricao" id='descricao' class='tinymce'><?php echo $this->imovel->descricao; ?></textarea>
+                            <textarea name="descricao" id='descricaoImovel' class='tinymce'><?php echo $this->imovel->descricao; ?></textarea>
                         </div>
 
                         <?php include_once('galeria.php'); ?>

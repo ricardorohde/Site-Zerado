@@ -15,19 +15,19 @@
 
             for(i=1; i<=quantidadeImagens; i++)
             {
-                var img         = $('#imagemCaminho_'+i).val();
-                var titulo      = $('#titulo_'+i).val();
-                var descricao   = $('#descricao_'+i).val();
-                var posicao     = $('#posicao_'+i).val();
+                var img             = $('#imagemCaminho_'+i).val();
+                var titulo          = $('#titulo_'+i).val();
+                var descricaoImg    = $('#descricao_'+i).val();
+                var posicao         = $('#posicao_'+i).val();
 
                 if  (
-                        (img         != ''  &&  img         != null &&  img         != 'undefined') &&
-                        (titulo      != ''  &&  titulo      != null &&  titulo      != 'undefined') &&
-                        (descricao   != ''  &&  descricao   != null &&  descricao   != 'undefined') &&
-                        (posicao     != ''  &&  posicao     != null &&  posicao     != 'undefined')
+                        (img            != ''  &&  img              != null &&  img             != 'undefined') &&
+                        (titulo         != ''  &&  titulo           != null &&  titulo          != 'undefined') &&
+                        (descricaoImg   != ''  &&  descricaoImg     != null &&  descricaoImg    != 'undefined') &&
+                        (posicao        != ''  &&  posicao          != null &&  posicao         != 'undefined')
                     )
                 {
-                    imagens = imagens + img + "²" + titulo + "²" + descricao + "²" + posicao + "³";
+                    imagens = imagens + img + "²" + titulo + "²" + descricaoImg + "²" + posicao + "³";
                 }
             }
 
@@ -40,6 +40,7 @@
                     codigo:             $('#codigo').val(),
                     endereco:           $('#endereco').val(),
                     numero:             $('#numero').val(),
+                    complemento:        $('#complemento').val(),
                     bairro:             $('#bairro').val(),
                     cep:                $('#cep').val(),
                     cidade:             $('#cidade').val(),
