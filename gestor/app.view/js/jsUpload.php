@@ -31,7 +31,7 @@
         parent.$.fancybox.close();
     }
 
-    function excluirImagem(imagem)
+    function excluirImagem(imagem, category)
     {
         $.ajax
         ({
@@ -39,7 +39,8 @@
             url: "../app.control/ajax.php",
             data: 
             {
-                imagem:      imagem,
+                imagem:     imagem,
+                category:   category,
                 request:    'apagaImagem'
             },
             success: function(data) 

@@ -53,38 +53,60 @@
     //Apaga Imagem (Uploader)
     if($request == 'apagaImagem')
     {
-        $controlador = new controladorArquivos();
-        $ok = $controlador->apagaArquivo($_POST['imagem']);
+        $controlador    = new controladorArquivos();
+        $ok             = $controlador->apagaArquivo($_POST['imagem']);
+        $category       = $_POST['category'];
 
-        $imagens = scandir('../../app.view/img/');
+        $imagens        = scandir("../../app.view/img/");
 
         foreach ($imagens as $file) 
         {
-            if(!is_dir('../../app.view/img/'.$file))
+            if(!is_dir("../../app.view/img/".$file))
+            {
                 echo 
                     "
                         <div class='2u uploaderBox'>
                             <div class='uploaderImg'>
-                                <img src='../../app.view/img/{$file}'>
+                                <img src='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}'>
                             </div>
+                            <div class='center'>
+                    ";
+                if($category != 'gallery')
+                    echo 
+                        "
                             <input 
                                 type='button' 
                                 name='selecionar' 
                                 id='selecionar' 
                                 class='uploaderSelecionar' 
                                 value='Selecionar' 
-                                onclick=\"selecionaImagem('../../app.view/img/{$file}');\"
-                            ><br/>
-                            <input 
-                                type='button' 
-                                name='excluir' 
-                                id='excluir' 
-                                class='uploaderExcluir' 
-                                value='Excluir' 
-                                onclick=\"excluirImagem('../../app.view/img/{$file}');\"
+                                onclick=\"selecionaImagem('{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}');\"
                             >
+                        ";
+                else
+                    echo 
+                        "
+                            <input 
+                                type='checkbox' 
+                                name='imagens[]'
+                                class='checkImagensSelecionadas'
+                                value='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}' 
+                            />
+                        ";
+                echo 
+                    "
+                                <input 
+                                    type='button' 
+                                    name='excluir' 
+                                    id='excluir' 
+                                    class='uploaderExcluir' 
+                                    value='Excluir' 
+                                    onclick=\"excluirImagem('../../app.view/img/{$file}', '{$category}');\"
+                                >
+                            </div>
                         </div>
                     ";
+            }
         }
 
         if($ok == false)

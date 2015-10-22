@@ -54,6 +54,8 @@
 
             if(isset($_GET['category']))
                 $this->category = $_GET['category'];
+            else
+                $this->category = '';
 
             $this->files = scandir('../../app.view/img/');
             $this->show();
@@ -219,7 +221,7 @@
                                                             id='excluir' 
                                                             class='uploaderExcluir' 
                                                             value='Excluir' 
-                                                            onclick=\"excluirImagem('{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}');\"
+                                                            onclick=\"excluirImagem('../../app.view/img/{$file}', '{$this->category}');\"
                                                         >
                                                     </div>
                                                 </div>
