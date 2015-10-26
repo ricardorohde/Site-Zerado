@@ -31,16 +31,16 @@
 				<!DOCTYPE html>
 				<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
 					<head>
-						<?php include_once 'app.view/meta.php'; ?>
+						<?php include_once 'meta.php'; ?>
 						
 						<!--CSS-->
-						<?php include_once 'app.view/css/css.php'; ?>
+						<?php include_once 'css/css.php'; ?>
 							
 						<!--JQuery-->
-						<?php include_once 'app.view/js/jsLib.php'; ?>
+						<?php include_once 'js/jsLib.php'; ?>
 						
 						<!--JavaScript-->
-						<?php include_once 'app.view/js/jsInit.php'; ?>
+						<?php include_once 'js/jsInit.php'; ?>
 					</head>
 					<body style="text-align: center;">
 						<div class='contentLogin 2u' style='margin-left: auto; margin-right: auto;'>
@@ -49,6 +49,7 @@
 								name="login"
 								id="login"
 								method="post"
+								onsubmit='validaLogin()'
 							>
 								<h1>Painel</h1>
 								<input 
@@ -70,7 +71,6 @@
 									type='submit' 
 									id='botaoLogin' 
 									value='Login' 
-									onclick='validaLogin()'
 								/>
 							</form>
 						</div>

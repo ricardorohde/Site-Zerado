@@ -1,4 +1,17 @@
 <script>
+    /*skel.breakpoints(
+        {   
+            large:  "(max-width: 970px)",
+            medium: "(max-width: 768px)",
+            small:  "(max-width: 650px)",
+            xsmall: "(max-width: 480px)"
+        });
+    skel.layout(
+        {
+            reset:          "full",
+            conditionals:   true,
+            grid:           true,
+        });*/
     skel.init();
 
     $('.fancybox').fancybox(

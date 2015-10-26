@@ -31,7 +31,7 @@
 				senha:		$('#senha').val(),
 				request:	'login'
 			},
-			success: function(data) 
+			success: function(data)
 			{
 				top.location='/';
 				

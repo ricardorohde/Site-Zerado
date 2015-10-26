@@ -270,7 +270,7 @@
         $controlador->configuracao                  = new tbConfiguracoes();
 
         $controlador->configuracao->codigo          = 1;
-        $controlador->configuracao->emailPagSeguro  = $_POST['email'];
+        $controlador->configuracao->emailPagSeguro  = $_POST['email']; 
         $controlador->configuracao->tokenPagSeguro  = $_POST['token'];
         
         echo $controlador->configuracao->store();

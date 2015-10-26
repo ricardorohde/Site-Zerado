@@ -1,7 +1,9 @@
 <!--JQUERY-->
 <script type="text/javascript" src="/app.view/js/jquery.js"></script>
 <!--SKEL-->
-<script type="text/javascript" src="/app.view/js/skel.js"></script>
+<!--<script type="text/javascript" src="/app.view/js/skel.js"></script>-->
+<script type="text/javascript" src="/app.view/js/skel_old.js"></script>
+<script type="text/javascript" src="/app.view/js/skel-layout.js"></script>
 <!--FANCYBOX-->
 <script type="text/javascript" src="/app.view/js/jquery.fancybox.js"></script>
 <script type="text/javascript" src="/app.view/js/jquery.fancybox.pack.js"></script>
