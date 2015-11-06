@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 21, 2015 at 11:17 AM
--- Server version: 5.6.19-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.13
+-- Generation Time: Nov 06, 2015 at 05:01 PM
+-- Server version: 5.6.27-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -152,6 +152,7 @@ CREATE TABLE IF NOT EXISTS `funcoes` (
   `ecommerce` tinyint(1) DEFAULT NULL,
   `delivery` tinyint(1) DEFAULT NULL,
   `imobiliaria` tinyint(1) DEFAULT NULL,
+  `portifolio` tinyint(1) DEFAULT NULL,
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
@@ -170,6 +171,7 @@ CREATE TABLE IF NOT EXISTS `galeria` (
   `imagem` varchar(100) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descricao` longtext NOT NULL,
+  `url` varchar(100) DEFAULT NULL,
   `ordem` int(10) unsigned NOT NULL,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
@@ -241,6 +243,23 @@ CREATE TABLE IF NOT EXISTS `paginas` (
   PRIMARY KEY (`codigo`),
   KEY `localizacao` (`localizacao`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `portifolio`
+--
+
+CREATE TABLE IF NOT EXISTS `portifolio` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `imagem` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `titulo` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `descricao` longtext COLLATE latin1_general_ci NOT NULL,
+  `url` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
 

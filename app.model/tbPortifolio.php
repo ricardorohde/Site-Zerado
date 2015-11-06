@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbGaleria.php
-      * Classe de modelo tbGaleria
+      * tbPortifolio.php
+      * Classe de modelo tbPortifolio
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class tbGaleria extends TRecord
+    class tbPortifolio extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'galeria';
+        const TABLENAME = 'portifolio';
 
 
         /*
@@ -23,57 +23,37 @@
          */
         /**
           * @access protected
-          * @var    int         Código
+          * @var    int             Código
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    int         Código da Pagina
-          */
-        protected $codigoPagina;
-        /**
-          * @access protected
-          * @var    int         Código do Produto
-          */
-        protected $codigoProduto;
-        /**
-          * @access protected
-          * @var    int         Código do Imóvel
-          */
-        protected $codigoImovel;
-        /**
-          * @access protected
-          * @var    string      Imagem
+          * @var    string          Imagem
           */
         protected $imagem;
         /**
           * @access protected
-          * @var    string      Título
+          * @var    string          Titulo
           */
         protected $titulo;
         /**
           * @access protected
-          * @var    string      Descrição
+          * @var    string          Descricao
           */
         protected $descricao;
         /**
           * @access protected
-          * @var    string      URL
+          * @var    string          URL
           */
         protected $url;
         /**
           * @access protected
-          * @var    int         Ordem
-          */
-        protected $ordem;
-        /**
-          * @access protected
-          * @var    boolean     Ativo/Inativo
+          * @var    boolean         Ativo/Inativo
           */
         protected $ativo;
         /**
           * @access protected
-          * @var    boolean     Excluido
+          * @var    boolean         Excluido
           */
         protected $excluido;
 

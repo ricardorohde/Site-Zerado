@@ -27,8 +27,8 @@ INSERT INTO `configuracoes` (`codigo`, `titulo`, `empresa`, `conteudo`, `dominio
 -- Dumping data for table `funcoes`
 --
 
-INSERT INTO `funcoes` (`codigo`, `banner`, `video`, `galeria`, `ecommerce`, `delivery`, `imobiliaria`, `excluido`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `funcoes` (`codigo`, `banner`, `video`, `galeria`, `ecommerce`, `delivery`, `imobiliaria`, `portifolio`, `excluido`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Dumping data for table `usuarios`
