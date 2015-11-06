@@ -56,6 +56,11 @@
           * @var    boolean     Imobiliária
           */
         protected $imobiliaria;
+        /**
+          * @access protected
+          * @var    boolean     Portifólio
+          */
+        protected $portifolio;
 
 
         /*

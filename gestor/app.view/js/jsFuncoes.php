@@ -15,6 +15,7 @@
                     ecommerce:      $('#ecommerce').is(":checked"),
                     delivery:       $('#delivery').is(":checked"),
                     imobiliaria:    $('#imobiliaria').is(":checked"),
+                    portifolio:     $('#portifolio').is(":checked"),
                     request:        'salvaFuncoes'
                 },
                 success: function(data) 

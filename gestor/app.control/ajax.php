@@ -485,6 +485,7 @@
         $controlador->funcoes->ecommerce    = $_POST['ecommerce']   == 'true' ? 1 : 0;
         $controlador->funcoes->delivery     = $_POST['delivery']    == 'true' ? 1 : 0;
         $controlador->funcoes->imobiliaria  = $_POST['imobiliaria'] == 'true' ? 1 : 0;
+        $controlador->funcoes->portifolio   = $_POST['portifolio'] == 'true' ? 1 : 0;
         
         $retorno                            = $controlador->funcoes->store();
 
