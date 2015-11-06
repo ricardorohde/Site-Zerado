@@ -118,6 +118,7 @@
                         <script type="text/javascript" src="js/jquery.js"></script>
                         <!--SKEL-->
                         <script type="text/javascript" src="js/skel.js"></script>
+                        <script type="text/javascript" src="js/skel-layout.js"></script>
                         <!--JQUERY FORM-->
                         <script type="text/javascript" src="js/jquery.form.min.js"></script>
                     </head>
@@ -251,6 +252,21 @@
 
                         <!--JS-->
                         <?php include_once('js/jsUpload.php'); ?>
+                        <script>
+                            skel.breakpoints(
+                                {   
+                                    large:  "(max-width: 970px)",
+                                    medium: "(max-width: 768px)",
+                                    small:  "(max-width: 650px)",
+                                    xsmall: "(max-width: 480px)"
+                                });
+                            skel.layout(
+                                {
+                                    reset:          "full",
+                                    conditionals:   true,
+                                    grid:           true,
+                                });
+                        </script>
                     </body>
                 </html>
             <?php

@@ -263,6 +263,23 @@
         echo $controlador->video->store();
     }
 
+    //Salva Portifólio
+    if($request == 'salvaPortifolio')
+    {
+        $controlador                            = new controladorPortifolio();
+
+        $controlador->portifolio                = new tbPortifolio();
+
+        $controlador->portifolio->codigo        = $_POST['codigo'];
+        $controlador->portifolio->imagem        = $_POST['imagem'];
+        $controlador->portifolio->titulo        = $_POST['titulo'];
+        $controlador->portifolio->descricao     = $_POST['descricao'];
+        $controlador->portifolio->url           = $_POST['url'];
+        $controlador->portifolio->ativo         = $_POST['ativo'];
+
+        echo $controlador->portifolio->store();
+    }
+
     //Salva Configuracao PagSeguro
     if($request == 'salvaConfiguracaoPagSeguro')
     {
@@ -631,6 +648,18 @@
             $criteria->addFilter('c.codigo', '=', 'i.categoria');
             $criteria->addFilter('s.codigo', '=', 'i.situacao');
             $listagem->setCriteria($criteria);
+        }
+        else if($tabela == 'portifolio')
+        {
+            $listagem->setTituloPagina('Portifólio');
+
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('imagem');
+            $listagem->addColumn('titulo');
+            $listagem->addColumn('url');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
         }
         else
             $listagem->setTituloPagina(ucfirst($tabela));

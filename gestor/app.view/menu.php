@@ -63,6 +63,19 @@
                     <?php
                 }
             ?>
+             <?php
+                if($_SESSION['funcoes']->portifolio == 1)
+                {
+                    ?>
+                        <li>
+                            <a href='/portifolio' title='Portifólio' alt='Portifólio'>
+                                <i class="fa fa-clone"></i>&nbsp;                                
+                                Portifólio
+                            </a>
+                        </li>
+                    <?php
+                }
+            ?>
             <?php
                 if($_SESSION['funcoes']->ecommerce == 1)
                 {

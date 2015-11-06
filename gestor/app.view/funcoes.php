@@ -105,6 +105,16 @@
                         <div class='2u'>
                             <input 
                                 type='checkbox' 
+                                id='portifolio' 
+                                name='portifolio' 
+                                value='1'
+                                <?= $this->funcoes->portifolio == 1 ? 'checked' : '' ?>
+                            >
+                            <label for='portifolio'>Portifólio</label>
+                        </div>
+                        <div class='2u'>
+                            <input 
+                                type='checkbox' 
                                 id='ecommerce' 
                                 name='ecommerce' 
                                 value='1'
@@ -131,17 +141,6 @@
                                 <?= $this->funcoes->imobiliaria == 1 ? 'checked' : '' ?>
                             >
                             <label for='imobiliaria'>Imobiliária</label>
-                        </div>
-
-                        <div class='2u'>
-                            <input 
-                                type='checkbox' 
-                                id='portifolio' 
-                                name='portifolio' 
-                                value='1'
-                                <?= $this->funcoes->portifolio == 1 ? 'checked' : '' ?>
-                            >
-                            <label for='portifolio'>Portifólio</label>
                         </div>
 
                         <div class='12u'>
