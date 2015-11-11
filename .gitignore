@@ -1,2 +1,2 @@
-app.config/*.ini
-gestor/app.config/*.ini
+app.config/*
+gestor/app.config/*
