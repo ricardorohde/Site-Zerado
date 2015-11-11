@@ -2,9 +2,10 @@
     /**
       * controladorUrl.php
       * Classe de Controle controladorUrl
+      *     1.1 Método corrigeUrlAmigavel
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
-      * @version 1.0
+      * @version 1.1
       * @access  public
       */
     class controladorUrl
@@ -55,6 +56,14 @@
             return $this->$propriedade;
         }
 
+        /**
+         * Método urlAmigavel
+         * Transforma a string do parametro para um formato de URL Amigavel
+         * 
+         * @access  public
+         * @param   string $string  String a ser convertida em URL Amigável
+         * @return  string          Url Amigavel
+         */
         public function urlAmigavel($string)
         {
             $urlAmigavel    = $string;
@@ -73,6 +82,22 @@
             $urlAmigavel = preg_replace("/[\/| -]+/",             '-',                  $urlAmigavel);
 
             return $urlAmigavel;
+        }
+
+        /**
+         * Método corrigeUrlAmigavel
+         * Corrige a url amigavel para um formato que pode ser entendido
+         * 
+         * @access  public
+         * @param   string $urlAmigavel     URL amigavel
+         * @return  string                  Texto corrigido
+         * @since   1.1
+         */
+        public function corrigeUrlAmigavel($urlAmigavel)
+        {
+            $string = str_replace('-', ' ', $urlAmigavel);
+
+            return $string;
         }
     }
 ?>
