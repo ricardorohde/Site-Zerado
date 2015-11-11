@@ -1,0 +1,84 @@
+body
+{
+    position:       absolute;;
+    width:          100%;
+    height:         100%;
+    font-family:    'Open Sans Condensed', sans-serif;
+    margin:         0;
+    padding:        0;
+    font-size:      1.2em;
+}
+
+hr
+{
+    border:             0;
+    height:             1px;
+    background-image:   -webkit-linear-gradient(left,   rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:   -moz-linear-gradient(left,      rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:   -ms-linear-gradient(left,       rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:   -o-linear-gradient(left,        rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+}
+
+
+
+strong
+{
+    font-weight: bolder;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+    font-weight:    bold;
+    margin:         0px;
+}
+
+h1
+{
+    font-size: 1.5em;
+}
+
+h2
+{
+    font-size: 1.3em;
+}
+
+h3
+{
+    font-size: 1em;
+}
+
+p
+{
+    margin-top: 0px;
+}
+
+.clear
+{ 
+    clear: both; 
+}
+
+.left
+{
+    text-align: left;
+    display:    block;
+}
+
+.right
+{
+    text-align: right;
+    display:    block;
+}
+
+.underline
+{
+    text-decoration: underline;
+}
+
+.center
+{
+    width:          100%;
+    margin-left:    auto;
+    margin-right:   auto;
+    text-align:     center;
+    display:        block;
+}
