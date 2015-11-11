@@ -16,7 +16,7 @@
         {
             if (file_exists("{$pasta}/{$classe}.php"))
             {
-                include_once "{$pasta}/{$classe}.php";
+                include_once "{$pasta}/{$classe}.php"; 
             }
         }
     }
