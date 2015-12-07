@@ -11,5 +11,6 @@
         reset:          "full",
         conditionals:   true,
         grid:           true,
+        containers:     "90%!",
     });
 </script>
