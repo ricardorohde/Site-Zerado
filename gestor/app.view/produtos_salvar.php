@@ -15,6 +15,9 @@
         private $codigo;
         private $produto;
 
+        private $controladorProdutos;
+        private $collectionCategoria;
+        private $collectionSubCategoria;
 
         /*
          * Métodos
@@ -29,14 +32,17 @@
         {
             if(isset($_GET['cod']))
             {
-                $this->codigo = $_GET['cod'];
-                $this->produto = (new tbProdutos())->load($this->codigo);         
+                $this->codigo   = $_GET['cod'];
+                $this->produto  = (new tbProdutos())->load($this->codigo);         
             }
             else
             {
-                $this->codigo = NULL;
-                $this->produto = new tbProdutos;
+                $this->codigo   = NULL;
+                $this->produto  = new tbProdutos;
             }
+
+            $this->controladorProdutos  = new controladorProdutos();
+            $this->collectionCategoria  = $this->controladorProdutos->getCategorias();
         }
 
         /**
@@ -131,6 +137,40 @@
                         </div>
 
                         <div class='6u'>
+                            <label for='categoriaCombobox'>
+                                Categoria 
+                            </label>
+                            <select name='categoriaCombobox' id='categoriaCombobox'>
+                                <option value='' disabled style='display: none;'></option>
+                                <?php
+                                    foreach ($this->collectionCategoria as $categoria) 
+                                    {
+                                        $selectedCategoria = '';
+
+                                        if($this->produto->categoria == $categoria->codigo)
+                                            $selectedCategoria = 'selected';
+
+                                        echo 
+                                            "
+                                                <option value='{$categoria->codigo}' {$selectedCategoria}>
+                                                    {$categoria->categoria}
+                                                </option>
+                                            ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class='6u'>
+                            <label for='subcategoriaCombobox'>
+                                Subcategoria
+                            </label>
+                            <select name='subcategoriaCombobox' id='subcategoriaCombobox'>
+                                <option value='' disabled selected style='display: none;'></option>                                
+                            </select>
+                        </div>
+
+                        <div class='6u'>
                             <label for='ativo'>
                                 Ativo
                             </label>
@@ -167,6 +207,33 @@
                             <label for='descricao'>Descrição</label>
                             <br/>
                             <textarea name="descricao" id='descricao' class='tinymce'><?php echo $this->produto->descricao; ?></textarea>
+                            <br/>
+                        </div>
+
+                        <div class='3u'>
+                            Imagem
+                            <input type='hidden' name='imagem' id='imagem' value='<?php echo $this->produto->imagemVideo; ?>'>
+                            <div id='imagemUploader'>
+                                <?php 
+                                    if (($this->produto->imagemVideo != NULL) || ($this->produto->imagemVideo != ''))
+                                        echo "<img src='{$this->produto->imagemVideo}'>";
+                                    else
+                                        echo "<img src='/app.view/img/no-image.jpg'>";
+                                ?>
+                            </div>
+                        </div>
+
+                        <div class='3u'>
+                            <label for='video'>
+                                Video
+                            </label>
+                            <input 
+                                type='text' 
+                                id='video' 
+                                name='video' 
+                                placeholder='Video Youtube'
+                                value="<?php echo $this->produto->video; ?>"
+                            >
                         </div>
 
                         <?php include_once('galeria.php'); ?>
@@ -179,8 +246,10 @@
                         <!--JS-->
                         <?php 
                             include_once('js/jsProdutos.php'); 
+                            include_once('js/jsVideos.php');
                             include_once('js/jsMascaras.php');
                         ?>
+                        <script>buscaSubcategorias('<?= $this->produto->subCategoria ?>');</script>
                     </div>
                 </form>
             <?php

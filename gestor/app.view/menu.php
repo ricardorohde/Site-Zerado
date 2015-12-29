@@ -87,6 +87,18 @@
                         </a>
                     </li>
                     <li>
+                        <a href='/categoriaProdutos' title='Categoria Produtos' alt='Categoria Produtos'>
+                            <i class="fa fa-list"></i>&nbsp;
+                            Categoria Produtos
+                        </a>
+                    </li>
+                    <li>
+                        <a href='/subcategoriaProdutos' title='Subcategoria Produtos' alt='Subcategoria Produtos'>
+                            <i class="fa fa-list"></i>&nbsp;
+                            Subcategoria Produtos
+                        </a>
+                    </li>
+                    <li>
                         <a href='/produtos' title='Produtos' alt='Produtos'>
                             <i class="fa fa-star"></i>&nbsp;
                             Produtos

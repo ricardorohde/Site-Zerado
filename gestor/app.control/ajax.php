@@ -293,16 +293,58 @@
         echo $controlador->configuracao->store();
     }
 
+    //Salva Categoria Produtos
+    if($request == 'salvaCategoriaProdutos')
+    {
+        $controlador                                = new controladorProdutos();
+
+        $controlador->categoriaProduto              = new tbCategoriaProdutos();
+
+        $controlador->categoriaProduto->codigo      = $_POST['codigo'];
+        $controlador->categoriaProduto->categoria   = $_POST['categoria'];
+        $controlador->categoriaProduto->ativo       = $_POST['ativo'];
+
+        echo $controlador->categoriaProduto->store();
+    }
+
+    //Salva Subcategoria Produtos
+    if($request == 'salvaSubcategoriaProdutos')
+    {
+        $controlador                                        = new controladorProdutos();
+
+        $controlador->subcategoriasProduto                  = new tbSubCategoriaProdutos();
+
+        $controlador->subcategoriasProduto->codigo          = $_POST['codigo'];
+        $controlador->subcategoriasProduto->categoria       = $_POST['categoria'];
+        $controlador->subcategoriasProduto->subCategoria    = $_POST['subcategoria'];
+        $controlador->subcategoriasProduto->ativo           = $_POST['ativo'];
+
+        echo $controlador->subcategoriasProduto->store();
+    }
+
+
     //Salva Produtos
     if($request == 'salvaProdutos')
     {
         $controlador                            = new controladorProdutos();
         $controlador->produto                   = new tbProdutos();
 
+        $video                  = $_POST['video'];
+
+        if(strpos($video, '/watch?v=') > 0)
+        {
+            $url    = explode('/watch?v=', $video);
+            $video  = 'https://www.youtube.com/embed/'.$url[1];
+        }
+
         $controlador->produto->codigo           = $_POST['codigo'];
         $controlador->produto->nome             = $_POST['nome'];
         $controlador->produto->valor            = $_POST['valor'];
         $controlador->produto->peso             = $_POST['peso'];
+        $controlador->produto->categoria        = $_POST['categoria'];
+        $controlador->produto->subCategoria     = $_POST['subCategoria'];
+        $controlador->produto->video            = $video;
+        $controlador->produto->imagemVideo      = $_POST['imagemVideo'];
         $controlador->produto->descricao        = $_POST['descricao'];
         $controlador->produto->ativo            = $_POST['ativo'];
         
@@ -616,16 +658,50 @@
 
             $listagem->addEntity($tabela);
         }
+        else if($tabela == 'categoriaProdutos')
+        {
+            $listagem->setTituloPagina('Categoria Produtos');
+
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('categoria');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+        }
+        else if($tabela == 'subcategoriaprodutos')
+        {
+            $listagem->setTituloPagina('Subcategoria Produtos');
+
+            $listagem->addColumn('s.codigo');
+            $listagem->addColumn('c.categoria');
+            $listagem->addColumn('s.subcategoria');
+            $listagem->addColumn('s.ativo');
+
+            $listagem->addEntity('subcategoriaprodutos s');
+            $listagem->addEntity('categoriaprodutos c');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter('s.categoria', '=', 'c.codigo');
+            $listagem->setCriteria($criteria);
+        }
+
         else if($tabela == 'produtos')
         {
             $listagem->setTituloPagina('Produtos');
 
-            $listagem->addColumn('nome');
-            $listagem->addColumn('valor');
-            $listagem->addColumn('peso');
+            $listagem->addColumn('p.nome');
+            $listagem->addColumn('c.categoria');
+            $listagem->addColumn('p.valor');
+            $listagem->addColumn('p.peso');
             $listagem->addColumn('ativo');
 
-            $listagem->addEntity($tabela);
+            $listagem->addEntity('produtos p');
+            $listagem->addEntity('categoriaprodutos c');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter('p.categoria',     '=', 'c.codigo');
+            $listagem->setCriteria($criteria);
+
         }
         else if($tabela == 'situacaoImoveis')
         {
@@ -728,4 +804,32 @@
 
         echo "http://img.youtube.com/vi/{$id}/0.jpg";
     }
+
+    //Busca Subcategorias dos produtos
+    if($request == 'buscaSubcategorias')
+    {
+        $codigoSubcategoria = $_POST['codigoSubcategoria'];
+        $categoria          = $_POST['categoria'];
+
+        $controlador = new controladorProdutos();
+        $subcategorias = $controlador->getSubCategorias($categoria);
+
+        $retorno = "<option value='' disabled selected style='display: none;'></option>";
+        foreach ($subcategorias as $subcategoria)
+        {
+            $selected = '';
+
+            if($codigoSubcategoria == $subcategoria->codigo)
+                $selected = 'selected';
+
+            $retorno .= "
+                            <option value='{$subcategoria->codigo}' {$selected}>
+                                {$subcategoria->subcategoria}
+                            </option>
+                        ";
+        }
+
+        echo $retorno;
+    }
+
 ?>

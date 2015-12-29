@@ -1,17 +1,17 @@
 <?php
     /**
-      * produtos.php
-      * Classe produtos
+      * subcategoriaProdutos.php
+      * Classe subcategoriaProdutos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
-    class produtos
+    class subcategoriaProdutos
     {
         /*
          * Variaveis
-         */        
+         */
         private $collection;
         private $listagem;
 
@@ -29,20 +29,18 @@
         {
             $this->collection = new TList();
 
-            $this->collection->setTituloPagina('Produtos');
+            $this->collection->setTituloPagina('Subcategoria Produtos');
 
-            $this->collection->addColumn('p.codigo');
-            $this->collection->addColumn('p.nome');
+            $this->collection->addColumn('s.codigo');
             $this->collection->addColumn('c.categoria');
-            $this->collection->addColumn('p.valor');
-            $this->collection->addColumn('p.peso');
-            $this->collection->addColumn('p.ativo');
+            $this->collection->addColumn('s.subcategoria');
+            $this->collection->addColumn('s.ativo');
 
-            $this->collection->addEntity('produtos p');
+            $this->collection->addEntity('subcategoriaprodutos s');
             $this->collection->addEntity('categoriaprodutos c');
 
             $criteria = new TCriteria();
-            $criteria->addFilter('p.categoria',     '=', 'c.codigo');
+            $criteria->addFilter('s.categoria', '=', 'c.codigo');
             $this->collection->setCriteria($criteria);
 
             $this->listagem = $this->collection->show();

@@ -16,6 +16,10 @@
         private $collectionProdutos;
         private $produto;
 
+        private $categoriasProduto;
+
+        private $subcategoriasProduto;
+
 
         /*
          * Métodos
@@ -32,6 +36,10 @@
 
             $this->collectionProdutos   = NULL;
             $this->produto              = NULL;
+
+            $this->categoriasProduto    = NULL;
+
+            $this->subcategoriasProduto = NULL;
         }
 
         /**
@@ -59,6 +67,59 @@
         public function __get($propriedade)
         {
             return $this->$propriedade;
+        }
+
+        /**
+         * Método getCategorias
+         * Obtém listagem de categorias ativas
+         *
+         * @access public
+         * @return tbCategorias   Listagem de Categorias
+         */
+        public function getCategorias()
+        {
+            $this->repository         = new TRepository();
+            $this->categoriasProduto  = NULL;
+
+            $this->repository->addEntity('categoriaprodutos');
+
+            $this->repository->addColumn('codigo');
+            $this->repository->addColumn('categoria');;
+
+            $criteria   = new TCriteria;
+            $criteria->addFilter('ativo', '=', 1);
+            $criteria->setProperty('order', 'categoria');
+
+            $this->categoriasProduto = $this->repository->load($criteria);
+
+            return $this->categoriasProduto;
+        }
+
+        /**
+         * Método getSubCategorias
+         * Obtém listagem de subcategorias ativas
+         *
+         * @access public
+         * @return tbSubCategoriasProdutos  Listagem de Categorias
+         */
+        public function getSubCategorias($categoria)
+        {
+            $this->repository         = new TRepository();
+            $this->categoriasProduto  = NULL;
+
+            $this->repository->addEntity('subcategoriaprodutos');
+
+            $this->repository->addColumn('codigo');
+            $this->repository->addColumn('subcategoria');;
+
+            $criteria   = new TCriteria;
+            $criteria->addFilter('ativo', '=', 1);
+            $criteria->addFilter('categoria', '=', $categoria);
+            $criteria->setProperty('order', 'subcategoria');
+
+            $this->categoriasProduto = $this->repository->load($criteria);
+
+            return $this->categoriasProduto;
         }
     }
 ?>

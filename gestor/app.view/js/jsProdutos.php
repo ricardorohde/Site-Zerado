@@ -37,14 +37,18 @@
                 url: "../../app.control/ajax.php",
                 data: 
                 {
-                    codigo:     $('#codigo').val(),
-                    nome:       $('#nome').val(),
-                    valor:      valor,
-                    peso:       $('#peso').val(),
-                    descricao:  desc,
-                    ativo:      $('#ativo').val(),
-                    imagens:    imagens,
-                    request:    'salvaProdutos'
+                    codigo:         $('#codigo').val(),
+                    nome:           $('#nome').val(),
+                    valor:          valor,
+                    peso:           $('#peso').val(),
+                    categoria:      $('#categoriaCombobox').val(),
+                    subCategoria:   $('#subcategoriaCombobox').val(),
+                    video:          $('#video').val(),
+                    imagemVideo:    $('#imagem').val(),
+                    descricao:      desc,
+                    ativo:          $('#ativo').val(),
+                    imagens:        imagens,
+                    request:        'salvaProdutos'
                 },
                 success: function(data) 
                 {
@@ -60,5 +64,85 @@
                 }
             });
         });
+
+        $('#categoriaProdutosForm').submit(function(e)
+        {
+            $.ajax
+            ({
+                type: "POST",
+                url: "../../app.control/ajax.php",
+                data:
+                {
+                    codigo:     $('#codigo').val(),
+                    categoria:  $('#categoria').val(),
+                    ativo:      $('#ativo').val(),
+                    request:    'salvaCategoriaProdutos'
+                },
+                success: function(data)
+                {
+                    if(data == 1)
+                    {
+                        alert('Salvo com sucesso!');
+                        top.location='/categoriaProdutos';
+                    }
+                    else
+                    {
+                        alert('Erro ao salvar o conteúdo!');
+                    }
+                }
+            });
+        });
+
+        $('#subcategoriaProdutosForm').submit(function(e)
+        {
+            $.ajax
+            ({
+                type: "POST",
+                url: "../../app.control/ajax.php",
+                data:
+                {
+                    codigo:         $('#codigo').val(),
+                    categoria:      $('#categoria').val(),
+                    subcategoria:   $('#subcategoria').val(),
+                    ativo:          $('#ativo').val(),
+                    request:        'salvaSubcategoriaProdutos'
+                },
+                success: function(data)
+                {
+                    if(data == 1)
+                    {
+                        alert('Salvo com sucesso!');
+                        top.location='/subcategoriaProdutos';
+                    }
+                    else
+                    {
+                        alert('Erro ao salvar o conteúdo!');
+                    }
+                }
+            });
+        });
+
+        $("#categoriaCombobox").change(function(){
+            buscaSubcategorias('');
+        });
     }); 
+
+    function buscaSubcategorias(codigoSubcategoria)
+    {
+        $.ajax
+        ({
+            type: "POST",
+            url: "../../app.control/ajax.php",
+            data:
+            {
+                codigoSubcategoria: codigoSubcategoria,
+                categoria:          $('#categoriaCombobox').val(),
+                request:            'buscaSubcategorias'
+            },
+            success: function(data)
+            {
+               $("#subcategoriaCombobox").html(data);
+            }
+        });
+    }
 </script>

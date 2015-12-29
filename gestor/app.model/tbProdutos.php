@@ -46,6 +46,27 @@
           * @var    int             Peso
           */
         protected $peso;
+        /**
+          * @access private
+          * @var    int             Categoria do Produto
+          */
+        protected $categoria;
+        /**
+          * @access private
+          * @var    int             Subcategoria do Produto
+          */
+        protected $subCategoria;
+        /**
+          * @access private
+          * @var    string          Link do video
+          */
+        protected $video;
+        /**
+          * @access private
+          * @var    string          Imagem do Video
+          */
+        protected $imagemVideo;
+
          /**
           * @access protected
           * @var    boolean         Ativo/Inativo

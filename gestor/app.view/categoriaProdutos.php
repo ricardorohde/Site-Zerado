@@ -1,17 +1,17 @@
 <?php
     /**
-      * produtos.php
-      * Classe produtos
+      * categoriaProdutos.php
+      * Classe categoriaProdutos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
-    class produtos
+    class categoriaProdutos
     {
         /*
          * Variaveis
-         */        
+         */
         private $collection;
         private $listagem;
 
@@ -29,21 +29,13 @@
         {
             $this->collection = new TList();
 
-            $this->collection->setTituloPagina('Produtos');
+            $this->collection->setTituloPagina('Categoria Produtos');
 
-            $this->collection->addColumn('p.codigo');
-            $this->collection->addColumn('p.nome');
-            $this->collection->addColumn('c.categoria');
-            $this->collection->addColumn('p.valor');
-            $this->collection->addColumn('p.peso');
-            $this->collection->addColumn('p.ativo');
+            $this->collection->addColumn('codigo');
+            $this->collection->addColumn('categoria');
+            $this->collection->addColumn('ativo');
 
-            $this->collection->addEntity('produtos p');
-            $this->collection->addEntity('categoriaprodutos c');
-
-            $criteria = new TCriteria();
-            $criteria->addFilter('p.categoria',     '=', 'c.codigo');
-            $this->collection->setCriteria($criteria);
+            $this->collection->addEntity('categoriaprodutos');
 
             $this->listagem = $this->collection->show();
         }
