@@ -601,7 +601,10 @@
     if($request == 'apagar')
     {
         $tabela         = $_POST['tabela'];
-        $tabelaClass    = 'tb'.ucfirst($tabela);
+        if($tabela == 'categoriaprodutos')
+            $tabelaClass    = 'tbCategoriaProdutos';
+        else
+            $tabelaClass    = 'tb'.ucfirst($tabela);
         $codigo         = $_POST['codigo'];
 
         $object = new $tabelaClass;
@@ -658,7 +661,7 @@
 
             $listagem->addEntity($tabela);
         }
-        else if($tabela == 'categoriaProdutos')
+        else if($tabela == 'categoriaprodutos')
         {
             $listagem->setTituloPagina('Categoria Produtos');
 
