@@ -140,6 +140,19 @@
                 }
             ?>
             <?php
+                if($_SESSION['funcoes']->depoimentos == 1)
+                {
+                    ?>
+                    <li>
+                        <a href='/depoimentos' title='Depoimentos' alt='Depoimentos'>
+                            <i class="fa fa-commenting-o"></i>&nbsp;
+                            Depoimentos
+                        </a>
+                    </li>
+                    <?php
+                }
+            ?>
+            <?php
                 /*if  (
                         ($_SESSION['funcoes']->galeria      == 1)   ||
                         ($_SESSION['funcoes']->ecommerce    == 1)   ||

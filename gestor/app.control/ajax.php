@@ -488,6 +488,24 @@
             echo 'erro 0';
     }
 
+    //Salva Depoimentos
+    if($request == 'salvaDepoimentos')
+    {
+        $controlador                            = new controladorDepoimentos;
+
+        $controlador->depoimentos               = new tbDepoimentos();
+
+        $controlador->depoimentos->codigo       = $_POST['codigo'];
+        $controlador->depoimentos->imagem       = $_POST['imagem'];
+        $controlador->depoimentos->nome         = $_POST['nome'];
+        $controlador->depoimentos->empresa      = $_POST['empresa'];
+        $controlador->depoimentos->depoimento   = $_POST['depoimento'];
+        $controlador->depoimentos->ativo        = $_POST['ativo'];
+
+        echo $controlador->depoimentos->store();
+    }
+
+
     //Salva Funções
     if($request == 'salvaFuncoes')
     {
@@ -502,7 +520,8 @@
         $controlador->funcoes->ecommerce    = $_POST['ecommerce']   == 'true' ? 1 : 0;
         $controlador->funcoes->delivery     = $_POST['delivery']    == 'true' ? 1 : 0;
         $controlador->funcoes->imobiliaria  = $_POST['imobiliaria'] == 'true' ? 1 : 0;
-        $controlador->funcoes->portifolio   = $_POST['portifolio'] == 'true' ? 1 : 0;
+        $controlador->funcoes->portifolio   = $_POST['portifolio']  == 'true' ? 1 : 0;
+        $controlador->funcoes->depoimentos  = $_POST['depoimentos'] == 'true' ? 1 : 0;
         
         $retorno                            = $controlador->funcoes->store();
 
@@ -661,6 +680,19 @@
 
             $listagem->addEntity($tabela);
         }
+        else if($tabela == 'depoimentos')
+        {
+            $listagem->setTituloPagina('Depoimentos');
+
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('nome');
+            $listagem->addColumn('empresa');
+            $listagem->addColumn('imagem');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+        }
+
         else
             $listagem->setTituloPagina(ucfirst($tabela));
 

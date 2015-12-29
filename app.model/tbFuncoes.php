@@ -61,6 +61,11 @@
           * @var    boolean     Portifólio
           */
         protected $portifolio;
+        /**
+          * @access protected
+          * @var    boolean     Portifólio
+          */
+        protected $depoimentos;
 
 
         /*

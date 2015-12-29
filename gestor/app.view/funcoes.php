@@ -143,6 +143,17 @@
                             <label for='imobiliaria'>Imobiliária</label>
                         </div>
 
+                        <div class='2u'>
+                            <input
+                                type='checkbox'
+                                id='depoimentos'
+                                name='depoimentos'
+                                value='1'
+                                <?= $this->funcoes->depoimentos == 1 ? 'checked' : '' ?>
+                            >
+                            <label for='depoimentos'>Depoimentos</label>
+                        </div>
+
                         <div class='12u'>
                             <input type='submit' id='salvar' value='Salvar'>
                         </div>

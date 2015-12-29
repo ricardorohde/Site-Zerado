@@ -16,6 +16,8 @@
                     delivery:       $('#delivery').is(":checked"),
                     imobiliaria:    $('#imobiliaria').is(":checked"),
                     portifolio:     $('#portifolio').is(":checked"),
+                    depoimentos:    $('#depoimentos').is(":checked"),
+
                     request:        'salvaFuncoes'
                 },
                 success: function(data) 
