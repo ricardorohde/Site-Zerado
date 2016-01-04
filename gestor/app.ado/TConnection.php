@@ -2,9 +2,10 @@
     /**
      * TConnection.php
      * Gerencia conexões com o banco de dados através de arquivos de configuracao (*.ini)
+     *     1.1 - Arquivo unico de configuracoes (bd.ini), verificando se o servidor é local ou virtual
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
-     * @version 1.0     
+     * @version 1.1
      * @access  public
      */
     final class TConnection
@@ -54,12 +55,26 @@
             }
             
             //Le as informações contidas no arquivo
-            $user = isset($db['user']) ? $db['user'] : NULL;
-            $pass = isset($db['pass']) ? $db['pass'] : NULL;
-            $name = isset($db['name']) ? $db['name'] : NULL;
-            $host = isset($db['host']) ? $db['host'] : NULL;
             $type = isset($db['type']) ? $db['type'] : NULL;
-            $port = isset($db['port']) ? $db['port'] : NULL;
+
+            //Localhost
+            if($_SERVER['REMOTE_ADDR'] == '127.0.0.1')
+            {
+                $user = isset($db['user_local']) ? $db['user_local'] : NULL;
+                $pass = isset($db['pass_local']) ? $db['pass_local'] : NULL;
+                $name = isset($db['name_local']) ? $db['name_local'] : NULL;
+                $host = isset($db['host_local']) ? $db['host_local'] : NULL;
+                $port = isset($db['port_local']) ? $db['port_local'] : NULL;
+            }
+            //Online
+            else
+            {
+                $user = isset($db['user']) ? $db['user'] : NULL;
+                $pass = isset($db['pass']) ? $db['pass'] : NULL;
+                $name = isset($db['name']) ? $db['name'] : NULL;
+                $host = isset($db['host']) ? $db['host'] : NULL;
+                $port = isset($db['port']) ? $db['port'] : NULL;   
+            }
             
             //Descobre qual o tipo (driver) de banco de dados a ser utilizado
             switch($type)

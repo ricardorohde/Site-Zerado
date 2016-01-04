@@ -86,6 +86,13 @@
                             Vendas
                         </a>
                     </li>
+                    <?php
+                }
+            ?>
+            <?php
+                if($_SESSION['funcoes']->catalogo == 1) || $_SESSION['funcoes']->ecommerce == 1))
+                {
+                    ?>
                     <li>
                         <a href='/categoriaProdutos' title='Categoria Produtos' alt='Categoria Produtos'>
                             <i class="fa fa-list"></i>&nbsp;
