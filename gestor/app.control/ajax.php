@@ -561,6 +561,20 @@
         echo $controlador->telefone->store();
     }
 
+    if($request == 'salvaEmails')
+    {
+        $controlador                 = new controladorEmails;
+
+        $controlador->email          = new tbEmails();
+
+        $controlador->email->codigo  = $_POST['codigo'];
+        $controlador->email->email   = $_POST['email'];
+        $controlador->email->senha   = $_POST['senha'];
+        $controlador->email->ativo   = $_POST['ativo'];
+
+        echo $controlador->email->store();
+    }
+
     //Salva Funções
     if($request == 'salvaFuncoes')
     {
@@ -795,6 +809,19 @@
 
             $listagem->addEntity($tabela);
         }
+        else if($tabela == 'emails')
+        {
+            $listagem->setTituloPagina('E-mails');
+
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('email');
+            if($_SESSION['usuario']->administrador == 1)
+                $listagem->addColumn('senha');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+        }
+
         else
             $listagem->setTituloPagina(ucfirst($tabela));
 

@@ -18,6 +18,12 @@
                     Telefones
                 </a>
             </li>
+            <li>
+                <a href='/telefones' title='E-mails' alt='E-mails'>
+                    <i class="fa fa-envelope"></i>&nbsp;
+                    E-mails
+                </a>
+           </li>
             <?php
                 if($_SESSION['funcoes']->ecommerce == 1)
                 {
