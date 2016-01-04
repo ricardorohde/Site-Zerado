@@ -4,15 +4,31 @@
         $controladorConfiguracoes   = new controladorConfiguracoes();
         $_SESSION['configuracoes'] = $controladorConfiguracoes->getConfiguracoes();
     }
+
+    if(isset($_GET['class']))
+    {
+       $titulo = ucfirst($_GET['class']);
+
+       if(isset($_GET['desc']))
+       {
+               $descricao = (new controladorUrl())->corrigeUrlAmigavel($_GET['desc']);
+
+               $titulo .= ' - '.$descricao;
+       }
+
+        $titulo .= ' - '.$_SESSION['configuracoes']->titulo;
+    }
+    else
+       $titulo = $_SESSION['configuracoes']->titulo;
 ?>
-<title><?php echo  $_SESSION['configuracoes']->titulo; ?></title>
+<title><?php echo  $titulo; ?></title>
 
 <link rel="icon"                    href="/app.view/img/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon"           href="/app.view/img/favicon.ico" type="image/x-icon" />
 
 <meta name="description"            content="<?php echo  $_SESSION['configuracoes']->descricao; ?>" />
 <meta name="keywords"               content="<?php echo  $_SESSION['configuracoes']->keywords; ?>"/>
-<meta name="title"                  content="<?php echo  $_SESSION['configuracoes']->titulo; ?>"/> 
+<meta name="title"                  content="<?php echo  $titulo; ?>"/>
 <meta name="url"                    content="<?php echo  $_SESSION['configuracoes']->dominio; ?>"/> 
 <meta http-equiv="VW96.OBJECT TYPE"	content="<?php echo  $_SESSION['configuracoes']->keywords; ?>"/> 
 <meta property="og:title"           content="<?php echo  $_SESSION['configuracoes']->descricao.' - '. $_SESSION['configuracoes']->empresa; ?>" />
