@@ -65,13 +65,22 @@
           * @access protected
           * @var    boolean     Portifólio
           */
-        protected $portifolio;
+        protected $portifolio;       
         /**
           * @access protected
-          * @var    boolean     Portifólio
+          * @var    boolean     Depoimentos
           */
-        protected $depoimentos;
-
+        protected $depoimentos; 
+        /**
+          * @access protected
+          * @var    boolean     Catalogo de Clientes
+          */
+        protected $catalogoClientes;
+        /**
+          * @access protected
+          * @var    boolean     Excluido
+          */
+        protected $excluido;
 
         /*
          * Métodos

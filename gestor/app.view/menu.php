@@ -200,6 +200,19 @@
                     <?php
                 }*/
             ?>
+            <?php
+                if($_SESSION['funcoes']->catalogoClientes == 1)
+                {
+                    ?>
+                    <li>
+                        <a href='/catalogoClientes' title='Catalogo Clientes' alt='Catalogo Clientes'>
+                            <i class="fa fa-users"></i>&nbsp;
+                            Catalogo Clientes
+                        </a>
+                    </li>
+                    <?php
+                }
+            ?>
             <li>
                 <a href='/usuarios' title='Usuários' alt='Usuários'>
                     <i class="fa fa-user-plus"></i>&nbsp;

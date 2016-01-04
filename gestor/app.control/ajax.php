@@ -575,25 +575,41 @@
         echo $controlador->email->store();
     }
 
+    //Salva catalogo de CLietnes
+    if($request == 'salvaCatalogoClientes')
+    {
+        $controlador                            = new controladorCatalogoClientes();
+
+        $controlador->catalogoClientes          = new tbCatalogoClientes();
+
+        $controlador->catalogoClientes->codigo  = $_POST['codigo'];
+        $controlador->catalogoClientes->imagem  = $_POST['imagem'];
+        $controlador->catalogoClientes->nome    = $_POST['nome'];
+        $controlador->catalogoClientes->ativo   = $_POST['ativo'];
+
+        echo $controlador->catalogoClientes->store();
+    }
+
     //Salva Funções
     if($request == 'salvaFuncoes')
     {
-        $controlador                        = new controladorFuncoes;
+        $controlador                                = new controladorFuncoes;
 
-        $controlador->funcoes               = new tbFuncoes();
+        $controlador->funcoes                       = new tbFuncoes();
 
-        $controlador->funcoes->codigo       = 1;
-        $controlador->funcoes->banner       = $_POST['banner']      == 'true' ? 1 : 0;
-        $controlador->funcoes->video        = $_POST['video']       == 'true' ? 1 : 0;
-        $controlador->funcoes->galeria      = $_POST['galeria']     == 'true' ? 1 : 0;
-        $controlador->funcoes->catalogo     = $_POST['catalogo']    == 'true' ? 1 : 0;
-        $controlador->funcoes->ecommerce    = $_POST['ecommerce']   == 'true' ? 1 : 0;
-        $controlador->funcoes->delivery     = $_POST['delivery']    == 'true' ? 1 : 0;
-        $controlador->funcoes->imobiliaria  = $_POST['imobiliaria'] == 'true' ? 1 : 0;
-        $controlador->funcoes->portifolio   = $_POST['portifolio']  == 'true' ? 1 : 0;
-        $controlador->funcoes->depoimentos  = $_POST['depoimentos'] == 'true' ? 1 : 0;
+        $controlador->funcoes->codigo               = 1;
+        $controlador->funcoes->banner               = $_POST['banner']      == 'true' ? 1 : 0;
+        $controlador->funcoes->video                = $_POST['video']       == 'true' ? 1 : 0;
+        $controlador->funcoes->galeria              = $_POST['galeria']     == 'true' ? 1 : 0;
+        $controlador->funcoes->catalogo             = $_POST['catalogo']    == 'true' ? 1 : 0;
+        $controlador->funcoes->ecommerce            = $_POST['ecommerce']   == 'true' ? 1 : 0;
+        $controlador->funcoes->delivery             = $_POST['delivery']    == 'true' ? 1 : 0;
+        $controlador->funcoes->imobiliaria          = $_POST['imobiliaria'] == 'true' ? 1 : 0;
+        $controlador->funcoes->portifolio           = $_POST['portifolio']  == 'true' ? 1 : 0;
+        $controlador->funcoes->depoimentos          = $_POST['depoimentos'] == 'true' ? 1 : 0;
+        $controlador->funcoes->catalogoClientes     = $_POST['catalogoClientes']    == 'true' ? 1 : 0;
         
-        $retorno                            = $controlador->funcoes->store();
+        $retorno                                    = $controlador->funcoes->store();
 
         if($retorno == 1)
             $_SESSION['funcoes'] = $controlador->funcoes;
@@ -821,7 +837,17 @@
 
             $listagem->addEntity($tabela);
         }
+        else if($tabela == 'catalogoClientes')
+        {
+            $listagem->setTituloPagina('Clientes');
 
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('nome');
+            $listagem->addColumn('imagem');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+        }
         else
             $listagem->setTituloPagina(ucfirst($tabela));
 

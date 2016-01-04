@@ -164,6 +164,17 @@
                             <label for='depoimentos'>Depoimentos</label>
                         </div>
 
+                        <div class='2u'>
+                            <input
+                                type='checkbox'
+                                id='catalogoClientes'
+                                name='catalogoClientes'
+                                value='1'
+                                <?= $this->funcoes->catalogoClientes == 1 ? 'checked' : '' ?>
+                            >
+                            <label for='catalogoClientes'>Catálogo de Clientes</label>
+                        </div>
+
                         <div class='12u'>
                             <input type='submit' id='salvar' value='Salvar'>
                         </div>

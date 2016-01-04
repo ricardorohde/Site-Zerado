@@ -9,15 +9,17 @@
                 url: "../../app.control/ajax.php",
                 data: 
                 {
-                    banner:         $('#banner').is(":checked"),
-                    video:          $('#video').is(":checked"),
-                    galeria:        $('#galeria').is(":checked"),
-                    catalogo:       $('#catalogo').is(":checked"),
-                    ecommerce:      $('#ecommerce').is(":checked"),
-                    delivery:       $('#delivery').is(":checked"),
-                    imobiliaria:    $('#imobiliaria').is(":checked"),
-                    portifolio:     $('#portifolio').is(":checked"),
-                    depoimentos:    $('#depoimentos').is(":checked"),
+                    banner:             $('#banner').is(":checked"),
+                    video:              $('#video').is(":checked"),
+                    galeria:            $('#galeria').is(":checked"),
+                    catalogo:           $('#catalogo').is(":checked"),
+                    ecommerce:          $('#ecommerce').is(":checked"),
+                    delivery:           $('#delivery').is(":checked"),
+                    imobiliaria:        $('#imobiliaria').is(":checked"),
+                    portifolio:         $('#portifolio').is(":checked"),
+                    depoimentos:        $('#depoimentos').is(":checked"),
+                    catalogoClientes:   $('#catalogoClientes').is(":checked"),
+
 
                     request:        'salvaFuncoes'
                 },
