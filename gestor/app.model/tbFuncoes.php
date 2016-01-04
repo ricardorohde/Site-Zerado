@@ -43,6 +43,11 @@
         protected $galeria;
         /**
           * @access protected
+          * @var    boolean     Catalogo
+          */
+        protected $catalogo;
+        /**
+          * @access protected
           * @var    boolean     E-commerce
           */
         protected $ecommerce;

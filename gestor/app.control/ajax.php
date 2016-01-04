@@ -547,6 +547,19 @@
         echo $controlador->depoimentos->store();
     }
 
+    //Salva Telefones
+    if($request == 'salvaTelefones')
+    {
+        $controlador                        = new controladorTelefones;
+
+        $controlador->telefone              = new tbTelefones();
+
+        $controlador->telefone->codigo      = $_POST['codigo'];
+        $controlador->telefone->telefone    = $_POST['telefone'];
+        $controlador->telefone->ativo       = $_POST['ativo'];
+
+        echo $controlador->telefone->store();
+    }
 
     //Salva Funções
     if($request == 'salvaFuncoes')
@@ -559,6 +572,7 @@
         $controlador->funcoes->banner       = $_POST['banner']      == 'true' ? 1 : 0;
         $controlador->funcoes->video        = $_POST['video']       == 'true' ? 1 : 0;
         $controlador->funcoes->galeria      = $_POST['galeria']     == 'true' ? 1 : 0;
+        $controlador->funcoes->catalogo     = $_POST['catalogo']    == 'true' ? 1 : 0;
         $controlador->funcoes->ecommerce    = $_POST['ecommerce']   == 'true' ? 1 : 0;
         $controlador->funcoes->delivery     = $_POST['delivery']    == 'true' ? 1 : 0;
         $controlador->funcoes->imobiliaria  = $_POST['imobiliaria'] == 'true' ? 1 : 0;
@@ -771,7 +785,16 @@
 
             $listagem->addEntity($tabela);
         }
+        else if($tabela == 'telefones')
+        {
+            $listagem->setTituloPagina('Telefones');
 
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('telefone');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+        }
         else
             $listagem->setTituloPagina(ucfirst($tabela));
 

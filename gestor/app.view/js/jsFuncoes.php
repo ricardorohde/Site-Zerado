@@ -12,6 +12,7 @@
                     banner:         $('#banner').is(":checked"),
                     video:          $('#video').is(":checked"),
                     galeria:        $('#galeria').is(":checked"),
+                    catalogo:       $('#catalogo').is(":checked"),
                     ecommerce:      $('#ecommerce').is(":checked"),
                     delivery:       $('#delivery').is(":checked"),
                     imobiliaria:    $('#imobiliaria').is(":checked"),

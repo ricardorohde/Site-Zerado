@@ -184,20 +184,6 @@
                             >
                         </div>
                         <div class='4u'>
-                            <label for='telefone'>
-                                Telefone
-                            </label>
-                            <input 
-                                type='text' 
-                                id='telefone' 
-                                name='telefone' 
-                                class='telefone'
-                                maxlength='15'
-                                placeholder='Telefones' 
-                                value="<?php echo $this->configuracoes->telefone; ?>"
-                            >
-                        </div>
-                        <div class='4u'>
                             <label for='endereco'>
                                 Endereço
                             </label>

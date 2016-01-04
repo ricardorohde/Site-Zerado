@@ -12,6 +12,12 @@
                     Configurações
                 </a>
             </li>
+            <li>
+                <a href='/telefones' title='Telefones' alt='Telefones'>
+                    <i class="fa fa-phone"></i>&nbsp;
+                    Telefones
+                </a>
+            </li>
             <?php
                 if($_SESSION['funcoes']->ecommerce == 1)
                 {

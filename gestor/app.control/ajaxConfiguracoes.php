@@ -48,7 +48,6 @@
     $controlador->configuracao->cep             = $_POST['cep'];
     $controlador->configuracao->cidade          = $_POST['cidade'];
     $controlador->configuracao->estado          = $_POST['estado'];
-    $controlador->configuracao->telefone        = $_POST['telefone'];
     $controlador->configuracao->facebookPage    = $_POST['facebookPage'];
 
     if($controlador->configuracao->store())

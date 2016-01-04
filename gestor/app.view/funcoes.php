@@ -115,6 +115,16 @@
                         <div class='2u'>
                             <input 
                                 type='checkbox' 
+                                id='catalogo' 
+                                name='catalogo' 
+                                value='1'
+                                <?= $this->funcoes->catalogo == 1 ? 'checked' : '' ?>
+                            >
+                            <label for='catalogo'>Catálogo Produtos</label>
+                        </div>
+                        <div class='2u'>
+                            <input 
+                                type='checkbox' 
                                 id='ecommerce' 
                                 name='ecommerce' 
                                 value='1'
