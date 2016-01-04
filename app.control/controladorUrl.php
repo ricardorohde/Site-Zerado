@@ -96,6 +96,8 @@
         public function corrigeUrlAmigavel($urlAmigavel)
         {
             $string = str_replace('-', ' ', $urlAmigavel);
+            $string = str_replace('_', ' - ', $string);
+
 
             return $string;
         }
