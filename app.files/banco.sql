@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 06, 2015 at 05:24 PM
--- Server version: 5.6.27-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.14
+-- Host: 127.0.0.1
+-- Generation Time: 22-Dez-2015 às 20:01
+-- Versão do servidor: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `painel`
+-- Database: `maddza`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banners`
+-- Estrutura da tabela `banners`
 --
 
 CREATE TABLE IF NOT EXISTS `banners` (
@@ -34,17 +34,19 @@ CREATE TABLE IF NOT EXISTS `banners` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoriaImoveis`
+-- Estrutura da tabela `catalogoclientes`
 --
 
-CREATE TABLE IF NOT EXISTS `categoriaImoveis` (
+CREATE TABLE IF NOT EXISTS `catalogoclientes` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `categoria` varchar(100) NOT NULL COMMENT 'Apartamento, Casa, Terreno',
+  `imagem` varchar(100) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `descricao` varchar(100) NOT NULL,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
@@ -53,10 +55,38 @@ CREATE TABLE IF NOT EXISTS `categoriaImoveis` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clienteEnderecos`
+-- Estrutura da tabela `categoriaimoveis`
 --
 
-CREATE TABLE IF NOT EXISTS `clienteEnderecos` (
+CREATE TABLE IF NOT EXISTS `categoriaimoveis` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(100) NOT NULL COMMENT 'Apartamento, Casa, Terreno',
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categoriaprodutos`
+--
+
+CREATE TABLE IF NOT EXISTS `categoriaprodutos` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(100) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `clienteenderecos`
+--
+
+CREATE TABLE IF NOT EXISTS `clienteenderecos` (
   `codigo` bigint(20) unsigned NOT NULL,
   `codigoCliente` bigint(20) unsigned NOT NULL,
   `rua` varchar(100) NOT NULL,
@@ -73,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `clienteEnderecos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clientes`
+-- Estrutura da tabela `clientes`
 --
 
 CREATE TABLE IF NOT EXISTS `clientes` (
@@ -95,10 +125,10 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clienteTelefones`
+-- Estrutura da tabela `clientetelefones`
 --
 
-CREATE TABLE IF NOT EXISTS `clienteTelefones` (
+CREATE TABLE IF NOT EXISTS `clientetelefones` (
   `codigo` int(10) unsigned NOT NULL,
   `codigoCliente` int(10) unsigned NOT NULL,
   `telefone` varchar(17) NOT NULL,
@@ -112,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `clienteTelefones` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `configuracoes`
+-- Estrutura da tabela `configuracoes`
 --
 
 CREATE TABLE IF NOT EXISTS `configuracoes` (
@@ -141,7 +171,39 @@ CREATE TABLE IF NOT EXISTS `configuracoes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `funcoes`
+-- Estrutura da tabela `depoimentos`
+--
+
+CREATE TABLE IF NOT EXISTS `depoimentos` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `imagem` varchar(100) DEFAULT NULL,
+  `nome` varchar(100) DEFAULT NULL,
+  `empresa` varchar(100) DEFAULT NULL,
+  `depoimento` longtext NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `emails`
+--
+
+CREATE TABLE IF NOT EXISTS `emails` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(30) DEFAULT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `funcoes`
 --
 
 CREATE TABLE IF NOT EXISTS `funcoes` (
@@ -149,10 +211,13 @@ CREATE TABLE IF NOT EXISTS `funcoes` (
   `banner` tinyint(1) DEFAULT NULL,
   `video` tinyint(1) DEFAULT NULL,
   `galeria` tinyint(1) DEFAULT NULL,
+  `catalogo` tinyint(1) DEFAULT NULL,
   `ecommerce` tinyint(1) DEFAULT NULL,
   `delivery` tinyint(1) DEFAULT NULL,
   `imobiliaria` tinyint(1) DEFAULT NULL,
   `portifolio` tinyint(1) DEFAULT NULL,
+  `depoimentos` tinyint(1) DEFAULT NULL,
+  `catalogoClientes` tinyint(1) DEFAULT NULL,
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
@@ -160,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `funcoes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galeria`
+-- Estrutura da tabela `galeria`
 --
 
 CREATE TABLE IF NOT EXISTS `galeria` (
@@ -184,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `galeria` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imoveis`
+-- Estrutura da tabela `imoveis`
 --
 
 CREATE TABLE IF NOT EXISTS `imoveis` (
@@ -209,12 +274,12 @@ CREATE TABLE IF NOT EXISTS `imoveis` (
   PRIMARY KEY (`codigo`),
   KEY `situacao` (`situacao`),
   KEY `categoria` (`categoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `localizacao`
+-- Estrutura da tabela `localizacao`
 --
 
 CREATE TABLE IF NOT EXISTS `localizacao` (
@@ -228,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `localizacao` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paginas`
+-- Estrutura da tabela `paginas`
 --
 
 CREATE TABLE IF NOT EXISTS `paginas` (
@@ -247,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `paginas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `portifolio`
+-- Estrutura da tabela `portifolio`
 --
 
 CREATE TABLE IF NOT EXISTS `portifolio` (
@@ -259,20 +324,40 @@ CREATE TABLE IF NOT EXISTS `portifolio` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produtos`
+--
+
+CREATE TABLE IF NOT EXISTS `produtos` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) DEFAULT NULL,
+  `descricao` longtext,
+  `valor` double DEFAULT NULL,
+  `peso` int(11) DEFAULT NULL,
+  `categoria` bigint(20) unsigned DEFAULT NULL,
+  `subCategoria` bigint(20) unsigned DEFAULT NULL,
+  `imagemVideo` varchar(50) DEFAULT NULL,
+  `video` varchar(50) DEFAULT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`),
+  KEY `categoria` (`categoria`,`subCategoria`),
+  KEY `subCategoria` (`subCategoria`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produtos`
+-- Estrutura da tabela `situacaoimoveis`
 --
 
-CREATE TABLE IF NOT EXISTS `produtos` (
+CREATE TABLE IF NOT EXISTS `situacaoimoveis` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) NOT NULL,
-  `descricao` longtext NOT NULL,
-  `valor` double NOT NULL,
-  `peso` int(11) NOT NULL,
+  `situacao` varchar(100) NOT NULL COMMENT 'Aluguel, Venda, Arrendamento',
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
@@ -281,21 +366,37 @@ CREATE TABLE IF NOT EXISTS `produtos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `situacaoImoveis`
+-- Estrutura da tabela `subcategoriaprodutos`
 --
 
-CREATE TABLE IF NOT EXISTS `situacaoImoveis` (
+CREATE TABLE IF NOT EXISTS `subcategoriaprodutos` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `situacao` varchar(100) NOT NULL COMMENT 'Aluguel, Venda, Arrendamento',
+  `categoria` bigint(20) unsigned NOT NULL,
+  `subCategoria` varchar(100) NOT NULL,
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`codigo`),
+  KEY `codigoCategoria` (`categoria`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estrutura da tabela `telefones`
+--
+
+CREATE TABLE IF NOT EXISTS `telefones` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `telefone` varchar(15) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -313,10 +414,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vendaProdutos`
+-- Estrutura da tabela `vendaprodutos`
 --
 
-CREATE TABLE IF NOT EXISTS `vendaProdutos` (
+CREATE TABLE IF NOT EXISTS `vendaprodutos` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `codigoVenda` bigint(20) unsigned NOT NULL,
   `produto` bigint(20) unsigned DEFAULT NULL,
@@ -330,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `vendaProdutos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vendas`
+-- Estrutura da tabela `vendas`
 --
 
 CREATE TABLE IF NOT EXISTS `vendas` (
@@ -358,7 +459,7 @@ CREATE TABLE IF NOT EXISTS `vendas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `videos`
+-- Estrutura da tabela `videos`
 --
 
 CREATE TABLE IF NOT EXISTS `videos` (
@@ -377,13 +478,13 @@ CREATE TABLE IF NOT EXISTS `videos` (
 --
 
 --
--- Constraints for table `clienteEnderecos`
+-- Limitadores para a tabela `clienteenderecos`
 --
-ALTER TABLE `clienteEnderecos`
+ALTER TABLE `clienteenderecos`
   ADD CONSTRAINT `endereco-cliente` FOREIGN KEY (`codigoCliente`) REFERENCES `clientes` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `galeria`
+-- Limitadores para a tabela `galeria`
 --
 ALTER TABLE `galeria`
   ADD CONSTRAINT `galeria_imovel` FOREIGN KEY (`codigoImovel`) REFERENCES `imoveis` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -391,27 +492,40 @@ ALTER TABLE `galeria`
   ADD CONSTRAINT `galeria_produto` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `imoveis`
+-- Limitadores para a tabela `imoveis`
 --
 ALTER TABLE `imoveis`
-  ADD CONSTRAINT `imoveis_categoria` FOREIGN KEY (`categoria`) REFERENCES `categoriaImoveis` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `imoveis_situacao` FOREIGN KEY (`situacao`) REFERENCES `situacaoImoveis` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `imoveis_categoria` FOREIGN KEY (`categoria`) REFERENCES `categoriaimoveis` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `imoveis_situacao` FOREIGN KEY (`situacao`) REFERENCES `situacaoimoveis` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `paginas`
+-- Limitadores para a tabela `paginas`
 --
 ALTER TABLE `paginas`
   ADD CONSTRAINT `paginas_localizacao` FOREIGN KEY (`localizacao`) REFERENCES `localizacao` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `vendaProdutos`
+-- Limitadores para a tabela `produtos`
 --
-ALTER TABLE `vendaProdutos`
+ALTER TABLE `produtos`
+  ADD CONSTRAINT `categoria_produto` FOREIGN KEY (`categoria`) REFERENCES `categoriaprodutos` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `subcategoria_produto` FOREIGN KEY (`subCategoria`) REFERENCES `subcategoriaprodutos` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `subcategoriaprodutos`
+--
+ALTER TABLE `subcategoriaprodutos`
+  ADD CONSTRAINT `categorio_subcategoriaProdutos` FOREIGN KEY (`categoria`) REFERENCES `categoriaprodutos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `vendaprodutos`
+--
+ALTER TABLE `vendaprodutos`
   ADD CONSTRAINT `vendaProduto-Pedido` FOREIGN KEY (`codigoVenda`) REFERENCES `vendas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `vendaProduto-Produto` FOREIGN KEY (`produto`) REFERENCES `produtos` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `vendas`
+-- Limitadores para a tabela `vendas`
 --
 ALTER TABLE `vendas`
   ADD CONSTRAINT `vendas-cliente` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;

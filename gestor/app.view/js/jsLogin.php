@@ -1,7 +1,7 @@
 <script>
 	$(document).ready(function() 
     { 
-        $('#loginPa').submit(function(e) 
+        $('#login').submit(function(e) 
         {
             $.ajax
 			({

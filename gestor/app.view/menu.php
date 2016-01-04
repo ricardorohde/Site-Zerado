@@ -102,7 +102,7 @@
                 }
             ?>
             <?php
-                if($_SESSION['funcoes']->catalogo == 1) || $_SESSION['funcoes']->ecommerce == 1))
+                if(($_SESSION['funcoes']->catalogo == 1) || ($_SESSION['funcoes']->ecommerce == 1))
                 {
                     ?>
                     <li>
