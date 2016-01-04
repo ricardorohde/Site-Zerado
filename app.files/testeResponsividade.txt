@@ -1,0 +1,33 @@
+large
+    1024
+        desktop             
+        kindle land         
+        ipad land           
+        ipad mini land      
+    960
+        nexus 7 land        
+medium
+    800
+        desktop             
+    768
+        ipad port           
+        ipad mini port      
+small
+    640
+        Htc One Land        
+        blackberry land     
+    600
+        nexus 7 port        
+        kindle port         
+    568
+        iphone 5 land       
+xsmall
+    480
+        iphone 4 land       
+    384
+        blackberry port     
+    360
+        Htc One port        
+    320
+        iphone 4 port       
+        iphone 5 port       
