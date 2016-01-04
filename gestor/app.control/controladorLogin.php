@@ -96,7 +96,7 @@
                 ($this->email == $this->userDB->email) &&
                 ($this->senha == $this->userDB->senha)
               )
-                return true;
+                return $this->userDB->ativo;
             else
                 return false;
         }
