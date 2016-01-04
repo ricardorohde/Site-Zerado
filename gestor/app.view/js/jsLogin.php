@@ -1,7 +1,7 @@
 <script>
 	$(document).ready(function() 
     { 
-        $('#emailsForm').submit(function(e) 
+        $('#loginPa').submit(function(e) 
         {
             $.ajax
 			({
