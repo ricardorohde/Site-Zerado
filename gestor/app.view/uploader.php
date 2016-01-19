@@ -190,7 +190,6 @@
                                             "
                                                 <div class='2u uploaderBox'>
                                                     <div class='uploaderImg'>
-                                                        <!--<img src='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}'>-->
                                                         <img 
                                                             class='lazy' 
                                                             data-original='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}'
