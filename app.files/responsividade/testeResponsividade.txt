@@ -11,8 +11,12 @@ medium
         desktop             
     768
         ipad port           
-        ipad mini port      
+        ipad mini port   
+    736
+        iphone 6s land  
 small
+    667
+        iphone 6 land   
     640
         Htc One Land        
         blackberry land     
@@ -23,9 +27,13 @@ small
         iphone 5 land       
 xsmall
     480
-        iphone 4 land       
+        iphone 4 land      
+    414
+        iphone 6 port   
     384
         blackberry port     
+    375
+        iphone 6 port   
     360
         Htc One port        
     320
