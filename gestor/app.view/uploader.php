@@ -121,6 +121,8 @@
                         <script type="text/javascript" src="js/skel-layout.js"></script>
                         <!--JQUERY FORM-->
                         <script type="text/javascript" src="js/jquery.form.min.js"></script>
+                        <!--Lazy Load Images-->
+                        <script type="text/javascript" src="js/jquery.lazyload.js"></script>
                     </head>
                     <body>
                         <span class='center'>
@@ -188,7 +190,11 @@
                                             "
                                                 <div class='2u uploaderBox'>
                                                     <div class='uploaderImg'>
-                                                        <img src='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}'>
+                                                        <!--<img src='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}'>-->
+                                                        <img 
+                                                            class='lazy' 
+                                                            data-original='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}'
+                                                        >
                                                     </div>
                                                     <div class='center'>
                                             ";
@@ -265,7 +271,12 @@
                                     reset:          "full",
                                     conditionals:   true,
                                     grid:           true,
-                                });
+                                }); 
+
+                            $("img.lazy").lazyload(
+                            {         
+                                effect : "fadeIn"     
+                            });
                         </script>
                     </body>
                 </html>
