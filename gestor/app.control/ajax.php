@@ -23,7 +23,7 @@
     * ajax.php
     * Destino de todos os formularios
     *
-    * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+    * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
     * @version 1.0   
     */
     error_reporting(E_WARNING);
