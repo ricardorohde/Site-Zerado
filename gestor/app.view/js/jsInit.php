@@ -193,6 +193,7 @@
             },
             success: function(data) 
             {
+                console.log(data);
                 $('#listagem').html(data);
             }
         });

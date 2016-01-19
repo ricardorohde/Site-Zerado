@@ -3,7 +3,7 @@
       * paginas_salva.php
       * Classe paginas_salva
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
@@ -190,7 +190,7 @@
                             <br/>
                             <textarea name="texto" id='texto' class='tinymce'><?php echo $this->pagina->texto; ?></textarea>
                             <br/>
-                            <?php include_once('galeria.php'); ?>
+                            <?php include_once('galeria_interno.php'); ?>
                             <br/>
                             <input type='submit' id='salvar' value='Salvar'>
                         </div>

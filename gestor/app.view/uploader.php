@@ -26,7 +26,7 @@
       * Realiza upload de imagens
       * http://www.sanwebe.com/2012/05/ajax-image-upload-with-progressbar-with-jquery-and-php
       *
-      * @author  Adpatado por Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Adpatado por Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */

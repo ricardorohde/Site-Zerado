@@ -3,7 +3,7 @@
       * controladorConfiguracoes.php
       * Classe de Controle controladorConfiguracoes
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */

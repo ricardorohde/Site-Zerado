@@ -3,7 +3,7 @@
       * imoveis.php
       * Classe imoveis
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
@@ -42,8 +42,8 @@
             $this->collection->addColumn('i.ativo');
 
             $this->collection->addEntity('imoveis i');
-            $this->collection->addEntity('categoriaImoveis c');
-            $this->collection->addEntity('situacaoImoveis s');
+            $this->collection->addEntity('categoriaimoveis c');
+            $this->collection->addEntity('situacaoimoveis s');
 
             $criteria = new TCriteria();
             $criteria->addFilter('c.codigo', '=', 'i.categoria');

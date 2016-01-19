@@ -3,7 +3,7 @@
       * tbGaleria.php
       * Classe de modelo tbGaleria
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
@@ -28,27 +28,7 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    int         Código da Pagina
-          */
-        protected $codigoPagina;
-        /**
-          * @access protected
-          * @var    int         Código do Produto
-          */
-        protected $codigoProduto;
-        /**
-          * @access protected
-          * @var    int         Código do Imóvel
-          */
-        protected $codigoImovel;
-        /**
-          * @access protected
-          * @var    string      Imagem
-          */
-        protected $imagem;
-        /**
-          * @access protected
-          * @var    string      Título
+          * @var    string      Titulo
           */
         protected $titulo;
         /**
@@ -56,16 +36,6 @@
           * @var    string      Descrição
           */
         protected $descricao;
-        /**
-          * @access protected
-          * @var    string      URL
-          */
-        protected $url;
-        /**
-          * @access protected
-          * @var    int         Ordem
-          */
-        protected $ordem;
         /**
           * @access protected
           * @var    boolean     Ativo/Inativo

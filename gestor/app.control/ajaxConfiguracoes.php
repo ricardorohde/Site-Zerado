@@ -25,7 +25,7 @@
    * controladorConfiguracoes.php
    * controlador Configurações
    *
-   * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+   * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
    * @version 1.0     
    */
     error_reporting(E_WARNING);

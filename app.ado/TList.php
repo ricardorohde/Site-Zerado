@@ -4,7 +4,7 @@
       * Lista todos os elementos e exibe em formato de tabela
       *    1.1 Listagem de Pedido
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.1
       * @access  public
       */

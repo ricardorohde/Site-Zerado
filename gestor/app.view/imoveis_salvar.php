@@ -3,7 +3,7 @@
       * imoveis_salvar.php
       * Classe imoveis_salvar
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
@@ -298,7 +298,7 @@
                             <textarea name="descricao" id='descricao' class='tinymce'><?php echo $this->imovel->descricao; ?></textarea>
                         </div>
 
-                        <?php include_once('galeria.php'); ?>
+                        <?php include_once('galeria_interno.php'); ?>
                         
                         <div class='12u'>
                             <input type='submit' id='salvar' value='Salvar'>

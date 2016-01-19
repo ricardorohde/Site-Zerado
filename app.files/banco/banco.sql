@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 22-Dez-2015 às 20:01
--- Versão do servidor: 5.6.17
--- PHP Version: 5.5.12
+-- Máquina: localhost
+-- Data de Criação: 19-Jan-2016 às 00:26
+-- Versão do servidor: 5.6.27-0ubuntu0.14.04.1
+-- versão do PHP: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `maddza`
+-- Base de Dados: `autosocorropasteis`
 --
 
 -- --------------------------------------------------------
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `banners` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `catalogoclientes` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `categoriaprodutos` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `depoimentos` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `emails` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -230,9 +230,25 @@ CREATE TABLE IF NOT EXISTS `funcoes` (
 
 CREATE TABLE IF NOT EXISTS `galeria` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `descricao` longtext CHARACTER SET utf8,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `galeriaimagens`
+--
+
+CREATE TABLE IF NOT EXISTS `galeriaimagens` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `codigoPagina` bigint(20) unsigned DEFAULT NULL,
   `codigoProduto` bigint(20) unsigned DEFAULT NULL,
   `codigoImovel` bigint(20) unsigned DEFAULT NULL,
+  `codigoGaleria` bigint(20) unsigned DEFAULT NULL,
   `imagem` varchar(100) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descricao` longtext NOT NULL,
@@ -243,7 +259,8 @@ CREATE TABLE IF NOT EXISTS `galeria` (
   PRIMARY KEY (`codigo`),
   KEY `codigoPagina` (`codigoPagina`,`codigoProduto`,`codigoImovel`),
   KEY `codigoProduto` (`codigoProduto`),
-  KEY `codigoImovel` (`codigoImovel`)
+  KEY `codigoImovel` (`codigoImovel`),
+  KEY `codigoGaleria` (`codigoGaleria`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -288,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `localizacao` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -347,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`codigo`),
   KEY `categoria` (`categoria`,`subCategoria`),
   KEY `subCategoria` (`subCategoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -377,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `subcategoriaprodutos` (
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`),
   KEY `codigoCategoria` (`categoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -391,7 +408,7 @@ CREATE TABLE IF NOT EXISTS `telefones` (
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -484,9 +501,10 @@ ALTER TABLE `clienteenderecos`
   ADD CONSTRAINT `endereco-cliente` FOREIGN KEY (`codigoCliente`) REFERENCES `clientes` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `galeria`
+-- Limitadores para a tabela `galeriaimagens`
 --
-ALTER TABLE `galeria`
+ALTER TABLE `galeriaimagens`
+  ADD CONSTRAINT `galeria_galeria` FOREIGN KEY (`codigoGaleria`) REFERENCES `galeria` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `galeria_imovel` FOREIGN KEY (`codigoImovel`) REFERENCES `imoveis` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `galeria_pagina` FOREIGN KEY (`codigoPagina`) REFERENCES `paginas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `galeria_produto` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -184,11 +184,7 @@
                 }
             ?>
             <?php
-                /*if  (
-                        ($_SESSION['funcoes']->galeria      == 1)   ||
-                        ($_SESSION['funcoes']->ecommerce    == 1)   ||
-                        ($_SESSION['funcoes']->imobiliaria  == 1)
-                    )
+                if($_SESSION['funcoes']->galeria == 1)
                 {
                     ?>
                         <li>
@@ -198,7 +194,7 @@
                         </a>
                     </li>
                     <?php
-                }*/
+                }
             ?>
             <?php
                 if($_SESSION['funcoes']->catalogoClientes == 1)

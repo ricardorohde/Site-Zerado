@@ -3,7 +3,7 @@
       * controladorSituacaoImoveis
       * Classe de Controle controladorSituacaoImoveis
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
@@ -80,7 +80,7 @@
             $this->repository->addColumn('codigo');
             $this->repository->addColumn('situacao');
             
-            $this->repository->addEntity('situacaoImoveis');
+            $this->repository->addEntity('situacaoimoveis');
 
             $this->collectionSituacao = $this->repository->load($criteria);
             

@@ -3,7 +3,7 @@
       * produtos.php
       * Classe produtos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
@@ -33,17 +33,11 @@
 
             $this->collection->addColumn('p.codigo');
             $this->collection->addColumn('p.nome');
-            $this->collection->addColumn('c.categoria');
             $this->collection->addColumn('p.valor');
             $this->collection->addColumn('p.peso');
             $this->collection->addColumn('p.ativo');
 
             $this->collection->addEntity('produtos p');
-            $this->collection->addEntity('categoriaprodutos c');
-
-            $criteria = new TCriteria();
-            $criteria->addFilter('p.categoria',     '=', 'c.codigo');
-            $this->collection->setCriteria($criteria);
 
             $this->listagem = $this->collection->show();
         }
