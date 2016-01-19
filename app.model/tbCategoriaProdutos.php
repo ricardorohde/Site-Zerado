@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbGaleria.php
-      * Classe de modelo tbGaleria
+      * tbCategoriaProdutos.php
+      * Classe de modelo tbCategoriaProdutos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
-    class tbGaleria extends TRecord
+    class tbCategoriaProdutos extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'galeria';
+        const TABLENAME = 'categoriaprodutos';
 
 
         /*
@@ -28,14 +28,9 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    string      Titulo
+          * @var    string      Categoria do Imóvel (Casa, Apartamento, Terreno)
           */
-        protected $titulo;
-        /**
-          * @access protected
-          * @var    string      Descrição
-          */
-        protected $descricao;
+        protected $categoria;
         /**
           * @access protected
           * @var    boolean     Ativo/Inativo

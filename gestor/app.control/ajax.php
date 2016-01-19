@@ -137,7 +137,7 @@
                 $codigo = $_POST['codigo'];
 
             $controladorGaleria = new controladorGaleria();
-            $controladorGaleria->repository->addEntity('galeria');
+            $controladorGaleria->repository->addEntity('galeriaimagens');
 
             $criteria = new TCriteria();
             $criteria->addFilter('codigoPagina', '=', $codigo);
@@ -162,15 +162,15 @@
                             ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
                         )
                     {
-                        $controladorGaleria->galeria                    = new tbGaleria();
+                        $controladorGaleria->galeriaImagem                    = new tbGaleriaImagens();
 
-                        $controladorGaleria->galeria->codigoPagina      = $codigo;
-                        $controladorGaleria->galeria->imagem            = $imagem[0];
-                        $controladorGaleria->galeria->titulo            = $imagem[1];
-                        $controladorGaleria->galeria->descricao         = $imagem[2];
-                        $controladorGaleria->galeria->ordem             = $imagem[3];
+                        $controladorGaleria->galeriaImagem->codigoPagina      = $codigo;
+                        $controladorGaleria->galeriaImagem->imagem            = $imagem[0];
+                        $controladorGaleria->galeriaImagem->titulo            = $imagem[1];
+                        $controladorGaleria->galeriaImagem->descricao         = $imagem[2];
+                        $controladorGaleria->galeriaImagem->ordem             = $imagem[3];
 
-                        if($controladorGaleria->galeria->store() == 0)
+                        if($controladorGaleria->galeriaImagem->store() == 0)
                             $erros++;
                     }
                 }
@@ -358,7 +358,7 @@
                 $codigo = $_POST['codigo'];
 
             $controladorGaleria = new controladorGaleria();
-            $controladorGaleria->repository->addEntity('galeria');
+            $controladorGaleria->repository->addEntity('galeriaimagens');
 
             $criteria = new TCriteria();
             $criteria->addFilter('codigoProduto', '=', $codigo);
@@ -383,15 +383,15 @@
                             ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
                         )
                     {
-                        $controladorGaleria->galeria                    = new tbGaleria();
+                        $controladorGaleria->galeriaImagem                    = new tbGaleriaImagens();
 
-                        $controladorGaleria->galeria->codigoProduto     = $codigo;
-                        $controladorGaleria->galeria->imagem            = $imagem[0];
-                        $controladorGaleria->galeria->titulo            = $imagem[1];
-                        $controladorGaleria->galeria->descricao         = $imagem[2];
-                        $controladorGaleria->galeria->ordem             = $imagem[3];
+                        $controladorGaleria->galeriaImagem->codigoProduto     = $codigo;
+                        $controladorGaleria->galeriaImagem->imagem            = $imagem[0];
+                        $controladorGaleria->galeriaImagem->titulo            = $imagem[1];
+                        $controladorGaleria->galeriaImagem->descricao         = $imagem[2];
+                        $controladorGaleria->galeriaImagem->ordem             = $imagem[3];
 
-                        if($controladorGaleria->galeria->store() == 0)
+                        if($controladorGaleria->galeriaImagem->store() == 0)
                             $erros++;
                     }
                 }
@@ -482,7 +482,7 @@
                 $codigo = $_POST['codigo'];
 
             $controladorGaleria = new controladorGaleria();
-            $controladorGaleria->repository->addEntity('galeria');
+            $controladorGaleria->repository->addEntity('galeriaimagens');
 
             $criteria = new TCriteria();
             $criteria->addFilter('codigoImovel', '=', $codigo);
@@ -507,15 +507,15 @@
                             ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
                         )
                     {
-                        $controladorGaleria->galeria                    = new tbGaleria();
+                        $controladorGaleria->galeriaImagem                    = new tbGaleriaImagens();
 
-                        $controladorGaleria->galeria->codigoImovel      = $codigo;
-                        $controladorGaleria->galeria->imagem            = $imagem[0];
-                        $controladorGaleria->galeria->titulo            = $imagem[1];
-                        $controladorGaleria->galeria->descricao         = $imagem[2];
-                        $controladorGaleria->galeria->ordem             = $imagem[3];
+                        $controladorGaleria->galeriaImagem->codigoImovel      = $codigo;
+                        $controladorGaleria->galeriaImagem->imagem            = $imagem[0];
+                        $controladorGaleria->galeriaImagem->titulo            = $imagem[1];
+                        $controladorGaleria->galeriaImagem->descricao         = $imagem[2];
+                        $controladorGaleria->galeriaImagem->ordem             = $imagem[3];
 
-                        if($controladorGaleria->galeria->store() == 0)
+                        if($controladorGaleria->galeriaImagem->store() == 0)
                             $erros++;
                     }
                 }
@@ -590,6 +590,75 @@
         echo $controlador->catalogoClientes->store();
     }
 
+    //Salva Galeria
+    if($request == 'salvaGaleria')
+    {   
+        $controlador                        = new controladorGaleria();
+        $controlador->galeria               = new tbGaleria();
+
+        $controlador->galeria->codigo       = $_POST['codigo'];
+        $controlador->galeria->titulo       = $_POST['titulo'];
+        $controlador->galeria->descricao    = $_POST['descricao'];
+        $controlador->galeria->ativo        = $_POST['ativo'];
+
+        $result                             = $controlador->galeria->store();
+
+        if($result == 1)
+        {
+            if($_POST['codigo'] == '')
+                $codigo = $controlador->galeria->getLast();
+            else
+                $codigo = $_POST['codigo'];
+
+            $controladorGaleria = new controladorGaleria();
+            $controladorGaleria->repository->addEntity('galeriaimagens');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter('codigoGaleria', '=', $codigo);
+
+            $controladorGaleria->repository->deleteFisico($criteria);
+
+            $imagens    = $_POST['imagens'];
+            $imagens    = explode('³', $imagens);
+
+            $erros      = 0;
+
+            if(count($imagens) > 1)
+            {
+                foreach ($imagens as $imagem) 
+                {
+                    $imagem = explode('²', $imagem);
+
+                    if  (
+                            ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
+                            ($imagem[1] != '' &&    $imagem[1] != NULL    &&    $imagem[1] != 'undefined') &&
+                            ($imagem[2] != '' &&    $imagem[2] != NULL    &&    $imagem[2] != 'undefined') &&
+                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
+                        )
+                    {
+                        $controladorGaleria->galeriaImagem                    = new tbGaleriaImagens();
+
+                        $controladorGaleria->galeriaImagem->codigoGaleria     = $codigo;
+                        $controladorGaleria->galeriaImagem->imagem            = $imagem[0];
+                        $controladorGaleria->galeriaImagem->titulo            = $imagem[1];
+                        $controladorGaleria->galeriaImagem->descricao         = $imagem[2];
+                        $controladorGaleria->galeriaImagem->ordem             = $imagem[3];
+
+                        if($controladorGaleria->galeriaImagem->store() == 0)
+                            $erros++;
+                    }
+                }
+            }
+
+            if($erros == 0)
+                echo 1;
+            else
+                echo 'erro '.$erros;
+        }
+        else
+            echo 'erro 0';
+    }
+
     //Salva Funções
     if($request == 'salvaFuncoes')
     {
@@ -645,13 +714,40 @@
     if($request == 'apagar')
     {
         $tabela         = $_POST['tabela'];
+
         if($tabela == 'categoriaprodutos')
             $tabelaClass    = 'tbCategoriaProdutos';
         else
             $tabelaClass    = 'tb'.ucfirst($tabela);
+        
         $codigo         = $_POST['codigo'];
 
-        $object = new $tabelaClass;
+
+        //Apaga galeria de imagens
+        if  (
+                ($tabela == 'paginas')  ||
+                ($tabela == 'imoveis')  ||
+                ($tabela == 'produtos') ||
+                ($tabela == 'galeria')
+            )
+        {
+            $criteria   = new TCriteria();
+
+            if($tabela == 'paginas')
+                $criteria->addFilter('codigoPagina', '=', $codigo);
+            if($tabela == 'imoveis')
+                $criteria->addFilter('codigoImovel', '=', $codigo);
+            if($tabela == 'produtos')
+                $criteria->addFilter('codigoProduto', '=', $codigo);
+            if($tabela == 'galeria')
+                $criteria->addFilter('codigoGaleria', '=', $codigo);
+
+            $galeria    = new TRepository();
+            $galeria->addEntity('galeriaimagens');
+            $galeria->deleteFisico($criteria);
+        }
+
+        $object = new $tabelaClass();
         $object->delete($codigo);
 
         $listagem = new TList();
@@ -847,6 +943,17 @@
             $listagem->addColumn('ativo');
 
             $listagem->addEntity($tabela);
+        }
+        else if($tabela == 'galeria')
+        {
+            $listagem->setTituloPagina('Galeria');
+
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('titulo');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+
         }
         else
             $listagem->setTituloPagina(ucfirst($tabela));

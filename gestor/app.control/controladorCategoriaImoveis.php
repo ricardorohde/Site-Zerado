@@ -80,7 +80,7 @@
             $this->repository->addColumn('codigo');
             $this->repository->addColumn('categoria');
 
-            $this->repository->addEntity('categoriaImoveis');
+            $this->repository->addEntity('categoriaimoveis');
 
             $this->collectionCategoria = $this->repository->load($criteria);
             

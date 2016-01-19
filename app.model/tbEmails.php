@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbGaleria.php
-      * Classe de modelo tbGaleria
+      * tbEmails.php
+      * Classe de modelo tbEmails
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
-    class tbGaleria extends TRecord
+    class tbEmails extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'galeria';
+        const TABLENAME = 'emails';
 
 
         /*
@@ -23,31 +23,29 @@
          */
         /**
           * @access protected
-          * @var    int         Código
+          * @var    int             Código
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    string      Titulo
+          * @var    string          Email
           */
-        protected $titulo;
+        protected $email;
         /**
           * @access protected
-          * @var    string      Descrição
+          * @var    string          Senha
           */
-        protected $descricao;
+        protected $senha;
         /**
           * @access protected
-          * @var    boolean     Ativo/Inativo
+          * @var    boolean         Ativo/Inativo
           */
         protected $ativo;
         /**
           * @access protected
-          * @var    boolean     Excluido
+          * @var    boolean         Excluido
           */
         protected $excluido;
-
-
         /*
          * Métodos
          */

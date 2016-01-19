@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbGaleria.php
-      * Classe de modelo tbGaleria
+      * tbSubCategoriaProdutos.php
+      * Classe de modelo tbSubCategoriaProdutos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
-    class tbGaleria extends TRecord
+    class tbSubCategoriaProdutos extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'galeria';
+        const TABLENAME = 'subcategoriaprodutos';
 
 
         /*
@@ -28,14 +28,14 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    string      Titulo
+          * @var    int         Código
           */
-        protected $titulo;
+        protected $categoria;
         /**
           * @access protected
-          * @var    string      Descrição
+          * @var    string      Subcategoria
           */
-        protected $descricao;
+        protected $subCategoria;
         /**
           * @access protected
           * @var    boolean     Ativo/Inativo
@@ -51,6 +51,5 @@
         /*
          * Métodos
          */
-        
     }
 ?>

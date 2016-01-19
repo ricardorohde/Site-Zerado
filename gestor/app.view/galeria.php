@@ -1,109 +1,82 @@
-<div class='clear'></div>
-                        
-<div class='12u center'>
-    <h1 alt='Imagens' title='Imagens' >Imagens</h1>
+<?php
+    /**
+      * galeria.php
+      * Classe galeria
+      *
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @version 1.0
+      * @access  public
+      */
+    class galeria
+    {
+        /*
+         * Variaveis
+         */
+        private $collection;
+        private $listagem;
 
-    <input 
-        type='button' 
-        id='adicionarImagens' 
-        class='fancyboxMultiple fancybox.iframe' 
-        href='/app.view/uploader.php?category=gallery'
-        value='Adicionar'
-    >
 
-    <input type='hidden' name='quantidadeImagens' id='quantidadeImagens' value='0'>
-</div>
-
-<div class='boxImagensGaleria'>
-    <?php
-        if(isset($_GET['cod']))
+        /*
+         * Métodos
+         */
+        /**
+          * Método Construtor
+          *
+          * @access private
+          * @return void
+          */
+        public function __construct()
         {
-            if($_GET['class'] == 'imoveis')
-                $classe = 'Imovel';
-            if($_GET['class'] == 'produtos')
-                $classe = 'Produto';
-            if($_GET['class'] == 'paginas')
-                $classe = 'Pagina';
+            $this->collection = new TList();
 
-            $controlador        = new controladorGaleria();
-            $collectionGaleria  = $controlador->getGaleria($classe, $_GET['cod']);
+            $this->collection->setTituloPagina('Galeria');
 
-            if(count($collectionGaleria) > 0)
-            {
-                $totalImagem = 1;
-                foreach ($collectionGaleria as $galeria) 
-                {
-                    echo 
-                            "
-                                <div class='row imagemGaleria' id='galeria_{$totalImagem}'>
-                                    <div class='2u' id='imagem_{$totalImagem}'>
-                                    <input
-                                        type='hidden'
-                                        name='imagemCaminho_{$totalImagem}'
-                                        id='imagemCaminho_{$totalImagem}'
-                                        value='{$galeria->imagem}'
-                                     >
-                                        <img src='{$galeria->imagem}'>
-                                    </div>
+            $this->collection->addColumn('codigo');
+            $this->collection->addColumn('titulo');
+            $this->collection->addColumn('ativo');
 
-                                    <div class='4u'>
-                                        <label for'titulo_{$totalImagem}'>Titulo</label>
-                                        <input
-                                            type='text'
-                                            name='titulo_{$totalImagem}'
-                                            id='titulo_{$totalImagem}'
-                                            maxlength='50'
-                                            placeholder='Titulo'
-                                            value='{$galeria->titulo}'
-                                            required
-                                        >
-                                    </div>
+            $this->collection->addEntity('galeria');
 
-                                    <div class='4u'>
-                                        <label for'descricao_{$totalImagem}'>Descrição</label>
-                                        <input
-                                            type='text'
-                                            name='descricao_{$totalImagem}'
-                                            id='descricao_{$totalImagem}'
-                                            placeholder='Descrição'
-                                            value='{$galeria->descricao}'
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class='1u'>
-                                        <label for'posicao_{$totalImagem}'>Posicao</label>
-                                        <input
-                                            type='number'
-                                            name='posicao_{$totalImagem}'
-                                            id='posicao_{$totalImagem}'
-                                            min='1'
-                                            step='1'
-                                            placeholder='Posição'
-                                            value='{$totalImagem}'
-                                            required
-                                        >
-                                    </div>
-
-                                    <div class='1u' style='text-align:center;'>
-                                        <label for='apagar_{$totalImagem}' onclick='apagarGaleria({$totalImagem})'>
-                                            Apagar
-                                        </label>
-                                        <img
-                                            src='/app.view/img/delete.png'
-                                            class='center'
-                                            onclick='apagarGaleria({$totalImagem})'
-                                        >
-                                    </div>
-                                </div>
-                                <div class='clear'></div>
-                            ";
-
-                    $totalImagem++;
-                }
-
-                echo "<script>$('#quantidadeImagens').val({$totalImagem});</script>";
-            }
+            $this->listagem = $this->collection->show();            
         }
-    ?>
-</div>
+
+        /**
+          * Método __set
+          * Seta o valor da variavel
+          * 
+          * @access public
+          * @param  string  $propriedade    Propriedade a ser definida o valor
+          * @param  mixed   $valor          Valor da Propriedade
+          * @return void
+          */
+        public function __set($propriedade, $valor)
+        {
+            $this->$propriedade = $valor;
+        }
+
+        /**
+          * Método __get
+          * Seta o valor da variavel
+          * 
+          * @access public
+          * @param  string $propriedade     Propriedade a ser retornada
+          * @return mixed                   Valor da Propriedade
+          */
+        public function __get($propriedade)
+        {
+            return $this->$propriedade;
+        }
+
+        /**
+          * Método show
+          * Exibe as informações na tela
+          *
+          * @access public
+          * @return void
+          */
+        public function show()
+        {
+            echo $this->listagem;
+        }
+    }
+?>

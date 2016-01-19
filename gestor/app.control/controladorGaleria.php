@@ -13,8 +13,9 @@
          *    Variaveis
          */
         private $repository;
-        private $collectionGaleria;
         private $galeria;
+        private $collectionGaleria;
+        private $galeriaImagens;
 
 
         /*
@@ -28,10 +29,11 @@
          */
         public function __construct()
         {
-            $this->repository           = new TRepository;
+            $this->repository               = new TRepository();
 
-            $this->collectionGaleria    = NULL;
-            $this->galeria              = NULL;
+            $this->galeria                  = NULL;
+            $this->collectionGaleriaImagens = NULL;
+            $this->galeriaImagens           = NULL;
         }
 
         /**
@@ -68,7 +70,7 @@
          * @access  public
          * @return  TRepository Coleção de Galeria
          */
-        public function getGaleria($classe, $codigo)
+        public function getGaleriaImagens($classe, $codigo)
         {
             $this->collectionGaleria = NULL;
 
@@ -83,11 +85,11 @@
             $this->repository->addColumn('descricao');
             $this->repository->addColumn('ordem');
 
-            $this->repository->addEntity('galeria');
+            $this->repository->addEntity('galeriaimagens');
 
-            $this->collectionGaleria = $this->repository->load($criteria);
+            $this->collectionGaleriaImagens = $this->repository->load($criteria);
             
-            return $this->collectionGaleria;
+            return $this->collectionGaleriaImagens;
         }
     }
 ?>

@@ -1,20 +1,19 @@
 <?php
     /**
-      * paginas_salva.php
-      * Classe paginas_salva
+      * galeria_salvar.php
+      * Classe galeria_salvar
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class paginas_salvar
+    class galeria_salvar
     {
         /*
          * Variaveis
          */
         private $codigo;
-        private $pagina;
-        private $localizacoes;
+        private $galeria;
 
 
         /*
@@ -31,15 +30,13 @@
             if(isset($_GET['cod']))
             {
                 $this->codigo = $_GET['cod'];
-                $this->pagina = (new tbPaginas())->load($this->codigo);        
+                $this->galeria = (new tbGaleria())->load($this->codigo);        
             }
             else
             {
                 $this->codigo = NULL;
-                $this->pagina = new tbPaginas;
+                $this->galeria = new tbGaleria;
             }
-
-            $this->localizacoes = (new controladorLocalizacao())->getLocalizacoes();
         }
 
         /**
@@ -80,30 +77,15 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Páginas' title='Páginas' >Páginas</h1>
+                    <h1 alt='Galeria' title='Galeria' >Galeria</h1>
                 </span>
 
-                <form id="paginasForm" name='paginasForm' action="" method="post">
+                <form id="galeriaForm" name='galeriaForm' action="" method="post">
                     <input type='hidden' name='codigo' id='codigo' value='<?php echo $this->codigo; ?>'>
 
                     <div class='row'>    
 
-                        <div class='4u'>
-                            Imagem
-                            <input type='hidden' name='logotipo' id='logotipo' value='<?php echo $this->pagina->imagem; ?>'>
-                            <a class="fancybox fancybox.iframe" href="/app.view/uploader.php"> title='Uploader' alt='Uploader'>
-                                <div id='imagemUploader'>
-                                    <?php 
-                                        if (($this->pagina->imagem != NULL) || ($this->pagina->imagem != ''))
-                                            echo "<img src='{$this->pagina->imagem}'>";
-                                        else
-                                            echo "<img src='/app.view/img/no-image.jpg'>";
-                                    ?>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class='8u'>
+                        <div class='6u'>
                             <label for='titulo'>
                                 Título
                             </label>
@@ -113,12 +95,12 @@
                                 name='titulo'  
                                 maxlength='100'
                                 placeholder='Título'
-                                value="<?php echo $this->pagina->titulo; ?>"
+                                value="<?php echo $this->galeria->titulo; ?>"
                                 required
                             >
                         </div>
 
-                        <div class='8u'>
+                        <div class='6u'>
                             <label for='descricao'>
                                 Descrição
                             </label>
@@ -128,30 +110,11 @@
                                 name='descricao' 
                                 maxlength='255'
                                 placeholder='Descrição'
-                                value="<?php echo $this->pagina->descricao; ?>"
+                                value="<?php echo $this->galeria->descricao; ?>"
                             >
                         </div>
 
-                        <div class='4u'>
-                            <label for='localizacao'>
-                                Localizacao
-                            </label>
-                            <select name='localizacao' id='localizacao'>
-                                <option value='' style='display:none;' selected disabled></option>
-                                <?php
-                                    foreach ($this->localizacoes as $localizacao) 
-                                    {
-                                        $selected = '';
-                                        if($this->pagina->localizacao == $localizacao->codigo)
-                                            $selected = 'selected';
-
-                                        echo "<option value='{$localizacao->codigo}' {$selected}>{$localizacao->nome}</option>";
-                                    }
-                                ?>
-                            </select>
-                        </div>
-
-                        <div class='4u'>
+                        <div class='6u'>
                             <label for='ativo'>
                                 Ativo
                             </label>
@@ -159,7 +122,7 @@
                                 <?php
                                     if($this->codigo != NULL)
                                     {
-                                        if($this->pagina->ativo == 1)
+                                        if($this->galeria->ativo == 1)
                                             echo 
                                                 "
                                                     <option value='1' selected>Sim</option>
@@ -186,17 +149,13 @@
 
                         <div class='12u'>
                             <br/>
-                            <label for='texto'>Texto</label>
-                            <br/>
-                            <textarea name="texto" id='texto' class='tinymce'><?php echo $this->pagina->texto; ?></textarea>
-                            <br/>
                             <?php include_once('galeria_interno.php'); ?>
                             <br/>
                             <input type='submit' id='salvar' value='Salvar'>
                         </div>
 
                         <!--JS-->
-                        <?php include_once('js/jsPaginas.php'); ?>
+                        <?php include_once('js/jsGaleria.php'); ?>
                     </div>
                 </form>
             <?php

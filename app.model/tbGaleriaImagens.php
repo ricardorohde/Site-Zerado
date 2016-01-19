@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbFuncoes.php
-      * Classe de modelo tbFuncoes
+      * tbGaleriaImagens.php
+      * Classe de modelo tbGaleriaImagens
       *
       * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class tbFuncoes extends TRecord
+    class tbGaleriaImagens extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'funcoes';
+        const TABLENAME = 'galeriaimagens';
 
 
         /*
@@ -28,59 +28,60 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    boolean     Banner
+          * @var    int         Código da Pagina
           */
-        protected $banner;
+        protected $codigoPagina;
         /**
           * @access protected
-          * @var    boolean     Video
+          * @var    int         Código do Produto
           */
-        protected $video;
+        protected $codigoProduto;
         /**
           * @access protected
-          * @var    boolean     Galeria
+          * @var    int         Código do Imóvel
           */
-        protected $galeria;
+        protected $codigoImovel;
         /**
           * @access protected
-          * @var    boolean     Catalogo
+          * @var    int         Código da Galeria
           */
-        protected $catalogo;
+        protected $codigoGaleria;
         /**
           * @access protected
-          * @var    boolean     E-commerce
+          * @var    string      Imagem
           */
-        protected $ecommerce;
+        protected $imagem;
         /**
           * @access protected
-          * @var    boolean     Delivery
+          * @var    string      Título
           */
-        protected $delivery;
+        protected $titulo;
         /**
           * @access protected
-          * @var    boolean     Imobiliária
+          * @var    string      Descrição
           */
-        protected $imobiliaria;
+        protected $descricao;
         /**
           * @access protected
-          * @var    boolean     Portifólio
+          * @var    string      URL
           */
-        protected $portifolio;       
+        protected $url;
         /**
           * @access protected
-          * @var    boolean     Depoimentos
+          * @var    int         Ordem
           */
-        protected $depoimentos; 
+        protected $ordem;
         /**
           * @access protected
-          * @var    boolean     Catalogo de Clientes
+          * @var    boolean     Ativo/Inativo
           */
-        protected $catalogoClientes;
+        protected $ativo;
         /**
           * @access protected
           * @var    boolean     Excluido
           */
         protected $excluido;
+
 
         /*
          * Métodos

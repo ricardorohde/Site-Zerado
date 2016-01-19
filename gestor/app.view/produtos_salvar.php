@@ -236,7 +236,7 @@
                             >
                         </div>
 
-                        <?php include_once('galeria.php'); ?>
+                        <?php include_once('galeria_interno.php'); ?>
 
                         <div class='12u'>
                             <br/>

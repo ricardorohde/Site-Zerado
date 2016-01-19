@@ -298,7 +298,7 @@
                             <textarea name="descricao" id='descricao' class='tinymce'><?php echo $this->imovel->descricao; ?></textarea>
                         </div>
 
-                        <?php include_once('galeria.php'); ?>
+                        <?php include_once('galeria_interno.php'); ?>
                         
                         <div class='12u'>
                             <input type='submit' id='salvar' value='Salvar'>

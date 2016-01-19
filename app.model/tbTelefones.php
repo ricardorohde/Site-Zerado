@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbGaleria.php
-      * Classe de modelo tbGaleria
+      * tbTelefones.php
+      * Classe de modelo tbTelefones
       *
-      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
-    class tbGaleria extends TRecord
+    class tbTelefones extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'galeria';
+        const TABLENAME = 'telefones';
 
 
         /*
@@ -23,31 +23,24 @@
          */
         /**
           * @access protected
-          * @var    int         Código
+          * @var    int             Código
           */
         protected $codigo;
         /**
           * @access protected
-          * @var    string      Titulo
+          * @var    string          Email
           */
-        protected $titulo;
+        protected $telefone;
         /**
           * @access protected
-          * @var    string      Descrição
-          */
-        protected $descricao;
-        /**
-          * @access protected
-          * @var    boolean     Ativo/Inativo
+          * @var    boolean         Ativo/Inativo
           */
         protected $ativo;
         /**
           * @access protected
-          * @var    boolean     Excluido
+          * @var    boolean         Excluido
           */
         protected $excluido;
-
-
         /*
          * Métodos
          */
