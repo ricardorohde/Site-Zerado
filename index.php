@@ -84,10 +84,23 @@
                 $content  = ob_get_contents();
                 ob_end_clean();       
             }
+
+            /*
+             * Constroi as metatags
+             */
+
+            $metatags = '';
+            foreach ($_SESSION['metatags'] as $metatag) {
+                $metatags .= $metatag."\n";
+            }
+
             /*
              *  Susbstitui a string #CONTENT# do template para a pagina principal
+             *  E a string #METATAGS# pelas metatags
              */
             $site = str_replace('#CONTENT#', $content, $template);
+            $site = str_replace('#METATAGS#', $metatags, $template);
+
             echo $site;
         }
     }

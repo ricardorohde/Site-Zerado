@@ -2,9 +2,21 @@
     /**
       * tbImoveis.php
       * Classe de modelo tbImoveis
+      *     1.1 -   Remoção de metragem Terrno
+      *             Adição de: 
+      *                 codigoInterno, 
+      *                 metragemFrente, 
+      *                 metragemFundos,
+      *                 metragemEsquerda,
+      *                 metragemDireita,
+      *                 metragemConstrucao,
+      *                 proprietario,
+      *                 telefoneProprietario,
+      *                 corretor (foreign key para usuarios),
+      *                 quartos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
-      * @version 1.0
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
+      * @version 1.1
       * @access  public
       */
     class tbImoveis extends TRecord
@@ -26,6 +38,11 @@
           * @var    int             Código
           */
         protected $codigo;
+        /**
+          * @access protected
+          * @var    string          Código Interno
+          */
+        protected $codigoInterno;
         /**
           * @access protected
           * @var    string          Endereço do Imóvel
@@ -95,17 +112,52 @@
         protected $destaque;
         /**
           * @access protected
-          * @var    double         Metragem do Terreno
+          * @var    double          Metragem do Terreno
           */
-        protected $metragemTerreno;
+        protected $metragemFrente;
         /**
           * @access protected
-          * @var    double         Metragem do Imóvel
+          * @var    double          Metragem do Terreno
+          */
+        protected $metragemFundos;
+        /**
+          * @access protected
+          * @var    double          Metragem do Terreno
+          */
+        protected $metragemEsquerda;
+        /**
+          * @access protected
+          * @var    double          Metragem do Terreno
+          */
+        protected $metragemDireita;
+        /**
+          * @access protected
+          * @var    double          Metragem do Imóvel
           */
         protected $metragemConstrucao;
         /**
           * @access protected
-          * @var    string         Descrição do imóvel
+          * @var    int             Numero de Quartos
+          */
+        protected $quartos;
+        /**
+          * @access protected
+          * @var    string          Nome do Proprietario
+          */
+        protected $proprietario;
+        /**
+          * @access protected
+          * @var    string          Telefone do proprietario
+          */
+        protected $telefoneProprietario;
+        /**
+          * @access protected
+          * @var    int             Corretor
+          */
+        protected $corretor;
+        /**
+          * @access protected
+          * @var    string          Descrição do imóvel
           */
         protected $descricao;
         /**

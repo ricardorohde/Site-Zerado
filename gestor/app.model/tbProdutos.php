@@ -3,7 +3,7 @@
       * tbProdutos.php
       * Classe de modelo tbProdutos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
@@ -66,7 +66,6 @@
           * @var    string          Imagem do Video
           */
         protected $imagemVideo;
-
          /**
           * @access protected
           * @var    boolean         Ativo/Inativo
@@ -82,6 +81,17 @@
         /*
          * Métodos
          */
-        
+        /**
+          * Método __get
+          * Seta o valor da variavel
+          * 
+          * @access public
+          * @param  string $propriedade    Propriedade a ser retornada
+          * @return mixed                   Valor da Propriedade
+          */
+        public function __get($propriedade)
+        {
+            return $this->$propriedade;
+        }
     }
 ?>

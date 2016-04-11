@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbClienteTelefones.php
-      * Classe de modelo tbClienteTelefones
+      * tbManual.php
+      * Classe de modelo tbManual
       *
-      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class tbClienteTelefones extends TRecord
+    class tbManual extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'clienteTelefones';
+        const TABLENAME = 'manual';
 
 
         /*
@@ -28,29 +28,34 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    int             Código do Cliente
+          * @var    string          Funcao
           */
-        protected $codigoCliente;
+        protected $funcao;
         /**
           * @access protected
-          * @var    string          Número de Telefone
+          * @var    string          Titulo
           */
-        protected $telefone;
+        protected $titulo;
         /**
           * @access protected
-          * @var    int             Ramal
+          * @var    string          Texto
           */
-        protected $ramal;
+        protected $texto;
         /**
           * @access protected
-          * @var    string          Operadora
+          * @var    string          Imagem
           */
-        protected $operadora;
+        protected $imagem;
         /**
           * @access protected
-          * @var    boolean         Telefone de Recado
+          * @var    boolean         Ativo/Inativo
           */
-        protected $recado;
+        protected $ativo;
+        /**
+          * @access protected
+          * @var    boolean         Excluido
+          */
+        protected $excluido;
 
 
         /*

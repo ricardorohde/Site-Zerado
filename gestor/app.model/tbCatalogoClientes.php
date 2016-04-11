@@ -3,7 +3,7 @@
       * tbCatalogoClientes.php
       * Classe de modelo tbCatalogoClientes
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */

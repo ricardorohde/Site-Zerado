@@ -3,7 +3,7 @@
       * tbConfiguracoes.php
       * Classe de modelo tbConfiguracoes
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
@@ -101,7 +101,6 @@
           * @var    string     Estado da Empresa
           */
         protected $estado;
-
         /**
           * @access protected
           * @var    string     Página do Facebook
