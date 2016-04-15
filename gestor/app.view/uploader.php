@@ -132,6 +132,7 @@
                         <div class='row'>
                             <div class='4u'>
                                 <form id="uploadForm" action="../app.control/controladorUploader.php" method="post">
+                                    <input type='hidden' name='categoria' id='categoria' value='<?= $this->category ?>'
                                     <div class='center'>
                                         <label for='userImage'><h2>Selecione as imagens:</h2></label>
                                         <input 
@@ -234,6 +235,41 @@
                                             ";
                                     }
                                 }
+
+                                echo 
+                                    "
+                                        <div class='2u uploaderBox'>
+                                            <div class='uploaderImg'>
+                                                <img 
+                                                    class='lazy' 
+                                                    data-original='{$_SESSION['configuracoes']->dominio}/app.view/img/template/no-image.jpg'
+                                                >
+                                            </div>
+                                            <div class='center'>
+                                    ";
+                                if($this->category != 'gallery')
+                                    echo 
+                                        "
+                                            <input 
+                                                type='button' 
+                                                name='selecionar' 
+                                                id='selecionar' 
+                                                class='uploaderSelecionar' 
+                                                value='Selecionar' 
+                                                onclick=\"selecionaImagem('{$_SESSION['configuracoes']->dominio}/app.view/img/template/no-image.jpg');\"
+                                            >
+                                        ";
+                                else
+                                    echo 
+                                        "
+                                            <input 
+                                                type='checkbox' 
+                                                name='imagens[]'
+                                                class='checkImagensSelecionadas'
+                                                value='{$_SESSION['configuracoes']->dominio}/app.view/img/template/no-image.jpg' 
+                                            />
+                                        ";
+                                echo "</div></div>";
 
                                 if($this->category == 'gallery')
                                     echo 
