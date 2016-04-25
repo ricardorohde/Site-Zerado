@@ -105,6 +105,14 @@
                         ob_end_clean();
                     }
                 }
+
+                /*
+                 *  Obtém as meta tags
+                 */
+                $metatags = '';
+                foreach ($_SESSION['metatags'] as $metatag) {
+                    $metatags .= $metatag."\n";
+                }
                 
                 /*
                  * Caso nao tenha parametros na URL, carreaga padrao
