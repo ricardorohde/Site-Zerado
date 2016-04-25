@@ -4,7 +4,7 @@
       * Classe de Controle de utilidades
       *     1.1 Validação Links Youtube
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.1
       * @access  public
       */
@@ -38,6 +38,23 @@
             $nome = implode('.', $nome);
 
             return $nome;
+        }
+
+        /**
+         * Método upload
+         * Realiza Upload de um arquivo
+         * 
+         * @access  public
+         * @param   string $sourcePath Arquivo de Origem
+         * @param   string $targetPath Arquivo de Destino
+         * @return  boolean Status Upload
+         */
+        public function upload($sourcePath,$targetPath)
+        {
+            if(move_uploaded_file($sourcePath, $targetPath))
+                return true;
+            else
+                return false;
         }
 
         /**

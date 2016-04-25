@@ -3,7 +3,7 @@
       * tbFuncoes.php
       * Classe de modelo tbFuncoes
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
@@ -43,7 +43,7 @@
         protected $galeria;
         /**
           * @access protected
-          * @var    boolean     Catalogo
+          * @var    boolean     E-commerce
           */
         protected $catalogo;
         /**
@@ -65,22 +65,23 @@
           * @access protected
           * @var    boolean     Portifólio
           */
-        protected $portifolio;       
+        protected $portifolio;
         /**
           * @access protected
-          * @var    boolean     Depoimentos
+          * @var    boolean     Portifólio
           */
-        protected $depoimentos; 
+        protected $depoimentos;
         /**
           * @access protected
-          * @var    boolean     Catalogo de Clientes
+          * @var    boolean     Portifólio
           */
         protected $catalogoClientes;
         /**
           * @access protected
-          * @var    boolean     Excluido
+          * @var    boolean     Portifólio
           */
         protected $excluido;
+
 
         /*
          * Métodos

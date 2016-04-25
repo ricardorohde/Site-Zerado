@@ -3,7 +3,7 @@
       * tbEmails.php
       * Classe de modelo tbEmails
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */

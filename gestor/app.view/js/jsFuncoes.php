@@ -37,5 +37,11 @@
                 }
             });
         });
+
+        //Cria manual
+        $('#manual').click(function(e)
+        {
+            alert('manual');
+        })
     }); 
 </script>

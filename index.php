@@ -85,6 +85,23 @@
                 ob_end_clean();       
             }
 
+<<<<<<< HEAD
+            /*
+             * Constroi as metatags
+             */
+
+            $metatags = '';
+            foreach ($_SESSION['metatags'] as $metatag) {
+                $metatags .= $metatag."\n";
+            }
+
+            /*
+             *  Susbstitui a string #CONTENT# do template para a pagina principal
+             *  E a string #METATAGS# pelas metatags
+             */
+            $site = str_replace('#CONTENT#', $content, $template);
+            $site = str_replace('#METATAGS#', $metatags, $template);
+=======
             /*
              *  Obtém as meta tags
              */
@@ -100,6 +117,7 @@
 
             $site = str_replace('#CONTENT#', $content, $site);
             $site = str_replace('#METATAGS#', $metatags, $site);
+>>>>>>> b45ddeb675ba1ba00f3b96751af399a8424d264b
 
             echo $site;
         }

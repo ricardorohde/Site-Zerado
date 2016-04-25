@@ -3,7 +3,7 @@
       * tbDepoimentos.php
       * Classe de modelo tbDepoimentos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
       * @version 1.0
       * @access  public
       */
