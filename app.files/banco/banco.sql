@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Máquina: localhost
--- Data de Criação: 19-Jan-2016 às 00:26
--- Versão do servidor: 5.6.27-0ubuntu0.14.04.1
--- versão do PHP: 5.5.9-1ubuntu4.14
+-- Host: 127.0.0.1
+-- Generation Time: 02-Maio-2016 às 19:20
+-- Versão do servidor: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de Dados: `autosocorropasteis`
+-- Database: `painelsofter`
 --
 
 -- --------------------------------------------------------
@@ -203,6 +203,24 @@ CREATE TABLE IF NOT EXISTS `emails` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `eventos`
+--
+
+CREATE TABLE IF NOT EXISTS `eventos` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(100) NOT NULL,
+  `descricao` longtext,
+  `imagem` varchar(100) DEFAULT NULL,
+  `inicio` date NOT NULL,
+  `fim` date DEFAULT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `funcoes`
 --
 
@@ -218,6 +236,7 @@ CREATE TABLE IF NOT EXISTS `funcoes` (
   `portifolio` tinyint(1) DEFAULT NULL,
   `depoimentos` tinyint(1) DEFAULT NULL,
   `catalogoClientes` tinyint(1) DEFAULT NULL,
+  `eventos` tinyint(1) DEFAULT NULL,
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
@@ -230,25 +249,9 @@ CREATE TABLE IF NOT EXISTS `funcoes` (
 
 CREATE TABLE IF NOT EXISTS `galeria` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `descricao` longtext CHARACTER SET utf8,
-  `ativo` tinyint(1) NOT NULL DEFAULT '1',
-  `excluido` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `galeriaimagens`
---
-
-CREATE TABLE IF NOT EXISTS `galeriaimagens` (
-  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `codigoPagina` bigint(20) unsigned DEFAULT NULL,
   `codigoProduto` bigint(20) unsigned DEFAULT NULL,
   `codigoImovel` bigint(20) unsigned DEFAULT NULL,
-  `codigoGaleria` bigint(20) unsigned DEFAULT NULL,
   `imagem` varchar(100) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descricao` longtext NOT NULL,
@@ -259,9 +262,8 @@ CREATE TABLE IF NOT EXISTS `galeriaimagens` (
   PRIMARY KEY (`codigo`),
   KEY `codigoPagina` (`codigoPagina`,`codigoProduto`,`codigoImovel`),
   KEY `codigoProduto` (`codigoProduto`),
-  KEY `codigoImovel` (`codigoImovel`),
-  KEY `codigoGaleria` (`codigoGaleria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+  KEY `codigoImovel` (`codigoImovel`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -310,6 +312,23 @@ CREATE TABLE IF NOT EXISTS `localizacao` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `manual`
+--
+
+CREATE TABLE IF NOT EXISTS `manual` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `funcao` varchar(30) NOT NULL,
+  `titulo` varchar(30) DEFAULT NULL,
+  `texto` longtext NOT NULL,
+  `imagem` varchar(100) DEFAULT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `paginas`
 --
 
@@ -324,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `paginas` (
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`),
   KEY `localizacao` (`localizacao`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -501,10 +520,9 @@ ALTER TABLE `clienteenderecos`
   ADD CONSTRAINT `endereco-cliente` FOREIGN KEY (`codigoCliente`) REFERENCES `clientes` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `galeriaimagens`
+-- Limitadores para a tabela `galeria`
 --
-ALTER TABLE `galeriaimagens`
-  ADD CONSTRAINT `galeria_galeria` FOREIGN KEY (`codigoGaleria`) REFERENCES `galeria` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
+ALTER TABLE `galeria`
   ADD CONSTRAINT `galeria_imovel` FOREIGN KEY (`codigoImovel`) REFERENCES `imoveis` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `galeria_pagina` FOREIGN KEY (`codigoPagina`) REFERENCES `paginas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `galeria_produto` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
