@@ -3,9 +3,10 @@
       * controladorUrl.php
       * Classe de Controle controladorUrl
       *     1.1 Método corrigeUrlAmigavel
+      *     1.2 Métodos estáticos
       *
       * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
-      * @version 1.1
+      * @version 1.2
       * @access  public
       */
     class controladorUrl
@@ -64,7 +65,7 @@
          * @param   string $string  String a ser convertida em URL Amigável
          * @return  string          Url Amigavel
          */
-        public function urlAmigavel($string)
+        public function static urlAmigavel($string)
         {
             $urlAmigavel    = $string;
             $urlAmigavel    = str_replace("\n",     '',     $urlAmigavel);
@@ -93,7 +94,7 @@
          * @return  string                  Texto corrigido
          * @since   1.1
          */
-        public function corrigeUrlAmigavel($urlAmigavel)
+        public function static corrigeUrlAmigavel($urlAmigavel)
         {
             $string = str_replace('-', ' ', $urlAmigavel);
             $string = str_replace('_', ' - ', $string);
