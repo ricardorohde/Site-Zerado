@@ -79,6 +79,8 @@
         public function show()
         {
             ?>
+                <div id='retorno'></div>
+
                 <span class='center'>
                     <h1 alt='Páginas' title='Páginas' >Páginas</h1>
                 </span>

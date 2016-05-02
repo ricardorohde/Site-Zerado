@@ -51,6 +51,7 @@
                     }
                     else
                     {
+                        console.log(data);
                         alert('Erro ao salvar o conteúdo!');
                     }
                 }

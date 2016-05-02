@@ -168,6 +168,8 @@
             //RECUPERA CONEXAO BANCO DE DADOS
             TTransaction::open('my_bd_site');
 
+            //echo $sql->getInstruction();
+
             if ($conn = TTransaction::get()) 
             {               
                 $result = $conn->exec($sql->getInstruction());

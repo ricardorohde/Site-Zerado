@@ -138,7 +138,7 @@
                 $codigo = $_POST['codigo'];
 
             $controladorGaleria = new controladorGaleria();
-            $controladorGaleria->repository->addEntity('galeria');
+            $controladorGaleria->repository->addEntity('galeriaimagens');
 
             $criteria = new TCriteria();
             $criteria->addFilter('codigoPagina', '=', $codigo);
@@ -163,7 +163,7 @@
                             ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
                         )
                     {
-                        $controladorGaleria->galeria                    = new tbGaleria();
+                        $controladorGaleria->galeria                    = new tbGaleriaImagens();
 
                         $controladorGaleria->galeria->codigoPagina      = $codigo;
                         $controladorGaleria->galeria->imagem            = $imagem[0];
