@@ -158,8 +158,6 @@
 
                     if  (
                             ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
-                            ($imagem[1] != '' &&    $imagem[1] != NULL    &&    $imagem[1] != 'undefined') &&
-                            ($imagem[2] != '' &&    $imagem[2] != NULL    &&    $imagem[2] != 'undefined') &&
                             ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
                         )
                     {

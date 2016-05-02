@@ -15,16 +15,21 @@
                 var descricao   = $('#descricao_'+i).val();
                 var posicao     = $('#posicao_'+i).val();
 
+                if(titulo      != ''  &&  titulo      != null &&  titulo      != 'undefined')
+                    titulo = '';
+                if(descricao   != ''  &&  descricao   != null &&  descricao   != 'undefined')
+                    descricao = '';
+
                 if  (
                         (img         != ''  &&  img         != null &&  img         != 'undefined') &&
-                        (titulo      != ''  &&  titulo      != null &&  titulo      != 'undefined') &&
-                        (descricao   != ''  &&  descricao   != null &&  descricao   != 'undefined') &&
                         (posicao     != ''  &&  posicao     != null &&  posicao     != 'undefined')
                     )
                 {
                     imagens = imagens + img + "²" + titulo + "²" + descricao + "²" + posicao + "³";
                 }
             }
+
+            console.log(imagens);
 
             $.ajax
             ({
