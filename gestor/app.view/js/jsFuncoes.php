@@ -19,9 +19,9 @@
                     portifolio:         $('#portifolio').is(":checked"),
                     depoimentos:        $('#depoimentos').is(":checked"),
                     catalogoClientes:   $('#catalogoClientes').is(":checked"),
-
-
-                    request:        'salvaFuncoes'
+                    eventos:            $('#eventos').is(":checked"),
+                    
+                    request:            'salvaFuncoes'
                 },
                 success: function(data) 
                 {

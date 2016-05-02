@@ -68,17 +68,22 @@
         protected $portifolio;
         /**
           * @access protected
-          * @var    boolean     Portifólio
+          * @var    boolean     Depoimentos
           */
         protected $depoimentos;
         /**
           * @access protected
-          * @var    boolean     Portifólio
+          * @var    boolean     Catalogo de Clientes
           */
         protected $catalogoClientes;
         /**
           * @access protected
-          * @var    boolean     Portifólio
+          * @var    boolean     Eventos
+          */
+        protected $eventos;
+        /**
+          * @access protected
+          * @var    boolean     Excluido
           */
         protected $excluido;
 

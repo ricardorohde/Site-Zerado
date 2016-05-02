@@ -175,6 +175,17 @@
                             <label for='catalogoClientes'>Catálogo de Clientes</label>
                         </div>
 
+                        <div class='2u'>
+                            <input
+                                type='checkbox'
+                                id='eventos'
+                                name='eventos'
+                                value='1'
+                                <?= $this->funcoes->eventos == 1 ? 'checked' : '' ?>
+                            >
+                            <label for='eventos'>Eventos</label>
+                        </div>
+
                         <div class='12u'>
                             <input type='submit' id='salvar' value='Salvar'>
                         </div>

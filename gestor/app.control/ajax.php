@@ -599,6 +599,24 @@
         echo $controlador->catalogoClientes->store();
     }
 
+    //Salva Eventos
+    if($request == 'salvaEventos')
+    {
+        $controlador                    = new controladorEventos();
+
+        $controlador->evento            = new tbEventos();
+
+        $controlador->evento->codigo    = $_POST['codigo'];
+        $controlador->evento->imagem    = $_POST['imagem'];
+        $controlador->evento->titulo    = $_POST['titulo'];
+        $controlador->evento->descricao = $_POST['descricao'];
+        $controlador->evento->inicio    = $_POST['inicio'];
+        $controlador->evento->fim       = $_POST['fim'];
+        $controlador->evento->ativo     = $_POST['ativo'];
+
+        echo $controlador->evento->store();
+    }
+
     //Salva Funções
     if($request == 'salvaFuncoes')
     {
@@ -617,6 +635,7 @@
         $controlador->funcoes->portifolio           = $_POST['portifolio']          == 'true' ? 1 : 0;
         $controlador->funcoes->depoimentos          = $_POST['depoimentos']         == 'true' ? 1 : 0;
         $controlador->funcoes->catalogoClientes     = $_POST['catalogoClientes']    == 'true' ? 1 : 0;
+        $controlador->funcoes->eventos              = $_POST['eventos']    == 'true' ? 1 : 0;
         
         $retorno                                    = $controlador->funcoes->store();
 
@@ -849,6 +868,20 @@
 
             $listagem->addColumn('codigo');
             $listagem->addColumn('nome');
+            $listagem->addColumn('imagem');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+        }
+        else if($tabela == 'eventos')
+        {
+            $listagem->setTituloPagina(ucfirst($tabela));
+            
+
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('titulo');
+            $listagem->addColumn('inicio');
+            $listagem->addColumn('fim');
             $listagem->addColumn('imagem');
             $listagem->addColumn('ativo');
 

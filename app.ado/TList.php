@@ -189,6 +189,10 @@
                         {
                           $conteudo .= "<td><img src='{$object->$coluna}' title='Imagem' alt='Imagem' class='listImage'></td>";
                         }
+                        else if(($coluna == 'inicio') || ($coluna == 'fim'))
+                        {
+                          $conteudo .= "<td>{controladorData::converteData($object->$coluna)}</td>";
+                        }
                         else if($coluna == 'ativo')
                         {
                           if($object->$coluna == 0)

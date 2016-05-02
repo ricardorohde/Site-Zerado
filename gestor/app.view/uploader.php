@@ -101,8 +101,6 @@
                 <!DOCTYPE html>
                 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
                     <head>
-                        <?php include_once 'meta.php'; ?>
-
                         <!--CSS-->
                         <link rel="stylesheet" href="css/style.css">
                         <link rel="stylesheet" href="css/formulario.css">

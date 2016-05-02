@@ -209,6 +209,19 @@
                     <?php
                 }
             ?>
+            <?php
+                if($_SESSION['funcoes']->eventos == 1)
+                {
+                    ?>
+                    <li>
+                        <a href='/eventos' title='Eventos' alt='Eventos'>
+                            <i class="fa fa-calendar"></i>&nbsp;
+                            Eventos
+                        </a>
+                    </li>
+                    <?php
+                }
+            ?>
             <li>
                 <a href='/usuarios' title='Usuários' alt='Usuários'>
                     <i class="fa fa-user-plus"></i>&nbsp;
