@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li>
-                <a href='/telefones' title='E-mails' alt='E-mails'>
+                <a href='/emails' title='E-mails' alt='E-mails'>
                     <i class="fa fa-envelope"></i>&nbsp;
                     E-mails
                 </a>
