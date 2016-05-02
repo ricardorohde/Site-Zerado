@@ -65,7 +65,7 @@
          * @param   string $string  String a ser convertida em URL Amigável
          * @return  string          Url Amigavel
          */
-        public function static urlAmigavel($string)
+        public static function urlAmigavel($string)
         {
             $urlAmigavel    = $string;
             $urlAmigavel    = str_replace("\n",     '',     $urlAmigavel);
@@ -94,7 +94,7 @@
          * @return  string                  Texto corrigido
          * @since   1.1
          */
-        public function static corrigeUrlAmigavel($urlAmigavel)
+        public static function corrigeUrlAmigavel($urlAmigavel)
         {
             $string = str_replace('-', ' ', $urlAmigavel);
             $string = str_replace('_', ' - ', $string);
