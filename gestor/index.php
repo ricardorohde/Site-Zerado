@@ -41,15 +41,18 @@
         static public function run()
         {
             //Suprimir Warnings
-            error_reporting(E_WARNING);
+            //error_reporting(E_WARNING);
 
             new TSession(1); 
 
             //Não tem Usuario ativo
             if(!isset($_SESSION['usuario']))
             {
-                $pagina     = new login;
-                $pagina->show();
+                $site     = new login;
+                ob_start(); 
+                $site->show();
+                $site = ob_get_contents();
+                ob_get_clean();
             }
             else
             {
@@ -105,15 +108,6 @@
                         ob_end_clean();
                     }
                 }
-
-                /*
-                 *  Obtém as meta tags
-                 */
-                $metatags = '';
-                foreach ($_SESSION['metatags'] as $metatag) {
-                    $metatags .= $metatag."\n";
-                }
-                
                 /*
                  * Caso nao tenha parametros na URL, carreaga padrao
                  */
@@ -132,10 +126,16 @@
                 $site = $template;
 
                 $site = str_replace('#CONTENT#', $content, $site);
-                $site = str_replace('#METATAGS#', $metatags, $site);
-
-                echo $site;
             }
+
+            $metatags = '';
+            foreach ($_SESSION['metatags'] as $metatag) {
+                $metatags .= $metatag."\n";
+            }
+            
+            $site = str_replace('#METATAGS#', $metatags, $site);
+
+            echo $site;
         }
     }
 
