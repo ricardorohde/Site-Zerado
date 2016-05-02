@@ -30,7 +30,7 @@
         public function __construct()
         {
             $this->controladorTelefones = new controladorTelefones();
-            $this->collectionEmails     = new controladorEmails();
+            $this->controladorEmails    = new controladorEmails();
             $this->collectionTelefones  = $this->controladorTelefones->getTelefones();
             $this->collectionEmails     = $this->controladorEmails->getEmails();
         }
