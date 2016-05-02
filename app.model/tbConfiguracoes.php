@@ -101,7 +101,6 @@
           * @var    string     Estado da Empresa
           */
         protected $estado;
-
         /**
           * @access protected
           * @var    string     Página do Facebook

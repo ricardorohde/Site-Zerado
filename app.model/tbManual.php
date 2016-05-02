@@ -1,13 +1,13 @@
 <?php
     /**
-      * tbBanners.php
-      * Classe de modelo tbBanners
+      * tbManual.php
+      * Classe de modelo tbManual
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@rogeriopereira.info>
       * @version 1.0
       * @access  public
       */
-    class tbBanners extends TRecord
+    class tbManual extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'banners';
+        const TABLENAME = 'manual';
 
 
         /*
@@ -28,9 +28,9 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    string          Imagem
+          * @var    string          Funcao
           */
-        protected $imagem;
+        protected $funcao;
         /**
           * @access protected
           * @var    string          Titulo
@@ -38,9 +38,14 @@
         protected $titulo;
         /**
           * @access protected
-          * @var    string          Descricao
+          * @var    string          Texto
           */
-        protected $descricao;
+        protected $texto;
+        /**
+          * @access protected
+          * @var    string          Imagem
+          */
+        protected $imagem;
         /**
           * @access protected
           * @var    boolean         Ativo/Inativo

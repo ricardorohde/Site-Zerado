@@ -4,7 +4,7 @@
       * Classe de Controle controladorUrl
       *     1.1 Método corrigeUrlAmigavel
       *
-      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.1
       * @access  public
       */

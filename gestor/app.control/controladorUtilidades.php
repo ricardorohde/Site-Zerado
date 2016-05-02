@@ -4,7 +4,7 @@
       * Classe de Controle de utilidades
       *     1.1 Validação Links Youtube
       *
-      * @author  Rogério Eduardo Pereira <rogerio@domynio.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.1
       * @access  public
       */
