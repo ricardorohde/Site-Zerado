@@ -57,7 +57,6 @@
                                             maxlength='50'
                                             placeholder='Titulo'
                                             value='{$galeria->titulo}'
-                                            required
                                         >
                                     </div>
 
@@ -69,7 +68,6 @@
                                             id='descricao_{$totalImagem}'
                                             placeholder='Descrição'
                                             value='{$galeria->descricao}'
-                                            required
                                         >
                                     </div>
 
