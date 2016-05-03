@@ -139,6 +139,7 @@
             $site = str_replace('#METATAGS#',   $metatags,  $site);
 
             echo $site;
+            echo "<script>$('body').show();</script>";
         }
     }
 

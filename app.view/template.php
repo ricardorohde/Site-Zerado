@@ -52,7 +52,10 @@
                     <!--JavaScript-->
                 </head>
                 <body>
-                        #CONTENT#
+                    <script>$('body').hide();</script>
+                    <?php include_once 'analytics.php'; ?>
+                    
+                    #CONTENT#
                 </body>
             </html>
 
