@@ -3,9 +3,10 @@
      * TConnection.php
      * Gerencia conexões com o banco de dados através de arquivos de configuracao (*.ini)
      *     1.1 - Arquivo unico de configuracoes (bd.ini), verificando se o servidor é local ou virtual
+     *     1.2 - Refatoração para uso de controlador de Arquivos INI, e seleção automatica do tipo de servidor
      *
      * @author  Pablo D'allOgglio (Livro PHP Programando com Orietação a Objetos - 2ª Edição)
-     * @version 1.1
+     * @version 1.2
      * @access  public
      */
     final class TConnection
@@ -37,44 +38,17 @@
          */
         public static function open($name)
         {
-            //Verifica se existe arquivo de configuração para este banco de dados
-            if(file_exists("app.config/{$name}.ini"))
-            {
-                //Le o arquivo INI e retorna um array
-                $db = parse_ini_file("app.config/{$name}.ini");
-            }
-            elseif(file_exists("../app.config/{$name}.ini"))
-            {
-                //Le o arquivo INI e retorna um array
-                $db = parse_ini_file("../app.config/{$name}.ini");
-            }
-            else
-            {
-                //Se nao existir lança um erro
-                throw new Exception("Arquivo '$name' não encontrado");
-            }
+             $db = controladorArquivosIni::getConfig($name);
             
             //Le as informações contidas no arquivo
             $type = isset($db['type']) ? $db['type'] : NULL;
+            $port = isset($db['port']) ? $db['port'] : NULL;
 
-            //Localhost
-            if($_SERVER['REMOTE_ADDR'] == '127.0.0.1')
-            {
-                $user = isset($db['user_local']) ? $db['user_local'] : NULL;
-                $pass = isset($db['pass_local']) ? $db['pass_local'] : NULL;
-                $name = isset($db['name_local']) ? $db['name_local'] : NULL;
-                $host = isset($db['host_local']) ? $db['host_local'] : NULL;
-                $port = isset($db['port_local']) ? $db['port_local'] : NULL;
-            }
-            //Online
-            else
-            {
-                $user = isset($db['user']) ? $db['user'] : NULL;
-                $pass = isset($db['pass']) ? $db['pass'] : NULL;
-                $name = isset($db['name']) ? $db['name'] : NULL;
-                $host = isset($db['host']) ? $db['host'] : NULL;
-                $port = isset($db['port']) ? $db['port'] : NULL;   
-            }
+            //Se o ip do servidor for 127.0.0.1, carrega configurações locais, senao configurações normais
+            $user = ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') ? $db['user_local'] : $db['user'];
+            $pass = ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') ? $db['pass_local'] : $db['pass'];
+            $name = ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') ? $db['name_local'] : $db['name'];
+            $host = ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') ? $db['host_local'] : $db['host'];
             
             //Descobre qual o tipo (driver) de banco de dados a ser utilizado
             switch($type)
