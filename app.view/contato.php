@@ -232,6 +232,7 @@
                 </div>
             <?php
             include_once('js/jsMascaras.php');
+            include_once('js/jsContato.php');
         }
     }
 ?>
