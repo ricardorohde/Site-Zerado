@@ -72,7 +72,7 @@
         public function show()
         {
             ?>
-                <div class='12u center'>
+                <div class='12u'>
                     <h1 class='center'>Contato</h1>
                     <div class='row'>
                         <div class='6u'>
@@ -113,6 +113,7 @@
                                                             href='mailto:{$email->email}' 
                                                             alt='{$email->email}' 
                                                             title='{$email->email}'
+                                                            class='linkTexto'
                                                         >
                                                             {$email->email}
                                                         </a><br/>
@@ -123,7 +124,7 @@
                                 </tr>
                                 <tr>
                                     <td style='vertical-align: top;'><strong>Telefone:&nbsp;</strong></td>
-                                    <td style='font-size:.8em; line-height: 1.5em;'>
+                                    <td>
                                         <?php
                                             foreach ($this->collectionTelefones as $telefone) 
                                             {
@@ -140,6 +141,7 @@
                                                             href='tel:{$telLink}'
                                                             alt='Ligar para: +55 {$telefone->telefone}' 
                                                             title='Ligar para: +55 {$telefone->telefone}'
+                                                            class='linkTexto'
                                                         >
                                                             +55 {$telefone->telefone}
                                                         </a><br/>
@@ -162,12 +164,11 @@
                             </div>
                         </div>
 
-                        <div class='4u -2u'>
+                        <div class='5u -1u'>
                             <form 
                                 id="contatoForm" 
                                 name='contatoForm' 
                                 class='center' 
-                                action="/app.control/enviaEmail.php" 
                                 method="post"
                             >
                                 <input 
