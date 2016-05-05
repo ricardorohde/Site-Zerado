@@ -38,15 +38,20 @@
         public static function getConfig($arquivo)
         {
             // verifica se existe arquivo de configuração de email
-            if (file_exists("/app.config/{$arquivo}.ini"))
+            if (file_exists("./app.config/{$arquivo}.ini"))
             {
                 // lê o INI e retorna um array
-                $config = parse_ini_file("/app.config/{$arquivo}.ini");
+                $config = parse_ini_file("./app.config/{$arquivo}.ini");
             }
             else if (file_exists("../app.config/{$arquivo}.ini"))
             {
                 // lê o INI e retorna um array
                 $config = parse_ini_file("../app.config/{$arquivo}.ini");
+            }
+            else
+            {
+                // se não existir, lançaa um erro
+                throw new Exception("Arquivo /app.config/{$arquivo}.ini não encontrado");
             }
 
             return $config;
