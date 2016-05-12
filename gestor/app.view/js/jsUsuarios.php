@@ -3,6 +3,8 @@
     { 
         $('#usuariosForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             if($('#senha').val() != $('#confirmacao').val())
             {
                 alert('Senha diferente da confirmação');
@@ -45,6 +47,8 @@
 
         $('#senhaForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             if($('#senhaNova').val() != $('#confirmacao').val())
             {
                 alert('Senha nova diferente da confirmação!');

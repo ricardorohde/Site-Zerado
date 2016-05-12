@@ -54,6 +54,8 @@
     { 
         $('#uploadForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             if($('#userImage').val()) 
             {
                 e.preventDefault();

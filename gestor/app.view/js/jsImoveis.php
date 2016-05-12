@@ -3,6 +3,8 @@
     { 
         $('#imoveisForm').submit(function(e)
         {
+            e.preventDefault();
+            
             var preco               = $('#preco').val();
             preco                   = preco.split("R$ ").join("");
             preco                   = preco.split(".").join("");
@@ -37,45 +39,35 @@
                 url: "../../app.control/ajax.php",
                 data: 
                 {
-                    codigo:                 $('#codigo').val(),
-                    codigoInterno:          $('#codigoInterno').val(),
-                    corretor:               $('#corretor').val(),
-                    proprietario:           $('#proprietario').val(),
-                    telefoneProprietario:   $('#telefoneProprietario').val(),
-                    situacao:               $('#situacao').val(),
-                    categoria:              $('#categoria').val(),
-                    categoriaAluguel:       $('#categoriaAluguel').val(),
-                    preco:                  preco,
-                    quartos:                $('#quartos').val(),
-                    destaque:               $('#destaque').val(),
-                    ativo:                  $('#ativo').val(),
-                    endereco:               $('#endereco').val(),
-                    numero:                 $('#numero').val(),
-                    complemento:            $('#complemento').val(),
-                    bairro:                 $('#bairro').val(),
-                    cep:                    $('#cep').val(),
-                    cidade:                 $('#cidade').val(),
-                    estado:                 $('#estado').val(),
-                    metragemFrente:         $('#metragemFrente').val(),
-                    metragemFundos:         $('#metragemFundos').val(),
-                    metragemEsquerda:       $('#metragemEsquerda').val(),
-                    metragemDireita:        $('#metragemDireita').val(),
-                    metragemConstrucao:     $('#metragemConstrucao').val(),
-
-                    descricao:              descricao,
-                    imagens:                imagens,
-                    request:                'salvaImoveis'
+                    codigo:             $('#codigo').val(),
+                    endereco:           $('#endereco').val(),
+                    numero:             $('#numero').val(),
+                    complemento:        $('#complemento').val(),
+                    bairro:             $('#bairro').val(),
+                    cep:                $('#cep').val(),
+                    cidade:             $('#cidade').val(),
+                    estado:             $('#estado').val(),
+                    situacao:           $('#situacao').val(),
+                    categoria:          $('#categoria').val(),
+                    categoriaAluguel:   $('#categoriaAluguel').val(),
+                    preco:              preco,                    
+                    destaque:           $('#destaque').val(),
+                    metragemTerreno:    $('#metragemTerreno').val(),
+                    metragemConstrucao: $('#metragemConstrucao').val(),
+                    ativo:              $('#ativo').val(),
+                    descricao:          descricao,
+                    imagens:            imagens,
+                    request:            'salvaImoveis'
                 },
                 success: function(data) 
                 {
                     if(data == 1)
                     {
-                        top.location='?class=imoveis';
+                        top.location='/imoveis';
                         alert('Salvo com sucesso!');
                     }
                     else
                     {
-                        alert(data);
                         alert('Erro ao salvar o conteúdo!');
                     }
                 }

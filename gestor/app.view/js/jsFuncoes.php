@@ -3,6 +3,8 @@
     { 
         $('#funcoesForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             $.ajax
             ({
                 type: "POST",
@@ -19,9 +21,9 @@
                     portifolio:         $('#portifolio').is(":checked"),
                     depoimentos:        $('#depoimentos').is(":checked"),
                     catalogoClientes:   $('#catalogoClientes').is(":checked"),
-                    eventos:            $('#eventos').is(":checked"),
-                    
-                    request:            'salvaFuncoes'
+
+
+                    request:        'salvaFuncoes'
                 },
                 success: function(data) 
                 {
@@ -37,11 +39,5 @@
                 }
             });
         });
-
-        //Cria manual
-        $('#manual').click(function(e)
-        {
-            alert('manual');
-        })
     }); 
 </script>

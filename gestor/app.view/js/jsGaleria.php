@@ -3,6 +3,8 @@
     { 
         $('#galeriaForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             var quantidadeImagens   = $('#quantidadeImagens').val();
             var imagens             = '';
 

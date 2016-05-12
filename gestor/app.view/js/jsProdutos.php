@@ -3,6 +3,8 @@
     { 
         $('#produtosForm').submit(function(e)
         {
+            e.preventDefault();
+            
             var valor = $('#valor').val();
             valor = valor.split("R$ ").join("");
             valor = valor.split(".").join("");
@@ -67,6 +69,8 @@
 
         $('#categoriaProdutosForm').submit(function(e)
         {
+            e.preventDefault();
+            
             $.ajax
             ({
                 type: "POST",
@@ -95,6 +99,8 @@
 
         $('#subcategoriaProdutosForm').submit(function(e)
         {
+            e.preventDefault();
+            
             $.ajax
             ({
                 type: "POST",

@@ -3,6 +3,8 @@
     { 
         $('#portifolioForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             descricao = tinyMCE.get('descricao').getContent();
 
             $.ajax

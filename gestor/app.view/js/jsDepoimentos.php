@@ -3,6 +3,8 @@
     { 
         $('#depoimentosForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             depoimento = tinyMCE.get('depoimento').getContent();
 
             $.ajax

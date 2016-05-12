@@ -83,6 +83,7 @@
                                     "            id='titulo_"+totalImagem+"'                                                " +
                                     "            maxlength='50'                                                             " +
                                     "            placeholder='Titulo'                                                       " +
+                                    "            required                                                                   " +
                                     "        >                                                                              " +
                                     "    </div>                                                                             " +
                                     "                                                                                       " +
@@ -93,6 +94,7 @@
                                     "            name='descricao_"+totalImagem+"'                                           " +
                                     "            id='descricao_"+totalImagem+"'                                             " +
                                     "            placeholder='Descrição'                                                    " +
+                                    "            required                                                                   " +
                                     "        >                                                                              " +
                                     "    </div>                                                                             " +
                                     "                                                                                       " +

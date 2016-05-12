@@ -3,6 +3,8 @@
     { 
         $('#catalogoClientesForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             $.ajax
             ({
                 type: "POST",

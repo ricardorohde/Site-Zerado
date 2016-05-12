@@ -3,6 +3,8 @@
     { 
         $('#paginasForm').submit(function(e) 
         {
+            e.preventDefault();
+            
             texto = tinyMCE.get('texto').getContent();
 
             var quantidadeImagens   = $('#quantidadeImagens').val();
@@ -17,6 +19,8 @@
 
                 if  (
                         (img         != ''  &&  img         != null &&  img         != 'undefined') &&
+                        (titulo      != ''  &&  titulo      != null &&  titulo      != 'undefined') &&
+                        (descricao   != ''  &&  descricao   != null &&  descricao   != 'undefined') &&
                         (posicao     != ''  &&  posicao     != null &&  posicao     != 'undefined')
                     )
                 {
@@ -49,7 +53,6 @@
                     }
                     else
                     {
-                        console.log(data);
                         alert('Erro ao salvar o conteúdo!');
                     }
                 }
