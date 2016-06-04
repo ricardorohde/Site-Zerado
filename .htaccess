@@ -13,3 +13,7 @@ ErrorDocument   401 /?class=erro&codigo=401
 ErrorDocument   403 /?class=erro&codigo=403
 ErrorDocument   404 /?class=erro&codigo=404
 ErrorDocument   500 /?class=erro&codigo=500
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</IfModule>
