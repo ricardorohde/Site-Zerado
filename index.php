@@ -41,91 +41,77 @@
         static public function run()
         {
             //Suprimir Warnings
-            error_reporting(E_WARNING);
+            //error_reporting(E_WARNING);
 
-            new TSession(1); 
+            //$template = file_get_contents('app.view/template.class.php');
+            $template = new template;
+            ob_start(); 
+            $template->show();
+            $template = ob_get_contents();
+            ob_get_clean();
+              
+            $content = '';
+            /*
+             *  Se tiver parametros na URL, carrega a classe
+             */
+            if ($_GET)
+            {
+                $class = urldecode($_GET['class']);
 
-            //Não tem Usuario ativo
-            if(!isset($_SESSION['usuario']))
-            {
-                ob_start(); 
-                $pagina = new login;
-                $pagina->show();
-                $site = ob_get_contents();
-                ob_get_clean();
-            }
-            else
-            {
-                //$template = file_get_contents('app.view/template.class.php');
-                $template = new template;
-                ob_start(); 
-                $template->show();
-                $template = ob_get_contents();
-                ob_get_clean();
-                  
-                $content = '';
-                /*
-                 *  Se tiver parametros na URL, carrega a classe
-                 */
-                if ($_GET)
+                if (class_exists($class))
                 {
-                    $class = urldecode($_GET['class']);
-
-                    if (class_exists($class))
+                    if(isset($_GET['funcao']))
                     {
-                        if(isset($_GET['funcao']))
-                        {
-                            $funcao = $_GET['funcao'];
-                            $class = $class.'_'.$funcao;
+                        $funcao = $_GET['funcao'];
+                        $class = $class.'_'.$funcao;
 
-                            if (class_exists($class))       
-                                $pagina = new $class;
-                            else
-                            {
-                                $pagina = new erro();
-                                $pagina->codigo = 404;
-                                ob_start();
-                                $pagina->show();
-                                $content = ob_get_contents();
-                                ob_end_clean();
-                            }
-                        }
-                        else
+                        if (class_exists($class))       
                             $pagina = new $class;
-
-                        ob_start();
-                        $pagina->show();
-                        $content = ob_get_contents();
-                        ob_end_clean();
+                        else
+                        {
+                            $pagina = new erro();
+                            $pagina->codigo = 404;
+                            ob_start();
+                            $pagina->show();
+                            $content = ob_get_contents();
+                            ob_end_clean();
+                        }
                     }
                     else
-                    {
-                        $pagina = new erro();
-                        $pagina->codigo = 404;
-                        ob_start();
-                        $pagina->show();
-                        $content = ob_get_contents();
-                        ob_end_clean();
-                    }
-                }                
-                /*
-                 * Caso nao tenha parametros na URL, carreaga padrao
-                 */
-                else
-                {
-                    $pagina   = new home;
+                        $pagina = new $class;
+
                     ob_start();
                     $pagina->show();
-                    $content  = ob_get_contents();
-                    ob_end_clean();       
+                    $content = ob_get_contents();
+                    ob_end_clean();
                 }
-
-
-                /*
-                 *  Susbstitui a string #CONTENT# e #METATAGS# pelo seu conteúdo
-                 */
-                $site = $template;
+                else
+                {
+                    $pagina = new erro();
+                    $pagina->codigo = 404;
+                    ob_start();
+                    $pagina->show();
+                    $content = ob_get_contents();
+                    ob_end_clean();
+                }
+            }                
+            /*
+             * Caso nao tenha parametros na URL, carreaga padrao
+             */
+            else
+            {
+                $pagina   = new home;
+                ob_start();
+                $pagina->show();
+                $content  = ob_get_contents();
+                ob_end_clean();       
             }
+
+
+            /*
+             *  Susbstitui a string #CONTENT# e #METATAGS# pelo seu conteúdo
+             */
+            $site = $template;
 
             /*
              *  Obtém as meta tags
