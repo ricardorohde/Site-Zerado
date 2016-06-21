@@ -189,6 +189,13 @@
                         {
                           $conteudo .= "<td><img src='{$object->$coluna}' title='Imagem' alt='Imagem' class='listImage'></td>";
                         }
+                        else if($coluna == 'whatsapp')
+                        {
+                            if($object->$coluna == 1)
+                                $conteudo .= "<td>&nbsp;<i class='fa fa-whatsapp' aria-hidden='true' style='color: #1E892F'></i></td>";
+                            else
+                                $conteudo .= "<td></td>";
+                        }
                         else if($coluna == 'ativo')
                         {
                           if($object->$coluna == 0)

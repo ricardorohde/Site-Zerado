@@ -33,6 +33,7 @@
 
             $this->collection->addColumn('codigo');
             $this->collection->addColumn('telefone');
+            $this->collection->addColumn('whatsapp');
             $this->collection->addColumn('ativo');
 
             $this->collection->addEntity('telefones');
