@@ -13,6 +13,7 @@
                 {
                     codigo:         $('#codigo').val(),
                     telefone:       $('#telefone').val(),
+                    whatsapp:       $('#whatsapp').is(":checked"),
                     ativo:          $('#ativo').val(),
                     request:        'salvaTelefones'
                 },
@@ -25,6 +26,7 @@
                     }
                     else
                     {
+                        alert(data);
                         alert('Erro ao salvar o conteúdo!');
                     }
                 }

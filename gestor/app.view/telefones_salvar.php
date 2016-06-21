@@ -84,7 +84,7 @@
                     <input type='hidden' name='codigo' id='codigo' value='<?php echo $this->codigo; ?>'>
 
                     <div class='row'>
-                        <div class='6u'>
+                        <div class='3u'>
                             <label for='telefone'>
                                 Telefone
                             </label>
@@ -99,7 +99,19 @@
                             >
                         </div>
 
-                        <div class='6u'>
+                        <div class='3u' style='text-align: center'>
+                            <input 
+                                type='checkbox' 
+                                name='whatsapp' 
+                                id='whatsapp' 
+                                <?= $this->telefone->whatsapp == 1 ? 'checked' : '' ?>
+                            >
+                            <label for='whatsapp'>
+                                Whatsapp
+                            </label>
+                        </div>
+
+                        <div class='3u'>
                             <label for='ativo'>
                                 Ativo
                             </label>

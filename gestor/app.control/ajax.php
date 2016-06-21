@@ -562,6 +562,7 @@
 
         $controlador->telefone->codigo      = $_POST['codigo'];
         $controlador->telefone->telefone    = $_POST['telefone'];
+        $controlador->telefone->whatsapp    = $_POST['whatsapp'] == 'true' ? '1' : '0';
         $controlador->telefone->ativo       = $_POST['ativo'];
         
         echo $controlador->telefone->store();

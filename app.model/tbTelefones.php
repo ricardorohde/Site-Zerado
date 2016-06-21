@@ -33,6 +33,11 @@
         protected $telefone;
         /**
           * @access protected
+          * @var    boolean         Whatsapp
+          */
+        protected $whatsapp;
+        /**
+          * @access protected
           * @var    boolean         Ativo/Inativo
           */
         protected $ativo;

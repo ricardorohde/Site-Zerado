@@ -424,6 +424,7 @@ CREATE TABLE IF NOT EXISTS `subcategoriaprodutos` (
 CREATE TABLE IF NOT EXISTS `telefones` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `telefone` varchar(15) NOT NULL,
+  `whatsapp` tinyint(1) NOT NULL DEFAULT '0',
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codigo`)
