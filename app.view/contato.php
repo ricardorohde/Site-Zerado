@@ -230,9 +230,10 @@
                         </div>
                     </div>
                 </div>
+
+                <script type="text/javascript" src="/app.view/js/jsMascaras.min.js"></script>
+                <script type="text/javascript" src="/app.view/js/jsContato.min.js"></script>
             <?php
-            include_once('js/jsMascaras.php');
-            include_once('js/jsContato.php');
         }
     }
 ?>
