@@ -59,7 +59,7 @@
                 </body>
             </html>
 
-            <?php include_once 'js/jsInit.php'; ?>    
+            <script type="text/javascript" src="/app.view/js/jsInit.min.js"></script>
         <?php
         }
     }
