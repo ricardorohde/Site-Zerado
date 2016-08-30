@@ -40,8 +40,9 @@
          */
         static public function run()
         {
-            //Suprimir Warnings
-            //error_reporting(E_WARNING);
+            //Suprimir Warnings em produção
+            if($_SERVER['REMOTE_ADDR'] != '127.0.0.1')
+                error_reporting(E_WARNING);
 
             //$template = file_get_contents('app.view/template.class.php');
             $template = new template;
