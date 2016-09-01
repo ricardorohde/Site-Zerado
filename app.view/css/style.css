@@ -39,6 +39,7 @@ h1,h2,h3,h4,h5,h6
 {
     font-weight:    bold;
     margin:         0px;
+    margin-bottom:  10px;
 }
 
 h1
@@ -54,6 +55,7 @@ h2
 h3
 {
     font-size: 1em;
+    margin-bottom: 0px;
 }
 
 p
@@ -86,7 +88,6 @@ p
 
 .center
 {
-    width:          100%;
     margin-left:    auto;
     margin-right:   auto;
     text-align:     center;
@@ -97,6 +98,38 @@ p
 {
     position: relative;
     max-width: 100%;
+}
+
+.margin-top
+{
+    margin-top: 20px;
+}
+
+.margin-top-p
+{
+    margin-top: 10px;   
+}
+
+.margin-bottom-g
+{
+    margin-bottom: 40px;
+}
+
+.google-maps
+{
+    position:       relative;
+    padding-bottom: 75%; // This is the aspect ratio
+    height:         0;
+    overflow:       hidden;
+}
+
+.google-maps iframe 
+{
+    position:   absolute;
+    top:        0;
+    left:       0;
+    width:      100% !important;
+    height:     100% !important;
 }
 
 /*
