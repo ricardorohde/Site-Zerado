@@ -152,7 +152,7 @@
                                 </tr>
                             </table>
 
-                            <div class="google-maps">
+                            <div class="google-maps margin-top">
                                 <iframe 
                                   src="" 
                                   width="600" 
