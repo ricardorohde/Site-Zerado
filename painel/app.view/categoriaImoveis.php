@@ -35,7 +35,7 @@
             $this->collection->addColumn('categoria');
             $this->collection->addColumn('ativo');
 
-            $this->collection->addEntity('categoriaImoveis');
+            $this->collection->addEntity('categoriaimoveis');
 
             $this->listagem = $this->collection->show();
         }

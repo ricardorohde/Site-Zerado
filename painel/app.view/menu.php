@@ -162,6 +162,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href='/cidadeImoveis' title='Cidade Imóveis' alt='Cidade Imóveis'>
+                            <i class="fa fa-list"></i>&nbsp;
+                            Cidade Imóveis
+                        </a>
+                    </li>
+                    <li>
                         <a href='/imoveis' title='Imóveis' alt='Imóveis'>
                             <i class="fa fa-home"></i>&nbsp;
                             Imóveis

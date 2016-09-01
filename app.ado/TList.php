@@ -78,6 +78,15 @@
                 $tabela = $tabela[0];
             }
 
+            $tituloInclusao = $tabela;
+
+            if($tabela == 'situacaoimoveis')
+                $tituloInclusao = 'situacaoImoveis';
+            if($tabela == 'categoriaimoveis')
+                $tituloInclusao = 'categoriaImoveis';
+            if($tabela == 'cidadeimoveis')
+                $tituloInclusao = 'cidadeImoveis';
+
             $conteudo = "";
             $conteudo .= "
                             <div id='listagem'>
@@ -99,7 +108,7 @@
                                     name='Incluir' 
                                     id='Incluir' 
                                     value='Incluir' 
-                                    onclick=\"top.location='/{$tabela}/salvar';\"
+                                    onclick=\"top.location='/{$tituloInclusao}/salvar';\"
                                 >
                             ";
 
@@ -154,7 +163,7 @@
                                                 href='#' 
                                                 title='Editar' 
                                                 alt='Editar' 
-                                                onclick=\"top.location='{$tabela}/salvar/{$object->codigo}';\"
+                                                onclick=\"top.location='{$tituloInclusao}/salvar/{$object->codigo}';\"
                                             >
                                                 <img src='/app.view/img/edit.png' alt='Editar' title='Editar'>
                                             </a>
@@ -170,7 +179,7 @@
                                                 href='#' 
                                                 title='Editar' 
                                                 alt='Editar' 
-                                                onclick=\"top.location='{$tabela}/checar/{$object->codigo}';\"
+                                                onclick=\"top.location='{$tituloInclusao}/checar/{$object->codigo}';\"
                                             >
                                                 <img src='/app.view/img/view.png' alt='Visualizar' title='Visualizar'>
                                             </a>
@@ -188,6 +197,13 @@
                         if($coluna == 'imagem')
                         {
                           $conteudo .= "<td><img src='{$object->$coluna}' title='Imagem' alt='Imagem' class='listImage'></td>";
+                        }
+                        else if($coluna == 'whatsapp')
+                        {
+                            if($object->$coluna == 1)
+                                $conteudo .= "<td>&nbsp;<i class='fa fa-whatsapp' aria-hidden='true' style='color: #1E892F'></i></td>";
+                            else
+                                $conteudo .= "<td></td>";
                         }
                         else if($coluna == 'ativo')
                         {

@@ -1,19 +1,19 @@
 <?php
     /**
-      * categoriaImoveis_salvar.php
-      * Classe categoriaImoveis_salvar
+      * cidadeImoveis_salvar.php
+      * Classe cidadeImoveis_salvar
       *
       * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
-    class categoriaImoveis_salvar
+    class cidadeImoveis_salvar
     {
         /*
          * Variaveis
          */
         private $codigo;
-        private $categoria;
+        private $cidade;
 
 
         /*
@@ -30,12 +30,12 @@
             if(isset($_GET['cod']))
             {
                 $this->codigo       = $_GET['cod'];
-                $this->categoria    = (new tbCategoriaImoveis())->load($this->codigo);            
+                $this->cidade    = (new tbCidadeImoveis())->load($this->codigo);            
             }
             else
             {
                 $this->codigo       = NULL;
-                $this->categoria    = new tbCategoriaImoveis;
+                $this->cidade    = new tbCidadeImoveis;
             }
         }
 
@@ -77,24 +77,38 @@
         {
             ?>
                 <span class='center'>
-                    <h1 alt='Categoria Imóveis' title='Categoria Imóveis' >Categoria Imóveis</h1>
+                    <h1 alt='Cidade Imóveis' title='Cidade Imóveis' >Cidade Imóveis</h1>
                 </span>
 
-                <form id="categoriaImoveisForm" name='categoriaImoveisForm' action="" method="post">
+                <form id="cidadeImoveisForm" name='cidadeImoveisForm' action="" method="post">
                     <input type='hidden' name='codigo' id='codigo' value='<?= $this->codigo; ?>'>
 
                     <div class='row'>
                         <div class='4u'>
-                            <label for='nome'>
-                                Categoria dos Imóveis
+                            Imagem
+                            <input type='hidden' name='logotipo' id='logotipo' value='<?php echo $this->cidade->imagem; ?>'>
+                            <a class="fancybox fancybox.iframe" href="/app.view/uploader.php"> title='Uploader' alt='Uploader'>
+                                <div id='imagemUploader'>
+                                    <?php 
+                                        if (($this->cidade->imagem != NULL) || ($this->cidade->imagem != ''))
+                                            echo "<img src='{$this->cidade->imagem}'>";
+                                        else
+                                            echo "<img src='/app.view/img/no-image.jpg'>";
+                                    ?>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class='4u'>
+                            <label for='cidade'>
+                                Cidade dos Imóveis
                             </label>
                             <input 
                                 type='text' 
-                                id='categoria' 
-                                name='categoria'  
+                                id='cidade' 
+                                name='cidade'  
                                 maxlength='100'
-                                placeholder='Categoria dos Imóveis (Casa, Apartamento, Terreno)'
-                                value="<?= $this->categoria->categoria ?>"
+                                value="<?= $this->cidade->cidade ?>"
                                 required
                             >
                         </div>
@@ -108,8 +122,8 @@
                                     if($this->codigo != NULL)
                                     {
                                         ?>
-                                            <option value='1' <?= $this->categoria->ativo == 1 ? 'selected' : '' ?>>Sim</option>
-                                            <option value='0' <?= $this->categoria->ativo == 0 ? 'selected' : '' ?>>Não</option>
+                                            <option value='1' <?= $this->cidade->ativo == 1 ? 'selected' : '' ?>>Sim</option>
+                                            <option value='0' <?= $this->cidade->ativo == 0 ? 'selected' : '' ?>>Não</option>
                                         <?php
                                     }
                                     else
@@ -129,7 +143,7 @@
                         </div>
 
                         <!--JS-->
-                        <?php include_once('js/jsCategoriaImoveis.php'); ?>
+                        <?php include_once('js/jsCidadeImoveis.php'); ?>
                     </div>
                 </form>
             <?php

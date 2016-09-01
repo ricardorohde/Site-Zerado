@@ -1,17 +1,17 @@
 <?php
     /**
-      * situacaoImoveis.php
-      * Classe situacaoImoveis
+      * cidadeImoveis
+      * Classe cidadeImoveis
       *
       * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
-    class situacaoImoveis
+    class cidadeImoveis
     {
         /*
          * Variaveis
-         */        
+         */
         private $collection;
         private $listagem;
 
@@ -29,13 +29,14 @@
         {
             $this->collection = new TList();
 
-            $this->collection->setTituloPagina('Situação Imóveis');
+            $this->collection->setTituloPagina('Cidade Imóveis');
 
             $this->collection->addColumn('codigo');
-            $this->collection->addColumn('situacao');
+            $this->collection->addColumn('cidade');
+            $this->collection->addColumn('imagem');
             $this->collection->addColumn('ativo');
 
-            $this->collection->addEntity('situacaoImoveis');
+            $this->collection->addEntity('cidadeimoveis');
 
             $this->listagem = $this->collection->show();
         }

@@ -445,6 +445,21 @@
         echo $controlador->categoria->store();
     }
 
+    //Salva Categoria dos imóveis
+    if($request == 'salvaCidadeImoveis')
+    {
+        $controlador                    = new controladorCidadeImoveis();
+
+        $controlador->cidade            = new tbCidadeImoveis();
+
+        $controlador->cidade->codigo    = $_POST['codigo'];
+        $controlador->cidade->cidade    = $_POST['cidade'];
+        $controlador->cidade->imagem    = $_POST['imagem'];
+        $controlador->cidade->ativo     = $_POST['ativo'];
+        
+        echo $controlador->cidade->store();
+    }
+
     //Salva Imóveis
     if($request == 'salvaImoveis')
     {
@@ -674,6 +689,12 @@
         $tabela         = $_POST['tabela'];
         if($tabela == 'categoriaprodutos')
             $tabelaClass    = 'tbCategoriaProdutos';
+        else if($tabela == 'situacaoimoveis')
+            $tabelaClass    = 'tbSituacaoImoveis';
+        else if($tabela == 'categoriaimoveis')
+            $tabelaClass    = 'tbCategoriaImoveis';
+        else if($tabela == 'cidadeimoveis')
+            $tabelaClass    = 'tbCidadeImoveis';
         else
             $tabelaClass    = 'tb'.ucfirst($tabela);
         $codigo         = $_POST['codigo'];
@@ -774,20 +795,33 @@
             $criteria->addFilter('p.categoria',     '=', 'c.codigo');
             $listagem->setCriteria($criteria);
         }
-        else if($tabela == 'situacaoImoveis')
+        else if($tabela == 'situacaoimoveis')
         {
             $listagem->setTituloPagina('Situação Imóveis');
 
+            $listagem->addColumn('codigo');
             $listagem->addColumn('situacao');
             $listagem->addColumn('ativo');
 
             $listagem->addEntity($tabela);
         }
-        else if($tabela == 'categoriaImoveis')
+        else if($tabela == 'categoriaimoveis')
         {
             $listagem->setTituloPagina('Categoria Imóveis');
 
+            $listagem->addColumn('codigo');
             $listagem->addColumn('categoria');
+            $listagem->addColumn('ativo');
+
+            $listagem->addEntity($tabela);
+        }
+        else if($tabela == 'cidadeimoveis')
+        {
+            $listagem->setTituloPagina('Cidade Imóveis');
+
+            $listagem->addColumn('codigo');
+            $listagem->addColumn('cidade');
+            $listagem->addColumn('imagem');
             $listagem->addColumn('ativo');
 
             $listagem->addEntity($tabela);
