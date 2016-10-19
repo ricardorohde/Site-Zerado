@@ -55,7 +55,11 @@
                     <script>$('body').hide();</script>
                     <?php include_once 'analytics.php'; ?>
                     
+                    <div class='container'>
+                        <div class='row'>
+                            <div class='3u'>
                     #CONTENT#
+                        </div></div></div>
                 </body>
             </html>
 
