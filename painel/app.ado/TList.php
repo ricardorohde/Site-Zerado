@@ -80,6 +80,11 @@
 
             $tituloInclusao = $tabela;
 
+            if($tabela == 'categoriaprodutos')
+                $tituloInclusao = 'categoriaProdutos';
+            if($tabela == 'subcategoriaprodutos')
+                $tituloInclusao = 'subcategoriaProdutos';
+
             if($tabela == 'situacaoimoveis')
                 $tituloInclusao = 'situacaoImoveis';
             if($tabela == 'categoriaimoveis')
