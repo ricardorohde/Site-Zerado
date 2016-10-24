@@ -252,9 +252,9 @@
     <div class='copyright'>
         <div>
             <span class='center'>
-                &copy; 2015 - 
-                <a href='http://www.groupsofter.com.br' alt='Softer' title='Softer' target='_blank'>
-                    Softer
+                &copy; 2016 - 
+                <a href='http://www.colmeiatecnologia.com.br' alt='Colmeia Tecnologia' title='Colmeia Tecnologia' target='_blank'>
+                    Colmeia Tecnologia
                 </a>
             </span>
         </div>
