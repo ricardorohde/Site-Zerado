@@ -871,3 +871,4 @@ ALTER TABLE `vendas`
 ALTER TABLE `clientes` ADD `senha` VARCHAR(128) NOT NULL AFTER `email`;
 ALTER TABLE `clientetelefones` CHANGE `codigoCliente` `codigoCliente` BIGINT UNSIGNED NOT NULL;
 ALTER TABLE `clientetelefones` ADD CONSTRAINT `clientetelefone_cliente` FOREIGN KEY (`codigoCliente`) REFERENCES `clientes`(`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `clienteenderecos` ADD `ativo` BOOLEAN NOT NULL DEFAULT TRUE AFTER `cep`, ADD `excluido` BOOLEAN NOT NULL DEFAULT FALSE AFTER `ativo`;
