@@ -92,14 +92,27 @@
                                 value='<?php echo $this->configuracoes->emailPagSeguro; ?>'  
                             >
                         </div>
-                        <div class='6u'>
+                        <div class='4u'>
                             Token
                             <input 
-                                type='string' 
+                                type='text' 
                                 name='token' 
                                 id='token' 
                                 maxlength='32'
                                 value='<?php echo $this->configuracoes->tokenPagSeguro; ?>' 
+                            >
+                        </div>
+
+                        <div class='2u'>
+                            <label for='sandbox'><span class='center'>SandBox</span></label>
+                            <input 
+                                type='checkbox' 
+                                name='sandbox' 
+                                id='sandbox' 
+                                <?php 
+                                    if($this->configuracoes->sandboxPagSeguro == 1)
+                                        echo 'checked';
+                                ?>
                             >
                         </div>
 

@@ -282,12 +282,13 @@
     //Salva Configuracao PagSeguro
     if($request == 'salvaConfiguracaoPagSeguro')
     {
-        $controlador                                = new controladorConfiguracoes();
-        $controlador->configuracao                  = new tbConfiguracoes();
+        $controlador                                    = new controladorConfiguracoes();
+        $controlador->configuracao                      = new tbConfiguracoes();
 
-        $controlador->configuracao->codigo          = 1;
-        $controlador->configuracao->emailPagSeguro  = $_POST['email']; 
-        $controlador->configuracao->tokenPagSeguro  = $_POST['token'];
+        $controlador->configuracao->codigo              = 1;
+        $controlador->configuracao->emailPagSeguro      = $_POST['email']; 
+        $controlador->configuracao->tokenPagSeguro      = $_POST['token'];
+        $controlador->configuracao->sandboxPagSeguro    = $_POST['sandbox'] == 'true' ? 1 : 0;
         
         echo $controlador->configuracao->store();
     }
@@ -337,8 +338,9 @@
 
         $controlador->produto->codigo           = $_POST['codigo'];
         $controlador->produto->nome             = $_POST['nome'];
-        //$controlador->produto->valor          = $_POST['valor'];
-        //$controlador->produto->peso           = $_POST['peso'];
+        $controlador->produto->valor            = $_POST['valor'];
+        $controlador->produto->peso             = $_POST['peso'];
+        $controlador->produto->estoque          = $_POST['estoque'];
         $controlador->produto->categoria        = $_POST['categoria'];
         $controlador->produto->subCategoria     = $_POST['subCategoria'];
         $controlador->produto->video            = $video;
@@ -356,7 +358,7 @@
                 $codigo = $_POST['codigo'];
 
             $controladorGaleria = new controladorGaleria();
-            $controladorGaleria->repository->addEntity('galeria');
+            $controladorGaleria->repository->addEntity('galeriaimagens');
 
             $criteria = new TCriteria();
             $criteria->addFilter('codigoProduto', '=', $codigo);
@@ -381,7 +383,7 @@
                             ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
                         )
                     {
-                        $controladorGaleria->galeria                    = new tbGaleria();
+                        $controladorGaleria->galeria                    = new tbGaleriaImagens();
 
                         $controladorGaleria->galeria->codigoProduto     = $codigo;
                         $controladorGaleria->galeria->imagem            = $imagem[0];

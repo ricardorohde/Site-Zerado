@@ -73,6 +73,11 @@
         protected $tokenPagSeguro;
         /**
           * @access protected
+          * @var    boolean    SandBox PagSeguro
+          */
+        protected $sandboxPagSeguro;
+        /**
+          * @access protected
           * @var    string     Endereço da Empresa
           */
         protected $endereco;

@@ -13,6 +13,7 @@
                 {
                     email:      $('#email').val(),
                     token:      $('#token').val(),
+                    sandbox:    $('#sandbox').is(":checked"),
                     request:    'salvaConfiguracaoPagSeguro'
                 },
                 success: function(data) 
