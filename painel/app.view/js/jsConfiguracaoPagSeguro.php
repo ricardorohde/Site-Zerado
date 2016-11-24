@@ -11,10 +11,12 @@
                 url: "../../app.control/ajax.php",
                 data: 
                 {
-                    email:      $('#email').val(),
-                    token:      $('#token').val(),
-                    sandbox:    $('#sandbox').is(":checked"),
-                    request:    'salvaConfiguracaoPagSeguro'
+                    email:          $('#email').val(),
+                    token:          $('#token').val(),
+                    emailSandbox:   $('#emailSandbox').val(),
+                    tokenSandbox:   $('#tokenSandbox').val(),
+                    sandbox:        $('#sandbox').is(":checked"),
+                    request:        'salvaConfiguracaoPagSeguro'
                 },
                 success: function(data) 
                 {

@@ -282,13 +282,15 @@
     //Salva Configuracao PagSeguro
     if($request == 'salvaConfiguracaoPagSeguro')
     {
-        $controlador                                    = new controladorConfiguracoes();
-        $controlador->configuracao                      = new tbConfiguracoes();
+        $controlador                                        = new controladorConfiguracoes();
+        $controlador->configuracao                          = new tbConfiguracoes();
 
-        $controlador->configuracao->codigo              = 1;
-        $controlador->configuracao->emailPagSeguro      = $_POST['email']; 
-        $controlador->configuracao->tokenPagSeguro      = $_POST['token'];
-        $controlador->configuracao->sandboxPagSeguro    = $_POST['sandbox'] == 'true' ? 1 : 0;
+        $controlador->configuracao->codigo                  = 1;
+        $controlador->configuracao->emailPagSeguro          = $_POST['email']; 
+        $controlador->configuracao->tokenPagSeguro          = $_POST['token'];
+        $controlador->configuracao->emailPagSeguroSandbox   = $_POST['emailSandbox']; 
+        $controlador->configuracao->tokenPagSeguroSandbox   = $_POST['tokenSandbox'];
+        $controlador->configuracao->sandboxPagSeguro        = $_POST['sandbox'] == 'true' ? 1 : 0;
         
         echo $controlador->configuracao->store();
     }

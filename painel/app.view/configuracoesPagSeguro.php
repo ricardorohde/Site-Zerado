@@ -92,7 +92,7 @@
                                 value='<?php echo $this->configuracoes->emailPagSeguro; ?>'  
                             >
                         </div>
-                        <div class='4u'>
+                        <div class='6u'>
                             Token
                             <input 
                                 type='text' 
@@ -100,6 +100,27 @@
                                 id='token' 
                                 maxlength='32'
                                 value='<?php echo $this->configuracoes->tokenPagSeguro; ?>' 
+                            >
+                        </div>
+
+                        <div class='6u'>
+                            Email Sandbox
+                            <input 
+                                type='email' 
+                                name='emailSandbox' 
+                                id='emailSandbox' 
+                                maxlength='100'
+                                value='<?php echo $this->configuracoes->emailPagSeguroSandbox; ?>'  
+                            >
+                        </div>
+                        <div class='6u'>
+                            Token Sandbox
+                            <input 
+                                type='text' 
+                                name='tokenSandbox' 
+                                id='tokenSandbox' 
+                                maxlength='32'
+                                value='<?php echo $this->configuracoes->tokenPagSeguroSandbox; ?>' 
                             >
                         </div>
 

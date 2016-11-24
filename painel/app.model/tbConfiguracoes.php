@@ -73,6 +73,16 @@
         protected $tokenPagSeguro;
         /**
           * @access protected
+          * @var    string     Email cadastrado no PagSeguro (Sandbox)
+          */
+        protected $emailPagSeguroSandbox;
+        /**
+          * @access protected
+          * @var    string     Token Gerado pelo PagSeguro (Sandbox)
+          */
+        protected $tokenPagSeguroSandbox;
+        /**
+          * @access protected
           * @var    boolean    SandBox PagSeguro
           */
         protected $sandboxPagSeguro;
