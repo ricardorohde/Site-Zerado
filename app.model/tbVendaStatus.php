@@ -7,7 +7,7 @@
       * @version 1.0
       * @access  public
       */
-    class tbVendasProdutos extends TRecord
+    class tbVendaStatus extends TRecord
     {
         /*
          * Contantes
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'vendasprodutos';
+        const TABLENAME = 'vendastatus';
 
 
         /*
@@ -28,29 +28,14 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    tbVendas        Código da Venda
+          * @var    string          Nome do Status
           */
-        protected $codigoVenda;
+        protected $status;
         /**
           * @access protected
-          * @var    tbProdutos      Código do Produto
+          * @var    string          Descrição do Status
           */
-        protected $codigoProduto;
-        /**
-          * @access protected
-          * @var    valor           Valor do Produto
-          */
-        protected $valor;
-        /**
-          * @access protected
-          * @var    int             Quantidade do Produto
-          */
-        protected $quantidade;
-        /**
-          * @access protected
-          * @var    string          Cor do Produto
-          */
-        protected $cor;
+        protected $descricao;
         /**
           * @access protected
           * @var    boolean         Ativo

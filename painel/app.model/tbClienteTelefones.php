@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'clienteTelefones';
+        const TABLENAME = 'clientetelefones';
 
 
         /*

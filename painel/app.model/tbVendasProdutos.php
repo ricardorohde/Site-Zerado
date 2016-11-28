@@ -3,7 +3,7 @@
       * tbVendasProdutos
       * Classe de modelo tbVendasProdutos
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@colmeiatecnologia.com.br>
       * @version 1.0
       * @access  public
       */
@@ -15,7 +15,7 @@
         /**
          * @const string TABLENAME Nome da tabela
          */
-        const TABLENAME = 'vendasProdutos';
+        const TABLENAME = 'vendasprodutos';
 
 
         /*
@@ -35,7 +35,12 @@
           * @access protected
           * @var    tbProdutos      Código do Produto
           */
-        protected $produto;
+        protected $codigoProduto;
+        /**
+          * @access protected
+          * @var    valor           Valor do Produto
+          */
+        protected $valor;
         /**
           * @access protected
           * @var    int             Quantidade do Produto
@@ -43,9 +48,19 @@
         protected $quantidade;
         /**
           * @access protected
-          * @var    double          Valor do Desconto
+          * @var    string          Cor do Produto
           */
-        protected $desconto;
+        protected $cor;
+        /**
+          * @access protected
+          * @var    boolean         Ativo
+          */
+        protected $ativo;
+        /**
+          * @access protected
+          * @var    boolean         Excluido
+          */
+        protected $excluido;
 
 
         /*

@@ -3,7 +3,7 @@
       * tbVendas.php
       * Classe de modelo tbVendas
       *
-      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@colmeiatecnologia.com.br>
       * @version 1.0
       * @access  public
       */

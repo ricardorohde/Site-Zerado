@@ -73,6 +73,11 @@
         protected $email;
         /**
           * @access protected
+          * @var    string          Senha
+          */
+        protected $senha;
+        /**
+          * @access protected
           * @var    boolean         Ativo/Inativo
           */
         protected $ativo;
@@ -83,9 +88,28 @@
         protected $excluido;
 
 
-        /*
-         * Métodos
-         */
-        
+        /**
+          * Método __set
+          * Seta o valor da variavel
+          * 
+          * @access public
+          * @param  string  $propriedade    Propriedade a ser definida o valor
+          * @param  mixed   $valor          Valor da Propriedade
+          * @return void
+          */
+        public function __set($propriedade, $valor)
+        {
+            if($propriedade == 'senha')
+            {
+              $this->$propriedade = hash('sha512', $valor);
+            }
+            else
+            {
+              if($valor == NULL)
+                  $this->$propriedade = '';
+              else
+                  $this->$propriedade = $valor;
+            }
+        }
     }
 ?>

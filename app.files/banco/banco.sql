@@ -451,47 +451,79 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vendaprodutos`
+-- Estrutura da tabela `vendas`
 --
 
-CREATE TABLE IF NOT EXISTS `vendaprodutos` (
-  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `codigoVenda` bigint(20) unsigned NOT NULL,
-  `produto` bigint(20) unsigned DEFAULT NULL,
-  `quantidade` int(11) NOT NULL,
+CREATE TABLE `vendas` (
+  `codigo` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `dataCompra` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dataAlteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `codigoCliente` bigint(20) UNSIGNED NOT NULL,
+  `codigoStatus` bigint(20) UNSIGNED NOT NULL,
+  `referencia` varchar(32) NOT NULL,
+  `valor` double NOT NULL,
   `desconto` double DEFAULT NULL,
+  `montagem` double DEFAULT NULL,
+  `codigoEnderecoEntrega` bigint(20) UNSIGNED NOT NULL,
+  `frete` double DEFAULT NULL,
+  `codigoTipoEntrega` bigint(20) UNSIGNED NOT NULL,
+  `codigoRastreioCorreio` varchar(13) DEFAULT NULL,
+  `formaPagamento` varchar(11) NOT NULL,
+  `parcelas` int(11) DEFAULT NULL,
+  `sessionPagSeguro` varchar(100) NOT NULL,
+  `senderHash` varchar(100) NOT NULL,
+  `tokenCartao` varchar(100) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0'
   PRIMARY KEY (`codigo`),
-  KEY `codigoPedido` (`codigoVenda`,`produto`),
-  KEY `produto` (`produto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vendas`
+-- Estrutura da tabela `vendasprodutos`
 --
 
-CREATE TABLE IF NOT EXISTS `vendas` (
-  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `cliente` bigint(20) unsigned DEFAULT NULL,
-  `dataHora` datetime NOT NULL,
-  `status` int(11) NOT NULL COMMENT '1 - Aberto; 2 - Processando; 3 - Postado no Correio; 4 - Entregue',
-  `codigoRastreio` varchar(20) DEFAULT NULL,
-  `tipoEntrega` int(11) NOT NULL COMMENT '1 - PAC; 2 - SEDEX;',
-  `frete` double DEFAULT NULL,
-  `enderecoEntrega` varchar(100) NOT NULL,
-  `numeroEntrega` int(11) NOT NULL,
-  `complementoEntrega` varchar(50) DEFAULT NULL,
-  `bairroEntrega` varchar(50) NOT NULL,
-  `cepEntrega` varchar(9) NOT NULL,
-  `cidadeEntrega` varchar(100) NOT NULL,
-  `estadoEntrega` varchar(2) NOT NULL,
+CREATE TABLE `vendasprodutos` (
+  `codigo` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `codigoVenda` bigint(20) UNSIGNED NOT NULL,
+  `codigoProduto` bigint(20) UNSIGNED NOT NULL,
   `valor` double NOT NULL,
-  `desconto` double DEFAULT NULL,
-  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  `quantidade` int(11) NOT NULL,
+  `cor` varchar(50) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0'
   PRIMARY KEY (`codigo`),
-  KEY `cliente` (`cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendastatus`
+--
+
+CREATE TABLE `vendastatus` (
+  `codigo` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `status` varchar(30) NOT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0'
+  PRIMARY KEY (`codigo`),
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `vendastipoentrega`
+--
+
+CREATE TABLE `vendastipoentrega` (
+  `codigo` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tipoEntrega` varchar(100) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0'
+  PRIMARY KEY (`codigo`),
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -558,15 +590,18 @@ ALTER TABLE `subcategoriaprodutos`
 --
 -- Limitadores para a tabela `vendaprodutos`
 --
-ALTER TABLE `vendaprodutos`
-  ADD CONSTRAINT `vendaProduto-Pedido` FOREIGN KEY (`codigoVenda`) REFERENCES `vendas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `vendaProduto-Produto` FOREIGN KEY (`produto`) REFERENCES `produtos` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `vendasprodutos` 
+  ADD CONSTRAINT `vendasprodutos_vendas` FOREIGN KEY (`codigoVenda`) REFERENCES `vendas`(`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `vendasprodutos_produtos` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Limitadores para a tabela `vendas`
 --
-ALTER TABLE `vendas`
-  ADD CONSTRAINT `vendas-cliente` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `vendas` 
+  ADD CONSTRAINT `vendas_cliente` FOREIGN KEY (`codigoCliente`) REFERENCES `clientes`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `vendas_status` FOREIGN KEY (`codigoStatus`) REFERENCES `vendastatus`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `vendas_enderecocliente` FOREIGN KEY (`codigoEnderecoEntrega`) REFERENCES `clienteenderecos`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `vendas_tipoentrega` FOREIGN KEY (`codigoTipoEntrega`) REFERENCES `vendastipoentrega`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -577,6 +612,46 @@ ALTER TABLE `clientetelefones` ADD CONSTRAINT `clientetelefone_cliente` FOREIGN 
 ALTER TABLE `clienteenderecos` ADD `ativo` BOOLEAN NOT NULL DEFAULT TRUE AFTER `cep`, ADD `excluido` BOOLEAN NOT NULL DEFAULT FALSE AFTER `ativo`;
 ALTER TABLE `clienteenderecos` CHANGE `codigo` `codigo` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 ALTER TABLE `clientetelefones` CHANGE `codigo` `codigo` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-ALTER TABLE `configuracoes` ADD `sandboxPagSeguro` BOOLEAN NOT NULL DEFAULT FALSE AFTER `tokenPagSeguro`;
+ALTER TABLE `configuracoes` ADD `sandboxPagSeguro` BOOLEAN NULL DEFAULT FALSE AFTER `tokenPagSeguro`;
 ALTER TABLE `clientetelefones` ADD `ativo` BOOLEAN NOT NULL DEFAULT TRUE AFTER `recado`, ADD `excluido` BOOLEAN NOT NULL DEFAULT FALSE AFTER `ativo`;
 ALTER TABLE `configuracoes` ADD `emailPagSeguroSandbox` VARCHAR(100) NULL AFTER `tokenPagSeguro`, ADD `tokenPagSeguroSandbox` VARCHAR(32) NULL AFTER `emailPagSeguroSandbox`;
+
+--
+-- Dumping data for table `configuracoes`
+--
+
+INSERT INTO `configuracoes` (`codigo`, `titulo`, `empresa`, `conteudo`, `dominio`, `descricao`, `keywords`, `logotipo`, `emailPagSeguro`, `tokenPagSeguro`, `emailPagSeguroSandbox`, `tokenPagSeguro`, `sandboxPagSeguro`, `endereco`, `numero`, `bairro`, `cep`, `cidade`, `estado`, `telefone`,`facebookPage`,`excluido`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+
+--
+-- Dumping data for table `funcoes`
+--
+
+INSERT INTO `funcoes` (`codigo`, `banner`, `video`, `galeria`, `catalogo`, `ecommerce`, `delivery`, `imobiliaria`, `portifolio`, `depoimentos`, `catalogoClientes`, `eventos`, `excluido`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`codigo`, `nome`, `email`, `senha`, `administrador`, `ativo`, `excluido`) VALUES (1, 'RogÃ©rio Eduardo Pereira', 'rogerio@colmeiatecnologia.com.br', '0495854e64f784aa25aeca615779020e8793ffb88cfef01eb1bc7301cfcb908ff38821664980798a8a105a7390fa9d400ebc3d0a79837135c9c7436c61d62c67', 1, 1, 0);
+
+--
+-- Dumping data for table `vendastatus`
+--
+
+INSERT INTO `vendastatus` (`codigo`, `status`, `descricao`, `ativo`, `excluido`) VALUES
+(1, 'Aguardando pagamento', 'O comprador iniciou a transaÃ§Ã£o, mas atÃ© o momento o PagSeguro nÃ£o recebeu nenhuma informaÃ§Ã£o sobre o pagamento', 1, 0),
+(2, 'Em anÃ¡lise', 'O comprador optou por pagar com um cartÃ£o de crÃ©dito e o PagSeguro estÃ¡ analisando o risco da transaÃ§Ã£o', 1, 0),
+(3, 'Paga', 'A transaÃ§Ã£o foi paga pelo comprador e o PagSeguro jÃ¡ recebeu uma confirmaÃ§Ã£o da instituiÃ§Ã£o financeira responsÃ¡vel pelo processamento', 1, 0),
+(4, 'DisponÃ­vel', 'A transaÃ§Ã£o foi paga e chegou ao final de seu prazo de liberaÃ§Ã£o sem ter sido retornada e sem que haja nenhuma disputa aberta', 1, 0),
+(5, 'Em disputa', 'O comprador, dentro do prazo de liberaÃ§Ã£o da transaÃ§Ã£o, abriu uma disputa', 1, 0),
+(6, 'Devolvido', 'O valor da transaÃ§Ã£o foi devolvido para o comprador', 1, 0),
+(7, 'Cancelada', 'A transaÃ§Ã£o foi cancelada sem ter sido finalizada', 1, 0),
+(8, 'Debitado', 'O valor da transaÃ§Ã£o foi devolvido para o comprador', 1, 0),
+(9, 'RetenÃ§Ã£o temporÃ¡ria', 'O comprador abriu uma solicitaÃ§Ã£o de chargeback junto Ã  operadora do cartÃ£o de crÃ©dito', 1, 0);
+
+--
+-- Dumping data for table `vendasTipoEntrega`
+--
+INSERT INTO `vendastipoentrega` (`codigo`, `tipoEntrega`, `ativo`, `excluido`) VALUES (NULL, 'PAC', '1', '0'), (NULL, 'SEDEX', '1', '0'), (NULL, 'NOT_SPECIFIED', '1', '0');

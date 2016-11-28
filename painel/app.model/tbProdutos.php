@@ -68,6 +68,11 @@
         protected $imagemVideo;
          /**
           * @access protected
+          * @var    int           Estoque
+          */
+        protected $estoque;
+         /**
+          * @access protected
           * @var    boolean         Ativo/Inativo
           */
         protected $ativo;
@@ -91,6 +96,20 @@
           */
         public function __get($propriedade)
         {
+            if($propriedade == 'categoria')
+            {
+                $categoria = new tbCategoriaProdutos;
+                $categoria = $categoria->load($this->$propriedade);
+                return $categoria->categoria;
+            }
+
+            if($propriedade == 'subCategoria')
+            {
+                $subcategoria = new tbSubCategoriaProdutos;
+                $subcategoria = $subcategoria->load($this->$propriedade);
+                return $subcategoria->subCategoria;
+            }
+
             return $this->$propriedade;
         }
     }
