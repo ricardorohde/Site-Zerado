@@ -3,7 +3,7 @@
       * tbVendas.php
       * Classe de modelo tbVendas
       *
-      * @author  Rogério Eduardo Pereira <rogerio@colmeiatecnologia.com.br>
+      * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
       * @version 1.0
       * @access  public
       */
@@ -28,72 +28,32 @@
         protected $codigo;
         /**
           * @access protected
-          * @var    tbClientes      Cliente
+          * @var    Timestamp       Data da Compra
           */
-        protected $cliente;
+        protected $dataCompra;
         /**
           * @access protected
-          * @var    datetime        Data Hora de Compra
+          * @var    Timestamp       Data da ultima alteração - Atualizado automaticamente no update
           */
-        protected $dataHora;
+        protected $dataAlteracao;
         /**
           * @access protected
-          * @var    int             Status (1 - Aberto; 2 - Processando; 3 - Postado no Correio; 4 - Entregue)
+          * @var    int             Código do Cliente
           */
-        protected $status;
+        protected $codigoCliente;
         /**
           * @access protected
-          * @var    string          Código de Rastreio dos Correios
+          * @var    int             Código da tabela vendastatus
           */
-        protected $codigoRastreio;
+        protected $codigoStatus;
         /**
           * @access protected
-          * @var    int             Tipo de Entrega (1 - PAC; 2 - SEDEX;)
+          * @var    md5             Referencia do compra para identificar no pagseguro
           */
-        protected $tipoEntrega;
+        protected $referencia;
         /**
           * @access protected
-          * @var    double          Valor do Frete
-          */
-        protected $frete;
-        /**
-          * @access protected
-          * @var    string          Endereço de Entrega
-          */
-        protected $enderecoEntrega;
-        /**
-          * @access protected
-          * @var    int             Número do Endereço de Entrega
-          */
-        protected $numeroEntrega;
-        /**
-          * @access protected
-          * @var    string          Complemento de Entrega
-          */
-        protected $complementoEntrega;
-        /**
-          * @access protected
-          * @var    string          Bairro de Entrega
-          */
-        protected $bairroEntrega;
-        /**
-          * @access protected
-          * @var    string          CEP de Entrega
-          */
-        protected $cepEntrega;
-        /**
-          * @access protected
-          * @var    string          Cidade de Entrega
-          */
-        protected $cidadeEntrega;
-        /**
-          * @access protected
-          * @var    string          Estado de Entrega
-          */
-        protected $estadoEntrega;
-        /**
-          * @access protected
-          * @var    double          Valor da Venda
+          * @var    double          Valor da compra
           */
         protected $valor;
         /**
@@ -101,6 +61,61 @@
           * @var    double          Valor do Desconto
           */
         protected $desconto;
+        /**
+          * @access protected
+          * @var    double          Valor da Montagem
+          */
+        protected $montagem;
+        /**
+          * @access protected
+          * @var    int             Código da tabela clienteenderecos
+          */
+        protected $codigoEnderecoEntrega;
+        /**
+          * @access protected
+          * @var    double          Valor do Frete
+          */
+        protected $frete;
+        /**
+          * @access protected
+          * @var    int             Código da tabela vendastipoentrega
+          */
+        protected $codigoTipoEntrega;
+        /**
+          * @access protected
+          * @var    string          Código de Rastreio dos Correios
+          */
+        protected $codigoRastreioCorreio;
+        /**
+          * @access protected
+          * @var    string          Forma de Pagamento - BOLETO, CREDIT_CARD
+          */
+        protected $formaPagamento;
+        /**
+          * @access protected
+          * @var    int             Número de Parcelas
+          */
+        protected $parcelas;
+        /**
+          * @access protected
+          * @var    string          Sessão do Pagseguro - Gerado pela API
+          */
+        protected $sessionPagSeguro;
+        /**
+          * @access protected
+          * @var    string          Hash do Comprador - Gerado pela API
+          */
+        protected $senderHash;
+        /**
+          * @access protected
+          * @var    string          Token do Cartão de Crédito - Gerado pela API
+          */
+        protected $tokenCartao;
+        /**
+          * @access protected
+          * @var    boolean         Ativo
+          */
+        protected $ativo;
         /**
           * @access protected
           * @var    boolean         Excluido
