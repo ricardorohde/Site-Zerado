@@ -637,6 +637,7 @@ ALTER TABLE `clientetelefones` CHANGE `codigo` `codigo` INT(10) UNSIGNED NOT NUL
 ALTER TABLE `configuracoes` ADD `sandboxPagSeguro` BOOLEAN NULL DEFAULT FALSE AFTER `tokenPagSeguro`;
 ALTER TABLE `clientetelefones` ADD `ativo` BOOLEAN NOT NULL DEFAULT TRUE AFTER `recado`, ADD `excluido` BOOLEAN NOT NULL DEFAULT FALSE AFTER `ativo`;
 ALTER TABLE `configuracoes` ADD `emailPagSeguroSandbox` VARCHAR(100) NULL AFTER `tokenPagSeguro`, ADD `tokenPagSeguroSandbox` VARCHAR(32) NULL AFTER `emailPagSeguroSandbox`;
+ALTER TABLE `clientes` ADD `token` VARCHAR(32) NOT NULL AFTER `senha`;
 
 --
 -- Dumping data for table `configuracoes`

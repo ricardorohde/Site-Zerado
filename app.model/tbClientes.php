@@ -78,6 +78,11 @@
         protected $senha;
         /**
           * @access protected
+          * @var    string          Token
+          */
+        protected $token;
+        /**
+          * @access protected
           * @var    boolean         Ativo/Inativo
           */
         protected $ativo;
@@ -91,7 +96,7 @@
         /**
           * Método __set
           * Seta o valor da variavel
-          * 
+          *
           * @access public
           * @param  string  $propriedade    Propriedade a ser definida o valor
           * @param  mixed   $valor          Valor da Propriedade
