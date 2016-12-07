@@ -15,11 +15,11 @@
         /*
          * Métodos
          */
-        
+
         /**
           * Método addColumn
           * Adiciona uma coluna a ser retornada pelo SELECT
-          * 
+          *
           * @access  public
           * @param   $column     Coluna da Tabela
           * @return  void
@@ -29,11 +29,11 @@
             //Adiciona coluna no array
             $this->columns[] = $column;
         }
-        
+
         /**
           * Método addEntity()
           * Define o nome da entidade (tabela) manipulada pela instrução SQL
-          * 
+          *
           * @access  public
           * @param   $entity     Tabela
           * @return  void
@@ -42,11 +42,11 @@
         {
             $this->entity[] = $entity;
         }
-        
+
         /**
           * Método load
           * Recupera um conjunto de objetos (collection) da base de dados através de um critério de seleção
-          * 
+          *
           * @access public
           * @param  $criteria   Critério de Seleção
           * @throws Exception   Não há transação ativa
@@ -55,14 +55,14 @@
         function load(TCriteria $criteria = NULL)
         {
             $sql = new TSqlSelect;
-            
+
             //Colunas
             if(count($this->columns) == 1)
                 $sql->addColumn($this->columns[0]);
             else
                 foreach ($this->columns as $coluna)
                     $sql->addColumn($coluna);
-            
+
             //Entidade
             if(count($this->entity) == 1)
                 $sql->addEntity($this->entity[0]);
@@ -76,7 +76,7 @@
 
             if(count($this->entity) > 1)
             {
-                foreach ($this->entity as $entity) 
+                foreach ($this->entity as $entity)
                 {
                     $entity = explode(' ', $entity);
                     $criteria->addFilter($entity[1].'.excluido', '=', 0);
@@ -94,11 +94,11 @@
             //RECUPERA CONEXAO BANCO DE DADOS
             TTransaction::open('my_bd_site');
 
-            if ($conn = TTransaction::get()) 
-            {   
+            if ($conn = TTransaction::get())
+            {
                 $result = $conn->query($sql->getInstruction());
                 $results= array();
-                
+
                 if ($result)
                 {
                     while($row = $result->fetchObject(get_class($this)))
@@ -111,16 +111,16 @@
 
                 return $results;
             }
-            else 
+            else
             {
                 throw new Exception('Não há transação ativa!');
             }
         }
-        
+
         /**
           * Método delete()
           * Exclui um conjunto de objetos (collection) da base de dados através de um critério de seleção
-          * 
+          *
           * @access public
           * @param  $criteria   Objeto do tipo TCriteria
           * @throws Exception   Não há transação ativa
@@ -131,28 +131,28 @@
             $sql = new TSqlDelete;
             $sql->addEntity($this->entity[0]);
             $sql->setCriteria($criteria);
-            
+
             //RECUPERA CONEXAO BANCO DE DADOS
             TTransaction::open('my_bd_site');
 
-            if ($conn = TTransaction::get()) 
-            {               
+            if ($conn = TTransaction::get())
+            {
                 $result = $conn->exec($sql->getInstruction());
 
                 TTransaction::close();
-                
+
                 return $result;
             }
-            else 
+            else
             {
                 throw new Exception('Não há transação ativa!');
-            }   
+            }
         }
 
         /**
           * Método deleteFisico()
           * Exclui um conjunto de objetos (collection) da base de dados através de um critério de seleção
-          * 
+          *
           * @since  1.3
           * @access public
           * @param  $criteria   Objeto do tipo TCriteria
@@ -164,28 +164,28 @@
             $sql = new TSqlDeleteFisico;
             $sql->addEntity($this->entity[0]);
             $sql->setCriteria($criteria);
-            
+
             //RECUPERA CONEXAO BANCO DE DADOS
             TTransaction::open('my_bd_site');
 
-            if ($conn = TTransaction::get()) 
-            {               
+            if ($conn = TTransaction::get())
+            {
                 $result = $conn->exec($sql->getInstruction());
 
                 TTransaction::close();
-                
+
                 return $result;
             }
-            else 
+            else
             {
                 throw new Exception('Não há transação ativa!');
-            }   
+            }
         }
-        
+
         /**
           * Método count()
           * Conta o número de ocorrencias que satisfazem o critério de seleção
-          * 
+          *
           * @access public
           * @param  $criteria    Criteria de Selecção
           * @throws Exception   Não há transação ativa
@@ -197,27 +197,27 @@
             $sql->addColumn(' count(*) ');
             $sql->addEntity($this->entity[0]);
             $sql->setCriteria($criteria);
-            
+
             //RECUPERA CONEXAO BANCO DE DADOS
             TTransaction::open('my_bd_site');
 
-            if ($conn = TTransaction::get()) 
+            if ($conn = TTransaction::get())
             {
                 $result = $conn->query($sql->getInstruction());
-                
+
                 if ($result)
                 {
                     $row = $result->fetch();
                 }
 
                 TTransaction::close();
-                
+
                 return $row[0];
             }
-            else 
+            else
             {
                 throw new Exception('Não há transação ativa!');
-            }   
+            }
         }
     }
 ?>

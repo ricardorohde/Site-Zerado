@@ -39,7 +39,7 @@
         /**
           * Método __set
           * Seta o valor da variavel
-          * 
+          *
           * @access public
           * @param  string  $propriedade    Propriedade a ser definida o valor
           * @param  mixed   $valor          Valor da Propriedade
@@ -53,7 +53,7 @@
         /**
           * Método __get
           * Seta o valor da variavel
-          * 
+          *
           * @access public
           * @param  string $propriedade    Propriedade a ser retornada
           * @return mixed                   Valor da Propriedade
@@ -66,7 +66,7 @@
         /**
          * Método getGaleria
          * Retorna a galeria de acordo com o codigo
-         * 
+         *
          * @access  public
          * @return  TRepository Coleção de Galeria
          */
@@ -79,7 +79,7 @@
             $criteria->addFilter('ativo', '=', 1);
             $criteria->addFilter('codigo'.$classe, '=', $codigo);
             $criteria->setProperty('order', 'ordem');
-            
+
             $this->repository->addColumn('imagem');
             $this->repository->addColumn('titulo');
             $this->repository->addColumn('descricao');
@@ -88,8 +88,27 @@
             $this->repository->addEntity('galeriaimagens');
 
             $this->collectionGaleriaImagens = $this->repository->load($criteria);
-            
+
             return $this->collectionGaleriaImagens;
+        }
+
+        /**
+         * Apaga fisicamente a galeria
+         *
+         * @param  $coluna Coluna a ser usada na busca
+         * @param  $codigo Código (Foreign Key) a ser apagado
+         * @return void
+         */
+        public function apagaGaleriaFisico($coluna, $codigo)
+        {
+            $this->repository = new TRepository();
+
+            $this->repository->addEntity('galeriaimagens');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter($coluna, '=', $codigo);
+
+            $this->repository->deleteFisico($criteria);
         }
     }
 ?>

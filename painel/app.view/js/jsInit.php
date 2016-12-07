@@ -1,6 +1,6 @@
 <script>
     /*skel.breakpoints(
-        {   
+        {
             large:  "(max-width: 970px)",
             medium: "(max-width: 768px)",
             small:  "(max-width: 650px)",
@@ -25,7 +25,7 @@
         height:         900,
         autoScale:      true,
         autoDimensions: false,
-        beforeClose:    function() 
+        beforeClose:    function()
         {
             imagemSelecionada = $('.fancybox-iframe').contents().find('#imagemSelecionada').val();
 
@@ -50,7 +50,7 @@
         height:         900,
         autoScale:      true,
         autoDimensions: false,
-        beforeClose:    function() 
+        beforeClose:    function()
         {
             totalImagem = $('#quantidadeImagens').val();
 
@@ -60,7 +60,7 @@
 
             totalImagem++;
 
-            for(i in imagens) 
+            for(i in imagens)
             {
                 if (imagens[i] != '')
                 {
@@ -136,7 +136,7 @@
         },
     });
 
-    function myFileBrowser () 
+    function myFileBrowser ()
     {
         $.fancybox(
         {
@@ -151,7 +151,7 @@
             height:         900,
             autoScale:      true,
             autoDimensions: false,
-            beforeClose:    function() 
+            beforeClose:    function()
             {
                 imagemSelecionada = $('.fancybox-iframe').contents().find('#imagemSelecionada').val();
 
@@ -167,9 +167,9 @@
         theme: "modern",
         height: 190,
         content_css : "/app.view/css/formulario.css",
-        plugins: 
+        plugins:
                 [
-                   "advlist", "autolink", "image", "media", "code", "link", "paste", "save", "hr", "lists", "table", 
+                   "advlist", "autolink", "image", "media", "code", "link", "paste", "save", "hr", "lists", "table",
                    "textpattern", "importcss",
                 ],
         toolbar1: "code | save | undo redo | bold italic hr | alignleft aligncenter alignright alignjustify | outdent indent | bullist numlist | insertfile | image link media table",
@@ -185,13 +185,13 @@
         ({
             type: "POST",
             url: "../../app.control/ajax.php",
-            data: 
+            data:
             {
                 tabela:     tabela,
                 codigo:     codigo,
                 request:    'apagar'
             },
-            success: function(data) 
+            success: function(data)
             {
                 console.log(data);
                 $('#listagem').html(data);
@@ -202,5 +202,10 @@
     function apagarGaleria(posicao)
     {
         $('#galeria_'+posicao).html('');
+    }
+
+    function apagarCor(posicao)
+    {
+        $('#boxCor_'+posicao).html('');
     }
 </script>

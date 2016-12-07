@@ -2,7 +2,7 @@
     /**
     * Funcao Autoload
     * Carrega a classe quando for instanciada
-    * 
+    *
     * @param  $classe     Classe a ser carregada
     * @return void
     */
@@ -24,7 +24,7 @@
     * Destino de todos os formularios
     *
     * @author  Rogério Eduardo Pereira <rogerio@groupsofter.com.br>
-    * @version 1.0   
+    * @version 1.0
     */
     //error_reporting(E_WARNING);
     @session_start();
@@ -60,11 +60,11 @@
 
         $imagens        = scandir("../../app.view/img/");
 
-        foreach ($imagens as $file) 
+        foreach ($imagens as $file)
         {
             if(!is_dir("../../app.view/img/".$file))
             {
-                echo 
+                echo
                     "
                         <div class='2u uploaderBox'>
                             <div class='uploaderImg'>
@@ -73,35 +73,35 @@
                             <div class='center'>
                     ";
                 if($category != 'gallery')
-                    echo 
+                    echo
                         "
-                            <input 
-                                type='button' 
-                                name='selecionar' 
-                                id='selecionar' 
-                                class='uploaderSelecionar' 
-                                value='Selecionar' 
+                            <input
+                                type='button'
+                                name='selecionar'
+                                id='selecionar'
+                                class='uploaderSelecionar'
+                                value='Selecionar'
                                 onclick=\"selecionaImagem('{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}');\"
                             >
                         ";
                 else
-                    echo 
+                    echo
                         "
-                            <input 
-                                type='checkbox' 
+                            <input
+                                type='checkbox'
                                 name='imagens[]'
                                 class='checkImagensSelecionadas'
-                                value='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}' 
+                                value='{$_SESSION['configuracoes']->dominio}/app.view/img/{$file}'
                             />
                         ";
-                echo 
+                echo
                     "
-                                <input 
-                                    type='button' 
-                                    name='excluir' 
-                                    id='excluir' 
-                                    class='uploaderExcluir' 
-                                    value='Excluir' 
+                                <input
+                                    type='button'
+                                    name='excluir'
+                                    id='excluir'
+                                    class='uploaderExcluir'
+                                    value='Excluir'
                                     onclick=\"excluirImagem('../../app.view/img/{$file}', '{$category}');\"
                                 >
                             </div>
@@ -116,7 +116,7 @@
 
     //Salva Paginas
     if($request == 'salvaPaginas')
-    {   
+    {
         $controlador                        = new controladorPaginas();
         $controlador->pagina                = new tbPaginas();
 
@@ -152,13 +152,13 @@
 
             if(count($imagens) > 1)
             {
-                foreach ($imagens as $imagem) 
+                foreach ($imagens as $imagem)
                 {
                     $imagem = explode('²', $imagem);
 
                     if  (
                             ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
-                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
+                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined')
                         )
                     {
                         $controladorGaleria->galeria                    = new tbGaleriaImagens();
@@ -210,7 +210,7 @@
         $controlador->usuario->codigo   = $_POST['codigo'];
         $controlador->usuario->nome     = $_POST['nome'];
         $controlador->usuario->email    = $_POST['email'];
-        
+
         if(isset($_POST['senha']))
             $controlador->usuario->senha    = $_POST['senha'];
         if(isset($_POST['administrador']));
@@ -234,7 +234,7 @@
         $controlador->localizacao->codigo   = $_POST['codigo'];
         $controlador->localizacao->nome     = $_POST['nome'];
         $controlador->localizacao->ativo    = $_POST['ativo'];
-        
+
         echo $controlador->localizacao->store();
     }
 
@@ -258,7 +258,7 @@
         $controlador->video->video      = $video;
         $controlador->video->imagem     = $_POST['imagem'];
         $controlador->video->ativo      = $_POST['ativo'];
-        
+
         echo $controlador->video->store();
     }
 
@@ -286,12 +286,12 @@
         $controlador->configuracao                          = new tbConfiguracoes();
 
         $controlador->configuracao->codigo                  = 1;
-        $controlador->configuracao->emailPagSeguro          = $_POST['email']; 
+        $controlador->configuracao->emailPagSeguro          = $_POST['email'];
         $controlador->configuracao->tokenPagSeguro          = $_POST['token'];
-        $controlador->configuracao->emailPagSeguroSandbox   = $_POST['emailSandbox']; 
+        $controlador->configuracao->emailPagSeguroSandbox   = $_POST['emailSandbox'];
         $controlador->configuracao->tokenPagSeguroSandbox   = $_POST['tokenSandbox'];
         $controlador->configuracao->sandboxPagSeguro        = $_POST['sandbox'] == 'true' ? 1 : 0;
-        
+
         echo $controlador->configuracao->store();
     }
 
@@ -305,7 +305,7 @@
         $controlador->categoriaProduto->codigo      = $_POST['codigo'];
         $controlador->categoriaProduto->categoria   = $_POST['categoria'];
         $controlador->categoriaProduto->ativo       = $_POST['ativo'];
-        
+
         echo $controlador->categoriaProduto->store();
     }
 
@@ -320,7 +320,7 @@
         $controlador->subcategoriasProduto->categoria       = $_POST['categoria'];
         $controlador->subcategoriasProduto->subCategoria    = $_POST['subcategoria'];
         $controlador->subcategoriasProduto->ativo           = $_POST['ativo'];
-        
+
         echo $controlador->subcategoriasProduto->store();
     }
 
@@ -349,7 +349,7 @@
         $controlador->produto->imagemVideo      = $_POST['imagemVideo'];
         $controlador->produto->descricao        = $_POST['descricao'];
         $controlador->produto->ativo            = $_POST['ativo'];
-        
+
         $result = $controlador->produto->store();
 
         if($result == 1)
@@ -359,13 +359,9 @@
             else
                 $codigo = $_POST['codigo'];
 
+            //IMAGENS
             $controladorGaleria = new controladorGaleria();
-            $controladorGaleria->repository->addEntity('galeriaimagens');
-
-            $criteria = new TCriteria();
-            $criteria->addFilter('codigoProduto', '=', $codigo);
-
-            $controladorGaleria->repository->deleteFisico($criteria);
+            $controladorGaleria->apagaGaleriaFisico('codigoProduto', $codigo);
 
             $imagens    = $_POST['imagens'];
             $imagens    = explode('³', $imagens);
@@ -374,7 +370,7 @@
 
             if(count($imagens) > 1)
             {
-                foreach ($imagens as $imagem) 
+                foreach ($imagens as $imagem)
                 {
                     $imagem = explode('²', $imagem);
 
@@ -382,7 +378,7 @@
                             ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
                             ($imagem[1] != '' &&    $imagem[1] != NULL    &&    $imagem[1] != 'undefined') &&
                             ($imagem[2] != '' &&    $imagem[2] != NULL    &&    $imagem[2] != 'undefined') &&
-                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
+                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined')
                         )
                     {
                         $controladorGaleria->galeria                    = new tbGaleriaImagens();
@@ -394,6 +390,26 @@
                         $controladorGaleria->galeria->ordem             = $imagem[3];
 
                         if($controladorGaleria->galeria->store() == 0)
+                            $erros++;
+                    }
+                }
+            }
+
+            //Cores
+            $controlador->apagaCoresFisico($codigo);
+
+            $cores = $_POST['cores'];
+            $cores = explode('¬', $cores);
+
+            if(count($cores) >= 1) {
+                foreach ($cores as $cor) {
+                    if  ($cor != '' &&    $cor != NULL    &&    $cor != 'undefined') {
+                        $controlador->cor                   = new tbProdutosCores();
+
+                        $controlador->cor->codigoProduto    = $codigo;
+                        $controlador->cor->cor              = $cor;
+
+                        if($controlador->cor->store() == 0)
                             $erros++;
                     }
                 }
@@ -417,7 +433,7 @@
         $controlador->venda->codigo         = $_POST['codigo'];
         $controlador->venda->status         = $_POST['nome'];
         $controlador->venda->codigoRastreio = $_POST['valor'];
-        
+
         echo $controlador->venda->store();
     }
 
@@ -431,7 +447,7 @@
         $controlador->situacao->codigo      = $_POST['codigo'];
         $controlador->situacao->situacao    = $_POST['situacao'];
         $controlador->situacao->ativo       = $_POST['ativo'];
-        
+
         echo $controlador->situacao->store();
     }
 
@@ -445,7 +461,7 @@
         $controlador->categoria->codigo     = $_POST['codigo'];
         $controlador->categoria->categoria  = $_POST['categoria'];
         $controlador->categoria->ativo      = $_POST['ativo'];
-        
+
         echo $controlador->categoria->store();
     }
 
@@ -460,7 +476,7 @@
         $controlador->cidade->cidade    = $_POST['cidade'];
         $controlador->cidade->imagem    = $_POST['imagem'];
         $controlador->cidade->ativo     = $_POST['ativo'];
-        
+
         echo $controlador->cidade->store();
     }
 
@@ -496,7 +512,7 @@
         $controlador->imovel->metragemDireita       = $_POST['metragemDireita'];
         $controlador->imovel->metragemConstrucao    = $_POST['metragemConstrucao'];
         $controlador->imovel->descricao             = $_POST['descricao'];
-        
+
         $result = $controlador->imovel->store();
 
         if($result == 1)
@@ -521,7 +537,7 @@
 
             if(count($imagens) > 1)
             {
-                foreach ($imagens as $imagem) 
+                foreach ($imagens as $imagem)
                 {
                     $imagem = explode('²', $imagem);
 
@@ -529,7 +545,7 @@
                             ($imagem[0] != '' &&    $imagem[0] != NULL    &&    $imagem[0] != 'undefined') &&
                             ($imagem[1] != '' &&    $imagem[1] != NULL    &&    $imagem[1] != 'undefined') &&
                             ($imagem[2] != '' &&    $imagem[2] != NULL    &&    $imagem[2] != 'undefined') &&
-                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined') 
+                            ($imagem[3] != '' &&    $imagem[3] != NULL    &&    $imagem[3] != 'undefined')
                         )
                     {
                         $controladorGaleria->galeria                    = new tbGaleria();
@@ -568,7 +584,7 @@
         $controlador->depoimentos->empresa      = $_POST['empresa'];
         $controlador->depoimentos->depoimento   = $_POST['depoimento'];
         $controlador->depoimentos->ativo        = $_POST['ativo'];
-        
+
         echo $controlador->depoimentos->store();
     }
 
@@ -583,7 +599,7 @@
         $controlador->telefone->telefone    = $_POST['telefone'];
         $controlador->telefone->whatsapp    = $_POST['whatsapp'] == 'true' ? '1' : '0';
         $controlador->telefone->ativo       = $_POST['ativo'];
-        
+
         echo $controlador->telefone->store();
     }
 
@@ -598,7 +614,7 @@
         $controlador->email->email   = $_POST['email'];
         $controlador->email->senha   = $_POST['senha'];
         $controlador->email->ativo   = $_POST['ativo'];
-        
+
         echo $controlador->email->store();
     }
 
@@ -654,7 +670,7 @@
         $controlador->funcoes->depoimentos          = $_POST['depoimentos']         == 'true' ? 1 : 0;
         $controlador->funcoes->catalogoClientes     = $_POST['catalogoClientes']    == 'true' ? 1 : 0;
         $controlador->funcoes->eventos              = $_POST['eventos']    == 'true' ? 1 : 0;
-        
+
         $retorno                                    = $controlador->funcoes->store();
 
         if($retorno == 1)
@@ -721,7 +737,7 @@
         else if($tabela == 'banners')
         {
             $listagem->setTituloPagina(ucfirst($tabela));
-            
+
             $listagem->addColumn('titulo');
             $listagem->addColumn('descricao');
             $listagem->addColumn('imagem');
@@ -898,7 +914,7 @@
             $listagem->addColumn('ativo');
 
             $listagem->addEntity($tabela);
-        }        
+        }
         else if($tabela == 'catalogoClientes')
         {
             $listagem->setTituloPagina('Clientes');
@@ -913,7 +929,7 @@
         else if($tabela == 'eventos')
         {
             $listagem->setTituloPagina(ucfirst($tabela));
-            
+
 
             $listagem->addColumn('codigo');
             $listagem->addColumn('titulo');
@@ -970,7 +986,7 @@
         $subcategorias = $controlador->getSubCategorias($categoria);
 
         $retorno = "<option value='' disabled selected style='display: none;'></option>";
-        foreach ($subcategorias as $subcategoria) 
+        foreach ($subcategorias as $subcategoria)
         {
             $selected = '';
 

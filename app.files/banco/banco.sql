@@ -388,6 +388,22 @@ CREATE TABLE IF NOT EXISTS `produtos` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `produtoscores`
+--
+
+CREATE TABLE `produtoscores` (
+  `codigo` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `codigoProduto` bigint(20) UNSIGNED NOT NULL,
+  `cor` varchar(50) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
+  `excluido` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codigo`),
+  KEY `codigoProduto` (`codigoProduto`);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `situacaoimoveis`
 --
 
@@ -472,7 +488,7 @@ CREATE TABLE `vendas` (
   `parcelas` int(11) DEFAULT NULL,
   `sessionPagSeguro` varchar(100) NOT NULL,
   `senderHash` varchar(100) NOT NULL,
-  `tokenCartao` varchar(100) NOT NULL,
+  `tokenCartao` varchar(100),
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0'
   PRIMARY KEY (`codigo`),
@@ -490,7 +506,7 @@ CREATE TABLE `vendasprodutos` (
   `codigoProduto` bigint(20) UNSIGNED NOT NULL,
   `valor` double NOT NULL,
   `quantidade` int(11) NOT NULL,
-  `cor` varchar(50) NOT NULL,
+  `cor` varchar(50),
   `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `excluido` tinyint(1) NOT NULL DEFAULT '0'
   PRIMARY KEY (`codigo`),
@@ -581,6 +597,12 @@ ALTER TABLE `produtos`
   ADD CONSTRAINT `categoria_produto` FOREIGN KEY (`categoria`) REFERENCES `categoriaprodutos` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `subcategoria_produto` FOREIGN KEY (`subCategoria`) REFERENCES `subcategoriaprodutos` (`codigo`) ON DELETE SET NULL ON UPDATE CASCADE;
 
+  --
+  -- Limitadores para a tabela `produtoscores`
+  --
+  ALTER TABLE `produtoscores`
+    ADD CONSTRAINT `cores_produtos` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 --
 -- Limitadores para a tabela `subcategoriaprodutos`
 --
@@ -590,14 +612,14 @@ ALTER TABLE `subcategoriaprodutos`
 --
 -- Limitadores para a tabela `vendaprodutos`
 --
-ALTER TABLE `vendasprodutos` 
+ALTER TABLE `vendasprodutos`
   ADD CONSTRAINT `vendasprodutos_vendas` FOREIGN KEY (`codigoVenda`) REFERENCES `vendas`(`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `vendasprodutos_produtos` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Limitadores para a tabela `vendas`
 --
-ALTER TABLE `vendas` 
+ALTER TABLE `vendas`
   ADD CONSTRAINT `vendas_cliente` FOREIGN KEY (`codigoCliente`) REFERENCES `clientes`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `vendas_status` FOREIGN KEY (`codigoStatus`) REFERENCES `vendastatus`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `vendas_enderecocliente` FOREIGN KEY (`codigoEnderecoEntrega`) REFERENCES `clienteenderecos`(`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT,

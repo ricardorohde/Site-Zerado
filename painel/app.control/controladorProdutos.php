@@ -16,6 +16,9 @@
         private $collectionProdutos;
         private $produto;
 
+        private $cor;
+        private $collectionCores;
+
         private $categoriasProduto;
 
         private $subcategoriasProduto;
@@ -37,6 +40,9 @@
             $this->collectionProdutos   = NULL;
             $this->produto              = NULL;
 
+            $this->cor                  = NULL;
+            $this->collectionCores      = NULL;
+
             $this->categoriasProduto    = NULL;
 
             $this->subcategoriasProduto = NULL;
@@ -45,7 +51,7 @@
         /**
           * Método __set
           * Seta o valor da variavel
-          * 
+          *
           * @access public
           * @param  string  $propriedade    Propriedade a ser definida o valor
           * @param  mixed   $valor          Valor da Propriedade
@@ -59,7 +65,7 @@
         /**
           * Método __get
           * Seta o valor da variavel
-          * 
+          *
           * @access public
           * @param  string $propriedade    Propriedade a ser retornada
           * @return mixed                   Valor da Propriedade
@@ -120,6 +126,52 @@
             $this->categoriasProduto = $this->repository->load($criteria);
 
             return $this->categoriasProduto;
+        }
+
+        /**
+         * Obtém todas as cores do Produto
+         *
+         * @param  $codigo          Código do Produto
+         * @return tbProdutosCores  Cores do Produto
+         */
+        public function getCoresProduto($codigo)
+        {
+            $this->repository = new TRepository();
+
+            $this->collectionCores = NULL;
+
+            $this->repository->addColumn('cor');
+
+            $this->repository->addEntity('produtoscores');
+
+            //TABELA exposition_gallery
+            $criteria   = new TCriteria;
+            $criteria->addFilter('ativo', '=', 1);
+            $criteria->addFilter('codigoProduto', '=', $codigo);
+            $criteria->setProperty('order', 'cor');
+
+            $this->collectionCores = $this->repository->load($criteria);
+
+            return $this->collectionCores;
+        }
+
+        /**
+         * Apaga fisicamente a galeria
+         *
+         * @param  $coluna Coluna a ser usada na busca
+         * @param  $codigo Código (Foreign Key) a ser apagado
+         * @return void
+         */
+        public function apagaCoresFisico($codigo)
+        {
+            $this->repository = new TRepository();
+
+            $this->repository->addEntity('produtoscores');
+
+            $criteria = new TCriteria();
+            $criteria->addFilter('codigoProduto', '=', $codigo);
+
+            $this->repository->deleteFisico($criteria);
         }
     }
 ?>

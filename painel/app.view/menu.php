@@ -12,18 +12,6 @@
                     Configurações
                 </a>
             </li>
-            <li>
-                <a href='/telefones' title='Telefones' alt='Telefones'>
-                    <i class="fa fa-phone"></i>&nbsp;
-                    Telefones
-                </a>
-            </li>
-            <li>
-                <a href='/emails' title='E-mails' alt='E-mails'>
-                    <i class="fa fa-envelope"></i>&nbsp;
-                    E-mails
-                </a>
-           </li>
             <?php
                 if($_SESSION['funcoes']->ecommerce == 1)
                 {
@@ -38,6 +26,18 @@
                 }
             ?>
             <li>
+                <a href='/telefones' title='Telefones' alt='Telefones'>
+                    <i class="fa fa-phone"></i>&nbsp;
+                    Telefones
+                </a>
+            </li>
+            <li>
+                <a href='/emails' title='E-mails' alt='E-mails'>
+                    <i class="fa fa-envelope"></i>&nbsp;
+                    E-mails
+                </a>
+           </li>
+            <!--<li>
                 <a href='/localizacao' title='Categoria Páginas' alt='Categoria Páginas'>
                     <i class="fa fa-list"></i>&nbsp;
                     Categoria Páginas
@@ -48,7 +48,7 @@
                     <i class="fa fa-file-text"></i>&nbsp;
                     Páginas
                 </a>
-            </li>
+            </li>-->
              <?php
                 if($_SESSION['funcoes']->banner == 1)
                 {
@@ -251,7 +251,7 @@
 
     <div class='copyright'>
         <div>
-            <span class='center'>
+            <span class='center'>w
                 &copy; 2016 - 
                 <a href='http://www.colmeiatecnologia.com.br' alt='Colmeia Tecnologia' title='Colmeia Tecnologia' target='_blank'>
                     Colmeia Tecnologia
